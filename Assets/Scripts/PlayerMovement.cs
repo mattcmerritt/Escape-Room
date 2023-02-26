@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Camera information
     [SerializeField] private GameObject CameraObject;
+    private float HorizontalRotation;
 
     private void Awake() 
     {
@@ -25,7 +26,10 @@ public class PlayerMovement : MonoBehaviour
         // Rotating the player themselves based on the mouse's horizontal movement
         transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, mouseX, 0f));
         // Rotating the camera inside the player based on the mouse's vertical movement
-        CameraObject.transform.rotation = Quaternion.Euler(CameraObject.transform.eulerAngles + new Vector3(-mouseY, 0f, 0f));
+        HorizontalRotation += -mouseY;
+        // Clamping rotation to prevent camera from doing a flip
+        HorizontalRotation = Mathf.Clamp(HorizontalRotation, -90f, 90f);
+        CameraObject.transform.localRotation = Quaternion.Euler(new Vector3(HorizontalRotation, 0f, 0f));
 
         // Player movement controls
         float forwardInput = Input.GetAxis("Vertical");
