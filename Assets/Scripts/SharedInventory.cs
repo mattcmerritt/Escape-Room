@@ -12,7 +12,7 @@ public class SharedInventory : MonoBehaviour
 
     // UI Elements
     [SerializeField] private GameObject CluePanel;
-    [SerializeField] private TMP_Text ClueContent;
+    [SerializeField] private TMP_Text ClueContent, ClueAnnouncement;
 
     private void Start()
     {
@@ -44,6 +44,7 @@ public class SharedInventory : MonoBehaviour
         movement.LockCamera();
         CluePanel.SetActive(true);
         ClueContent.text = clue.Description;
+        ClueAnnouncement.text = clue.Announcement;
     }
 
     public void HideClue()
