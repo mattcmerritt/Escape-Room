@@ -3,7 +3,10 @@ guid: 6befb6aaecd018549a8d73ed10be09db
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - PhysicalObject: {instanceID: 0}
+  - ItemDetails: {instanceID: 0}
+  - OpenSprite: {fileID: 21300000, guid: 7b8b9b5b057ec654a8172025ff3c9483, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject CameraObject;
     private float HorizontalRotation;
 
+    // Camera control
+    private bool CameraLocked;
+
     private void Awake() 
     {
         // Start the game with the player's cursor locked
@@ -21,15 +24,18 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         // Camera movement controls
-        float mouseX = Input.GetAxis("Mouse X") * Sensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * Sensitivity;
-        // Rotating the player themselves based on the mouse's horizontal movement
-        transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, mouseX, 0f));
-        // Rotating the camera inside the player based on the mouse's vertical movement
-        HorizontalRotation += -mouseY;
-        // Clamping rotation to prevent camera from doing a flip
-        HorizontalRotation = Mathf.Clamp(HorizontalRotation, -90f, 90f);
-        CameraObject.transform.localRotation = Quaternion.Euler(new Vector3(HorizontalRotation, 0f, 0f));
+        if (!CameraLocked)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * Sensitivity;
+            float mouseY = Input.GetAxis("Mouse Y") * Sensitivity;
+            // Rotating the player themselves based on the mouse's horizontal movement
+            transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, mouseX, 0f));
+            // Rotating the camera inside the player based on the mouse's vertical movement
+            HorizontalRotation += -mouseY;
+            // Clamping rotation to prevent camera from doing a flip
+            HorizontalRotation = Mathf.Clamp(HorizontalRotation, -90f, 90f);
+            CameraObject.transform.localRotation = Quaternion.Euler(new Vector3(HorizontalRotation, 0f, 0f));
+        }
 
         // Player movement controls
         float forwardInput = Input.GetAxis("Vertical");
@@ -40,5 +46,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 movement = (normalizedInput.z * transform.forward) + (normalizedInput.x * transform.right);
         // Applying movement and speed
         transform.position += movement * MoveSpeed * Time.deltaTime;
+    }
+
+    public void LockCamera()
+    {
+        CameraLocked = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void UnlockCamera()
+    {
+        CameraLocked = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

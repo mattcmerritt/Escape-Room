@@ -9,8 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd301dc1b55f5c4196e33815d9d75db, type: 3}
+  m_Script: {fileID: 11500000, guid: f4c6c357f5af711438d60ccd4a400d67, type: 3}
   m_Name: Clue 1
   m_EditorClassIdentifier: 
   Name: Clue 1
   Icon: {fileID: 21300000, guid: a8b41fff8462ff842a14327df65e4ca7, type: 3}
+  UsedIcon: {fileID: 21300000, guid: 7b8b9b5b057ec654a8172025ff3c9483, type: 3}
+  Description: "To find out the town your patient lives in, you will need to find
+    three specific dominos. To begin, calculate the total number of letters for each
+    of the three health schools at QU. For example, School of Business has 16 letters.
+    \r\n\r\nThen find the dominos that have the highest possible number of dots on
+    the top half. As you are looking, do not destroy or modify any of the dominos.
+    \r\n\r\nFrom those, find the three specific dominos that have the number of dots
+    on the lower half that, when added to number of upper half dots, total the number
+    of letters in the name of that health school. There will be one domino for each
+    health school.  \r\n\r\nThen look on the back side of each of the three dominos
+    for your next clue, but beware, looks can be deceiving! Thankfully, something
+    close by can light the way. Reminder: to solve this clue nothing needs to be
+    destroyed or modified."

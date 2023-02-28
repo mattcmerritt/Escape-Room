@@ -12,6 +12,17 @@ public class PlayerInteractions : MonoBehaviour
 
     // Inventory data
     [SerializeField] private SharedInventory Inventory;
+    private List<KeyCode> InventoryKeys = new List<KeyCode>{ 
+        KeyCode.Alpha1, 
+        KeyCode.Alpha2, 
+        KeyCode.Alpha3, 
+        KeyCode.Alpha4, 
+        KeyCode.Alpha5, 
+        KeyCode.Alpha6, 
+        KeyCode.Alpha7,
+        KeyCode.Alpha8,
+        KeyCode.Alpha9
+    };
 
     private void Start()
     {
@@ -32,6 +43,15 @@ public class PlayerInteractions : MonoBehaviour
                 {
                     util.Collect();
                 }
+            }
+        }
+
+        // Using inventory items
+        for (int i = 0; i < InventoryKeys.Count; i++)
+        {
+            if (Input.GetKeyDown(InventoryKeys[i]))
+            {
+                Inventory.UseItem(i);
             }
         }
     }

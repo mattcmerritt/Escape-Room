@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class ClueEnvelope : UtilityObject
 {
-    public override void UseObject()
-    {
-        Debug.Log("Used " + ItemDetails.Name);
-    }
+    [SerializeField] private Sprite OpenSprite;
 }

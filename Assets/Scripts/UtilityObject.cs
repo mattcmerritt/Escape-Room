@@ -6,7 +6,8 @@ public abstract class UtilityObject : MonoBehaviour
 {
     [SerializeField] public GameObject PhysicalObject;
     [SerializeField] public InventoryItem ItemDetails;
-    private SharedInventory Inventory;
+    protected SharedInventory Inventory;
+    [SerializeField] public bool Used;
 
     private void Start()
     {
@@ -18,6 +19,4 @@ public abstract class UtilityObject : MonoBehaviour
         Inventory.AddItem(this);
         PhysicalObject.SetActive(false);
     }
-
-    public abstract void UseObject();
 }
