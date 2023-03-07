@@ -48,17 +48,20 @@ public class Cabinet : SimpleObject
             }
         }
 
-        // Generating on-click events for the lock digit buttons
-        for (int i = 0; i < IncrementButtons.Count && i < DecrementButtons.Count; i++)
+        if (IsLocked)
         {
-            // need to separate out the memory reseved for the variable on each pass of
-            // the loop, otherwise it will copy the final value of i to all instances
-            int temp = i;
-            IncrementButtons[temp].onClick.AddListener(() => IncrementDigit(temp));
-            DecrementButtons[temp].onClick.AddListener(() => DecrementDigit(temp));
-        }
+            // Generating on-click events for the lock digit buttons
+            for (int i = 0; i < IncrementButtons.Count && i < DecrementButtons.Count; i++)
+            {
+                // need to separate out the memory reseved for the variable on each pass of
+                // the loop, otherwise it will copy the final value of i to all instances
+                int temp = i;
+                IncrementButtons[temp].onClick.AddListener(() => IncrementDigit(temp));
+                DecrementButtons[temp].onClick.AddListener(() => DecrementDigit(temp));
+            }
 
-        InputCombinationButton.onClick.AddListener(() => AttemptCombination());
+            InputCombinationButton.onClick.AddListener(() => AttemptCombination());
+        }
     }
 
     // Function for when the player clicks on the cabinet
