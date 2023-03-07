@@ -1916,19 +1916,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 742098189}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657837036}
-        m_TargetAssemblyTypeName: Cabinet, Assembly-CSharp
-        m_MethodName: IncrementDigit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &742098189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3077,19 +3065,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1132195736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657837036}
-        m_TargetAssemblyTypeName: Cabinet, Assembly-CSharp
-        m_MethodName: DecrementDigit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1132195736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3211,19 +3187,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1191219114}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657837036}
-        m_TargetAssemblyTypeName: Cabinet, Assembly-CSharp
-        m_MethodName: DecrementDigit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1191219114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3640,19 +3604,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1349017937}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657837036}
-        m_TargetAssemblyTypeName: Cabinet, Assembly-CSharp
-        m_MethodName: DecrementDigit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1349017937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4418,19 +4370,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1531405407}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657837036}
-        m_TargetAssemblyTypeName: Cabinet, Assembly-CSharp
-        m_MethodName: IncrementDigit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1531405407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4628,19 +4568,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1557480380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657837036}
-        m_TargetAssemblyTypeName: Cabinet, Assembly-CSharp
-        m_MethodName: DecrementDigit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1557480380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5031,6 +4959,21 @@ MonoBehaviour:
   LockCombination: 3100320033003400
   CurrentCombination: 3000300030003000
   LockObject: {fileID: 839560170}
+  IncrementButtons:
+  - {fileID: 742098188}
+  - {fileID: 1779580374}
+  - {fileID: 1855718888}
+  - {fileID: 1531405406}
+  DecrementButtons:
+  - {fileID: 1132195735}
+  - {fileID: 1557480379}
+  - {fileID: 1191219113}
+  - {fileID: 1349017936}
+  DisplayDigits:
+  - {fileID: 20878311}
+  - {fileID: 1901939475}
+  - {fileID: 1677009595}
+  - {fileID: 418533616}
 --- !u!4 &1657837037
 Transform:
   m_ObjectHideFlags: 0
@@ -5356,19 +5299,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1779580375}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657837036}
-        m_TargetAssemblyTypeName: Cabinet, Assembly-CSharp
-        m_MethodName: IncrementDigit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1779580375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5490,19 +5421,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1855718889}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1657837036}
-        m_TargetAssemblyTypeName: Cabinet, Assembly-CSharp
-        m_MethodName: IncrementDigit
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1855718889
 MonoBehaviour:
   m_ObjectHideFlags: 0
