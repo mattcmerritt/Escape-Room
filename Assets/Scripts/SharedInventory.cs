@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class SharedInventory : MonoBehaviour
 {
     // Inventory state
     [SerializeField] private List<UtilityObject> Items;
     [SerializeField] private List<GameObject> ItemSlots;
-
-    // UI Elements
-    [SerializeField] private GameObject CluePanel;
-    [SerializeField] private TMP_Text ClueContent, ClueAnnouncement;
 
     private void Start()
     {
@@ -30,28 +25,9 @@ public class SharedInventory : MonoBehaviour
         Debug.Log("Used " + Items[index].ItemDetails.Name);
         Items[index].Used = true;
 
-        if (Items[index].ItemDetails.GetType() == typeof(ClueItem))
-        {
-            ShowClue((ClueItem) Items[index].ItemDetails);
-        }
+        Items[index].Interact();
 
         UpdateUI();
-    }
-
-    public void ShowClue(ClueItem clue)
-    {
-        PlayerMovement movement = FindObjectOfType<PlayerMovement>();
-        movement.LockCamera();
-        CluePanel.SetActive(true);
-        ClueContent.text = clue.Description;
-        ClueAnnouncement.text = clue.Announcement;
-    }
-
-    public void HideClue()
-    {
-        PlayerMovement movement = FindObjectOfType<PlayerMovement>();
-        movement.UnlockCamera();
-        CluePanel.SetActive(false);
     }
 
     private void UpdateUI()

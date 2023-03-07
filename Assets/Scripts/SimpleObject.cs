@@ -16,6 +16,7 @@ public abstract class SimpleObject : MonoBehaviour
         Interactions = FindObjectOfType<PlayerInteractions>();
     }
 
+    // All menus can be closed with escape, regardless of the type of object
     protected void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -35,6 +36,7 @@ public abstract class SimpleObject : MonoBehaviour
     // Function for when the player puts away the object
     public virtual void ExitInteract()
     {
+        Debug.Log(gameObject.name + ": Exiting Interaction");
         InteractInterface.SetActive(false);
         Movement.UnlockCamera();
         Interactions.CloseMenu();
