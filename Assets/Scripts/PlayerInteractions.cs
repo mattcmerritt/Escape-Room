@@ -10,6 +10,9 @@ public class PlayerInteractions : MonoBehaviour
     // Camera information
     [SerializeField] private GameObject CameraObject;
 
+    // Player state
+    private bool InMenu;
+
     // Inventory data
     [SerializeField] private SharedInventory Inventory;
     private List<KeyCode> InventoryKeys = new List<KeyCode>{ 
@@ -31,28 +34,50 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Update()
     {
-        // Raycast forward to find object in front of the player
-        if (Input.GetMouseButtonDown(0))
+        if (!InMenu)
         {
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, CameraObject.transform.forward, out hit, InteractRange))
+            // Raycast forward to find object in front of the player
+            if (Input.GetMouseButtonDown(0))
             {
-                Debug.Log(hit.collider.gameObject.name);
-                UtilityObject util = hit.collider.GetComponent<UtilityObject>();
-                if (util != null)
+                RaycastHit hit;
+                if (Physics.Raycast(transform.position, CameraObject.transform.forward, out hit, InteractRange))
                 {
-                    util.Collect();
+                    Debug.Log(hit.collider.gameObject.name);
+                    // Checking for components on clicked object to determine function
+                    UtilityObject util = hit.collider.GetComponent<UtilityObject>();
+                    SimpleObject simple = hit.collider.GetComponent<SimpleObject>();
+                    if (util != null)
+                    {
+                        util.Collect();
+                    }
+                    else if (simple != null)
+                    {
+                        simple.Interact();
+                    }
+                    
+                }
+            }
+
+            // Using inventory items
+            for (int i = 0; i < InventoryKeys.Count; i++)
+            {
+                if (Input.GetKeyDown(InventoryKeys[i]))
+                {
+                    Inventory.UseItem(i);
                 }
             }
         }
+    }
 
-        // Using inventory items
-        for (int i = 0; i < InventoryKeys.Count; i++)
-        {
-            if (Input.GetKeyDown(InventoryKeys[i]))
-            {
-                Inventory.UseItem(i);
-            }
-        }
+    // Function to prevent player from double interacting with objects if menu is open
+    public void OpenMenu()
+    {
+        InMenu = true;
+    }
+
+    // Function to restore player interactions when menu is closed
+    public void CloseMenu()
+    {
+        InMenu = false;
     }
 }

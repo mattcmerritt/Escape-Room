@@ -35,17 +35,17 @@ public class PlayerMovement : MonoBehaviour
             // Clamping rotation to prevent camera from doing a flip
             HorizontalRotation = Mathf.Clamp(HorizontalRotation, -90f, 90f);
             CameraObject.transform.localRotation = Quaternion.Euler(new Vector3(HorizontalRotation, 0f, 0f));
-        }
 
-        // Player movement controls
-        float forwardInput = Input.GetAxis("Vertical");
-        float sidewaysInput = Input.GetAxis("Horizontal");
-        // Normalizing the input vector to keep the player a consistent movement speed
-        Vector3 normalizedInput = Vector3.Normalize(new Vector3(sidewaysInput, 0f, forwardInput));
-        // Direct the input vectors based on the player's current rotation
-        Vector3 movement = (normalizedInput.z * transform.forward) + (normalizedInput.x * transform.right);
-        // Applying movement and speed
-        transform.position += movement * MoveSpeed * Time.deltaTime;
+            // Player movement controls
+            float forwardInput = Input.GetAxis("Vertical");
+            float sidewaysInput = Input.GetAxis("Horizontal");
+            // Normalizing the input vector to keep the player a consistent movement speed
+            Vector3 normalizedInput = Vector3.Normalize(new Vector3(sidewaysInput, 0f, forwardInput));
+            // Direct the input vectors based on the player's current rotation
+            Vector3 movement = (normalizedInput.z * transform.forward) + (normalizedInput.x * transform.right);
+            // Applying movement and speed
+            transform.position += movement * MoveSpeed * Time.deltaTime;
+        }        
     }
 
     public void LockCamera()
