@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class Cabinet : SimpleObject
 {
+    // Cabinet Information and Game Objects
     [SerializeField] private bool IsOpen;
+    private Animator Ani;
+
+    // Lock Information and GameObject
     [SerializeField] private bool IsLocked;
     [SerializeField] private bool IsNumeric;
     private List<char> PossibleDigits;
@@ -17,10 +21,13 @@ public class Cabinet : SimpleObject
     // Lock UI Components
     [SerializeField] private List<Button> IncrementButtons, DecrementButtons;
     [SerializeField] private List<TMP_Text> DisplayDigits;
+    [SerializeField] private Button InputCombinationButton;
 
     protected override void Start()
     {
         base.Start(); // still need to grab movement stuff for base class
+
+        Ani = GetComponent<Animator>();
 
         // Generate a list of all letters the lock can cycle through
         if (!IsNumeric)
@@ -50,6 +57,8 @@ public class Cabinet : SimpleObject
             IncrementButtons[temp].onClick.AddListener(() => IncrementDigit(temp));
             DecrementButtons[temp].onClick.AddListener(() => DecrementDigit(temp));
         }
+
+        InputCombinationButton.onClick.AddListener(() => AttemptCombination());
     }
 
     // Function for when the player clicks on the cabinet
@@ -60,6 +69,7 @@ public class Cabinet : SimpleObject
         {
             IsOpen = !IsOpen;
             Debug.Log("Cabinet State changing to: " + (IsOpen ? "Open" : "Closed"));
+            Ani.SetTrigger("Change");
             return; // do not open up the UI if it is unlocked
         }
 
