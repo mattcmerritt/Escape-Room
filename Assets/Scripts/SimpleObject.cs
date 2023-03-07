@@ -10,6 +10,9 @@ public abstract class SimpleObject : MonoBehaviour
     private PlayerMovement Movement;
     private PlayerInteractions Interactions;
 
+    // Permanently enabled UI objects that should disappear when another menu comes up
+    [SerializeField] private GameObject InventoryUI, CrosshairUI, AnnoucementUI;
+
     protected virtual void Start()
     {
         Movement = FindObjectOfType<PlayerMovement>();
@@ -17,7 +20,7 @@ public abstract class SimpleObject : MonoBehaviour
     }
 
     // All menus can be closed with escape, regardless of the type of object
-    protected void Update()
+    protected virtual void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -28,6 +31,10 @@ public abstract class SimpleObject : MonoBehaviour
     // Function for when the player clicks on or uses the object
     public virtual void Interact()
     {
+        InventoryUI.SetActive(false);
+        CrosshairUI.SetActive(false);
+        AnnoucementUI.SetActive(false);
+
         InteractInterface.SetActive(true);
         Movement.LockCamera();
         Interactions.OpenMenu();
@@ -36,6 +43,10 @@ public abstract class SimpleObject : MonoBehaviour
     // Function for when the player puts away the object
     public virtual void ExitInteract()
     {
+        InventoryUI.SetActive(true);
+        CrosshairUI.SetActive(true);
+        AnnoucementUI.SetActive(true);
+
         Debug.Log(gameObject.name + ": Exiting Interaction");
         InteractInterface.SetActive(false);
         Movement.UnlockCamera();
