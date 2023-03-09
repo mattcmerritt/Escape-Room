@@ -35,7 +35,10 @@ public abstract class SimpleObject : MonoBehaviour
         CrosshairUI.SetActive(false);
         AnnoucementUI.SetActive(false);
 
-        InteractInterface.SetActive(true);
+        if (InteractInterface != null)
+        {
+            InteractInterface.SetActive(true);
+        }
         Movement.LockCamera();
         Interactions.OpenMenu();
     }
@@ -48,7 +51,10 @@ public abstract class SimpleObject : MonoBehaviour
         AnnoucementUI.SetActive(true);
 
         Debug.Log(gameObject.name + ": Exiting Interaction");
-        InteractInterface.SetActive(false);
+        if (InteractInterface != null)
+        {
+            InteractInterface.SetActive(false);
+        }
         Movement.UnlockCamera();
         Interactions.CloseMenu();
     }
