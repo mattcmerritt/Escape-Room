@@ -21,16 +21,32 @@ public class Domino : FullObject
     private float SizeXTop, SizeYTop, SizeXBot, SizeYBot;
     */
 
-    [SerializeField] private int Top, Bottom;
-    [SerializeField] private TMP_Text TopText, BottomText;
+    [SerializeField] private bool IsRandom;
+    [SerializeField] private int Top, Bottom, Secret;
+    [SerializeField] private TMP_Text TopText, BottomText, SecretText;
+
+    public static List<int> UsedValues = new List<int>();
 
     protected override void Start()
     {
         base.Start();
 
-        Top = Random.Range(1, 12);
-        Bottom = Random.Range(1, 12);
+        // Keeping track of what sums are already present on the dominos, 
+        // and generating only new sums on random dominos
+        if (!UsedValues.Contains(0))
+        {
+            UsedValues.Add(0);
+        }
+        while (IsRandom && UsedValues.Contains(Top + Bottom))
+        {
+            Top = Random.Range(1, 12);
+            Bottom = Random.Range(1, 12);
+            Secret = Random.Range(0, 9);
+        }
+        UsedValues.Add(Top + Bottom);
+        
         TopText.text = "" + Top;
         BottomText.text = "" + Bottom;
+        SecretText.text = "" + Secret;
     }
 }
