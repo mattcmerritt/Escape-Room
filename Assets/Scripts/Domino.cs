@@ -36,6 +36,10 @@ public class Domino : FullObject
         if (!UsedValues.Contains(0))
         {
             UsedValues.Add(0);
+            // reserved numbers
+            UsedValues.Add(22);
+            UsedValues.Add(15);
+            UsedValues.Add(16);
         }
         while (IsRandom && UsedValues.Contains(Top + Bottom))
         {

@@ -1339,7 +1339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: IsRandom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Crosshair
@@ -2079,7 +2079,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: IsRandom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Crosshair
@@ -3193,7 +3193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: IsRandom
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Crosshair
