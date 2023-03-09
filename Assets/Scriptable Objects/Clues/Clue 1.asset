@@ -24,8 +24,11 @@ MonoBehaviour:
     on the lower half that, when added to number of upper half dots, total the number
     of letters in the name of that health school. There will be one domino for each
     health school.  \r\n\r\nThen look on the back side of each of the three dominos
-    for your next clue, but beware, looks can be deceiving! Thankfully, something
-    close by can light the way. Reminder: to solve this clue nothing needs to be
-    destroyed or modified."
-  Announcement: Find the dominos that add up to the number of letters in each health
+    for your next clue! Only the correct dominos will lead to the secret code, so
+    make sure you choose wisely..."
+  Announcement: 'Find the dominos that add up to the number of letters in each health
     school. There are secrets on the back!
+
+
+    HINT: The acronyms for the schools
+    are SoHS, SoM, and SoN.'
