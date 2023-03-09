@@ -6701,11 +6701,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1419264248313901504, guid: 33cb1a24932d06a4c9f26fcfbb6f6cc8, type: 3}
       propertyPath: LockCombination.Array.data[1]
-      value: 55
+      value: 49
       objectReference: {fileID: 0}
     - target: {fileID: 1419264248313901504, guid: 33cb1a24932d06a4c9f26fcfbb6f6cc8, type: 3}
       propertyPath: LockCombination.Array.data[2]
-      value: 49
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 1419264248313901504, guid: 33cb1a24932d06a4c9f26fcfbb6f6cc8, type: 3}
       propertyPath: DecrementButtons.Array.data[0]
