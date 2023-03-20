@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     // Basic movement information
+    private CharacterController Controller;
     [SerializeField, Range(0, 20)] private float MoveSpeed = 5f;
     [SerializeField, Range(0, 15)] private float Sensitivity = 1.0f;
 
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Start the game with the player's cursor locked
         Cursor.lockState = CursorLockMode.Locked;
+        Controller = GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -37,14 +39,14 @@ public class PlayerMovement : MonoBehaviour
             CameraObject.transform.localRotation = Quaternion.Euler(new Vector3(HorizontalRotation, 0f, 0f));
 
             // Player movement controls
-            float forwardInput = Input.GetAxis("Vertical");
-            float sidewaysInput = Input.GetAxis("Horizontal");
+            float forwardInput = Input.GetAxisRaw("Vertical");
+            float sidewaysInput = Input.GetAxisRaw("Horizontal");
             // Normalizing the input vector to keep the player a consistent movement speed
             Vector3 normalizedInput = Vector3.Normalize(new Vector3(sidewaysInput, 0f, forwardInput));
             // Direct the input vectors based on the player's current rotation
             Vector3 movement = (normalizedInput.z * transform.forward) + (normalizedInput.x * transform.right);
             // Applying movement and speed
-            transform.position += movement * MoveSpeed * Time.deltaTime;
+            Controller.Move(movement * Time.deltaTime * MoveSpeed);
         }        
     }
 
