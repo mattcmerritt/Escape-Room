@@ -494,6 +494,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 315227322}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
       objectReference: {fileID: 862834214}
@@ -713,6 +717,7 @@ GameObject:
   - component: {fileID: 188642561}
   - component: {fileID: 188642563}
   - component: {fileID: 188642562}
+  - component: {fileID: 188642564}
   m_Layer: 0
   m_Name: Clue Panel
   m_TagString: Untagged
@@ -779,6 +784,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 188642560}
   m_CullTransparentMesh: 1
+--- !u!114 &188642564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188642560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d88f882ac98c444b90eafa8b8b12ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Focused: 0
+  Object: {fileID: 0}
 --- !u!4 &298923614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3466821358197222739, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
@@ -797,7 +816,7 @@ GameObject:
   - component: {fileID: 315227324}
   m_Layer: 0
   m_Name: Inventory Bar
-  m_TagString: Untagged
+  m_TagString: Primary UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -969,6 +988,10 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 315227322}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
@@ -1349,6 +1372,10 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 315227322}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
@@ -2090,6 +2117,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 315227322}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
       objectReference: {fileID: 862834214}
@@ -2181,7 +2212,7 @@ GameObject:
   - component: {fileID: 862834216}
   m_Layer: 0
   m_Name: Announcement
-  m_TagString: Untagged
+  m_TagString: Primary UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2668,6 +2699,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 315227322}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
       objectReference: {fileID: 862834214}
@@ -2913,7 +2948,7 @@ GameObject:
   - component: {fileID: 1243002693}
   m_Layer: 0
   m_Name: Crosshair
-  m_TagString: Untagged
+  m_TagString: Primary UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3094,6 +3129,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 315227322}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
       objectReference: {fileID: 862834214}
@@ -3203,6 +3242,10 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 315227322}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
@@ -4457,6 +4500,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 315227322}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
       objectReference: {fileID: 862834214}
@@ -4944,6 +4991,10 @@ PrefabInstance:
       propertyPath: Inventory
       value: 
       objectReference: {fileID: 315227322}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
@@ -5992,6 +6043,7 @@ GameObject:
   - component: {fileID: 1958289435}
   - component: {fileID: 1958289434}
   - component: {fileID: 1958289433}
+  - component: {fileID: 1958289436}
   m_Layer: 5
   m_Name: Lock UI
   m_TagString: Untagged
@@ -6044,7 +6096,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958289432}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6065,11 +6117,25 @@ RectTransform:
   m_Father: {fileID: 1981716352}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMax: {x: 0.9, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1958289436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958289432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d88f882ac98c444b90eafa8b8b12ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Focused: 0
+  Object: {fileID: 0}
 --- !u!1 &1981716351
 GameObject:
   m_ObjectHideFlags: 0
@@ -6215,6 +6281,7 @@ GameObject:
   - component: {fileID: 2034561421}
   - component: {fileID: 2034561423}
   - component: {fileID: 2034561422}
+  - component: {fileID: 2034561424}
   m_Layer: 0
   m_Name: Domino Panel
   m_TagString: Untagged
@@ -6237,8 +6304,8 @@ RectTransform:
   m_Father: {fileID: 1759467522}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.1, y: 0.1}
+  m_AnchorMax: {x: 0.9, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -6280,6 +6347,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034561420}
   m_CullTransparentMesh: 1
+--- !u!114 &2034561424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2034561420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64d88f882ac98c444b90eafa8b8b12ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Focused: 0
+  Object: {fileID: 0}
 --- !u!1 &2038315591
 GameObject:
   m_ObjectHideFlags: 0
@@ -6570,6 +6651,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 315227322}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 2034561424}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: Annoucement
       value: 
       objectReference: {fileID: 862834214}
@@ -6658,6 +6743,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1419264248313901504, guid: 33cb1a24932d06a4c9f26fcfbb6f6cc8, type: 3}
+      propertyPath: InteractUI
+      value: 
+      objectReference: {fileID: 1958289436}
     - target: {fileID: 1419264248313901504, guid: 33cb1a24932d06a4c9f26fcfbb6f6cc8, type: 3}
       propertyPath: CrosshairUI
       value: 
@@ -7205,10 +7294,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c909b8521086c4ab64dd1379117ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractInterface: {fileID: 0}
-  InventoryUI: {fileID: 315227322}
-  CrosshairUI: {fileID: 1243002691}
-  AnnoucementUI: {fileID: 862834214}
+  InteractUI: {fileID: 0}
+  PrimaryUI: []
   IsOpen: 0
   IsLocked: 0
   IsNumeric: 1
@@ -7668,10 +7755,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6befb6aaecd018549a8d73ed10be09db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractInterface: {fileID: 188642560}
-  InventoryUI: {fileID: 315227322}
-  CrosshairUI: {fileID: 1243002691}
-  AnnoucementUI: {fileID: 862834214}
+  InteractUI: {fileID: 188642564}
+  PrimaryUI: []
   ItemDetails: {fileID: 11400000, guid: fa5efe1110afa3041b8a8f02614f6806, type: 2}
   Used: 0
   OpenSprite: {fileID: 21300000, guid: 7b8b9b5b057ec654a8172025ff3c9483, type: 3}
@@ -8422,10 +8507,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c909b8521086c4ab64dd1379117ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractInterface: {fileID: 0}
-  InventoryUI: {fileID: 315227322}
-  CrosshairUI: {fileID: 1243002691}
-  AnnoucementUI: {fileID: 862834214}
+  InteractUI: {fileID: 0}
+  PrimaryUI: []
   IsOpen: 0
   IsLocked: 0
   IsNumeric: 1

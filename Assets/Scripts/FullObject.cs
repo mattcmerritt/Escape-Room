@@ -7,7 +7,7 @@ using UnityEngine;
 public class FullObject : SimpleObject
 {
     [SerializeField] private GameObject PhysicalObject;
-    private GameObject Copy;
+    [SerializeField] private GameObject Copy;
     private GameObject CameraObject;
     private float RotationSpeed = 100f;
 
