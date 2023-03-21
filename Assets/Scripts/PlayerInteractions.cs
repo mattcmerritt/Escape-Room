@@ -13,25 +13,6 @@ public class PlayerInteractions : MonoBehaviour
     // Player state
     private bool InMenu;
 
-    // Inventory data
-    [SerializeField] private SharedInventory Inventory;
-    private List<KeyCode> InventoryKeys = new List<KeyCode>{ 
-        KeyCode.Alpha1, 
-        KeyCode.Alpha2, 
-        KeyCode.Alpha3, 
-        KeyCode.Alpha4, 
-        KeyCode.Alpha5, 
-        KeyCode.Alpha6, 
-        KeyCode.Alpha7,
-        KeyCode.Alpha8,
-        KeyCode.Alpha9
-    };
-
-    private void Start()
-    {
-        Inventory = FindObjectOfType<SharedInventory>();
-    }
-
     private void Update()
     {
         if (!InMenu)
@@ -42,7 +23,7 @@ public class PlayerInteractions : MonoBehaviour
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, CameraObject.transform.forward, out hit, InteractRange))
                 {
-                    Debug.Log(hit.collider.gameObject.name);
+                    // Debug.Log(hit.collider.gameObject.name);
                     // Checking for components on clicked object to determine function
                     UtilityObject util = hit.collider.GetComponent<UtilityObject>();
                     SimpleObject simple = hit.collider.GetComponent<SimpleObject>();
@@ -53,17 +34,7 @@ public class PlayerInteractions : MonoBehaviour
                     else if (simple != null)
                     {
                         simple.Interact();
-                    }
-                    
-                }
-            }
-
-            // Using inventory items
-            for (int i = 0; i < InventoryKeys.Count; i++)
-            {
-                if (Input.GetKeyDown(InventoryKeys[i]))
-                {
-                    Inventory.UseItem(i);
+                    } 
                 }
             }
         }

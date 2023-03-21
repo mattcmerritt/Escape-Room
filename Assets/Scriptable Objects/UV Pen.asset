@@ -15,3 +15,5 @@ MonoBehaviour:
   Name: UV Pen
   Icon: {fileID: 21300000, guid: a05e192de37d7004f8f4c6c2a0fa3f53, type: 3}
   UsedIcon: {fileID: 21300000, guid: a05e192de37d7004f8f4c6c2a0fa3f53, type: 3}
+  Description: A pen with a UV light built into it. It can help reveal hidden secrets
+    that would otherwise be invisible.

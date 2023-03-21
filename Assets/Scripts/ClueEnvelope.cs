@@ -15,7 +15,7 @@ public class ClueEnvelope : UtilityObject
         base.Interact();
 
         ClueItem clue = (ClueItem)ItemDetails;
-        ClueContent.text = clue.Description;
+        ClueContent.text = clue.ClueDescription;
         ClueAnnouncement.text = clue.Announcement;
     }
 }

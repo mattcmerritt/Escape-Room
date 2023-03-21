@@ -7,17 +7,19 @@ public class SharedInventory : MonoBehaviour
 {
     // Inventory state
     [SerializeField] private List<UtilityObject> Items;
-    [SerializeField] private List<GameObject> ItemSlots;
+    private InventoryUI InventoryUI;
 
     private void Start()
     {
         Items = new List<UtilityObject>();
+
+        InventoryUI = FindObjectOfType<InventoryUI>();
     }
 
     public void AddItem(UtilityObject item)
     {
         Items.Add(item);
-        UpdateUI();
+        InventoryUI.AddItem(item);
     }
 
     public void UseItem(int index)
@@ -26,31 +28,11 @@ public class SharedInventory : MonoBehaviour
         Items[index].Used = true;
 
         Items[index].Interact();
-
-        UpdateUI();
     }
 
-    private void UpdateUI()
+    public InventoryItem GetItemDetails(int index)
     {
-        // Menu cannot display more than 9 items, cuts off at 9
-        if (Items.Count > 9)
-        {
-            Debug.LogError("Menu out of space!");
-        }
-        
-        // Filling the boxes with the item sprites
-        for (int i = 0; i < Items.Count && i < 10; i++)
-        {
-            GameObject itemIcon = new GameObject("Sprite");
-            itemIcon.transform.SetParent(ItemSlots[i].transform);
-            Image img = itemIcon.AddComponent<Image>();
-            img.sprite = Items[i].Used ? Items[i].ItemDetails.UsedIcon : Items[i].ItemDetails.Icon;
-            RectTransform rt = itemIcon.GetComponent<RectTransform>();
-            rt.anchorMin = Vector2.zero;
-            rt.anchorMax = Vector2.one;
-            rt.sizeDelta = Vector2.zero;
-            rt.localPosition = Vector3.zero;
-        }
+        return Items[index].ItemDetails;
     }
 
     public UtilityObject CheckForItem(string itemName)
