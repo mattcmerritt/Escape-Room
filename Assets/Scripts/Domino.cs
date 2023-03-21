@@ -27,6 +27,9 @@ public class Domino : FullObject
 
     public static List<int> UsedValues = new List<int>();
 
+    // Player inventory information
+    private SharedInventory Inventory;
+
     protected override void Start()
     {
         base.Start();
@@ -52,5 +55,31 @@ public class Domino : FullObject
         TopText.text = "" + Top;
         BottomText.text = "" + Bottom;
         SecretText.text = "" + Secret;
+
+        Inventory = FindObjectOfType<SharedInventory>();
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        // show text if UV pen is active
+        UtilityObject penObject = Inventory.CheckForItem("UV Pen");
+        if (penObject != null)
+        {
+            UVPen pen = (UVPen) penObject;
+            if (pen.CheckLight())
+            {
+                SecretText.gameObject.SetActive(true);
+            }
+            else
+            {
+                SecretText.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            SecretText.gameObject.SetActive(false);
+        }
     }
 }

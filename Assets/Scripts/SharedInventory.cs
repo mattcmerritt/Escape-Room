@@ -52,4 +52,17 @@ public class SharedInventory : MonoBehaviour
             rt.localPosition = Vector3.zero;
         }
     }
+
+    public UtilityObject CheckForItem(string itemName)
+    {
+        foreach (UtilityObject obj in Items)
+        {
+            if (obj.ItemDetails.Name == itemName)
+            {
+                return obj;
+            }
+        }
+
+        return null;
+    }
 }
