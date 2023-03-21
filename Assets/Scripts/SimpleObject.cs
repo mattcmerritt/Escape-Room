@@ -59,7 +59,7 @@ public abstract class SimpleObject : MonoBehaviour
             UI.SetActive(true);
         }
 
-        Debug.Log(gameObject.name + ": Exiting Interaction");
+        // Debug.Log(gameObject.name + ": Exiting Interaction");
         if (InteractUI != null)
         {
             InteractUI.SetActive(false);

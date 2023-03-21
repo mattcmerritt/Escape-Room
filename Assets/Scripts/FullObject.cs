@@ -52,12 +52,12 @@ public class FullObject : SimpleObject
     // Dispose of viewing copy when the player leaves the interact menu
     public override void ExitInteract()
     {
-        base.ExitInteract();
-
         if (Copy != null)
         {
             Destroy(Copy);
             Copy = null;
         }
+
+        base.ExitInteract();
     }
 }

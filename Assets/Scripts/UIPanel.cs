@@ -6,14 +6,16 @@ using UnityEngine.EventSystems;
 public class UIPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
     [SerializeField] private bool Focused;
-    [SerializeField] private SimpleObject Object;
+    [SerializeField] private List<SimpleObject> Objects;
 
     private void Update() 
     {
         if (!Focused && Input.GetMouseButtonDown(0)) 
         {
-            Debug.Log("DEACTIVATING WINDOW");
-            Object.ExitInteract();
+            foreach (SimpleObject so in Objects)
+            {
+                so.ExitInteract();
+            }
         }
     }
 
@@ -25,7 +27,7 @@ public class UIPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
     // Method to associate UI and game element so that they can interact
     public void AttachObject(SimpleObject obj)
     {
-        Object = obj;
+        Objects.Add(obj);
     }
 
     // Detects if a click occurs on a UI element
