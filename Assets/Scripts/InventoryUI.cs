@@ -25,7 +25,6 @@ public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private Button UseItemButton;
     // Memory for items list
     private List<Button> ItemButtons;
-    private int CurrentItem = -1;
 
     private void Start()
     {
@@ -46,27 +45,25 @@ public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         if ((Active && !Focused && Input.GetMouseButtonDown(0)) || Input.GetKeyDown(KeyCode.Tab))
         {
-            Animator.SetTrigger("Change");
-            Active = !Active;
+            UpdateUI();
+        }
 
-            foreach (GameObject UI in PrimaryUI)
-            {
-                if (UI != gameObject)
-                {
-                    UI.SetActive(!Active);
-                }
-            }
+        if (Active)
+        {
+            Movement.LockCamera();
+            Interactions.OpenMenu();
+        }
+        else
+        {
+            Movement.UnlockCamera();
+            Interactions.CloseMenu();
+        }
 
-            if (Active)
-            {
-                Movement.LockCamera();
-                Interactions.OpenMenu();
-            }
-            else
-            {
-                Movement.UnlockCamera();
-                Interactions.CloseMenu();
-            }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Active = true; // changing to true, will be immediately updated to false
+            Animator.SetTrigger("Reset");
+            UpdateUI();
         }
     }
 
@@ -107,9 +104,25 @@ public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         ItemDesc.text = item.Description;
         UseItemButton.interactable = true;
         int currentIndex = index;
+        UseItemButton.onClick.RemoveAllListeners();
         UseItemButton.onClick.AddListener(() =>
         {
+            UpdateUI();
             SharedInventory.UseItem(currentIndex);
         });
+    }
+
+    private void UpdateUI()
+    {
+        Animator.SetTrigger("Change");
+        Active = !Active;
+
+        foreach (GameObject UI in PrimaryUI)
+        {
+            if (UI != gameObject)
+            {
+                UI.SetActive(!Active);
+            }
+        }
     }
 }
