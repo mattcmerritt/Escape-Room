@@ -7,9 +7,10 @@ using UnityEngine;
 public class FullObject : SimpleObject
 {
     [SerializeField] private GameObject PhysicalObject;
-    [SerializeField] private GameObject Copy;
     private GameObject CameraObject;
     private float RotationSpeed = 100f;
+
+    private bool IsCopy; // flag used to disable interactions for copied dominos
 
     protected override void Start()
     {
@@ -25,26 +26,38 @@ public class FullObject : SimpleObject
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
-        if (Copy != null)
+        if (IsCopy)
         {
-            Copy.transform.localEulerAngles = Copy.transform.localEulerAngles + new Vector3(0f, 0f, -horizontal) * Time.deltaTime * RotationSpeed;
+            transform.localEulerAngles = transform.localEulerAngles + new Vector3(0f, 0f, -horizontal) * Time.deltaTime * RotationSpeed;
         }
     }
 
     // Create a viewing copy of the object when the player enters the interact menu
     public override void Interact()
     {
+        // if the object is a viewing copy, it cannot be interacted with
+        if (IsCopy)
+        {
+            return;
+        }
+
         base.Interact();
 
         // copies the object, but disables all scripts so that they are not copied over
         // to the viewing copy
-        SimpleObject ownInteractions = GetComponent<SimpleObject>();
-        ownInteractions.enabled = false;
-        Copy = Instantiate(PhysicalObject);
-        ownInteractions.enabled = true;
+        GameObject copy = Instantiate(PhysicalObject);
+        copy.name = "Viewing Copy: " + copy.name;
+        FullObject copyScript = copy.GetComponent<FullObject>();
+        copyScript.SetAsCopy();
 
-        Copy.transform.position = CameraObject.transform.position + CameraObject.transform.forward * 0.25f;
-        Copy.transform.eulerAngles = Copy.transform.eulerAngles + Vector3.right * -90f;
-        Copy.tag = "Viewing Copy";
+        // moving the copy to the right place
+        copy.transform.position = CameraObject.transform.position + CameraObject.transform.forward * 0.25f;
+        copy.transform.eulerAngles = copy.transform.eulerAngles + Vector3.right * -90f;
+        copy.tag = "Viewing Copy";
+    }
+
+    public void SetAsCopy()
+    {
+        IsCopy = true;
     }
 }
