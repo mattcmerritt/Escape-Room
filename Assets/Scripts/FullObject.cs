@@ -20,10 +20,8 @@ public class FullObject : SimpleObject
         CameraObject = FindObjectOfType<Camera>().gameObject;
     }
 
-    protected override void Update()
+    protected virtual void Update()
     {
-        base.Update();
-
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
@@ -47,17 +45,6 @@ public class FullObject : SimpleObject
 
         Copy.transform.position = CameraObject.transform.position + CameraObject.transform.forward * 0.25f;
         Copy.transform.eulerAngles = Copy.transform.eulerAngles + Vector3.right * -90f;
-    }
-
-    // Dispose of viewing copy when the player leaves the interact menu
-    public override void ExitInteract()
-    {
-        if (Copy != null)
-        {
-            Destroy(Copy);
-            Copy = null;
-        }
-
-        base.ExitInteract();
+        Copy.tag = "Viewing Copy";
     }
 }

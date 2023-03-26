@@ -3,50 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
+public class UIPanel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [SerializeField] private bool Focused;
-    [SerializeField] private List<SimpleObject> Objects;
+    [SerializeField] private UIManager UIManager; // the current player's UI manager
+    [SerializeField] private bool Focused; // whether the mouse is on the UI panel
 
+    // If a click occurs, defer to the UIManager to see if panel can be closed
     private void Update() 
     {
         if (!Focused && Input.GetMouseButtonDown(0)) 
         {
-            foreach (SimpleObject so in Objects)
-            {
-                so.ExitInteract();
-            }
+            UIManager.CloseUI(this);
         }
     }
 
-    public void SetActive(bool value)
+    public void Open()
     {
-        gameObject.SetActive(value);
-    }
-
-    // Method to associate UI and game element so that they can interact
-    public void AttachObject(SimpleObject obj)
-    {
-        Objects.Add(obj);
-    }
-
-    // Detects if a click occurs on a UI element
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        // Debug.Log(gameObject.name + " was Pressed");
+        UIManager.OpenUI(this);
     }
 
     // Detects if the mouse is in a UI element
     public void OnPointerEnter(PointerEventData eventData) 
     {
-        // Debug.Log("Entering " + gameObject.name);
         Focused = true;
     }
 
     // Detects if the mouse leaves a UI element
     public void OnPointerExit(PointerEventData eventData) 
     {
-        // Debug.Log("Leaving " + gameObject.name);
         Focused = false;
     }
 }

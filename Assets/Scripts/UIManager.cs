@@ -1,0 +1,184 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+    // UI panel data
+    [SerializeField] private bool UIPanelOpen = false; // whether a UI panel is open or not
+    [SerializeField] private GameObject ActiveUIPanel; // currently on screen UI panel
+
+    // Inventory data
+    [SerializeField] private bool InventoryOpen = false; // whether inventory is open or not
+    [SerializeField] private Animator InventoryAnimator; // handles the clipboard going up or down
+
+    // Primary UI
+    [SerializeField] private GameObject[] PrimaryUIComponents;
+
+    // Player controls
+    [SerializeField] private PlayerMovement PlayerMovement;
+    [SerializeField] private PlayerInteractions PlayerInteractions;
+
+
+    // checking key presses to close/open UI
+    private void Update()
+    {
+        // Using tab to toggle inventory
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (InventoryOpen)
+            {
+                CloseInventory();
+            }
+            else
+            {
+                OpenInventory();
+            }
+        }
+
+        // Using escape to close menus or inventory
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (InventoryOpen)
+            {
+                CloseInventory();
+            }
+            else if (UIPanelOpen)
+            {
+                CloseUI(ActiveUIPanel.GetComponent<UIPanel>());
+            }
+        }
+    }
+
+    public bool OpenUI(UIPanel opening)
+    {
+        // prevent UI panels from stacking
+        if (UIPanelOpen)
+        {
+            Debug.LogWarning($"Attempting to open {opening.gameObject.name} while another panel is active.");
+            return false;
+        }
+
+        // activating the UI panel gameobject
+        UIPanelOpen = true;
+        ActiveUIPanel = opening.gameObject;
+        ActiveUIPanel.SetActive(true);
+
+        // locking the player
+        PlayerMovement.LockCamera();
+        PlayerInteractions.OpenMenu();
+
+        // disabling primary UI
+        foreach (GameObject obj in PrimaryUIComponents)
+        {
+            obj.SetActive(false);
+        }
+
+        return true;
+    }
+
+    public bool CloseUI(UIPanel closing)
+    {
+        // make sure that there is a panel to close
+        if (!UIPanelOpen)
+        {
+            Debug.LogWarning($"Attempting to close {closing.gameObject.name} while nothing is active.");
+            return false;
+        }
+        // make sure that the panel to close is the active panel
+        if (closing.name != ActiveUIPanel.name)
+        {
+            Debug.LogWarning($"Attempting to close {closing.gameObject.name} while {(ActiveUIPanel != null ? ActiveUIPanel.name : "NULL")} is active.");
+            return false;
+        }
+        // make sure that the inventory is not blocking the UI panel
+        if (InventoryOpen)
+        {
+            Debug.LogWarning($"Inventory is blocking {closing.gameObject.name} from closing.");
+            return false;
+        }
+
+        // deactivating the UI panel gameobject
+        UIPanelOpen = false;
+        ActiveUIPanel.SetActive(false);
+        ActiveUIPanel = null;
+
+        // removing the copied 3D objects
+        // needed for when the UI was an interact for a FullObject
+        GameObject[] copies = GameObject.FindGameObjectsWithTag("Viewing Copy");
+        for (int i = 0; i < copies.Length; i++)
+        {
+            Destroy(copies[i]);
+        }
+
+        // restoring player control if no menus are active
+        // also shows primary UI again (crosshair, etc.)
+        if (!InventoryOpen && !UIPanelOpen)
+        {
+            PlayerMovement.UnlockCamera();
+            PlayerInteractions.CloseMenu();
+
+            foreach (GameObject obj in PrimaryUIComponents)
+            {
+                obj.SetActive(true);
+            }
+        }
+
+        return true;
+    }
+
+    public bool OpenInventory()
+    {
+        // make sure that the inventory is closed
+        if (InventoryOpen)
+        {
+            Debug.LogWarning("Inventory is already opened.");
+            return false;
+        }
+
+        // updating state
+        InventoryOpen = true;
+        InventoryAnimator.SetTrigger("Open");
+
+        // locking the player
+        PlayerMovement.LockCamera();
+        PlayerInteractions.OpenMenu();
+
+        // disabling primary UI
+        foreach (GameObject obj in PrimaryUIComponents)
+        {
+            obj.SetActive(false);
+        }
+
+        return false;
+    }
+
+    public bool CloseInventory()
+    {
+        // make sure that the inventory is open
+        if (!InventoryOpen)
+        {
+            Debug.LogWarning("Inventory is not open to close.");
+            return false;
+        }
+
+        // updating state
+        InventoryOpen = false;
+        InventoryAnimator.SetTrigger("Close");
+
+        // restoring player control if no menus are active
+        // also shows primary UI again (crosshair, etc.)
+        if (!InventoryOpen && !UIPanelOpen)
+        {
+            PlayerMovement.UnlockCamera();
+            PlayerInteractions.CloseMenu();
+
+            foreach (GameObject obj in PrimaryUIComponents)
+            {
+                obj.SetActive(true);
+            }
+        }
+
+        return false;
+    }
+}

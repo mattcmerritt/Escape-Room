@@ -839,8 +839,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d88f882ac98c444b90eafa8b8b12ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIManager: {fileID: 963194229}
   Focused: 0
-  Objects: []
 --- !u!1 &188781620
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,7 +1226,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 378486577}
   m_Direction: 2
   m_Value: 1.0000006
-  m_Size: 0.875
+  m_Size: 0.87499994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3874,6 +3874,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -3947,6 +3948,27 @@ Transform:
   m_Father: {fileID: 1578640064}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d3668c5c0a08694ab232a8370141759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIPanelOpen: 0
+  ActiveUIPanel: {fileID: 0}
+  InventoryOpen: 0
+  InventoryAnimator: {fileID: 1449057388}
+  PrimaryUIComponents:
+  - {fileID: 1243002691}
+  - {fileID: 862834214}
+  PlayerMovement: {fileID: 1578640065}
+  PlayerInteractions: {fileID: 1578640066}
 --- !u!1 &967966383
 GameObject:
   m_ObjectHideFlags: 0
@@ -4966,8 +4988,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d88f882ac98c444b90eafa8b8b12ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIManager: {fileID: 963194229}
   Focused: 0
-  Objects: []
 --- !u!114 &1266044619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5744,7 +5766,7 @@ GameObject:
   - component: {fileID: 1449057391}
   m_Layer: 0
   m_Name: Inventory Clipboard
-  m_TagString: Primary UI
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5773,7 +5795,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -500}
+  m_AnchoredPosition: {x: 0, y: -550}
   m_SizeDelta: {x: 500, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1449057388
@@ -5846,9 +5868,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea80ef818a7dc7c4185e39479d37fa3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIManager: {fileID: 963194229}
   Focused: 0
-  Active: 0
-  PrimaryUI: []
   ItemButtonPrefab: {fileID: 8624453535716128668, guid: 86ff3958356eff94cafdf62feb83c194, type: 3}
   ItemListBox: {fileID: 62640090}
   ItemImage: {fileID: 427232849}
@@ -8664,8 +8685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d88f882ac98c444b90eafa8b8b12ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIManager: {fileID: 963194229}
   Focused: 0
-  Objects: []
 --- !u!1 &1981716351
 GameObject:
   m_ObjectHideFlags: 0
@@ -8944,8 +8965,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d88f882ac98c444b90eafa8b8b12ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIManager: {fileID: 963194229}
   Focused: 0
-  Objects: []
 --- !u!1 &2087359333
 GameObject:
   m_ObjectHideFlags: 0
@@ -9944,7 +9965,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractUI: {fileID: 0}
-  PrimaryUI: []
   ItemDetails: {fileID: 11400000, guid: 8388aeb45d6537c4f80d8148aa9f349e, type: 2}
   Used: 0
 --- !u!136 &1905569869442966005
@@ -11033,7 +11053,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractUI: {fileID: 0}
-  PrimaryUI: []
   IsOpen: 0
   IsLocked: 0
   IsNumeric: 1
@@ -11952,7 +11971,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractUI: {fileID: 188642564}
-  PrimaryUI: []
   ItemDetails: {fileID: 11400000, guid: fa5efe1110afa3041b8a8f02614f6806, type: 2}
   Used: 0
   OpenSprite: {fileID: 21300000, guid: 7b8b9b5b057ec654a8172025ff3c9483, type: 3}
@@ -12799,7 +12817,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InteractUI: {fileID: 0}
-  PrimaryUI: []
   IsOpen: 0
   IsLocked: 0
   IsNumeric: 1
