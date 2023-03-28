@@ -548,11 +548,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63031e1822b101e4e87a9ad6e3e0b5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractInterface: {fileID: 0}
-  InventoryUI: {fileID: 0}
-  CrosshairUI: {fileID: 0}
-  AnnoucementUI: {fileID: 0}
+  InteractUI: {fileID: 0}
   PhysicalObject: {fileID: 0}
+  CopyRotation: -90
   IsRandom: 0
   Top: 0
   Bottom: 0

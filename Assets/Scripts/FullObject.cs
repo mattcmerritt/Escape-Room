@@ -6,18 +6,17 @@ using UnityEngine;
 // are viewable in a 3D menu.
 public class FullObject : SimpleObject
 {
-    [SerializeField] private GameObject PhysicalObject;
     private GameObject CameraObject;
     private float RotationSpeed = 100f;
 
-    private bool IsCopy; // flag used to disable interactions for copied dominos
+    [SerializeField] private float CopyRotation; // value used to rotate a copy to face the camera
+    protected bool IsCopy; // flag used to disable interactions for copied dominos
+    protected FullObject Original; // for the copies, allows them to send data back to the main one
 
     protected override void Start()
     {
         base.Start();
 
-        // grab a reference to the original object to copy
-        PhysicalObject = gameObject;
         CameraObject = FindObjectOfType<Camera>().gameObject;
     }
 
@@ -28,7 +27,7 @@ public class FullObject : SimpleObject
 
         if (IsCopy)
         {
-            transform.localEulerAngles = transform.localEulerAngles + new Vector3(0f, 0f, -horizontal) * Time.deltaTime * RotationSpeed;
+            transform.localEulerAngles = transform.localEulerAngles + new Vector3(0f, -horizontal, 0f) * Time.deltaTime * RotationSpeed;
         }
     }
 
@@ -45,19 +44,20 @@ public class FullObject : SimpleObject
 
         // copies the object, but disables all scripts so that they are not copied over
         // to the viewing copy
-        GameObject copy = Instantiate(PhysicalObject);
+        GameObject copy = Instantiate(gameObject);
         copy.name = "Viewing Copy: " + copy.name;
         FullObject copyScript = copy.GetComponent<FullObject>();
-        copyScript.SetAsCopy();
+        copyScript.SetAsCopy(this);
 
         // moving the copy to the right place
         copy.transform.position = CameraObject.transform.position + CameraObject.transform.forward * 0.25f;
-        copy.transform.eulerAngles = copy.transform.eulerAngles + Vector3.right * -90f;
+        copy.transform.eulerAngles = copy.transform.eulerAngles + Vector3.right * CopyRotation;
         copy.tag = "Viewing Copy";
     }
 
-    public void SetAsCopy()
+    public void SetAsCopy(FullObject original)
     {
         IsCopy = true;
+        Original = original;
     }
 }
