@@ -5,6 +5,7 @@ using UnityEngine;
 public class PillBottle : FullObject 
 {
     [SerializeField] private Animator Animator;
+    private bool IsOpen;
 
     protected override void Update()
     {
@@ -16,10 +17,30 @@ public class PillBottle : FullObject
             OpenBottle();
             ((PillBottle)Original).OpenBottle();
         }
+
+        if (IsCopy && ((PillBottle)Original).CheckOpen())
+        {
+            OpenBottleImmediate();
+        }
     }
 
     public void OpenBottle()
     {
         Animator.SetTrigger("Open");
+        IsOpen = true;
+    }
+
+    // plays an animation that does not have a duration, just skips to the end frame
+    // used for when the player interacts with an open bottle, and it needs to change before
+    // they see the closed version
+    private void OpenBottleImmediate()
+    {
+        Animator.SetTrigger("Open Immediate");
+        IsOpen = true;
+    }
+
+    public bool CheckOpen()
+    {
+        return IsOpen;
     }
 }
