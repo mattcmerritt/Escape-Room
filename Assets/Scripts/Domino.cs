@@ -81,5 +81,26 @@ public class Domino : FullObject
         {
             SecretText.gameObject.SetActive(false);
         }
+
+        // if it is a copy, remove the current domino from the list of dominos and steal the values from the original
+        if (IsCopy && Original != null) 
+        {
+            Domino originalDomino = Original.GetComponent<Domino>();
+            if (Top != originalDomino.Top || Bottom != originalDomino.Bottom || Secret != originalDomino.Secret) 
+            {
+                // remove new value from domino list
+                UsedValues.Remove(Top + Bottom);
+
+                // copy values
+                Top = originalDomino.Top;
+                Bottom = originalDomino.Bottom;
+                Secret = originalDomino.Secret;
+
+                // update text
+                TopText.text = "" + Top;
+                BottomText.text = "" + Bottom;
+                SecretText.text = "" + Secret;
+            }
+        }
     }
 }
