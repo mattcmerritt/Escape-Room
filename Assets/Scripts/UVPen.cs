@@ -7,7 +7,7 @@ public class UVPen : UtilityObject
     private bool LightActive;
 
     // This item will not be usable in the main game world
-    public override void Interact()
+    public override void Interact(PlayerInteractions player)
     {
         LightActive = !LightActive; 
     }

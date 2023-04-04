@@ -16,6 +16,15 @@ public class PlayerMovement : MonoBehaviour
     // Camera control
     private bool CameraLocked;
 
+    private void Start()
+    {
+        // prevent player from spawning in the floor
+        if (transform.position.y < 1f)
+        {
+            transform.position = new Vector3(transform.position.x, 1f, transform.position.z);
+        }
+    }
+
     private void Awake() 
     {
         // Start the game with the player's cursor locked

@@ -4,20 +4,19 @@ using UnityEngine;
 
 public abstract class SimpleObject : MonoBehaviour
 {
-    private UIManager UIManager; // the active UI manager (will depend on which player this is)
-    [SerializeField] private UIPanel InteractUI; // UI to display when the object is used
+    [SerializeField] private string PanelID; // ID that refers the UI manager to open the correct panel
 
     protected virtual void Start()
     {
-        UIManager = FindObjectOfType<UIManager>();
+        // currently this does not need to do anything special
     }
 
     // Function for when the player clicks on or uses the object
-    public virtual void Interact()
+    public virtual void Interact(PlayerInteractions player)
     {
-        if (InteractUI != null)
+        if (PanelID != "None")
         {
-            UIManager.OpenUI(InteractUI);
+            player.OpenWithUIManager(PanelID);
         }
     }
 }

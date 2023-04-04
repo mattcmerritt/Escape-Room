@@ -15,6 +15,8 @@ public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private GameObject ItemButtonPrefab; // prefab for adding a new item to the UI
     private List<Button> ItemButtons; // memory for items list
 
+    [SerializeField] private PlayerInteractions PlayerInteractions; // needed to tell the inventory who used an item
+
     // UI components to fill
     [SerializeField] private GameObject ItemListBox;
     [SerializeField] private Image ItemImage;
@@ -77,7 +79,7 @@ public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         UseItemButton.onClick.RemoveAllListeners();
         UseItemButton.onClick.AddListener(() =>
         {
-            SharedInventory.UseItem(currentIndex); // perform item activation behavior
+            SharedInventory.UseItem(currentIndex, PlayerInteractions); // perform item activation behavior
             UIManager.CloseInventory(); // hide the inventory
         });
     }

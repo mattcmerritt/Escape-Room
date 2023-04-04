@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Helper class to pair a UI panel with a unique identifier
+[System.Serializable]
+public class IdentifiedUIPanel
+{
+    public string ID;
+    public UIPanel Panel;
+}
+
 public class UIManager : MonoBehaviour
 {
     // UI panel data
@@ -19,6 +27,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private PlayerMovement PlayerMovement;
     [SerializeField] private PlayerInteractions PlayerInteractions;
 
+    // Player UI Interfaces
+    [SerializeField] private List<IdentifiedUIPanel> Panels;
 
     // checking key presses to close/open UI
     private void Update()
@@ -75,6 +85,30 @@ public class UIManager : MonoBehaviour
         }
 
         return true;
+    }
+
+    // overloaded version of open UI that uses a string identifier instead of a panel reference
+    // used by objects in the scene to tell tell a specific player to open a panel without access to the panel
+    public bool OpenUI(string panelID)
+    {
+        // retrieve panel from list of panels
+        UIPanel opening = null;
+        foreach (IdentifiedUIPanel idPanel in Panels)
+        {
+            if (idPanel.ID == panelID)
+            {
+                opening = idPanel.Panel;
+            }
+        }
+
+        // break if the desired panel is not present
+        if (opening == null)
+        {
+            Debug.LogError($"Panel with ID {panelID} is missing from the list of identified panels.");
+            return false;
+        }
+
+        return OpenUI(opening);
     }
 
     public bool CloseUI(UIPanel closing)

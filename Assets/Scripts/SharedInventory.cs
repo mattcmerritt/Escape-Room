@@ -7,27 +7,36 @@ public class SharedInventory : MonoBehaviour
 {
     // Inventory state
     [SerializeField] private List<UtilityObject> Items;
-    private InventoryUI InventoryUI;
+
+    // All active player inventories
+    [SerializeField] private List<InventoryUI> InventoryUIs;
 
     private void Start()
     {
         Items = new List<UtilityObject>();
+        InventoryUIs = new List<InventoryUI>();
+    }
 
-        InventoryUI = FindObjectOfType<InventoryUI>();
+    public void AddInventoryUI(InventoryUI inventoryUI)
+    {
+        InventoryUIs.Add(inventoryUI);
     }
 
     public void AddItem(UtilityObject item)
     {
         Items.Add(item);
-        InventoryUI.AddItem(item);
+        foreach (InventoryUI inventoryUI in InventoryUIs)
+        {
+            inventoryUI.AddItem(item);
+        }
     }
 
-    public void UseItem(int index)
+    public void UseItem(int index, PlayerInteractions player)
     {
         Debug.Log("Used " + Items[index].ItemDetails.Name);
         Items[index].Used = true;
 
-        Items[index].Interact();
+        Items[index].Interact(player);
     }
 
     public InventoryItem GetItemDetails(int index)

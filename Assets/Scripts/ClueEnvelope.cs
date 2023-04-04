@@ -5,17 +5,13 @@ using TMPro;
 
 public class ClueEnvelope : UtilityObject
 {
-    [SerializeField] private Sprite OpenSprite;
-
-    // UI Elements
-    [SerializeField] private TMP_Text ClueContent, ClueAnnouncement;
-
-    public override void Interact()
+    public override void Interact(PlayerInteractions player)
     {
-        base.Interact();
+        base.Interact(player);
 
+        // updating the clue announcement text at the top of the screen for all players
+        ClueUI clueUI = player.GetComponentInChildren<ClueUI>(true);
         ClueItem clue = (ClueItem)ItemDetails;
-        ClueContent.text = clue.ClueDescription;
-        ClueAnnouncement.text = clue.Announcement;
+        clueUI.UpdateClueForAll(clue);
     }
 }

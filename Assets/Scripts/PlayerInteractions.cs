@@ -13,6 +13,18 @@ public class PlayerInteractions : MonoBehaviour
     // Player state
     private bool InMenu;
 
+    // UI Manager
+    [SerializeField] private UIManager UIManager;
+
+    // Actions that occur when a new player is first loaded
+    private void Start()
+    {
+        // New player's inventory needs to be added to the list of inventories to update
+        SharedInventory inventory = FindObjectOfType<SharedInventory>();
+        InventoryUI inventoryUI = GetComponentInChildren<InventoryUI>(true);
+        inventory.AddInventoryUI(inventoryUI);
+    }
+
     private void Update()
     {
         if (!InMenu)
@@ -33,11 +45,16 @@ public class PlayerInteractions : MonoBehaviour
                     }
                     else if (simple != null)
                     {
-                        simple.Interact();
+                        simple.Interact(this);
                     } 
                 }
             }
         }
+    }
+
+    public void OpenWithUIManager(string panelID)
+    {
+        UIManager.OpenUI(panelID);
     }
 
     // Function to prevent player from double interacting with objects if menu is open

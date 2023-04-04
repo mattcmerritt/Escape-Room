@@ -6,19 +6,11 @@ using UnityEngine;
 // are viewable in a 3D menu.
 public class FullObject : SimpleObject
 {
-    private GameObject CameraObject;
     private float RotationSpeed = 100f;
 
     [SerializeField] private float CopyRotation; // value used to rotate a copy to face the camera
     protected bool IsCopy; // flag used to disable interactions for copied dominos
     protected FullObject Original; // for the copies, allows them to send data back to the main one
-
-    protected override void Start()
-    {
-        base.Start();
-
-        CameraObject = FindObjectOfType<Camera>().gameObject;
-    }
 
     protected virtual void Update()
     {
@@ -32,7 +24,7 @@ public class FullObject : SimpleObject
     }
 
     // Create a viewing copy of the object when the player enters the interact menu
-    public override void Interact()
+    public override void Interact(PlayerInteractions player)
     {
         // if the object is a viewing copy, it cannot be interacted with
         if (IsCopy)
@@ -40,7 +32,7 @@ public class FullObject : SimpleObject
             return;
         }
 
-        base.Interact();
+        base.Interact(player);
 
         // copies the object, but disables all scripts so that they are not copied over
         // to the viewing copy
@@ -50,7 +42,8 @@ public class FullObject : SimpleObject
         copyScript.SetAsCopy(this);
 
         // moving the copy to the right place
-        copy.transform.position = CameraObject.transform.position + CameraObject.transform.forward * 0.25f;
+        Camera camera = player.GetComponentInChildren<Camera>();
+        copy.transform.position = camera.gameObject.transform.position + camera.gameObject.transform.forward * 0.25f;
         copy.transform.eulerAngles = copy.transform.eulerAngles + Vector3.right * CopyRotation;
         copy.tag = "Viewing Copy";
     }

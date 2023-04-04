@@ -1470,7 +1470,7 @@ GameObject:
   - component: {fileID: 1419264248313901506}
   - component: {fileID: 1419264248313901507}
   m_Layer: 0
-  m_Name: Locked Cabinet
+  m_Name: Generic Locked Cabinet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1506,10 +1506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c909b8521086c4ab64dd1379117ca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractInterface: {fileID: 0}
-  InventoryUI: {fileID: 0}
-  CrosshairUI: {fileID: 0}
-  AnnoucementUI: {fileID: 0}
+  PanelID: Lock 4 Digit
   IsOpen: 0
   IsLocked: 1
   IsNumeric: 1

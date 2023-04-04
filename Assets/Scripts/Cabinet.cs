@@ -17,11 +17,10 @@ public class Cabinet : SimpleObject
     [SerializeField] private List<char> LockCombination;
     [SerializeField] private List<char> CurrentCombination;
     [SerializeField] private GameObject LockObject;
+    [SerializeField] private string LockID;
 
-    // Lock UI Components
-    [SerializeField] private List<Button> IncrementButtons, DecrementButtons;
-    [SerializeField] private List<TMP_Text> DisplayDigits;
-    [SerializeField] private Button InputCombinationButton;
+    // List of all UI objects that need to be updated
+    [SerializeField] private List<LockUI> LockUIs;
 
     protected override void Start()
     {
@@ -48,25 +47,42 @@ public class Cabinet : SimpleObject
             }
         }
 
+        // Prepare a list of all the different UI scripts that manage the lock UI
         if (IsLocked)
         {
-            // Generating on-click events for the lock digit buttons
-            for (int i = 0; i < IncrementButtons.Count && i < DecrementButtons.Count; i++)
-            {
-                // need to separate out the memory reseved for the variable on each pass of
-                // the loop, otherwise it will copy the final value of i to all instances
-                int temp = i;
-                IncrementButtons[temp].onClick.AddListener(() => IncrementDigit(temp));
-                DecrementButtons[temp].onClick.AddListener(() => DecrementDigit(temp));
-            }
-
-            InputCombinationButton.onClick.AddListener(() => AttemptCombination());
+            LockUIs = new List<LockUI>();
         }
     }
 
     // Function for when the player clicks on the cabinet
-    public override void Interact()
+    public override void Interact(PlayerInteractions player)
     {
+        // Generating the lock UI and saving a reference
+        if (IsLocked)
+        {
+            // Finding the lock UI that shares the same unique key as this cabinet
+            LockUI[] locks = player.GetComponentsInChildren<LockUI>(true);
+
+            Debug.Log(player.name);
+
+            LockUI matchingLock = null;
+            foreach (LockUI lockUI in locks)
+            {
+                Debug.Log(lockUI.GetLockID());
+                if (lockUI.GetLockID() == LockID)
+                {
+                    matchingLock = lockUI;
+                }
+            }
+
+            // Generating on-click events for the lock digit buttons if not already done
+            if (!LockUIs.Contains(matchingLock))
+            {
+                LockUIs.Add(matchingLock);
+                matchingLock.LoadUI(this);
+            }
+        }
+
         // If the cabinet has already been unlocked, open or close the doors
         if (!IsLocked)
         {
@@ -76,7 +92,7 @@ public class Cabinet : SimpleObject
             return; // do not open up the UI if it is unlocked
         }
 
-        base.Interact();
+        base.Interact(player);
     }
 
     // Function to update single digit of the current code using buttons
@@ -94,8 +110,11 @@ public class Cabinet : SimpleObject
         // Replace letter in combination
         CurrentCombination[index] = PossibleDigits[newIndex];
 
-        // Update display
-        DisplayDigits[index].text = "" + CurrentCombination[index];
+        // Update displays for all known UIs
+        foreach (LockUI lockUI in LockUIs)
+        {
+            lockUI.UpdateDigit(index, CurrentCombination[index]);
+        }
     }
 
     // Function to update single digit of the current code using buttons
@@ -115,8 +134,11 @@ public class Cabinet : SimpleObject
         // Replace letter in combination
         CurrentCombination[index] = PossibleDigits[newIndex];
 
-        // Update display
-        DisplayDigits[index].text = "" + CurrentCombination[index];
+        // Update displays for all known UIs
+        foreach (LockUI lockUI in LockUIs)
+        {
+            lockUI.UpdateDigit(index, CurrentCombination[index]);
+        }
     }
 
     public void AttemptCombination()
