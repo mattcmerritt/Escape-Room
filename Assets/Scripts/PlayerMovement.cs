@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     // Basic movement information
     private CharacterController Controller;
@@ -34,6 +35,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // ignore inputs from other players
+        if (!IsOwner)
+        {
+            return;
+        }
+
         // Camera movement controls
         if (!CameraLocked)
         {

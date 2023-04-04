@@ -1227,6 +1227,8 @@ GameObject:
   - component: {fileID: 178009427385858267}
   - component: {fileID: 178009427385858266}
   - component: {fileID: 178009427385858269}
+  - component: {fileID: 8066613503492081146}
+  - component: {fileID: 1964199238959732350}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1380,6 +1382,47 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &8066613503492081146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178009427385858213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
+--- !u!114 &1964199238959732350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178009427385858213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a37c6579caeb9442a67334c44c41eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 178009428919859048}
+  OverlayCanvas: {fileID: 178009427788926310}
+  CameraCanvas: {fileID: 178009428103414296}
 --- !u!1 &178009427386641558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,7 +4043,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 178009428335142184}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.87500006
+  m_Size: 0.875
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6038,6 +6081,7 @@ GameObject:
   - component: {fileID: 178009428919859050}
   - component: {fileID: 178009428919859051}
   - component: {fileID: 178009428919859052}
+  - component: {fileID: 4400866233964812375}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -6143,6 +6187,32 @@ MonoBehaviour:
     Panel: {fileID: 178009427844918153}
   - ID: Pill Bottle
     Panel: {fileID: 178009428552414867}
+--- !u!114 &4400866233964812375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178009428919859048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1
 --- !u!1 &178009428923573430
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class PlayerInteractions : MonoBehaviour
+public class PlayerInteractions : NetworkBehaviour
 {
     // Interaction constants
     [SerializeField, Range(0, 25)] private float InteractRange;
@@ -27,6 +28,12 @@ public class PlayerInteractions : MonoBehaviour
 
     private void Update()
     {
+        // ignore inputs from other players
+        if (!IsOwner)
+        {
+            return;
+        }
+
         if (!InMenu)
         {
             // Raycast forward to find object in front of the player
