@@ -40,7 +40,7 @@ public class PlayerInteractions : NetworkBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, CameraObject.transform.forward, out hit, InteractRange))
+                if (Physics.Raycast(CameraObject.transform.position, CameraObject.transform.forward, out hit, InteractRange))
                 {
                     // Debug.Log(hit.collider.gameObject.name);
                     // Checking for components on clicked object to determine function
