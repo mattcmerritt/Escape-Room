@@ -143,17 +143,37 @@ public class Cabinet : SimpleObject
     // Function to update single digit of the current code using buttons
     public void IncrementDigit(int index)
     {
-        // Get the current character value on the lock
-        char current = CurrentCombination.Value.Values[index];
-        // Get the index of the current character value
-        int curIndex = PossibleDigits.FindIndex((c) => c == current);
+        // rebuild new combination using the old one
+        Combination prevCombo = CurrentCombination.Value;
+        char[] updatedValues = new char[prevCombo.Values.Length];
 
-        int newIndex = curIndex + 1;
-        
-        // Force wrapping
-        newIndex %= PossibleDigits.Count;
-        // Replace letter in combination
-        CurrentCombination.Value.Values[index] = PossibleDigits[newIndex];
+        // creating the new array of combination digits
+        for (int i = 0; i < updatedValues.Length; i++)
+        {
+            if (i == index)
+            {
+                // Get the current character value on the lock
+                char current = prevCombo.Values[i];
+                // Get the index of the current character value and increment
+                int curIndex = PossibleDigits.FindIndex((c) => c == current);
+                int newIndex = curIndex + 1;
+                // Force wrapping
+                newIndex %= PossibleDigits.Count;
+                // Replace letter in combination
+                updatedValues[i] = PossibleDigits[newIndex];
+            }
+            else
+            {
+                // Get the current character value on the lock
+                char current = prevCombo.Values[i];
+                // Copy letter in combination
+                updatedValues[i] = current;
+            }
+        }
+
+        // replacing the old combination with the new one
+        // this forces a call to the change event
+        CurrentCombination.Value = new Combination(updatedValues);
 
         // Update displays for all known UIs
         foreach (LockUI lockUI in LockUIs)
@@ -165,19 +185,37 @@ public class Cabinet : SimpleObject
     // Function to update single digit of the current code using buttons
     public void DecrementDigit(int index)
     {
-        // Get the current character value on the lock
-        char current = CurrentCombination.Value.Values[index];
-        // Get the index of the current character value
-        int curIndex = PossibleDigits.FindIndex((c) => c == current);
+        // rebuild new combination using the old one
+        Combination prevCombo = CurrentCombination.Value;
+        char[] updatedValues = new char[prevCombo.Values.Length];
 
-        // Need to cycle forward one full iteration of the list to avoid modulus
-        // with negative values
-        int newIndex = curIndex - 1 + PossibleDigits.Count;
+        // creating the new array of combination digits
+        for (int i = 0; i < updatedValues.Length; i++)
+        {
+            if (i == index)
+            {
+                // Get the current character value on the lock
+                char current = prevCombo.Values[i];
+                // Get the index of the current character value and decrement
+                int curIndex = PossibleDigits.FindIndex((c) => c == current);
+                int newIndex = curIndex - 1 + PossibleDigits.Count; // need to cycle forward one full iteration of the list to avoid modulus with negative values
+                // Force wrapping
+                newIndex %= PossibleDigits.Count;
+                // Replace letter in combination
+                updatedValues[i] = PossibleDigits[newIndex];
+            }
+            else
+            {
+                // Get the current character value on the lock
+                char current = prevCombo.Values[i];
+                // Copy letter in combination
+                updatedValues[i] = current;
+            }
+        }
 
-        // Force wrapping
-        newIndex %= PossibleDigits.Count;
-        // Replace letter in combination
-        CurrentCombination.Value.Values[index] = PossibleDigits[newIndex];
+        // replacing the old combination with the new one
+        // this forces a call to the change event
+        CurrentCombination.Value = new Combination(updatedValues);
 
         // Update displays for all known UIs
         foreach (LockUI lockUI in LockUIs)
