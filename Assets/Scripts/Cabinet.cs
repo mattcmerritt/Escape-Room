@@ -13,7 +13,7 @@ public class Cabinet : SimpleObject
     [SerializeField] private bool IsNumeric;
     private List<char> PossibleDigits;
     [SerializeField] private List<char> LockCombination;
-    [SerializeField] private List<char> CurrentCombination;
+
     [SerializeField] private GameObject LockObject;
     [SerializeField] private string LockID;
 
@@ -22,6 +22,7 @@ public class Cabinet : SimpleObject
 
     // Information that needs to be shared between all clients
     private NetworkVariable<bool> IsOpen = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<List<char>> CurrentCombination = new NetworkVariable<List<char>>(null, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     protected override void Start()
     {
@@ -62,6 +63,20 @@ public class Cabinet : SimpleObject
         {
             Debug.Log("Cabinet State changing to: " + (newValue ? "Open" : "Closed"));
             Ani.SetTrigger("Change");
+        };
+
+        List<char> startCombination = new List<char>();
+        foreach (char digit in LockCombination)
+        {
+            startCombination.Add(IsNumeric ? '0' : 'A');
+        }
+
+        CurrentCombination.Value = startCombination;
+
+        // listener for the list of current values on the lock
+        CurrentCombination.OnValueChanged += (List<char> previousValue, List<char> newValue) =>
+        {
+            Debug.Log("A value in the list has changed");
         };
     }
 
@@ -108,7 +123,7 @@ public class Cabinet : SimpleObject
     public void IncrementDigit(int index)
     {
         // Get the current character value on the lock
-        char current = CurrentCombination[index];
+        char current = CurrentCombination.Value[index];
         // Get the index of the current character value
         int curIndex = PossibleDigits.FindIndex((c) => c == current);
 
@@ -117,12 +132,12 @@ public class Cabinet : SimpleObject
         // Force wrapping
         newIndex %= PossibleDigits.Count;
         // Replace letter in combination
-        CurrentCombination[index] = PossibleDigits[newIndex];
+        CurrentCombination.Value[index] = PossibleDigits[newIndex];
 
         // Update displays for all known UIs
         foreach (LockUI lockUI in LockUIs)
         {
-            lockUI.UpdateDigit(index, CurrentCombination[index]);
+            lockUI.UpdateDigit(index, CurrentCombination.Value[index]);
         }
     }
 
@@ -130,7 +145,7 @@ public class Cabinet : SimpleObject
     public void DecrementDigit(int index)
     {
         // Get the current character value on the lock
-        char current = CurrentCombination[index];
+        char current = CurrentCombination.Value[index];
         // Get the index of the current character value
         int curIndex = PossibleDigits.FindIndex((c) => c == current);
 
@@ -141,12 +156,12 @@ public class Cabinet : SimpleObject
         // Force wrapping
         newIndex %= PossibleDigits.Count;
         // Replace letter in combination
-        CurrentCombination[index] = PossibleDigits[newIndex];
+        CurrentCombination.Value[index] = PossibleDigits[newIndex];
 
         // Update displays for all known UIs
         foreach (LockUI lockUI in LockUIs)
         {
-            lockUI.UpdateDigit(index, CurrentCombination[index]);
+            lockUI.UpdateDigit(index, CurrentCombination.Value[index]);
         }
     }
 
@@ -167,7 +182,7 @@ public class Cabinet : SimpleObject
     private bool CheckCombination()
     {
         // Unlikely to ever trigger, but kept for bounds checking.
-        if (LockCombination.Count != CurrentCombination.Count)
+        if (LockCombination.Count != CurrentCombination.Value.Count)
         {
             Debug.Log("ERROR: LOCK COMBINATION LENGTHS DO NOT MATCH");
             return false;
@@ -176,7 +191,7 @@ public class Cabinet : SimpleObject
         // Go character by character through the code and verify that they match.
         for (int i = 0; i < LockCombination.Count; i++)
         {
-            if (LockCombination[i] != CurrentCombination[i])
+            if (LockCombination[i] != CurrentCombination.Value[i])
             {
                 return false;
             }
