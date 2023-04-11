@@ -97,7 +97,7 @@ public class Cabinet : SimpleObject
         // If the cabinet has already been unlocked, open or close the doors
         if (!IsLocked)
         {
-            IsOpen.Value = !IsOpen.Value;
+            ToggleOpenServerRpc();
             return; // do not open up the UI if it is unlocked
         }
 
@@ -184,5 +184,11 @@ public class Cabinet : SimpleObject
 
         // Codes match, return true
         return true;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void ToggleOpenServerRpc()
+    {
+        IsOpen.Value = !IsOpen.Value;
     }
 }
