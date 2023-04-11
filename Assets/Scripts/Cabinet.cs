@@ -81,15 +81,19 @@ public class Cabinet : SimpleObject
             Ani.SetTrigger("Change");
         };
 
-        char[] startValues = new char[LockCombination.Count];
-        for (int i = 0; i < startValues.Length; i++)
+        // host prepares the starting combination for the lock
+        if (IsOwner)
         {
-            startValues[i] = IsNumeric ? '0' : 'A';
+            char[] startValues = new char[LockCombination.Count];
+            for (int i = 0; i < startValues.Length; i++)
+            {
+                startValues[i] = IsNumeric ? '0' : 'A';
+            }
+            Combination startCombination = new Combination(startValues);
+
+            CurrentCombination.Value = startCombination;
         }
-        Combination startCombination = new Combination(startValues);
-
-        CurrentCombination.Value = startCombination;
-
+        
         // listener for the list of current values on the lock
         CurrentCombination.OnValueChanged += (Combination previousValue, Combination newValue) =>
         {
