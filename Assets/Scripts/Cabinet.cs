@@ -5,6 +5,22 @@ using Unity.Netcode;
 
 public class Cabinet : SimpleObject
 {
+    // Struct that will contain the current data for the combination
+    public struct Combination : INetworkSerializable
+    {
+        public char[] Values;
+
+        public Combination(char[] currentValues)
+        {
+            Values = currentValues;
+        }
+
+        void INetworkSerializable.NetworkSerialize<T>(BufferSerializer<T> serializer)
+        {
+            serializer.SerializeValue(ref Values);
+        }
+    }
+
     // Cabinet Information and Game Objects
     private Animator Ani;
 
@@ -22,7 +38,7 @@ public class Cabinet : SimpleObject
 
     // Information that needs to be shared between all clients
     private NetworkVariable<bool> IsOpen = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
-    private NetworkVariable<List<char>> CurrentCombination = new NetworkVariable<List<char>>(null, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<Combination> CurrentCombination = new NetworkVariable<Combination>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     protected override void Start()
     {
@@ -65,16 +81,17 @@ public class Cabinet : SimpleObject
             Ani.SetTrigger("Change");
         };
 
-        List<char> startCombination = new List<char>();
-        foreach (char digit in LockCombination)
+        char[] startValues = new char[LockCombination.Count];
+        for (int i = 0; i < startValues.Length; i++)
         {
-            startCombination.Add(IsNumeric ? '0' : 'A');
+            startValues[i] = IsNumeric ? '0' : 'A';
         }
+        Combination startCombination = new Combination(startValues);
 
         CurrentCombination.Value = startCombination;
 
         // listener for the list of current values on the lock
-        CurrentCombination.OnValueChanged += (List<char> previousValue, List<char> newValue) =>
+        CurrentCombination.OnValueChanged += (Combination previousValue, Combination newValue) =>
         {
             Debug.Log("A value in the list has changed");
         };
@@ -123,7 +140,7 @@ public class Cabinet : SimpleObject
     public void IncrementDigit(int index)
     {
         // Get the current character value on the lock
-        char current = CurrentCombination.Value[index];
+        char current = CurrentCombination.Value.Values[index];
         // Get the index of the current character value
         int curIndex = PossibleDigits.FindIndex((c) => c == current);
 
@@ -132,12 +149,12 @@ public class Cabinet : SimpleObject
         // Force wrapping
         newIndex %= PossibleDigits.Count;
         // Replace letter in combination
-        CurrentCombination.Value[index] = PossibleDigits[newIndex];
+        CurrentCombination.Value.Values[index] = PossibleDigits[newIndex];
 
         // Update displays for all known UIs
         foreach (LockUI lockUI in LockUIs)
         {
-            lockUI.UpdateDigit(index, CurrentCombination.Value[index]);
+            lockUI.UpdateDigit(index, CurrentCombination.Value.Values[index]);
         }
     }
 
@@ -145,7 +162,7 @@ public class Cabinet : SimpleObject
     public void DecrementDigit(int index)
     {
         // Get the current character value on the lock
-        char current = CurrentCombination.Value[index];
+        char current = CurrentCombination.Value.Values[index];
         // Get the index of the current character value
         int curIndex = PossibleDigits.FindIndex((c) => c == current);
 
@@ -156,12 +173,12 @@ public class Cabinet : SimpleObject
         // Force wrapping
         newIndex %= PossibleDigits.Count;
         // Replace letter in combination
-        CurrentCombination.Value[index] = PossibleDigits[newIndex];
+        CurrentCombination.Value.Values[index] = PossibleDigits[newIndex];
 
         // Update displays for all known UIs
         foreach (LockUI lockUI in LockUIs)
         {
-            lockUI.UpdateDigit(index, CurrentCombination.Value[index]);
+            lockUI.UpdateDigit(index, CurrentCombination.Value.Values[index]);
         }
     }
 
@@ -182,7 +199,7 @@ public class Cabinet : SimpleObject
     private bool CheckCombination()
     {
         // Unlikely to ever trigger, but kept for bounds checking.
-        if (LockCombination.Count != CurrentCombination.Value.Count)
+        if (LockCombination.Count != CurrentCombination.Value.Values.Length)
         {
             Debug.Log("ERROR: LOCK COMBINATION LENGTHS DO NOT MATCH");
             return false;
@@ -191,7 +208,7 @@ public class Cabinet : SimpleObject
         // Go character by character through the code and verify that they match.
         for (int i = 0; i < LockCombination.Count; i++)
         {
-            if (LockCombination[i] != CurrentCombination.Value[i])
+            if (LockCombination[i] != CurrentCombination.Value.Values[i])
             {
                 return false;
             }
