@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 // Basic class to represent an object that is collected and added into the
 // shared inventory on collection. Once in the inventory, they behave similar

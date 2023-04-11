@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.Netcode;
 
-public class SharedInventory : MonoBehaviour
+public class SharedInventory : NetworkBehaviour
 {
     // Inventory state
     [SerializeField] private List<UtilityObject> Items;
@@ -24,11 +25,8 @@ public class SharedInventory : MonoBehaviour
 
     public void AddItem(UtilityObject item)
     {
-        Items.Add(item);
-        foreach (InventoryUI inventoryUI in InventoryUIs)
-        {
-            inventoryUI.AddItem(item);
-        }
+        // adding the item for all other players
+        AddItemToAllServerRpc(item.ItemDetails.Name);
     }
 
     public void UseItem(int index, PlayerInteractions player)
@@ -55,5 +53,30 @@ public class SharedInventory : MonoBehaviour
         }
 
         return null;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void AddItemToAllServerRpc(string itemName)
+    {
+        AddItemClientRpc(itemName);
+    }
+
+    [ClientRpc]
+    private void AddItemClientRpc(string itemName)
+    {
+        // finding the item in the client's scene
+        UtilityObject[] allItems = GameObject.FindObjectsOfType<UtilityObject>();
+        foreach (UtilityObject item in allItems)
+        {
+            if (itemName == item.ItemDetails.Name)
+            {
+                Items.Add(item);
+
+                foreach (InventoryUI inventoryUI in InventoryUIs)
+                {
+                    inventoryUI.AddItem(item);
+                }
+            }
+        }
     }
 }
