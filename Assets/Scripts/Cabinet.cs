@@ -97,7 +97,12 @@ public class Cabinet : SimpleObject
         // listener for the list of current values on the lock
         CurrentCombination.OnValueChanged += (Combination previousValue, Combination newValue) =>
         {
-            Debug.Log("A value in the list has changed");
+            string output = "Current combination values:";
+            for (int i = 0; i < newValue.Values.Length; i++)
+            {
+                output += " " + newValue.Values[i];
+            }
+            Debug.Log(output);
         };
     }
 
@@ -110,12 +115,12 @@ public class Cabinet : SimpleObject
             // Finding the lock UI that shares the same unique key as this cabinet
             LockUI[] locks = player.GetComponentsInChildren<LockUI>(true);
 
-            Debug.Log(player.name);
+            // Debug.Log(player.name);
 
             LockUI matchingLock = null;
             foreach (LockUI lockUI in locks)
             {
-                Debug.Log(lockUI.GetLockID());
+                // Debug.Log(lockUI.GetLockID());
                 if (lockUI.GetLockID() == LockID)
                 {
                     matchingLock = lockUI;
