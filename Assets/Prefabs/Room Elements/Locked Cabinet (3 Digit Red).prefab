@@ -136,11 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanelID: Lock 3 Digit
-  IsOpen: 0
-  IsLocked: 1
+  StartLocked: 1
   IsNumeric: 1
   LockCombination: 320031003700
-  CurrentCombination: 300030003000
   LockObject: {fileID: 4980440478764249990}
   LockID: Red 3 Digit Numeric
   LockUIs: []

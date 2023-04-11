@@ -25,7 +25,7 @@ public class Cabinet : SimpleObject
     private Animator Ani;
 
     // Lock Information and GameObject
-    [SerializeField] private bool IsLocked;
+    [SerializeField] private bool StartLocked;
     [SerializeField] private bool IsNumeric;
     private List<char> PossibleDigits;
     [SerializeField] private List<char> LockCombination;
@@ -39,6 +39,7 @@ public class Cabinet : SimpleObject
     // Information that needs to be shared between all clients
     private NetworkVariable<bool> IsOpen = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     private NetworkVariable<Combination> CurrentCombination = new NetworkVariable<Combination>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<bool> IsLocked = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     protected override void Start()
     {
@@ -66,7 +67,7 @@ public class Cabinet : SimpleObject
         }
 
         // Prepare a list of all the different UI scripts that manage the lock UI
-        if (IsLocked)
+        if (StartLocked)
         {
             LockUIs = new List<LockUI>();
         }
@@ -106,13 +107,26 @@ public class Cabinet : SimpleObject
                 }
             }
         };
+
+        // host prepares the is locked network variable
+        if (IsOwner && StartLocked)
+        {
+            IsLocked.Value = true;
+        }
+
+        // listener for when the lock gets unlocked
+        IsLocked.OnValueChanged += (bool previousValue, bool newValue) =>
+        {
+            LockObject.SetActive(false);
+            // Later we could play a sound here to indicate that the lock is gone.
+        };
     }
 
     // Function for when the player clicks on the cabinet
     public override void Interact(PlayerInteractions player)
     {
         // Generating the lock UI and saving a reference
-        if (IsLocked)
+        if (IsLocked.Value)
         {
             // Finding the lock UI that shares the same unique key as this cabinet
             LockUI[] locks = player.GetComponentsInChildren<LockUI>(true);
@@ -138,7 +152,7 @@ public class Cabinet : SimpleObject
         }
 
         // If the cabinet has already been unlocked, open or close the doors
-        if (!IsLocked)
+        if (!IsLocked.Value)
         {
             ToggleOpenServerRpc();
             return; // do not open up the UI if it is unlocked
@@ -227,9 +241,7 @@ public class Cabinet : SimpleObject
         // Removing the lock and updating the room
         if (result)
         {
-            IsLocked = false;
-            LockObject.SetActive(false);
-            // Later we could play a sound here to indicate that the lock is gone.
+            UnlockLockServerRpc();
         }
     }
 
@@ -265,5 +277,11 @@ public class Cabinet : SimpleObject
     private void UpdateCombinationServerRpc(char[] newValues)
     {
         CurrentCombination.Value = new Combination(newValues);
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void UnlockLockServerRpc()
+    {
+        IsLocked.Value = false;
     }
 }
