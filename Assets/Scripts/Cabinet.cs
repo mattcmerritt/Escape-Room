@@ -180,7 +180,7 @@ public class Cabinet : SimpleObject
 
         // replacing the old combination with the new one
         // this forces a call to the change event
-        CurrentCombination.Value = new Combination(updatedValues);
+        UpdateCombinationServerRpc(updatedValues);
     }
 
     // Function to update single digit of the current code using buttons
@@ -216,7 +216,7 @@ public class Cabinet : SimpleObject
 
         // replacing the old combination with the new one
         // this forces a call to the change event
-        CurrentCombination.Value = new Combination(updatedValues);
+        UpdateCombinationServerRpc(updatedValues);
     }
 
     public void AttemptCombination()
@@ -259,5 +259,11 @@ public class Cabinet : SimpleObject
     private void ToggleOpenServerRpc()
     {
         IsOpen.Value = !IsOpen.Value;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void UpdateCombinationServerRpc(char[] newValues)
+    {
+        CurrentCombination.Value = new Combination(newValues);
     }
 }
