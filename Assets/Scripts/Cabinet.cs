@@ -97,12 +97,14 @@ public class Cabinet : SimpleObject
         // listener for the list of current values on the lock
         CurrentCombination.OnValueChanged += (Combination previousValue, Combination newValue) =>
         {
-            string output = "Current combination values:";
             for (int i = 0; i < newValue.Values.Length; i++)
             {
-                output += " " + newValue.Values[i];
+                // Update digit displays for all known UIs
+                foreach (LockUI lockUI in LockUIs)
+                {
+                    lockUI.UpdateDigit(i, CurrentCombination.Value.Values[i]);
+                }
             }
-            Debug.Log(output);
         };
     }
 
@@ -179,12 +181,6 @@ public class Cabinet : SimpleObject
         // replacing the old combination with the new one
         // this forces a call to the change event
         CurrentCombination.Value = new Combination(updatedValues);
-
-        // Update displays for all known UIs
-        foreach (LockUI lockUI in LockUIs)
-        {
-            lockUI.UpdateDigit(index, CurrentCombination.Value.Values[index]);
-        }
     }
 
     // Function to update single digit of the current code using buttons
@@ -221,12 +217,6 @@ public class Cabinet : SimpleObject
         // replacing the old combination with the new one
         // this forces a call to the change event
         CurrentCombination.Value = new Combination(updatedValues);
-
-        // Update displays for all known UIs
-        foreach (LockUI lockUI in LockUIs)
-        {
-            lockUI.UpdateDigit(index, CurrentCombination.Value.Values[index]);
-        }
     }
 
     public void AttemptCombination()
