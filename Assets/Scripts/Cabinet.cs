@@ -1,13 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
+using Unity.Netcode;
 
 public class Cabinet : SimpleObject
 {
     // Cabinet Information and Game Objects
-    [SerializeField] private bool IsOpen;
     private Animator Ani;
 
     // Lock Information and GameObject
@@ -21,6 +19,9 @@ public class Cabinet : SimpleObject
 
     // List of all UI objects that need to be updated
     [SerializeField] private List<LockUI> LockUIs;
+
+    // Information that needs to be shared between all clients
+    private NetworkVariable<bool> IsOpen = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
     protected override void Start()
     {
@@ -52,6 +53,16 @@ public class Cabinet : SimpleObject
         {
             LockUIs = new List<LockUI>();
         }
+    }
+
+    public override void OnNetworkSpawn()
+    {
+        // prepare a listener for when the open network variable changes
+        IsOpen.OnValueChanged += (bool previousValue, bool newValue) =>
+        {
+            Debug.Log("Cabinet State changing to: " + (newValue ? "Open" : "Closed"));
+            Ani.SetTrigger("Change");
+        };
     }
 
     // Function for when the player clicks on the cabinet
@@ -86,9 +97,7 @@ public class Cabinet : SimpleObject
         // If the cabinet has already been unlocked, open or close the doors
         if (!IsLocked)
         {
-            IsOpen = !IsOpen;
-            Debug.Log("Cabinet State changing to: " + (IsOpen ? "Open" : "Closed"));
-            Ani.SetTrigger("Change");
+            IsOpen.Value = !IsOpen.Value;
             return; // do not open up the UI if it is unlocked
         }
 

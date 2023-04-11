@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public abstract class SimpleObject : MonoBehaviour
+public abstract class SimpleObject : NetworkBehaviour
 {
     [SerializeField] private string PanelID; // ID that refers the UI manager to open the correct panel
 
