@@ -29,12 +29,10 @@ public class SharedInventory : NetworkBehaviour
         AddItemToAllServerRpc(item.ItemDetails.Name);
     }
 
-    public void UseItem(int index, PlayerInteractions player)
+    public void UseItem(int index)
     {
-        Debug.Log("Used " + Items[index].ItemDetails.Name);
-        Items[index].Used = true;
-
-        Items[index].Interact(player);
+        // using the item for all other players
+        UseItemForAllServerRpc(index);
     }
 
     public InventoryItem GetItemDetails(int index)
@@ -76,5 +74,21 @@ public class SharedInventory : NetworkBehaviour
                 inventoryUI.AddItem(item);
             }
         }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void UseItemForAllServerRpc(int index)
+    {
+        UseItemClientRpc(index);
+    }
+
+    [ClientRpc]
+    private void UseItemClientRpc(int index)
+    {
+        Debug.Log("Used " + Items[index].ItemDetails.Name);
+        Items[index].Used = true;
+
+        PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
+        Items[index].Interact(player);
     }
 }
