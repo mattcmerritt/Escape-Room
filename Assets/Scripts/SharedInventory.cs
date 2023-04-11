@@ -72,10 +72,8 @@ public class SharedInventory : NetworkBehaviour
             {
                 Items.Add(item);
 
-                foreach (InventoryUI inventoryUI in InventoryUIs)
-                {
-                    inventoryUI.AddItem(item);
-                }
+                InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
+                inventoryUI.AddItem(item);
             }
         }
     }
