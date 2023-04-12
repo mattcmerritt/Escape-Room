@@ -26,6 +26,15 @@ public class PlayerMovement : NetworkBehaviour
         }
     }
 
+    // Disable this component if this player is not the owner
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            this.enabled = false;
+        }
+    }
+
     private void Awake() 
     {
         // Start the game with the player's cursor locked

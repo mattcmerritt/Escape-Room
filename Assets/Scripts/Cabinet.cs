@@ -119,6 +119,10 @@ public class Cabinet : SimpleObject
         {
             LockObject.SetActive(false);
             // Later we could play a sound here to indicate that the lock is gone.
+
+            // Hiding the lock UI for the current player
+            PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
+            player.CloseWithUIManager(PanelID);
         };
     }
 
@@ -241,10 +245,6 @@ public class Cabinet : SimpleObject
         // Removing the lock and updating the room
         if (result)
         {
-            // Hiding the lock UI for the current player
-            PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
-            player.CloseWithUIManager(PanelID);
-
             // Removing the lock for all players
             UnlockLockServerRpc();
         }

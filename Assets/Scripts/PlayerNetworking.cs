@@ -14,6 +14,8 @@ public class PlayerNetworking : NetworkBehaviour
             Camera.SetActive(false);
             OverlayCanvas.SetActive(false);
             CameraCanvas.SetActive(false);
+            // Disable this component if this player is not the owner
+            this.enabled = false;
         }
     }
 }

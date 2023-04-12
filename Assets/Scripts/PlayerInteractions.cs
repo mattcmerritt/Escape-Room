@@ -26,6 +26,15 @@ public class PlayerInteractions : NetworkBehaviour
         inventory.AddInventoryUI(inventoryUI);
     }
 
+    // Disable this component if this player is not the owner
+    public override void OnNetworkSpawn()
+    {
+        if (!IsOwner)
+        {
+            this.enabled = false;
+        }
+    }
+
     private void Update()
     {
         // ignore inputs from other players
