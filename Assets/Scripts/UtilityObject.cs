@@ -49,4 +49,11 @@ public abstract class UtilityObject : SimpleObject
         }
         Collider.enabled = false;
     }
+
+    // This method will be the behavior that will need to be executed for all clients when used
+    // Behaviors that should only happen client-side (launching a UI or toggling a state) will still happen in interact
+    public virtual void InteractAllClients(PlayerInteractions player)
+    {
+        // This method does not currently do anything by default
+    }
 }

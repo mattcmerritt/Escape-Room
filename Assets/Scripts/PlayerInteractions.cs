@@ -17,15 +17,6 @@ public class PlayerInteractions : NetworkBehaviour
     // UI Manager
     [SerializeField] private UIManager UIManager;
 
-    // Actions that occur when a new player is first loaded
-    private void Start()
-    {
-        // New player's inventory needs to be added to the list of inventories to update
-        SharedInventory inventory = FindObjectOfType<SharedInventory>();
-        InventoryUI inventoryUI = GetComponentInChildren<InventoryUI>(true);
-        inventory.AddInventoryUI(inventoryUI);
-    }
-
     // Disable this component if this player is not the owner
     public override void OnNetworkSpawn()
     {

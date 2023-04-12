@@ -15,13 +15,4 @@ public class ClueUI : MonoBehaviour
         ClueContent.text = clue.ClueDescription;
         ClueAnnouncement.text = clue.Announcement;
     }
-
-    public void UpdateClueForAll(ClueItem clue)
-    {
-        ClueUI[] clueUIs = GameObject.FindObjectsOfType<ClueUI>(true);
-        foreach (ClueUI clueUI in clueUIs)
-        {
-            clueUI.UpdateClue(clue);
-        }
-    }
 }

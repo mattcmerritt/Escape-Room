@@ -9,18 +9,9 @@ public class SharedInventory : NetworkBehaviour
     // Inventory state
     [SerializeField] private List<UtilityObject> Items;
 
-    // All active player inventories
-    [SerializeField] private List<InventoryUI> InventoryUIs;
-
     private void Start()
     {
         Items = new List<UtilityObject>();
-        InventoryUIs = new List<InventoryUI>();
-    }
-
-    public void AddInventoryUI(InventoryUI inventoryUI)
-    {
-        InventoryUIs.Add(inventoryUI);
     }
 
     public void AddItem(UtilityObject item)
@@ -31,6 +22,10 @@ public class SharedInventory : NetworkBehaviour
 
     public void UseItem(int index)
     {
+        // using the item locally (opening UI)
+        PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
+        Items[index].Interact(player);
+
         // using the item for all other players
         UseItemForAllServerRpc(index);
     }
@@ -89,6 +84,6 @@ public class SharedInventory : NetworkBehaviour
         Items[index].Used = true;
 
         PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
-        Items[index].Interact(player);
+        Items[index].InteractAllClients(player);
     }
 }
