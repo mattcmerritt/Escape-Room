@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 public abstract class SimpleObject : NetworkBehaviour
 {
-    [SerializeField] private string PanelID; // ID that refers the UI manager to open the correct panel
+    [SerializeField] protected string PanelID; // ID that refers the UI manager to open the correct panel
 
     protected virtual void Start()
     {

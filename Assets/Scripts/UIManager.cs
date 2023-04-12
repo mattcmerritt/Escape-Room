@@ -161,6 +161,30 @@ public class UIManager : MonoBehaviour
         return true;
     }
 
+    // overloaded version of close UI that uses a string identifier instead of a panel reference
+    // used by objects in the scene to tell tell a specific player to close a panel without access to the panel
+    public bool CloseUI(string panelID)
+    {
+        // retrieve panel from list of panels
+        UIPanel closing = null;
+        foreach (IdentifiedUIPanel idPanel in Panels)
+        {
+            if (idPanel.ID == panelID)
+            {
+                closing = idPanel.Panel;
+            }
+        }
+
+        // break if the desired panel is not present
+        if (closing == null)
+        {
+            Debug.LogError($"Panel with ID {panelID} is missing from the list of identified panels.");
+            return false;
+        }
+
+        return CloseUI(closing);
+    }
+
     public bool OpenInventory()
     {
         // make sure that the inventory is closed
