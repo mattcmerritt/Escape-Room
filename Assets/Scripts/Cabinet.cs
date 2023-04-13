@@ -121,7 +121,11 @@ public class Cabinet : SimpleObject
             // Later we could play a sound here to indicate that the lock is gone.
 
             // Hiding the lock UI for the current player
-            PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
+            PlayerInteractions player = null;
+            foreach (PlayerInteractions potentialPlayer in FindObjectsOfType<PlayerInteractions>())
+            {
+                if (potentialPlayer.IsOwner) player = potentialPlayer;
+            }
             player.CloseWithUIManager(PanelID);
         };
     }

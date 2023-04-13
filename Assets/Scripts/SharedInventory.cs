@@ -23,7 +23,12 @@ public class SharedInventory : NetworkBehaviour
     public void UseItem(int index)
     {
         // using the item locally (opening UI)
-        PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
+        // find the client's player
+        PlayerInteractions player = null;
+        foreach (PlayerInteractions potentialPlayer in FindObjectsOfType<PlayerInteractions>())
+        {
+            if (potentialPlayer.IsOwner) player = potentialPlayer;
+        }
         Items[index].Interact(player);
 
         // using the item for all other players
@@ -83,7 +88,11 @@ public class SharedInventory : NetworkBehaviour
         Debug.Log("Used " + Items[index].ItemDetails.Name);
         Items[index].Used = true;
 
-        PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
+        PlayerInteractions player = null;
+        foreach (PlayerInteractions potentialPlayer in FindObjectsOfType<PlayerInteractions>())
+        {
+            if (potentialPlayer.IsOwner) player = potentialPlayer;
+        }
         Items[index].InteractAllClients(player);
     }
 }
