@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using TMPro;
+using Unity.Netcode;
 
-public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private UIManager UIManager; // the current player's UI manager
     [SerializeField] private bool Focused; // whether the mouse is on the clipboard
@@ -20,6 +21,13 @@ public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField] private Image ItemImage;
     [SerializeField] private TMP_Text ItemName, ItemDesc;
     [SerializeField] private Button UseItemButton;
+
+    // UI components needed to switch views
+    [SerializeField] private GameObject InventoryPanel, NotesPanel;
+    [SerializeField] private Button InventoryButton, NotesButton;
+
+    // Information necessary for the notes
+    [SerializeField] private TMP_InputField NotesField;
     
     private void Start()
     {
@@ -80,5 +88,45 @@ public class InventoryUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             SharedInventory.UseItem(currentIndex); // perform item activation behavior
             UIManager.CloseInventory(); // hide the inventory
         });
+    }
+
+    // Switch to the Notes view
+    public void ShowNotesTab()
+    {
+        InventoryPanel.SetActive(false);
+        NotesPanel.SetActive(true);
+
+        InventoryButton.interactable = true;
+        NotesButton.interactable = false;
+    }
+
+    // Switch to the Inventory view
+    public void ShowInventoryTab()
+    {
+        InventoryPanel.SetActive(true);
+        NotesPanel.SetActive(false);
+
+        InventoryButton.interactable = false;
+        NotesButton.interactable = true;
+    }
+
+    // Update text for all players
+    public void UpdateNotesText()
+    {
+        UpdateNotesTextServerRpc();
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void UpdateNotesTextServerRpc()
+    {
+        // Debug.Log("Sending to server:\n" + NotesField.text);
+        UpdateNotesTextClientRpc(NotesField.text);
+    }
+
+    [ClientRpc]
+    private void UpdateNotesTextClientRpc(string content)
+    {
+        // Debug.Log("All clients displaying:\n" + content);
+        NotesField.text = content;
     }
 }
