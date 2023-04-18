@@ -74,6 +74,11 @@ public class PlayerInteractions : NetworkBehaviour
         UIManager.UpdatePanelInstructions(instructions, panelID);
     }
 
+    public void ChangePanelColor(string panelID, Color color)
+    {
+        UIManager.ChangePanelColor(panelID, color);
+    }
+
     // Function to prevent player from double interacting with objects if menu is open
     public void OpenMenu()
     {

@@ -401,6 +401,8 @@ MonoBehaviour:
   PanelID: 
   ItemDetails: {fileID: 11400000, guid: 8388aeb45d6537c4f80d8148aa9f349e, type: 2}
   Used: 0
+  DefaultPanelColor: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 0.4}
+  LightOnPanelColor: {r: 0.7103458, g: 0.5309719, b: 0.7169812, a: 0.4}
 --- !u!114 &6298516760319163087
 MonoBehaviour:
   m_ObjectHideFlags: 0
