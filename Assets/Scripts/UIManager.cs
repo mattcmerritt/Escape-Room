@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 // Helper class to pair a UI panel with a unique identifier
 [System.Serializable]
@@ -235,6 +236,37 @@ public class UIManager : MonoBehaviour
             {
                 obj.SetActive(true);
             }
+        }
+
+        return false;
+    }
+
+    // Method used to update the instructional text shown at the bottom of the 3D object panel
+    public bool UpdatePanelInstructions(string instructions, string panelID)
+    {
+        // retrieve panel from list of panels
+        UIPanel panel = null;
+        foreach (IdentifiedUIPanel idPanel in Panels)
+        {
+            if (idPanel.ID == panelID)
+            {
+                panel = idPanel.Panel;
+            }
+        }
+
+        // break if the desired panel is not present
+        if (panel == null)
+        {
+            Debug.LogError($"Panel with ID {panelID} is missing from the list of identified panels.");
+            return false;
+        }
+
+        // find the textbox and update the contents
+        TMP_Text instructionsText = panel.GetComponentInChildren<TMP_Text>();
+        if (instructionsText != null)
+        {
+            instructionsText.text = instructions;
+            return true;
         }
 
         return false;

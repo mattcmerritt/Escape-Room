@@ -387,8 +387,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d60d7afc2d6ca4d47afeb0d1aaa50dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelID: Pill Bottle
+  PanelID: 3D Object
   CopyRotation: 0
+  ItemInstructions: 'Press A or D to spin object around
+
+    Right click to open
+    bottle
+
+    Press Escape to close window'
   Animator: {fileID: 5487172021395423138}
 --- !u!136 &5487172021395423139
 CapsuleCollider:

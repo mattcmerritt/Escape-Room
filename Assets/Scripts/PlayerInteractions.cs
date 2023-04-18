@@ -69,6 +69,11 @@ public class PlayerInteractions : NetworkBehaviour
         UIManager.CloseUI(panelID);
     }
 
+    public void UpdatePanelInstructions(string instructions, string panelID)
+    {
+        UIManager.UpdatePanelInstructions(instructions, panelID);
+    }
+
     // Function to prevent player from double interacting with objects if menu is open
     public void OpenMenu()
     {

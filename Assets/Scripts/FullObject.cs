@@ -12,6 +12,8 @@ public class FullObject : SimpleObject
     protected bool IsCopy; // flag used to disable interactions for copied dominos
     protected FullObject Original; // for the copies, allows them to send data back to the main one
 
+    [SerializeField, TextArea(5, 15)] private string ItemInstructions; // the description displayed at the bottom of the panel for how to interact with the 3D object
+
     protected virtual void Update()
     {
         float vertical = Input.GetAxis("Vertical");
@@ -31,6 +33,8 @@ public class FullObject : SimpleObject
         {
             return;
         }
+
+        player.UpdatePanelInstructions(ItemInstructions, PanelID);
 
         base.Interact(player);
 
