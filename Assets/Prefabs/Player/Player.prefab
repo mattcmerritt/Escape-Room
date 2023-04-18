@@ -399,7 +399,6 @@ MonoBehaviour:
   UIManager: {fileID: 178009428919859052}
   Focused: 0
   ItemButtonPrefab: {fileID: 8624453535716128668, guid: 86ff3958356eff94cafdf62feb83c194, type: 3}
-  PlayerInteractions: {fileID: 178009427385858267}
   ItemListBox: {fileID: 178009428554077635}
   ItemImage: {fileID: 178009428382848072}
   ItemName: {fileID: 178009428410981827}
@@ -1316,7 +1315,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
+  m_Height: 1.75
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &178009427385858264
@@ -1360,7 +1359,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
+  m_Height: 1.75
   m_Radius: 0.5
   m_SlopeLimit: 45
   m_StepOffset: 0
@@ -8560,8 +8559,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5266590534420133988}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalPosition: {x: 0, y: -0.25, z: 0}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8515398773525363131}
