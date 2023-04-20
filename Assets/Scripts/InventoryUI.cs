@@ -43,6 +43,14 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         {
             UIManager.CloseInventory();
         }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            NotesField.DeactivateInputField();
+
+            // remove any extra tabs that may have been added onto the end
+            NotesField.text = NotesField.text.TrimEnd();
+        }
     }
 
     // Detects if the mouse is in a UI element
