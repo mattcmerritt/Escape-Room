@@ -7,6 +7,18 @@ public class PillBottle : FullObject
     [SerializeField] private Animator Animator;
     private bool IsOpen;
 
+    // Mesh for the label text
+    [SerializeField] private Mesh LabelTextMesh;
+    [SerializeField] private MeshFilter LabelTextMeshFilter;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        // set up the bottle with the associated mesh
+        LabelTextMeshFilter.mesh = LabelTextMesh;
+    }
+
     protected override void Update()
     {
         base.Update();
