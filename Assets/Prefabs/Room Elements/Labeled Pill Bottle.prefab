@@ -151,7 +151,7 @@ MonoBehaviour:
 
     Press Escape to close window'
   Animator: {fileID: 1505142305665410678}
-  LabelTextMesh: {fileID: 2210965410299338194, guid: 3c53f17acbc2f184883f7d49b5e26cb9, type: 3}
+  LabelTextMesh: {fileID: 0}
   LabelTextMeshFilter: {fileID: 8643251277297238929}
 --- !u!136 &1505142305665410677
 CapsuleCollider:
