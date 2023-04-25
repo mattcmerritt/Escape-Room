@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class PillBottle : FullObject 
 {
@@ -20,6 +21,11 @@ public class PillBottle : FullObject
 
         // set up the bottle with the associated mesh
         LabelTextMeshFilter.mesh = LabelTextMesh;
+
+        if (IsCopy && ((PillBottle)Original).CheckOpen())
+        {
+            OpenBottleImmediate();
+        }
     }
 
     protected override void Update()
@@ -33,23 +39,17 @@ public class PillBottle : FullObject
             ((PillBottle)Original).OpenBottle();
         }
 
+        // the copy is not networked, needs to be updated based on the parent which is
         if (IsCopy && ((PillBottle)Original).CheckOpen())
         {
-            OpenBottleImmediate();
+            Animator.SetTrigger("Open");
         }
     }
 
     public void OpenBottle()
     {
-        // find the paper slip collection in the scene and add the paper from inside the bottle
-        if (!IsCopy && !IsOpen)
-        {
-            PaperSlipCollection papers = FindObjectOfType<PaperSlipCollection>();
-            papers.AddPaperToCollection(Letters, Note);
-        }
-
-        Animator.SetTrigger("Open");
-        IsOpen = true;
+        // Debug.Log("opening " + gameObject.name);
+        OpenBottleForAllServerRpc();
     }
 
     // plays an animation that does not have a duration, just skips to the end frame
@@ -64,5 +64,26 @@ public class PillBottle : FullObject
     public bool CheckOpen()
     {
         return IsOpen;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void OpenBottleForAllServerRpc()
+    {
+        OpenBottleClientRpc();
+    }
+
+    [ClientRpc]
+    private void OpenBottleClientRpc()
+    {
+        // find the paper slip collection in the scene and add the paper from inside the bottle
+        if (!IsCopy && !IsOpen)
+        {
+            PaperSlipCollection papers = FindObjectOfType<PaperSlipCollection>();
+            papers.AddPaperToCollection(Letters, Note);
+        }
+
+        // Debug.Log("animating " + gameObject.name);
+        Animator.SetTrigger("Open");
+        IsOpen = true;
     }
 }
