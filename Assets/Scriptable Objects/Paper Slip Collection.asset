@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Paper Slip Collection
   m_EditorClassIdentifier: 
   Name: Paper Slip Collection
-  Icon: {fileID: 0}
-  UsedIcon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: 21572826846164146b4adbec81f9bc6a, type: 3}
+  UsedIcon: {fileID: 21300000, guid: 21572826846164146b4adbec81f9bc6a, type: 3}
   Description: Some slips of paper that you found inside of the pill bottles. Each
     one has a note about whether the provider could prescribe the medicine that you
     found them in. Each one has three letters on back as well.

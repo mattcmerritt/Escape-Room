@@ -139,6 +139,18 @@ PrefabInstance:
       value: Labeled Pill Bottle 4
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Note
+      value: "MSW \u2013 social workers cannot prescribe medication"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Letters
+      value: 'U
+
+        P
+
+        L'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
       value: 
       objectReference: {fileID: 2210965410299338194, guid: 6ab0b41ab95ff304780d9bc5e2127273, type: 3}
@@ -148,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281220955104165067, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2281220955104165067, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -643,6 +655,19 @@ PrefabInstance:
     - target: {fileID: 1505142305665410673, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: m_Name
       value: Labeled Pill Bottle 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Note
+      value: "PHARM-D \u2013 in some states, pharmacists can prescribe birth control,
+        tobacco cessation medication, and opioid overdose prevention medication (Narcan)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Letters
+      value: 'A
+
+        L
+
+        O'
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
@@ -1566,6 +1591,18 @@ PrefabInstance:
       value: Labeled Pill Bottle 5
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Note
+      value: "APRN \u2013 advanced practice registered nurses can prescribe medication"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Letters
+      value: 'R
+
+        U
+
+        C'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
       value: 
       objectReference: {fileID: 2210965410299338194, guid: 5635277800865e8498cebaac04db2c78, type: 3}
@@ -2081,6 +2118,18 @@ PrefabInstance:
       value: Labeled Pill Bottle 2
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Note
+      value: "DPT \u2013 physical therapists cannot prescribe medication"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Letters
+      value: 'E
+
+        F
+
+        G'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
       value: 
       objectReference: {fileID: 2210965410299338194, guid: 97c8d2eb6a5811a46a81a75339a78807, type: 3}
@@ -2090,7 +2139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281220955104165067, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2281220955104165067, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2236,6 +2285,11 @@ MonoBehaviour:
       OverridingTargetPrefab: {fileID: 0}
     - Override: 0
       Prefab: {fileID: 6639153796542537840, guid: a16a0d102471654499f36ae4a2bc7377, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 3662164056677479684, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
       SourcePrefabToOverride: {fileID: 0}
       SourceHashToOverride: 0
       OverridingTargetPrefab: {fileID: 0}
@@ -3059,6 +3113,18 @@ PrefabInstance:
       value: Labeled Pill Bottle 1
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Note
+      value: "PA-C \u2013 physician assistants can prescribe medication"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Letters
+      value: 'K
+
+        E
+
+        K'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
       value: 
       objectReference: {fileID: 2210965410299338194, guid: 3c53f17acbc2f184883f7d49b5e26cb9, type: 3}
@@ -3836,6 +3902,18 @@ PrefabInstance:
       value: Labeled Pill Bottle 6
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Note
+      value: "OTD \u2013 occupational therapists cannot prescribe medication"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Letters
+      value: 'P
+
+        L
+
+        E'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
       value: 
       objectReference: {fileID: 2210965410299338194, guid: 1f6917f81c7f63049911449d33538c4d, type: 3}
@@ -3845,7 +3923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281220955104165067, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 2281220955104165067, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4742,6 +4820,18 @@ PrefabInstance:
     - target: {fileID: 1505142305665410673, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: m_Name
       value: Labeled Pill Bottle 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Note
+      value: "MD \u2013 physicians can prescribe medication"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: Letters
+      value: 'M
+
+        B
+
+        L'
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
@@ -7050,6 +7140,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106737458290102561}
   m_Mesh: {fileID: -7536622687930795020, guid: 8a1840b40f988534abef6af70b27a44e, type: 3}
+--- !u!1001 &3662164056559531251
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3662164056677479684, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_Name
+      value: Paper Slip Collection
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479689, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3662164056677479691, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3752881622
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8d49d1504a272e54d91ee0bc0468b04e, type: 3}
 --- !u!1 &3776928137919293365
 GameObject:
   m_ObjectHideFlags: 0

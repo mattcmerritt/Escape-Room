@@ -11,6 +11,9 @@ public class PillBottle : FullObject
     [SerializeField] private Mesh LabelTextMesh;
     [SerializeField] private MeshFilter LabelTextMeshFilter;
 
+    // Information for the slip of paper inside the bottle
+    [SerializeField, TextArea(5, 15)] private string Letters, Note;
+
     protected override void Start()
     {
         base.Start();
@@ -40,6 +43,13 @@ public class PillBottle : FullObject
     {
         Animator.SetTrigger("Open");
         IsOpen = true;
+
+        // find the paper slip collection in the scene and add the paper from inside the bottle
+        if (!IsCopy)
+        {
+            PaperSlipCollection papers = FindObjectOfType<PaperSlipCollection>();
+            papers.AddPaperToCollection(Letters, Note);
+        }
     }
 
     // plays an animation that does not have a duration, just skips to the end frame
