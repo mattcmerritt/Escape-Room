@@ -76,7 +76,7 @@ public class PillBottle : FullObject
     private void OpenBottleClientRpc()
     {
         // find the paper slip collection in the scene and add the paper from inside the bottle
-        if (!IsCopy && !IsOpen)
+        if (!IsCopy && !IsOpen && IsOwner)
         {
             PaperSlipCollection papers = FindObjectOfType<PaperSlipCollection>();
             papers.AddPaperToCollection(Letters, Note);
