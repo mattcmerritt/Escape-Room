@@ -41,15 +41,15 @@ public class PillBottle : FullObject
 
     public void OpenBottle()
     {
-        Animator.SetTrigger("Open");
-        IsOpen = true;
-
         // find the paper slip collection in the scene and add the paper from inside the bottle
-        if (!IsCopy)
+        if (!IsCopy && !IsOpen)
         {
             PaperSlipCollection papers = FindObjectOfType<PaperSlipCollection>();
             papers.AddPaperToCollection(Letters, Note);
         }
+
+        Animator.SetTrigger("Open");
+        IsOpen = true;
     }
 
     // plays an animation that does not have a duration, just skips to the end frame

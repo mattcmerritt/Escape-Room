@@ -14,7 +14,7 @@ public class PaperSlipsUI : MonoBehaviour
         PaperSlips[SlipsLoaded].LoadNote(letters, note);
         PaperSlips[SlipsLoaded].gameObject.SetActive(true);
 
-        Debug.Log(PaperSlips[SlipsLoaded].gameObject.name);
+        // Debug.Log(PaperSlips[SlipsLoaded].gameObject.name);
 
         SlipsLoaded++;
     }

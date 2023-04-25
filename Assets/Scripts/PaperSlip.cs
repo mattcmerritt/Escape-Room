@@ -69,5 +69,8 @@ public class PaperSlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             transform.position = globalMousePos;
         }
+
+        // moving the most recent slip to the top
+        transform.SetAsLastSibling();
     }
 }
