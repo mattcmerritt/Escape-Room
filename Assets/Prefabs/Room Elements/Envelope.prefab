@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8852591339250903432}
   - component: {fileID: -5310196943905060205}
   m_Layer: 0
-  m_Name: Envelope 1
+  m_Name: Envelope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
