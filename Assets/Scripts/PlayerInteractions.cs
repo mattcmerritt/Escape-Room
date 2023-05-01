@@ -46,6 +46,7 @@ public class PlayerInteractions : NetworkBehaviour
                     // Checking for components on clicked object to determine function
                     UtilityObject util = hit.collider.GetComponent<UtilityObject>();
                     SimpleObject simple = hit.collider.GetComponent<SimpleObject>();
+                    ObjectChildBox child = hit.collider.GetComponent<ObjectChildBox>();
                     if (util != null)
                     {
                         util.Collect();
@@ -54,6 +55,10 @@ public class PlayerInteractions : NetworkBehaviour
                     {
                         simple.Interact(this);
                     } 
+                    else if (child != null)
+                    {
+                        child.ClickForParent(this);
+                    }
                 }
             }
         }
