@@ -62,6 +62,10 @@ public abstract class UtilityObject : SimpleObject
     {
         Inventory.AddItem(this);
 
+        // show a popup
+        UIManager manager = FindObjectOfType<UIManager>();
+        manager.ShowPopupPanel(ItemDetails.Name, ItemDetails.Icon);
+
         // Collect the object for all clients
         CollectServerRpc();
     }
