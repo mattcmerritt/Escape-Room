@@ -32,6 +32,9 @@ public class UIManager : MonoBehaviour
     // Player UI Interfaces
     [SerializeField] private List<IdentifiedUIPanel> Panels;
 
+    // Item popup manager
+    [SerializeField] private PopupUI Popups;
+
     // checking key presses to close/open UI
     private void Update()
     {
@@ -147,6 +150,10 @@ public class UIManager : MonoBehaviour
             Destroy(copies[i]);
         }
 
+        // reseting the popup menu
+        // used in the 3D object panel to show collected items
+        Popups.ClosePopupImmediately();
+
         // restoring player control if no menus are active
         // also shows primary UI again (crosshair, etc.)
         if (!InventoryOpen && !UIPanelOpen)
@@ -218,7 +225,7 @@ public class UIManager : MonoBehaviour
         // make sure that the inventory is open
         if (!InventoryOpen)
         {
-            Debug.LogWarning("Inventory is not open to close.");
+            // Debug.LogWarning("Inventory is not open to close.");
             return false;
         }
 
@@ -302,5 +309,11 @@ public class UIManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    // Method used to show the item collection popup in the 3D object panel
+    public void ShowPopupPanel(string itemName, Sprite itemImage)
+    {
+        Popups.ShowPopup(itemName, itemImage);
     }
 }

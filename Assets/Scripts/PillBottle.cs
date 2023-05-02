@@ -14,6 +14,7 @@ public class PillBottle : FullObject
 
     // Information for the slip of paper inside the bottle
     [SerializeField, TextArea(5, 15)] private string Letters, Note;
+    [SerializeField] private Sprite PaperIcon;
 
     protected override void Start()
     {
@@ -33,10 +34,14 @@ public class PillBottle : FullObject
         base.Update();
 
         // allow the user to right click on the copy of the object to open it
-        if (IsCopy && Input.GetMouseButtonDown(1))
+        if (!IsOpen && IsCopy && Input.GetMouseButtonDown(1))
         {
             OpenBottle();
             ((PillBottle)Original).OpenBottle();
+
+            // find the player's UI manager and display a popup telling them that an item was collected
+            UIManager manager = FindObjectOfType<UIManager>();
+            manager.ShowPopupPanel("Paper Slip", PaperIcon);
         }
 
         // the copy is not networked, needs to be updated based on the parent which is
