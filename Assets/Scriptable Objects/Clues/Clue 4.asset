@@ -25,6 +25,8 @@ MonoBehaviour:
     out the name, use what you have to your advantage (definition: a benefit, gain)
     to find out the area code of the caregiver\u2019s phone number and your next
     clue."
-  Announcement: Order the professional on the magnetic board using the descriptions
-    on the other side of the board, and get the name of the patient's caregiver from
-    the magnetic letters once properly arranged.
+  Announcement: 'Order the professionals on the magnetic board using the descriptions
+    on the other side of the board.
+
+    The name of the patient''s caregiver will
+    be given by the magnetic letters once properly arranged.'
