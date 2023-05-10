@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class TextMagnet : MonoBehaviour, IPointerClickHandler
+public class TextMagnet : MonoBehaviour, IDragHandler, IPointerClickHandler
 {
     // Timing variables
     [SerializeField] private float DoubleClickWindow;

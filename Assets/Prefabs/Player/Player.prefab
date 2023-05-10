@@ -8391,7 +8391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c68718c750fe346b902de76261fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoubleClickWindow: 0
+  DoubleClickWindow: 0.4
   LargeText: {fileID: 6344411653842947747}
   LargeTextPanel: {fileID: 3412209324833683095}
   Contents: Provides medication to patient and family and provides consultation and
@@ -11030,7 +11030,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c68718c750fe346b902de76261fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoubleClickWindow: 0
+  DoubleClickWindow: 0.4
   LargeText: {fileID: 6344411653842947747}
   LargeTextPanel: {fileID: 3412209324833683095}
   Contents: Conducts gait assessment and provides balance training as needed for
@@ -14061,7 +14061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c68718c750fe346b902de76261fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoubleClickWindow: 0
+  DoubleClickWindow: 0.4
   LargeText: {fileID: 6344411653842947747}
   LargeTextPanel: {fileID: 3412209324833683095}
   Contents: 'Provides ongoing care and reassessment of cognitive abilities and related
@@ -16865,7 +16865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c68718c750fe346b902de76261fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoubleClickWindow: 0
+  DoubleClickWindow: 0.4
   LargeText: {fileID: 6344411653842947747}
   LargeTextPanel: {fileID: 3412209324833683095}
   Contents: "Orders brain imaging tests, provides the Alzheimer\u2019s diagnosis,
@@ -17592,7 +17592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c68718c750fe346b902de76261fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoubleClickWindow: 0
+  DoubleClickWindow: 0.4
   LargeText: {fileID: 6344411653842947747}
   LargeTextPanel: {fileID: 3412209324833683095}
   Contents: Provides home safety assessment and conducts assessment of activities
@@ -20351,7 +20351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c68718c750fe346b902de76261fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoubleClickWindow: 0
+  DoubleClickWindow: 0.4
   LargeText: {fileID: 6344411653842947747}
   LargeTextPanel: {fileID: 3412209324833683095}
   Contents: "\rOversees ongoing treatment plan and makes referrals to additional
@@ -20987,7 +20987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43c68718c750fe346b902de76261fb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DoubleClickWindow: 0
+  DoubleClickWindow: 0.4
   LargeText: {fileID: 6344411653842947747}
   LargeTextPanel: {fileID: 3412209324833683095}
   Contents: Provides counseling and education for patient and family as well assists
