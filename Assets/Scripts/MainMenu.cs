@@ -9,18 +9,18 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        Debug.LogError("Game Started");
+        // Debug.Log("Game Started");
         Animator.SetTrigger("Start");
     }
 
     public void LoadScene()
     {
-        Debug.LogError("Scene Loaded");
+        // Debug.Log("Scene Loaded");
         SceneManager.LoadScene(1); // load the game scene with the IP select menu
     }
 
     public void Exit()
     {
-        Debug.LogError("Game Closed");
+        Application.Quit();
     }
 }
