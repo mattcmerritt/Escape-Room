@@ -121,20 +121,20 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     // Update text for all players
     public void UpdateNotesText()
     {
-        UpdateNotesTextServerRpc();
+        // UpdateNotesTextServerRpc();
     }
 
     [ServerRpc(RequireOwnership = false)]
     private void UpdateNotesTextServerRpc()
     {
-        // Debug.Log("Sending to server:\n" + NotesField.text);
+        Debug.Log("Sending to server:\n" + NotesField.text);
         UpdateNotesTextClientRpc(NotesField.text);
     }
 
     [ClientRpc]
     private void UpdateNotesTextClientRpc(string content)
     {
-        // Debug.Log("All clients displaying:\n" + content);
+        Debug.Log("All clients displaying:\n" + content);
         NotesField.text = content;
     }
 }
