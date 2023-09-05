@@ -1366,6 +1366,7 @@ GameObject:
   - component: {fileID: 178009427385858269}
   - component: {fileID: 8066613503492081146}
   - component: {fileID: 1964199238959732350}
+  - component: {fileID: 7555853184492254002}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1561,6 +1562,19 @@ MonoBehaviour:
   Camera: {fileID: 178009428919859048}
   OverlayCanvas: {fileID: 178009427788926310}
   CameraCanvas: {fileID: 178009428103414296}
+--- !u!114 &7555853184492254002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178009427385858213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 617dea4795350f543991990ae3ef92b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChatHistory: []
 --- !u!1 &178009427386641558
 GameObject:
   m_ObjectHideFlags: 0
@@ -4183,8 +4197,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 178009428335142187}
   m_HandleRect: {fileID: 178009428335142184}
   m_Direction: 2
-  m_Value: 1.0000037
-  m_Size: 0.875
+  m_Value: 1.0000031
+  m_Size: 0.87500006
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
