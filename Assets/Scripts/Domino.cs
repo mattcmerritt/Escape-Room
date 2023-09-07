@@ -22,7 +22,8 @@ public class Domino : FullObject
     */
 
     [SerializeField] private bool IsRandom;
-    [SerializeField] private int Top, Bottom, Secret;
+    [SerializeField] private int Top, Bottom;
+    [SerializeField] private string Secret;
     [SerializeField] private TMP_Text TopText, BottomText, SecretText;
 
     public static List<int> UsedValues = new List<int>();
@@ -48,7 +49,9 @@ public class Domino : FullObject
         {
             Top = Random.Range(1, 12);
             Bottom = Random.Range(1, 12);
-            Secret = Random.Range(0, 9);
+            // TODO: ask if there should be "fake" words on the back of the wrong dominos
+            // Secret = Random.Range(0, 9);
+            Secret = "X"; // for now, they just have an X, to demonstrate that text can still be put on them
         }
         UsedValues.Add(Top + Bottom);
         
