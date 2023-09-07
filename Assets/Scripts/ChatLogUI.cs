@@ -48,6 +48,9 @@ public class ChatLogUI : MonoBehaviour
         CurrentHeight += newHeight;
         LastMessageLocation -= newHeight;
 
+        // set content window to match current height for scrolling
+        ContentWindow.sizeDelta = new Vector2(ContentWindow.sizeDelta.x, CurrentHeight);
+
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignMessage;
