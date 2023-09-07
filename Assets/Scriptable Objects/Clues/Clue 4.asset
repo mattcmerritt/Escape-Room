@@ -16,17 +16,16 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: a8b41fff8462ff842a14327df65e4ca7, type: 3}
   UsedIcon: {fileID: 21300000, guid: 7b8b9b5b057ec654a8172025ff3c9483, type: 3}
   Description: An envelope containing information about the fourth puzzle.
-  ClueDescription: "To find out the name of your patient\u2019s caregiver, you\u2019ll
-    need to match each professional with their role in assisting a patient with Alzheimer\u2019s
-    Disease. Note that these are only some of the responsibilities for each role
-    and there can be variation by setting type. Move the professional\u2019s picture
-    and corresponding letter to each correct role with the corresponding number \u2013
-    be sure to keep the numbers in numerical order with their roles. Once you figure
-    out the name, use what you have to your advantage (definition: a benefit, gain)
-    to find out the area code of the caregiver\u2019s phone number and your next
-    clue."
-  Announcement: 'Order the professionals on the magnetic board using the descriptions
-    on the other side of the board.
-
-    The name of the patient''s caregiver will
-    be given by the magnetic letters once properly arranged.'
+  ClueDescription: "Hang onto this \u2013 you never know when this key might prove
+    advantageous! Question: Which of the health professions that were on the QU pill
+    bottles (both who prescribe as well as those who do not) have a set of ethical
+    standards or code of professional ethics that they are legally bound to uphold?
+    When you have the answer to the question, look for that specific word \u2013
+    it may be small, but it did score more for sitting on the triple word of this
+    fun American word game! When you find that word you\u2019ll discover the patient\u2019s
+    last name nearby. Unlock the next clue using the patient\u2019s last name."
+  Announcement: "Look for which of the health professions that on the QU pill bottles
+    have a set of ethical standards or code of professional ethics that they are
+    legally bound to uphold.\n\nWhen you have the answer to the question, look for
+    that specific word \u2013 it may be small, but it did score more for sitting
+    on the triple word of this fun American word game!"
