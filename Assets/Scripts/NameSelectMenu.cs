@@ -11,7 +11,7 @@ public class NameSelectMenu : MonoBehaviour
     [SerializeField] private TMP_InputField PlayerNameInput;
     [SerializeField] private PlayerClientData playerClientData;
 
-    private void UpdatePlayerName() 
+    public void UpdatePlayerName() 
     {
         playerClientData.SetPlayerName(PlayerNameInput.text);
         ContinueButton.interactable = true;

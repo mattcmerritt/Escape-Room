@@ -8,7 +8,7 @@ public class PlayerClientData : MonoBehaviour
 
     public void SetPlayerName(string playerName) 
     {
-        PlayerName = PlayerName;
+        PlayerName = playerName;
     }
 
     private void Awake()

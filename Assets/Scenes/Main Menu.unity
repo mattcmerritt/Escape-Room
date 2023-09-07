@@ -336,7 +336,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2019670044}
+        m_TargetAssemblyTypeName: NameSelectMenu, Assembly-CSharp
+        m_MethodName: UpdatePlayerName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1061,6 +1073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640408028}
+  - component: {fileID: 640408029}
   m_Layer: 0
   m_Name: Player Data
   m_TagString: Untagged
@@ -1083,6 +1096,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &640408029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640408027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c9ae448111b5df43982932fe747b149, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerName: 
 --- !u!1 &682243987
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,7 +1864,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2019670042}
   m_OnClick:
     m_PersistentCalls:
@@ -1906,6 +1932,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NameSet: 0
-  ContinueButton: {fileID: 0}
-  PlayerNameInput: {fileID: 0}
-  playerClientData: {fileID: 0}
+  ContinueButton: {fileID: 2019670041}
+  PlayerNameInput: {fileID: 64220408}
+  playerClientData: {fileID: 640408029}
