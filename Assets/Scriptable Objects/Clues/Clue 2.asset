@@ -16,12 +16,22 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: a8b41fff8462ff842a14327df65e4ca7, type: 3}
   UsedIcon: {fileID: 21300000, guid: 7b8b9b5b057ec654a8172025ff3c9483, type: 3}
   Description: An envelope containing information about the second puzzle.
-  ClueDescription: "Identify the QU pill bottles that each contain medicine that
-    has been prescribed by a specific type of health professional. Some of them can
-    legally prescribe while others cannot. Identify which of these health providers
-    have the legal authority to write that prescription based on their profession\u2019s
-    scope of practice. Inside the correct pill bottles, you will find both the patient\u2019s
-    first name and your next clue!"
-  Announcement: "Identify the QU pill bottles that each contain medicine that has
-    been prescribed by a specific type of health professional. \n\nMake sure that
-    the professionals have the legal authority!"
+  ClueDescription: "Your patient lives in the town directly north of where these
+    three Schools are located. To find the street name, FIND the two mental disorder
+    categories that include the descriptions of specific mental disorders that your
+    patient could be diagnosed with given his current symptoms. You can find the
+    disorder categories at this link: \r\nhttps://ebookcentral.proquest.com/lib/quinnipiac/reader.action?docID=4876968&ppg=2&pq-origsite=summon\r\n\r\nTo
+    get the name of the street, take the 6th, 7th 13th and 14th letters of the first
+    word in the first disorder category  (Hint: the categories are on the yellow
+    pages under DSM-V Classifications and are in all CAPS and are in BOLD, for example:
+    NEURODEVELOPMENTAL DISORDERS). \r\n\r\nTo get the rest of the address, take the
+    1st letter of the first word in the second disorder category and the 5th letter
+    of the second word. \r\n\r\nThe street number is the total number of mental disorder
+    categories found on the page that you have gotten your street name from. \r\n"
+  Announcement: 'Use the DSM Quick Guide to find mental disorder categories that
+    match the patient''s symptoms, and use that information to find the patient''s
+    home town.
+
+
+    If you''re struggling with finding the town name, check the
+    clue again in the inventory.'

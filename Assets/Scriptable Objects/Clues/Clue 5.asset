@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c6c357f5af711438d60ccd4a400d67, type: 3}
+  m_Name: Clue 5
+  m_EditorClassIdentifier: 
+  Name: Clue 5
+  Icon: {fileID: 21300000, guid: a8b41fff8462ff842a14327df65e4ca7, type: 3}
+  UsedIcon: {fileID: 21300000, guid: 7b8b9b5b057ec654a8172025ff3c9483, type: 3}
+  Description: An envelope containing information about the fifth puzzle.
+  ClueDescription: "What might you suggest to your patient\u2019s caregiver if they\u2019ve
+    noticed their loved one is often forgetful and misses their daily noon medication?
+    Find that helpful item and the answer will get you next clue! Not sure what it
+    could be? Maybe you should retrace your steps."
+  Announcement: To find your next clue, look for an item which might help the patient
+    remember their daily noon medication more often. If you're unsure what to look
+    for, try retracing your steps.
