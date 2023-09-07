@@ -6,7 +6,6 @@ using TMPro;
 
 public class NameSelectMenu : MonoBehaviour
 {
-    [SerializeField] private bool NameSet = false;
     [SerializeField] private Button ContinueButton;
     [SerializeField] private TMP_InputField PlayerNameInput;
     [SerializeField] private PlayerClientData playerClientData;

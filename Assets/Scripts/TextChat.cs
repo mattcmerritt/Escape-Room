@@ -23,26 +23,23 @@ public class TextChat : NetworkBehaviour
 {
     // Chat history
     [SerializeField] private List<ChatMessage> ChatHistory = new List<ChatMessage>();
+    private string ActivePlayerName;
 
-    // TODO: remove testing code
-    private void Update() 
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Return)) 
-        {
-            SendMessage("Player", "Test Message");
-        }
+        ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
     }
 
-
-    // TODO: implement player name and timestamp in a way that does not require it as a parameter
-    //       this can be done using instance data or by reading it from other places
-    public void SendMessage(string playerName, string message)
+    public void SendChatMessage(string message)
     {
+        Debug.Log($"Chatlog received message: {message}");
+
         // fetching the current time
         DateTime currentTime = DateTime.Now;
         string timestamp = currentTime.ToString("HH:mm");
 
-        Debug.Log($"Time of message: {timestamp}");
+        // fetching the current player name
+        string playerName = ActivePlayerName;
 
         AddChatMessageForAllServerRpc(playerName, timestamp, message);
     }
@@ -50,13 +47,16 @@ public class TextChat : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void AddChatMessageForAllServerRpc(string playerName, string timestamp, string message)
     {
+        Debug.Log($"Server RPC received: {timestamp}, {playerName}: {message}");
         AddChatMessageClientRpc(playerName, timestamp, message);
     }
 
     [ClientRpc] 
     private void AddChatMessageClientRpc(string playerName, string timestamp, string message)
     {
+        Debug.Log($"Client RPC received: {timestamp}, {playerName}: {message}");
         ChatMessage newMessage = new ChatMessage(playerName, timestamp, message);
         ChatHistory.Add(newMessage);
+        FindObjectOfType<ChatLogUI>(false).AddMessage(newMessage);
     }
 }

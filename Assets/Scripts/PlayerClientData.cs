@@ -11,6 +11,11 @@ public class PlayerClientData : MonoBehaviour
         PlayerName = playerName;
     }
 
+    public string GetPlayerName()
+    {
+        return PlayerName;
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
