@@ -17,7 +17,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137352908088373420, guid: 9da212b94c6a2264683e3142dd5c7f56, type: 3}
       propertyPath: PanelID
-      value: Lock 3 Digit
+      value: Lock 4 Digit (Blue)
       objectReference: {fileID: 0}
     - target: {fileID: 1137352908088373420, guid: 9da212b94c6a2264683e3142dd5c7f56, type: 3}
       propertyPath: IsNumeric
@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1137352908088373421, guid: 9da212b94c6a2264683e3142dd5c7f56, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8260002
+      value: -4.0230002
       objectReference: {fileID: 0}
     - target: {fileID: 1137352908088373421, guid: 9da212b94c6a2264683e3142dd5c7f56, type: 3}
       propertyPath: m_LocalPosition.y

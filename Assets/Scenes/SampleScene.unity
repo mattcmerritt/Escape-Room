@@ -11064,10 +11064,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 848769570643461706, guid: 6a793ba856f3e8d418c4657d0c801713, type: 3}
-      propertyPath: PanelID
-      value: Lock 4 Digit
-      objectReference: {fileID: 0}
     - target: {fileID: 848769570643461707, guid: 6a793ba856f3e8d418c4657d0c801713, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -11865,14 +11861,6 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3897747591
       objectReference: {fileID: 0}
-    - target: {fileID: 7375001509909788945, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7375001510393968229, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7375001510539026496, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -11917,9 +11905,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7375001510539026497, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
+      propertyPath: LockCombination.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375001510539026497, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
+      propertyPath: LockCombination.Array.data[0]
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375001510539026497, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
+      propertyPath: LockCombination.Array.data[1]
+      value: 79
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375001510539026497, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
+      propertyPath: LockCombination.Array.data[2]
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375001510539026497, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
+      propertyPath: LockCombination.Array.data[3]
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 7375001510539026502, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
       propertyPath: m_Name
-      value: Locked Cabinet (3 Digit Red)
+      value: Locked Cabinet (4 Digit Red)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c097f2852139514490fda3ddbfcb078, type: 3}
