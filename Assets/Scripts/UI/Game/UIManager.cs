@@ -22,6 +22,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private bool InventoryOpen = false; // whether inventory is open or not
     [SerializeField] private Animator InventoryAnimator; // handles the clipboard going up or down
 
+    // Chat panel data
+    [SerializeField] private bool ChatOpen = false; // whether chat is open or not
+    [SerializeField] private ChatLogUI ChatLog;     // used to send messages
+
     // Primary UI
     [SerializeField] private GameObject[] PrimaryUIComponents;
 
@@ -51,9 +55,26 @@ public class UIManager : MonoBehaviour
             }
         }
 
+        // Using enter to open/close chat
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (ChatOpen)
+            {
+                SendChatMessage();
+            }
+            else
+            {
+                OpenChat();
+            }
+        }
+
         // Using escape to close menus or inventory
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            if (ChatOpen)
+            {
+                CloseChat();
+            }
             if (InventoryOpen)
             {
                 CloseInventory();
@@ -217,7 +238,7 @@ public class UIManager : MonoBehaviour
             obj.SetActive(false);
         }
 
-        return false;
+        return true;
     }
 
     public bool CloseInventory()
@@ -246,7 +267,61 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        return false;
+        return true;
+    }
+
+    public bool OpenChat()
+    {
+        // make sure that the chat is closed
+        if (ChatOpen)
+        {
+            Debug.LogWarning("Chat is already opened.");
+            return false;
+        }
+
+        // Activating the UI
+        ChatLog.OpenChat();
+
+        // updating state
+        ChatOpen = true;
+
+        // locking the player
+        PlayerMovement.LockCamera();
+        PlayerInteractions.OpenMenu();
+
+        return true;
+    }
+
+    public bool CloseChat()
+    {
+        // make sure that the chat is open
+        if (!ChatOpen)
+        {
+            Debug.LogWarning("Chat is not open to close.");
+            return false;
+        }
+
+        // Activating the UI
+        ChatLog.DeselectChat();
+
+        // updating state
+        ChatOpen = false;
+
+        // restoring player control if no menus are active
+        // also shows primary UI again (crosshair, etc.)
+        if (!ChatOpen && !InventoryOpen && !UIPanelOpen)
+        {
+            PlayerMovement.UnlockCamera();
+            PlayerInteractions.CloseMenu();
+        }
+
+        return true;
+    }
+
+    public void SendChatMessage()
+    {
+        ChatLog.SendChatMessage();
+        CloseChat();
     }
 
     // Method used to update the instructional text shown at the bottom of the 3D object panel
