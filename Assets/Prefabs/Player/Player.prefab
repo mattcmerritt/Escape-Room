@@ -4597,6 +4597,8 @@ MonoBehaviour:
   ActiveUIPanel: {fileID: 0}
   InventoryOpen: 0
   InventoryAnimator: {fileID: 178009427256264309}
+  ChatOpen: 0
+  ChatLog: {fileID: 3191520351514444911}
   PrimaryUIComponents:
   - {fileID: 178009427588132186}
   - {fileID: 178009428819498047}

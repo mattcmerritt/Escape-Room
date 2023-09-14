@@ -21,23 +21,25 @@ public class ChatLogUI : MonoBehaviour
         EventSystem = FindObjectOfType<EventSystem>();
     }
 
-    private void Update()
+    public void OpenChat()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            if (EventSystem.current.currentSelectedGameObject == Chatbar.gameObject)
-            {
-                Debug.Log("SENDING!");
-                // read text from bar, send it off to the networked chat
-                FindObjectOfType<TextChat>().SendChatMessage(Chatbar.text);
-                EventSystem.SetSelectedGameObject(null);
-            }
-            else
-            {
-                Debug.Log("ACTIVATING CHAT!");
-                EventSystem.SetSelectedGameObject(Chatbar.gameObject);
-            }
-        }
+        Debug.Log("ACTIVATING CHAT!");
+        EventSystem.SetSelectedGameObject(Chatbar.gameObject);
+    }
+
+    public void SendChatMessage()
+    {
+        Debug.Log("SENDING!");
+        // read text from bar, send it off to the networked chat
+        FindObjectOfType<TextChat>().SendChatMessage(Chatbar.text);
+        EventSystem.SetSelectedGameObject(null);
+        Chatbar.text = "";
+    }
+
+    public void DeselectChat()
+    {
+        EventSystem.SetSelectedGameObject(null);
+        Chatbar.text = "";
     }
 
     public void AddMessage(ChatMessage message)
