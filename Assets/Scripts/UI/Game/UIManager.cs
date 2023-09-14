@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
     // Chat panel data
     [SerializeField] private bool ChatOpen = false; // whether chat is open or not
     [SerializeField] private ChatLogUI ChatLog;     // used to send messages
+    [SerializeField] private Animator ChatAnimator; // handles the chat going hidden
 
     // Primary UI
     [SerializeField] private GameObject[] PrimaryUIComponents;
@@ -281,6 +282,7 @@ public class UIManager : MonoBehaviour
 
         // Activating the UI
         ChatLog.OpenChat();
+        ChatAnimator.SetTrigger("Show");
 
         // updating state
         ChatOpen = true;
@@ -303,6 +305,7 @@ public class UIManager : MonoBehaviour
 
         // Activating the UI
         ChatLog.DeselectChat();
+        ChatAnimator.SetTrigger("Hide");
 
         // updating state
         ChatOpen = false;

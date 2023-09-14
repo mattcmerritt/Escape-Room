@@ -10,6 +10,8 @@ public class ChatLogUI : MonoBehaviour
     [SerializeField] private RectTransform ContentWindow;
     [SerializeField] private GameObject MessagePrefab;
     [SerializeField] private TMP_InputField Chatbar;
+    [SerializeField] private GameObject MissedMessageIndicator;
+    private bool Closed;
     private float CurrentHeight = 0, LastMessageLocation = 0, MessageX;
     private EventSystem EventSystem;
 
@@ -24,6 +26,8 @@ public class ChatLogUI : MonoBehaviour
     public void OpenChat()
     {
         Debug.Log("ACTIVATING CHAT!");
+        MissedMessageIndicator.SetActive(false);
+        Closed = false;
         EventSystem.SetSelectedGameObject(Chatbar.gameObject);
     }
 
@@ -32,14 +36,14 @@ public class ChatLogUI : MonoBehaviour
         Debug.Log("SENDING!");
         // read text from bar, send it off to the networked chat
         FindObjectOfType<TextChat>().SendChatMessage(Chatbar.text);
-        EventSystem.SetSelectedGameObject(null);
-        Chatbar.text = "";
+        DeselectChat();
     }
 
     public void DeselectChat()
     {
         EventSystem.SetSelectedGameObject(null);
         Chatbar.text = "";
+        Closed = true;
     }
 
     public void AddMessage(ChatMessage message)
@@ -51,6 +55,11 @@ public class ChatLogUI : MonoBehaviour
         // message is not prepared to be scaled and put into box yet, need to wait on content fitter
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded += AlignMessage;
+
+        if (Closed)
+        {
+            MissedMessageIndicator.SetActive(true);
+        }
     }
 
     public void AlignMessage(float newHeight, GameObject newMessage)
