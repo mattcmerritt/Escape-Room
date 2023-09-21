@@ -706,11 +706,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: 472d89fe-1ef7-4b6d-9092-8ea3b9370205
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: Escape-Room
+  organizationId: qugdd
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
