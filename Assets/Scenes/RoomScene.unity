@@ -6834,9 +6834,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1970576734}
-  - component: {fileID: 1970576736}
   - component: {fileID: 1970576735}
   - component: {fileID: 1970576737}
+  - component: {fileID: 1970576738}
   m_Layer: 0
   m_Name: Fake Book
   m_TagString: Untagged
@@ -6851,7 +6851,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970576733}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.45451945, y: 0.54167527, z: -0.45451945, w: -0.54167527}
   m_LocalPosition: {x: 4.827, y: 0.461, z: 0.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6859,7 +6859,7 @@ Transform:
   - {fileID: 66640348303732839}
   m_Father: {fileID: 0}
   m_RootOrder: 35
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 80}
 --- !u!114 &1970576735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6876,24 +6876,6 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &1970576736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970576733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc574bc832470441a559f0ca505e60d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PanelID: 3D Object
-  CopyRotation: 0
-  ItemInstructions: 'Press A or D to spin object around
-
-    Press Escape to close
-    window'
 --- !u!65 &1970576737
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6905,8 +6887,25 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.10294219, y: 0.2291925, z: 0.13640018}
-  m_Center: {x: -0.0064468607, y: -0.0021876097, z: 0.00052102655}
+  m_Size: {x: 0.21337724, y: 0.04916711, z: 0.13640018}
+  m_Center: {x: 0.00095945963, y: 0.017530365, z: 0.00052102655}
+--- !u!114 &1970576738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970576733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 635c1bf4ca300e34a9d3a984151edebc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelID: 3D Object
+  CopyRotation: 0
+  IsCopy: 0
+  Original: {fileID: 0}
+  ItemInstructions: Click and drag to move around
 --- !u!1001 &1977072140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7331,7 +7330,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839659267352586973}
-  m_LocalRotation: {x: -0.8022968, y: 0.5969253, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_ConstrainProportionsScale: 0
@@ -7345,7 +7344,7 @@ Transform:
   - {fileID: 5755090981040372996}
   m_Father: {fileID: 1970576734}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -106.7}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &74677772259421893
 Transform:
   m_ObjectHideFlags: 0
@@ -8813,6 +8812,10 @@ PrefabInstance:
     - target: {fileID: 2503600232031030537, guid: 2b3d452e119e7e64896ae04e4b1bb120, type: 3}
       propertyPath: m_Name
       value: Server Chat Log
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503600232031030537, guid: 2b3d452e119e7e64896ae04e4b1bb120, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2503600232031030550, guid: 2b3d452e119e7e64896ae04e4b1bb120, type: 3}
       propertyPath: m_RootOrder
