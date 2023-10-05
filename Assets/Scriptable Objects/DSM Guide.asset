@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DSM Guide
   m_EditorClassIdentifier: 
   Name: DSM Guide
-  Icon: {fileID: 0}
-  UsedIcon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: b238eaf111715294280b81d47b57d60b, type: 3}
+  UsedIcon: {fileID: 21300000, guid: b238eaf111715294280b81d47b57d60b, type: 3}
   Description: A copy of the DSM Quick Guide. Using this item will open a link to
     an e-book in your browser.
