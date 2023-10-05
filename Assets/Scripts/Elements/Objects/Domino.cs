@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEditor;
 
-public class Domino : FullObject
+public class Domino : DraggableObject
 {
     /* 
      * Attempt to grid the dots to look like dominos, 
@@ -105,5 +106,12 @@ public class Domino : FullObject
                 SecretText.text = "" + Secret;
             }
         }
+    }
+
+    public override void Interact(PlayerInteractions player) {
+        base.Interact(player);
+        GameObject copy = GameObject.Find("Object Viewer").GetComponentInChildren<Domino>().gameObject;
+        copy.transform.localEulerAngles = new Vector3(-90f, copy.transform.localEulerAngles.y, copy.transform.localEulerAngles.z);
+        copy.transform.localScale *= 2;
     }
 }
