@@ -2150,7 +2150,7 @@ GameObject:
   - component: {fileID: 782203863}
   - component: {fileID: 782203862}
   m_Layer: 0
-  m_Name: Lobby
+  m_Name: Lobby Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2802,7 +2802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ProtocolType: 0
+  m_ProtocolType: 1
   m_MaxPacketQueueSize: 128
   m_MaxPayloadSize: 6144
   m_HeartbeatTimeoutMS: 500
@@ -5540,7 +5540,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1387586997}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1913811421}
+        m_TargetAssemblyTypeName: GameLobbySetupUI, Assembly-CSharp
+        m_MethodName: JoinLobby
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1387586997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5592,7 +5604,7 @@ GameObject:
   - component: {fileID: 1427268084}
   - component: {fileID: 1427268083}
   m_Layer: 0
-  m_Name: Lobby  Input Box
+  m_Name: Lobby Input Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7915,6 +7927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameLobby: {fileID: 782203862}
   MenuParent: {fileID: 810075302}
+  LobbyCodeInput: {fileID: 1427268083}
 --- !u!1001 &1915613888
 PrefabInstance:
   m_ObjectHideFlags: 0
