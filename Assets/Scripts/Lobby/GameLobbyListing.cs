@@ -25,8 +25,8 @@ public class GameLobbyListing : MonoBehaviour
         JoinButton.onClick.AddListener(() =>
         {
             Debug.Log("<color=white>Lobby List:</color> Join button was pressed for " + lobbyCode);
-            GameLobby gameLobby = FindObjectOfType<GameLobby>();
-            gameLobby.JoinRelay(lobbyCode);
+            GameLobbySetupUI gameLobbyUI = FindObjectOfType<GameLobbySetupUI>();
+            gameLobbyUI.JoinLobby(lobbyCode);
         });
     }
 }
