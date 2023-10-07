@@ -52,11 +52,20 @@ public class GameLobbySetupUI : MonoBehaviour
 
     public async void ListLobbies()
     {
+        // wipe out old entries
+        foreach (Transform child in ContentWindow.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         QueryResponse queryResponse = await GameLobby.ListLobbies();
         foreach (Lobby lobby in queryResponse.Results)
         {
             GameObject entry = Instantiate(LobbyListEntry, ContentWindow.transform);
-            LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobby);
+            string lobbyCode = lobby.LobbyCode;
+            int players = lobby.Players.Count;
+            int maxPlayers = lobby.MaxPlayers;
+            LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobbyCode, players, maxPlayers);
         }
     }
 }

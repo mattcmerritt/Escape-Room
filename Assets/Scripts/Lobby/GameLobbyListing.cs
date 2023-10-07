@@ -14,18 +14,15 @@ public class GameLobbyListing : MonoBehaviour
     [SerializeField] private string LobbyCode;
     [SerializeField] private int PlayerCount, MaxPlayers;
 
-    public void Initialize(Lobby lobby)
+    public void Initialize(string lobbyCode, int players, int maxPlayers)
     {
-        LobbyCode = lobby.LobbyCode;
-        PlayerCount = lobby.Players.Count;
-        MaxPlayers = lobby.MaxPlayers;
-
-        LobbyCodeLabel.text = LobbyCode;
-        PlayerCounter.text = PlayerCount + "/" + MaxPlayers;
+        LobbyCodeLabel.text = lobbyCode;
+        PlayerCounter.text = players + "/" + maxPlayers;
         JoinButton.onClick.AddListener(() =>
         {
+            Debug.Log("<color=white>Lobby List:</color> Join button was pressed for " + lobbyCode);
             GameLobby gameLobby = FindObjectOfType<GameLobby>();
-            gameLobby.JoinRelay(LobbyCode);
+            gameLobby.JoinRelay(lobbyCode);
         });
     }
 }
