@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class PillBottle : FullObject 
+public class PillBottle : DraggableObject 
 {
     [SerializeField] private Animator Animator;
     private bool IsOpen;
@@ -90,5 +90,11 @@ public class PillBottle : FullObject
         // Debug.Log("animating " + gameObject.name);
         Animator.SetTrigger("Open");
         IsOpen = true;
+    }
+
+    public override void Interact(PlayerInteractions player) {
+        base.Interact(player);
+        GameObject copy = GameObject.Find("Object Viewer").GetComponentInChildren<PillBottle>().gameObject;
+        copy.transform.localScale *= 1.5f; // TODO: get it to not clip into the camera
     }
 }
