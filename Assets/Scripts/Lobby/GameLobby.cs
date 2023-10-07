@@ -15,6 +15,7 @@ using UnityEngine;
 // Code taken from tutorial found at: https://www.youtube.com/watch?v=-KDlEBfCBiU
 public class GameLobby : MonoBehaviour
 {
+    private Lobby CreatedLobby;
     [SerializeField] private string RelayCode, LobbyCode;
     [SerializeField] private float HeartbeatTimer;
     [SerializeField] private bool HeartbeatActive;
@@ -38,8 +39,8 @@ public class GameLobby : MonoBehaviour
             if (HeartbeatTimer <= 0f)
             {
                 HeartbeatTimer = 15f;
-                Debug.Log("<color=red>Heartbeat:</color> Lobby received a heartbeat.");
-                await LobbyService.Instance.SendHeartbeatPingAsync(LobbyCode);
+                Debug.Log("<color=red>Heartbeat:</color> Lobby " + CreatedLobby.LobbyCode + " received a heartbeat.");
+                await LobbyService.Instance.SendHeartbeatPingAsync(CreatedLobby.Id);
             }
         }
     }
@@ -62,6 +63,7 @@ public class GameLobby : MonoBehaviour
             int maxPlayers = 4; // TODO: reconfigure this to match proper information
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
             LobbyCode = lobby.LobbyCode;
+            CreatedLobby = lobby;
             Debug.Log("<color=blue>Lobby:</color> Created Lobby: " + lobby.Name + ", Lobby Code: " + lobby.LobbyCode);
             HeartbeatActive = true;
             HeartbeatTimer = 15f;
