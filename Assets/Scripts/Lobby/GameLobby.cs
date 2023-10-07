@@ -37,8 +37,9 @@ public class GameLobby : MonoBehaviour
             HeartbeatTimer -= Time.deltaTime;
             if (HeartbeatTimer <= 0f)
             {
-                await LobbyService.Instance.SendHeartbeatPingAsync(LobbyCode);
                 HeartbeatTimer = 15f;
+                Debug.Log("<color=red>Heartbeat:</color> Lobby received a heartbeat.");
+                await LobbyService.Instance.SendHeartbeatPingAsync(LobbyCode);
             }
         }
     }
