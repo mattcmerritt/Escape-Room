@@ -58,7 +58,7 @@ public abstract class UtilityObject : SimpleObject
         };
     }
 
-    public void Collect()
+    public virtual void Collect()
     {
         Inventory.AddItem(this);
 
@@ -78,7 +78,7 @@ public abstract class UtilityObject : SimpleObject
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void CollectServerRpc()
+    protected virtual void CollectServerRpc()
     {
         IsCollected.Value = true;
     }
