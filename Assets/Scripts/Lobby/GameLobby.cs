@@ -16,6 +16,8 @@ using UnityEngine;
 public class GameLobby : MonoBehaviour
 {
     [SerializeField] private string RelayCode, LobbyCode;
+    [SerializeField] private float HeartbeatTimer;
+    [SerializeField] private bool HeartbeatActive;
 
     private async void Start() 
     {
@@ -26,6 +28,19 @@ public class GameLobby : MonoBehaviour
             Debug.Log("<color=white>Authentication:</color> Signed in " + AuthenticationService.Instance.PlayerId);
         };
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+    }
+
+    async void Update()
+    {
+        if (HeartbeatActive)
+        {
+            HeartbeatTimer -= Time.deltaTime;
+            if (HeartbeatTimer <= 0f)
+            {
+                await LobbyService.Instance.SendHeartbeatPingAsync(LobbyCode);
+                HeartbeatTimer = 15f;
+            }
+        }
     }
 
     public async void CreateLobby()
@@ -47,6 +62,8 @@ public class GameLobby : MonoBehaviour
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
             LobbyCode = lobby.LobbyCode;
             Debug.Log("<color=blue>Lobby:</color> Created Lobby: " + lobby.Name + ", Lobby Code: " + lobby.LobbyCode);
+            HeartbeatActive = true;
+            HeartbeatTimer = 15f;
         }
         catch (LobbyServiceException e)
         {
