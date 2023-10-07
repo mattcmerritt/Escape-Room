@@ -74,11 +74,11 @@ public class GameLobby : MonoBehaviour
         }
     }
 
-    public async void JoinLobby(string joinCode)
+    public async void JoinLobby(string id)
     {
         try
         {
-            Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(joinCode);
+            Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(id);
             string relayCode = lobby.Data["RelayCode"].Value;
             JoinRelay(relayCode);
             LobbyCode = lobby.LobbyCode;
@@ -97,7 +97,7 @@ public class GameLobby : MonoBehaviour
             string output = "<color=blue>Lobby:</color> Lobbies found: " + queryResponse.Results.Count + "\n";
             foreach (Lobby lobby in queryResponse.Results)
             {
-                output += "\t" + lobby.LobbyCode + " " + lobby.Players.Count + "/" + lobby.MaxPlayers;
+                output += "\t" + lobby.Id + " " + lobby.Players.Count + "/" + lobby.MaxPlayers;
             }
             Debug.Log(output);
             return queryResponse;

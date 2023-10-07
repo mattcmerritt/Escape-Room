@@ -27,9 +27,9 @@ public class GameLobbySetupUI : MonoBehaviour
         CloseUI();
     }
 
-    public void JoinLobby(string lobbyCode)
+    public void JoinLobby(string id)
     {
-        GameLobby.JoinLobby(lobbyCode);
+        GameLobby.JoinLobby(id);
         CloseUI();
     }
 
