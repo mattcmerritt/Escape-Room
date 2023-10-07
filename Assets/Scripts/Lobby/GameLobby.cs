@@ -93,7 +93,7 @@ public class GameLobby : MonoBehaviour
     {
         try
         {
-            Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(code);
+            Lobby lobby = await Lobbies.Instance.JoinLobbyByCodeAsync(code);
             string relayCode = lobby.Data["RelayCode"].Value;
             JoinRelay(relayCode);
             LobbyCode = lobby.LobbyCode;
