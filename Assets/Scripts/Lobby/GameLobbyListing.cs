@@ -16,6 +16,10 @@ public class GameLobbyListing : MonoBehaviour
 
     public void Initialize(string lobbyCode, int players, int maxPlayers)
     {
+        LobbyCode = lobbyCode;
+        PlayerCount = players;
+        MaxPlayers = maxPlayers;
+
         LobbyCodeLabel.text = lobbyCode;
         PlayerCounter.text = players + "/" + maxPlayers;
         JoinButton.onClick.AddListener(() =>
