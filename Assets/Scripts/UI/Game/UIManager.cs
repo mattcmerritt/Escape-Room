@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.Services.Lobbies;
+using Unity.Services.Lobbies.Models;
 using UnityEngine.UI;
 
 // Helper class to pair a UI panel with a unique identifier
@@ -40,9 +42,22 @@ public class UIManager : MonoBehaviour
     // Item popup manager
     [SerializeField] private PopupUI Popups;
 
+    // Lobby code label
+    [SerializeField] private TMP_Text LobbyCodeLabel;
+    [SerializeField] private GameLobby CurrentLobby;
+
+    // Show the lobby code at the start
+    private void Start()
+    {
+        CurrentLobby = FindObjectOfType<GameLobby>();
+    }
+
     // checking key presses to close/open UI
     private void Update()
     {
+        // Update lobby text
+        LobbyCodeLabel.text = "Lobby Code:\n" + CurrentLobby.GetCurrentJoinCode();
+
         // Using tab to toggle inventory
         if (Input.GetKeyDown(KeyCode.Tab))
         {

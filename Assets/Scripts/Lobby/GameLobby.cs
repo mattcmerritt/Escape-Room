@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Services.Authentication;
@@ -14,13 +15,15 @@ using UnityEngine;
 // Code taken from tutorial found at: https://www.youtube.com/watch?v=-KDlEBfCBiU
 public class GameLobby : MonoBehaviour
 {
+    [SerializeField] private string RelayCode, LobbyCode;
+
     private async void Start() 
     {
         await UnityServices.InitializeAsync();
 
         AuthenticationService.Instance.SignedIn += () =>
         {
-            Debug.Log("<color=white>Lobby:</color> Signed in " + AuthenticationService.Instance.PlayerId);
+            Debug.Log("<color=white>Authentication:</color> Signed in " + AuthenticationService.Instance.PlayerId);
         };
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
@@ -29,10 +32,20 @@ public class GameLobby : MonoBehaviour
     {
         try
         {
-            string lobbyName = "MyLobby";
+            // creating relay for netcode
+            string relayCode = await CreateRelay();
+            CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
+            {
+                Data = new Dictionary<string, DataObject>
+                {
+                    { "RelayCode", new DataObject(DataObject.VisibilityOptions.Public, relayCode) }
+                }
+            };
+            // creating lobby
+            string lobbyName = "Escape Room";
             int maxPlayers = 4; // TODO: reconfigure this to match proper information
-            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers);
-
+            Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
+            LobbyCode = lobby.LobbyCode;
             Debug.Log("<color=blue>Lobby:</color> Created Lobby: " + lobby.Name + ", Lobby Code: " + lobby.LobbyCode);
         }
         catch (LobbyServiceException e)
@@ -41,14 +54,49 @@ public class GameLobby : MonoBehaviour
         }
     }
 
-    public async void CreateRelay()
+    public async void JoinLobby(string joinCode)
+    {
+        try
+        {
+            Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(joinCode);
+            string relayCode = lobby.Data["RelayCode"].Value;
+            JoinRelay(relayCode);
+            LobbyCode = lobby.LobbyCode;
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.LogError("<color=blue>Lobby:</color> " + e);
+        }
+    }
+
+    public async Task<QueryResponse> ListLobbies()
+    {
+        try
+        {
+            QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
+            string output = "<color=blue>Lobby:</color> Lobbies found: " + queryResponse.Results.Count + "\n";
+            foreach (Lobby lobby in queryResponse.Results)
+            {
+                output += "\t" + lobby.Name + " " + lobby.MaxPlayers;
+            }
+            Debug.Log(output);
+            return queryResponse;
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.LogError("<color=blue>Lobby:</color> " + e);
+            return null;
+        }
+    }
+
+    public async Task<string> CreateRelay()
     {
         try
         {
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
             Debug.Log("<color=green>Relay:</color> Created Relay with code: " + joinCode);
-
+            RelayCode = joinCode;
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
             // OLD VERSION
@@ -62,10 +110,12 @@ public class GameLobby : MonoBehaviour
             );
             */
             NetworkManager.Singleton.StartHost();
+            return joinCode;
         }
         catch (RelayServiceException e)
         {
             Debug.LogError("<color=green>Relay:</color> " + e);
+            return null;
         }
     }
 
@@ -75,7 +125,7 @@ public class GameLobby : MonoBehaviour
         {
             Debug.Log("<color=green>Relay:</color> Joining Relay with code " + joinCode);
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
-
+            RelayCode = joinCode;
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
             // OLD VERSION
@@ -95,5 +145,10 @@ public class GameLobby : MonoBehaviour
         {
             Debug.LogError("<color=green>Relay:</color> " + e);
         }
+    }
+
+    public string GetCurrentJoinCode()
+    {
+        return LobbyCode;
     }
 }
