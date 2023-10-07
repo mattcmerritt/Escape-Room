@@ -74,11 +74,26 @@ public class GameLobby : MonoBehaviour
         }
     }
 
-    public async void JoinLobby(string id)
+    public async void JoinLobbyById(string id)
     {
         try
         {
             Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(id);
+            string relayCode = lobby.Data["RelayCode"].Value;
+            JoinRelay(relayCode);
+            LobbyCode = lobby.LobbyCode;
+        }
+        catch (LobbyServiceException e)
+        {
+            Debug.LogError("<color=blue>Lobby:</color> " + e);
+        }
+    }
+
+    public async void JoinLobbyByCode(string code)
+    {
+        try
+        {
+            Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(code);
             string relayCode = lobby.Data["RelayCode"].Value;
             JoinRelay(relayCode);
             LobbyCode = lobby.LobbyCode;

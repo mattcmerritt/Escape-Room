@@ -23,13 +23,13 @@ public class GameLobbySetupUI : MonoBehaviour
 
     public void JoinLobby()
     {
-        GameLobby.JoinLobby(LobbyCodeInput.text);
+        GameLobby.JoinLobbyByCode(LobbyCodeInput.text);
         CloseUI();
     }
 
     public void JoinLobby(string id)
     {
-        GameLobby.JoinLobby(id);
+        GameLobby.JoinLobbyById(id);
         CloseUI();
     }
 
