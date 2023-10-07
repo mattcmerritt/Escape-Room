@@ -23,6 +23,8 @@ public class GameLobbyListing : MonoBehaviour
         LobbyCodeLabel.text = id;
         PlayerCounter.text = players + "/" + maxPlayers;
 
+        Debug.Log("<color=white>Lobby List:</color> Join button was given listener for " + id);
+
         JoinButton.onClick.AddListener(() =>
         {
             Debug.Log("<color=white>Lobby List:</color> Join button was pressed for " + id);

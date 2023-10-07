@@ -89,18 +89,20 @@ public class GameLobby : MonoBehaviour
         }
     }
 
-    public async Task<QueryResponse> ListLobbies()
+    public async Task<List<SimpleLobbyData>> ListLobbies()
     {
         try
         {
             QueryResponse queryResponse = await Lobbies.Instance.QueryLobbiesAsync();
             string output = "<color=blue>Lobby:</color> Lobbies found: " + queryResponse.Results.Count + "\n";
+            List<SimpleLobbyData> lobbies = new List<SimpleLobbyData>();
             foreach (Lobby lobby in queryResponse.Results)
             {
                 output += "\t" + lobby.Id + " " + lobby.Players.Count + "/" + lobby.MaxPlayers;
+                lobbies.Add(new SimpleLobbyData(lobby.Id, lobby.Name, lobby.Players.Count, lobby.MaxPlayers));
             }
             Debug.Log(output);
-            return queryResponse;
+            return lobbies;
         }
         catch (LobbyServiceException e)
         {

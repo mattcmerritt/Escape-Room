@@ -58,13 +58,13 @@ public class GameLobbySetupUI : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        QueryResponse queryResponse = await GameLobby.ListLobbies();
-        foreach (Lobby lobby in queryResponse.Results)
+        List<SimpleLobbyData> lobbies = await GameLobby.ListLobbies();
+        foreach (SimpleLobbyData lobby in lobbies)
         {
             GameObject entry = Instantiate(LobbyListEntry, ContentWindow.transform);
             string lobbyId = lobby.Id;
             string lobbyName = lobby.Name;
-            int players = lobby.Players.Count;
+            int players = lobby.Players;
             int maxPlayers = lobby.MaxPlayers;
             LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobbyName, lobbyId, players, maxPlayers);
         }
