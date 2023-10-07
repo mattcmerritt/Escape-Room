@@ -97,7 +97,7 @@ public class GameLobby : MonoBehaviour
             string output = "<color=blue>Lobby:</color> Lobbies found: " + queryResponse.Results.Count + "\n";
             foreach (Lobby lobby in queryResponse.Results)
             {
-                output += "\t" + lobby.Name + " " + lobby.MaxPlayers;
+                output += "\t" + lobby.LobbyCode + " " + lobby.Players.Count + "/" + lobby.MaxPlayers;
             }
             Debug.Log(output);
             return queryResponse;
