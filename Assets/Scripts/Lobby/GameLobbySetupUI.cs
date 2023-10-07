@@ -55,9 +55,8 @@ public class GameLobbySetupUI : MonoBehaviour
         QueryResponse queryResponse = await GameLobby.ListLobbies();
         foreach (Lobby lobby in queryResponse.Results)
         {
-            GameObject entry = Instantiate(LobbyListEntry);
+            GameObject entry = Instantiate(LobbyListEntry, ContentWindow.transform);
             LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobby);
-            entry.transform.SetParent(ContentWindow.transform);
         }
     }
 }
