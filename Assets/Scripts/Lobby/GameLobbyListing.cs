@@ -11,10 +11,10 @@ public class GameLobbyListing : MonoBehaviour
     [SerializeField] private TMP_Text LobbyCodeLabel, PlayerCounter;
     [SerializeField] private Button JoinButton;
 
-    [SerializeField] private string LobbyId;
+    [SerializeField] private string LobbyId, LobbyName;
     [SerializeField] private int PlayerCount, MaxPlayers;
 
-    public void Initialize(string id, int players, int maxPlayers)
+    public void Initialize(string id, string name, int players, int maxPlayers)
     {
         LobbyId = id;
         PlayerCount = players;
@@ -22,6 +22,7 @@ public class GameLobbyListing : MonoBehaviour
 
         LobbyCodeLabel.text = id;
         PlayerCounter.text = players + "/" + maxPlayers;
+
         JoinButton.onClick.AddListener(() =>
         {
             Debug.Log("<color=white>Lobby List:</color> Join button was pressed for " + id);

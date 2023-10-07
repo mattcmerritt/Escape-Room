@@ -62,10 +62,11 @@ public class GameLobbySetupUI : MonoBehaviour
         foreach (Lobby lobby in queryResponse.Results)
         {
             GameObject entry = Instantiate(LobbyListEntry, ContentWindow.transform);
-            string lobbyCode = lobby.LobbyCode;
+            string lobbyId = lobby.Id;
+            string lobbyName = lobby.Name;
             int players = lobby.Players.Count;
             int maxPlayers = lobby.MaxPlayers;
-            LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobbyCode, players, maxPlayers);
+            LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobbyName, lobbyId, players, maxPlayers);
         }
     }
 }
