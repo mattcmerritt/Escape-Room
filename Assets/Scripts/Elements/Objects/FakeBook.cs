@@ -2,44 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FakeBook : DraggableObject
+public class FakeBook : UtilityObject
 {
-    [SerializeField] private MeshRenderer KeyHover;
-    private bool FirstTimeSetup;
-    private SharedInventory Inventory;
-    [SerializeField] private UtilityObject ItemInBook;
+    private SharedInventory PlayerInventory;
+    [SerializeField] private UtilityObject[] ItemsInBook;
 
     protected override void Start()
     {
         base.Start();
 
-        FirstTimeSetup = true;
-
-        Inventory = FindObjectOfType<SharedInventory>();
+        PlayerInventory = FindObjectOfType<SharedInventory>();
     }
 
-    protected override void Update() {
-        base.Update();
-
-        if(FirstTimeSetup && IsCopy) {
-            // KeyHover.enabled = true;
-            FirstTimeSetup = false;
-        }
-
-        UtilityObject keyItem = Inventory.CheckForItem("Key");
-        if(IsCopy && keyItem != null)
+    public override void Collect() {
+        string name = "";
+        foreach(UtilityObject obj in ItemsInBook)
         {
-            FakeBookKey key = (FakeBookKey) keyItem;
-            if(Input.GetMouseButtonDown(1)) 
+            PlayerInventory.AddItem(obj);
+
+            // add comma if there is already something in the name string (items were added already)
+            if(name != "")
             {
-                // TODO: play a hinge opening animation
-                Inventory.AddItem(ItemInBook);
-
-                UIManager manager = FindObjectOfType<UIManager>();
-                manager.ShowPopupPanel(ItemInBook.ItemDetails.Name, ItemInBook.ItemDetails.Icon);
-
-                Debug.Log("Click with key");
+                name += ", ";
             }
+
+            name += obj.ItemDetails.Name;
         }
+
+        UIManager manager = FindObjectOfType<UIManager>();
+        manager.ShowPopupPanel(name, ItemDetails.Icon);
+
+        // Collect the object for all clients
+        CollectServerRpc();
     }
 }
