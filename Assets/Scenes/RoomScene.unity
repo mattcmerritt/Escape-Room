@@ -9262,6 +9262,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777426721}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1811023928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8852591339250903432, guid: 56990466620b13b4ebf0de81b6b9b7d8, type: 3}
+  m_PrefabInstance: {fileID: 1915613888}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6befb6aaecd018549a8d73ed10be09db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1862921282
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9473,17 +9484,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Envelope 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8183436652581991229, guid: 56990466620b13b4ebf0de81b6b9b7d8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8852591339250903431, guid: 56990466620b13b4ebf0de81b6b9b7d8, type: 3}
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8852591339250903431, guid: 56990466620b13b4ebf0de81b6b9b7d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.795
+      value: 1.497
       objectReference: {fileID: 0}
     - target: {fileID: 8852591339250903431, guid: 56990466620b13b4ebf0de81b6b9b7d8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.011
+      value: -0.378
       objectReference: {fileID: 0}
     - target: {fileID: 8852591339250903431, guid: 56990466620b13b4ebf0de81b6b9b7d8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9629,6 +9644,7 @@ MonoBehaviour:
   ObjectViewer: {fileID: 3590472296295695430, guid: c38f40949c7fec34382e6101dd7d2f9c, type: 3}
   SampleRenderTexture: {fileID: 8400000, guid: 28daee9ac4e46a24b9c6a5834944f0fb, type: 2}
   KeyHover: {fileID: 1027784687}
+  ItemInBook: {fileID: 1811023928}
 --- !u!1001 &1977072140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15326,6 +15342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Locked Cabinet (4 Digit Blue)
       objectReference: {fileID: 0}
+    - target: {fileID: 848769570643461709, guid: 6a793ba856f3e8d418c4657d0c801713, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7242205831661717441, guid: 6a793ba856f3e8d418c4657d0c801713, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 3552265928
@@ -15611,7 +15631,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 4874126678125670354, guid: 97a6c94b3d4682943bd1d44cbf686321, type: 3}
+  - {fileID: 2100000, guid: 332d1b47cee90a545b7e8cd46acd959f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Clue 1
   m_EditorClassIdentifier: 
   Name: Clue 1
-  Icon: {fileID: 21300000, guid: a8b41fff8462ff842a14327df65e4ca7, type: 3}
-  UsedIcon: {fileID: 21300000, guid: 7b8b9b5b057ec654a8172025ff3c9483, type: 3}
+  Icon: {fileID: 21300000, guid: 440d1ea957d5bd04cbfaeaaf9c7a22eb, type: 3}
+  UsedIcon: {fileID: 21300000, guid: ba71aa3247d03aa40933af12a467183a, type: 3}
   Description: An envelope containing information about the first puzzle. Open it
     to get started!
   ClueDescription: "To find out the town your patient lives in, you will need to
