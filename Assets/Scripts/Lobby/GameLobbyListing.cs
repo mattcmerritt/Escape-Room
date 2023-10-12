@@ -14,6 +14,7 @@ public class GameLobbyListing : MonoBehaviour
     [SerializeField] private string LobbyId, LobbyName;
     [SerializeField] private int PlayerCount, MaxPlayers;
 
+    // TODO: FIGURE OUT WHY THE FIRST TIME A LOBBY IS LOADED, THE ENTRY IS EMPTY
     public void Initialize(string id, string name, int players, int maxPlayers)
     {
         LobbyId = id;
@@ -25,6 +26,7 @@ public class GameLobbyListing : MonoBehaviour
 
         Debug.Log("<color=white>Lobby List:</color> Join button was given listener for " + id);
 
+        // TODO: FIGURE OUT WHY THIS IS NOT FIRING WHEN THE BUTTON IS PRESSED
         JoinButton.onClick.AddListener(() =>
         {
             Debug.Log("<color=white>Lobby List:</color> Join button was pressed for " + id);
