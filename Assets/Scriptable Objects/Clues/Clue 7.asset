@@ -32,11 +32,20 @@ MonoBehaviour:
     should call. Then call the caregiver using the phone in the room. If you get
     confirmation that they are coming to get your patient, you have \u201Cescaped
     the room\u201D! "
-  Announcement: "Call the number you find from the Medication Guide Book and escape
-    the room!\n\nDev Note: The Medication Guide Book is available, but unfortunately
-    does not have the additional writing in it. We're still working on making a way
-    to implement this puzzle, so here are the numbers that would be written next
-    to the medicines:\n\nhaloperidol (Haldol) (pg. 177) -> 1, olanzapine (Zyprexa)
-    (pg. 273) -> 3,\r\nrisperidone (Risperdal) (pg. 336) -> 3, clozapine (Clozaril)
-    (pg. 83) -> 4, \r\naripiprazole (Abilify) (pg. 28) -> 4, ziprasidone (Geodon)
-    (pg. 409) -> 6,\r\nquetiapine (Seroquel) (pg. 324) -> 9\r\n\n"
+  Announcement: 'Call the number you find from the Medication Guide Book and escape
+    the room!
+
+
+    Dev Note: The Medication Guide Book is available, but unfortunately
+    does not have the additional writing in it. We''re still working on making a
+    way to implement this puzzle, so here are the numbers that would be written next
+    to the medicines:
+
+
+    haloperidol (Haldol) -> 1, olanzapine (Zyprexa) -> 3,
+    risperidone (Risperdal) -> 3,
+
+    clozapine (Clozaril) -> 4, aripiprazole (Abilify)
+    -> 4, ziprasidone (Geodon) -> 6,
+
+    quetiapine (Seroquel) -> 9'
