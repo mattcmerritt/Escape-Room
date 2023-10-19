@@ -3103,8 +3103,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 178009428335142187}
   m_HandleRect: {fileID: 178009428335142184}
   m_Direction: 2
-  m_Value: 1.0000037
-  m_Size: 0.87499994
+  m_Value: 1.0000043
+  m_Size: 0.875
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13762,10 +13762,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1. Pet therapy \u2013 page 28 \r\n2. Music therapy \u2013 page 83 \r\n3.
-    Aromatherapy \u2013 page 177\r\n4. Reduce room noise \u2013 page 273 \r\n5. Offer
-    reassurance \u2013 page 324 \r\n6. Gentle touch \u2013 page 336\r\n7. Comfort
-    items \u2013 page 409 "
+  m_text: "Match the numbers for the 7 \"calm down pills\" with the corresponding
+    treatments to obtain the digits in the phone number in order (excluding the area
+    code, which you found earlier).\r\n\r\nPills: \r\nhaloperidol (Haldol) -> 1,
+    olanzapine (Zyprexa) -> 3, risperidone (Risperdal) -> 3, clozapine (Clozaril)
+    -> 4, aripiprazole (Abilify) -> 4, ziprasidone (Geodon) -> 6, quetiapine (Seroquel)
+    -> 9\r\n\r\nTreatments:\r\n1. Pet therapy \u2013 page 28 \r\n2. Music therapy
+    \u2013 page 83 \r\n3. Aromatherapy \u2013 page 177\r\n4. Reduce room noise \u2013
+    page 273 \r\n5. Offer reassurance \u2013 page 324 \r\n6. Gentle touch \u2013
+    page 336\r\n7. Comfort items \u2013 page 409 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13792,8 +13797,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -21758,8 +21763,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
