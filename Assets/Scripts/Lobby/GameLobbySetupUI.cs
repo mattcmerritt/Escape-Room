@@ -66,7 +66,7 @@ public class GameLobbySetupUI : MonoBehaviour
             string lobbyName = lobby.Name;
             int players = lobby.Players;
             int maxPlayers = lobby.MaxPlayers;
-            LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobbyName, lobbyId, players, maxPlayers);
+            LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobbyId, lobbyName, players, maxPlayers);
         }
     }
 }

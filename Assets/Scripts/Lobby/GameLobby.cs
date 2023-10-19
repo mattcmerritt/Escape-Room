@@ -113,7 +113,7 @@ public class GameLobby : MonoBehaviour
             List<SimpleLobbyData> lobbies = new List<SimpleLobbyData>();
             foreach (Lobby lobby in queryResponse.Results)
             {
-                output += "\t" + lobby.Id + " " + lobby.Players.Count + "/" + lobby.MaxPlayers;
+                output += "\t" + lobby.Name + " " + lobby.Id + " " + lobby.Players.Count + "/" + lobby.MaxPlayers;
                 lobbies.Add(new SimpleLobbyData(lobby.Id, lobby.Name, lobby.Players.Count, lobby.MaxPlayers));
             }
             Debug.Log(output);
