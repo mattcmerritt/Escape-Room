@@ -12,24 +12,40 @@ public class GameLobbySetupUI : MonoBehaviour
     [SerializeField] private TMP_InputField LobbyCodeInput;
     [SerializeField] private GameObject LobbyListEntry;
     [SerializeField] private GameObject ContentWindow;
-    [SerializeField] private GameObject LobbyScreen, ListScreen;
+    [SerializeField] private GameObject LobbyScreen, ListScreen, JoinedLobbyScreen;
+    [SerializeField] private GameObject StartGameButton;
+
+    // Constantly check if the lobbies have marked themselves as started
+    // Necessary for the joining players to disable the UI
+    private void Update()
+    {
+        if (GameLobby.GetStarted())
+        {
+            CloseUI();
+        }
+    }
 
     public void CreateLobby()
     {
-        // GameLobby.CreateLobby();
         GameLobby.CreateLobby();
-        CloseUI();
+        ActivateJoinedLobbyScreen();
     }
 
     public void JoinLobby()
     {
         GameLobby.JoinLobbyByCode(LobbyCodeInput.text);
-        CloseUI();
+        ActivateJoinedLobbyScreen();
     }
 
     public void JoinLobby(string id)
     {
         GameLobby.JoinLobbyById(id);
+        ActivateJoinedLobbyScreen();
+    }
+
+    public void StartGame()
+    {
+        GameLobby.StartGame();
         CloseUI();
     }
 
@@ -48,6 +64,19 @@ public class GameLobbySetupUI : MonoBehaviour
     {
         LobbyScreen.SetActive(true);
         ListScreen.SetActive(false);
+    }
+
+    public void ActivateJoinedLobbyScreen()
+    {
+        LobbyScreen.SetActive(false);
+        ListScreen.SetActive(false);
+        JoinedLobbyScreen.SetActive(true);
+
+        // Only the host should have the option to start the game
+        if (GameLobby.IsLobbyHost())
+        {
+            StartGameButton.SetActive(true);
+        }
     }
 
     public async void ListLobbies()
