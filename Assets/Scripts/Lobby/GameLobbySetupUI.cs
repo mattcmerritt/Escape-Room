@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
+using Unity.Services.Authentication;
 using TMPro;
 
 public class GameLobbySetupUI : MonoBehaviour
@@ -16,6 +17,9 @@ public class GameLobbySetupUI : MonoBehaviour
     [SerializeField] private GameObject StartGameButton;
     [SerializeField] private GameObject PlayerListEntryPrefab;
     [SerializeField] private GameObject PlayerContentWindow;
+    [SerializeField] private TMP_Text LobbyCode, PlayerCounter;
+
+    private float ListPlayersTimer = 0.75f;
 
     // Constantly check if the lobbies have marked themselves as started
     // Necessary for the joining players to disable the UI
@@ -28,7 +32,24 @@ public class GameLobbySetupUI : MonoBehaviour
         }
         else
         {
-            ListPlayers();
+            if (GameLobby.LobbyActive())
+            {
+                // show the start button if host
+                if (GameLobby.IsLobbyHost())
+                {
+                    StartGameButton.SetActive(true);
+                }
+
+                // relisting the players
+                ListPlayersTimer -= Time.deltaTime;
+                if (ListPlayersTimer <= 0f)
+                {
+                    ListPlayersTimer = 0.75f;
+                    LobbyCode.text = "Code:\n" + GameLobby.GetCurrentJoinCode();
+                    PlayerCounter.text = "Players: " + GameLobby.GetCurrentPlayerCount();
+                    ListPlayers();
+                }
+            }
         }
     }
 
@@ -118,12 +139,14 @@ public class GameLobbySetupUI : MonoBehaviour
         foreach (Player p in players)
         {
             GameObject entry = Instantiate(PlayerListEntryPrefab, PlayerContentWindow.transform);
-            if (p.Data["IsObserver"].Value == "true")
-            {
-                // TODO: update the toggle value to reflect this status
-                // TODO: disable the toggle unless if the player is the host player
-            }
-            // TODO: add listener to call function in GameLobby to update the player data if host player
+            string playerName = p.Data["PlayerName"].Value;
+            bool isObserver = p.Data["IsObserver"].Value == "true";
+            bool isHost = p.Data["IsHost"].Value == "true";
+            string playerId = p.Id;
+            bool isYou = playerId == AuthenticationService.Instance.PlayerId;
+            entry.GetComponent<PlayerListingEntry>().Initialize(playerName, isHost, isObserver, playerId, isYou);
+
+            
         } 
     }
 }

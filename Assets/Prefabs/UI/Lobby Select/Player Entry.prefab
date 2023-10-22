@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 3293964752777980583}
   - component: {fileID: 2912300175742488421}
   m_Layer: 0
-  m_Name: Lobby Name
+  m_Name: Player Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1197470500752966371}
-  - component: {fileID: 1168660244669839045}
+  - component: {fileID: 8555117766233738151}
   m_Layer: 0
   m_Name: Player Entry
   m_TagString: Untagged
@@ -250,7 +250,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1168660244669839045
+--- !u!114 &8555117766233738151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -259,17 +259,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1197470500752966368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bffbeccdc0b7ad14ba6e553d044f9272, type: 3}
+  m_Script: {fileID: 11500000, guid: eb24d4d8fcf42f442b30aea80c1e9992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LobbyCodeLabel: {fileID: 2912300175742488421}
-  PlayerCounter: {fileID: 0}
-  JoinButton: {fileID: 0}
-  LobbyId: pMx33yYja3RjrBGbeYhUWk
-  LobbyName: Escape Room
-  PlayerCount: 1
-  MaxPlayers: 4
-  ButtonLoaded: 1
+  PlayerName: {fileID: 2912300175742488421}
+  IsObserverToggle: {fileID: 8987133002431317781}
 --- !u!1 &3089304311058636150
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +342,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4612474073761342463}
   toggleTransition: 1
   graphic: {fileID: 2604889286754891289}

@@ -51,24 +51,24 @@ public class GameLobby : MonoBehaviour
         }
 
         // checking for lobby updates every half second
-        if (JoinedLobby != null)
+        if (JoinedLobby != null && !Started)
         {
             LobbyUpdateTimer -= Time.deltaTime;
             if (LobbyUpdateTimer <= 0f)
             {
-                LobbyUpdateTimer = 0.5f;
+                LobbyUpdateTimer = 1f;
                 Debug.Log("<color=blue>Lobby:</color> Updating lobby data...");
                 CheckForLobbyUpdates();
             }
         }
 
         // checking for lobby updates every half second for the host (different functions)
-        if (CreatedLobby != null)
+        if (CreatedLobby != null && !Started)
         {
             LobbyUpdateTimer -= Time.deltaTime;
             if (LobbyUpdateTimer <= 0f)
             {
-                LobbyUpdateTimer = 0.5f;
+                LobbyUpdateTimer = 1f;
                 Debug.Log("<color=blue>Lobby:</color> Updating host lobby data...");
                 CheckForLobbyUpdatesHost();
             }
@@ -83,7 +83,7 @@ public class GameLobby : MonoBehaviour
             // creating relay for netcode
             CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
             {
-                Player = CreatePlayer(),
+                Player = CreatePlayer(true),
                 Data = new Dictionary<string, DataObject>
                 {
                     { "RelayCode", new DataObject(DataObject.VisibilityOptions.Public, "") },
@@ -164,7 +164,7 @@ public class GameLobby : MonoBehaviour
     private async void CheckForLobbyUpdatesHost()
     {
         Lobby updatedLobby = await LobbyService.Instance.GetLobbyAsync(CreatedLobby.Id);
-        if (updatedLobby.Data["GameStarted"].Value == "1")
+        if (updatedLobby.Data["GameStarted"].Value == "1" && !Started)
         {
             JoinRelay(updatedLobby.Data["RelayCode"].Value);
             Started = true;
@@ -179,7 +179,7 @@ public class GameLobby : MonoBehaviour
         {
             JoinLobbyByIdOptions joinLobbyByIdOptions = new JoinLobbyByIdOptions
             {
-                Player = CreatePlayer()
+                Player = CreatePlayer(false)
             };
             Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(id, joinLobbyByIdOptions);
             LobbyCode = lobby.LobbyCode;
@@ -198,7 +198,7 @@ public class GameLobby : MonoBehaviour
         {
             JoinLobbyByCodeOptions joinLobbyByCodeOptions = new JoinLobbyByCodeOptions
             {
-                Player = CreatePlayer()
+                Player = CreatePlayer(false)
             };
             Lobby lobby = await Lobbies.Instance.JoinLobbyByCodeAsync(code, joinLobbyByCodeOptions);
             LobbyCode = lobby.LobbyCode;
@@ -221,7 +221,7 @@ public class GameLobby : MonoBehaviour
                     Filters = new List<QueryFilter>
                     {
                         new QueryFilter(QueryFilter.FieldOptions.AvailableSlots, "0", QueryFilter.OpOptions.GT),
-                        new QueryFilter(QueryFilter.FieldOptions.S2, "1", QueryFilter.OpOptions.EQ)
+                        // new QueryFilter(QueryFilter.FieldOptions.S1, "0", QueryFilter.OpOptions.EQ)
                     }
                 };
 
@@ -263,7 +263,7 @@ public class GameLobby : MonoBehaviour
     private async void CheckForLobbyUpdates()
     {
         Lobby updatedLobby = await LobbyService.Instance.GetLobbyAsync(JoinedLobby.Id);
-        if (updatedLobby.Data["GameStarted"].Value == "1")
+        if (updatedLobby.Data["GameStarted"].Value == "1" && !Started)
         {
             JoinRelay(updatedLobby.Data["RelayCode"].Value);
             Started = true;
@@ -278,16 +278,47 @@ public class GameLobby : MonoBehaviour
         return currentLobby.Players;
     }
 
-    private Player CreatePlayer()
+    private Player CreatePlayer(bool isHost)
     {
         return new Player
         {
             Data = new Dictionary<string, PlayerDataObject>
             {
                 { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName) },
-                { "IsObserver", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, "false") }
+                { "IsObserver", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, "false") },
+                { "IsHost", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, isHost ? "true" : "false") }
             }
         };
+    }
+
+    // Assumes that changes can only be made to the current player who is running this script
+    public async void UpdatePlayerObserverStatus(bool newValue)
+    {
+        try
+        {
+            Lobby currentLobby = IsLobbyHost() ? CreatedLobby : JoinedLobby;
+            Lobby updatedLobby = await LobbyService.Instance.UpdatePlayerAsync(currentLobby.Id, AuthenticationService.Instance.PlayerId, new UpdatePlayerOptions
+            {
+                Data = new Dictionary<string, PlayerDataObject>
+                {
+                    { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName) },
+                    { "IsObserver", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, newValue ? "true" : "false") },
+                    { "IsHost", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, IsLobbyHost() ? "true" : "false") }
+                }
+            });
+            // updating the lobby
+            if (CreatedLobby != null)
+            {
+                CreatedLobby = updatedLobby;
+            }
+            else
+            {
+                JoinedLobby = updatedLobby;
+            }
+        } catch (LobbyServiceException e)
+        {
+            Debug.LogError("<color=blue>Lobby:</color> " + e);
+        }
     }
 
     // ------ BONUS METHODS FOR AFTER GAME START ------
@@ -296,8 +327,19 @@ public class GameLobby : MonoBehaviour
         return LobbyCode;
     }
 
+    public string GetCurrentPlayerCount()
+    {
+        Lobby currentLobby = IsLobbyHost() ? CreatedLobby : JoinedLobby;
+        return currentLobby.Players.Count + "/" + currentLobby.MaxPlayers;
+    }
+
     public bool GetStarted()
     {
         return Started;
+    }
+
+    public bool LobbyActive()
+    {
+        return JoinedLobby != null || CreatedLobby != null;
     }
 }
