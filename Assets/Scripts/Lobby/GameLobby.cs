@@ -17,9 +17,10 @@ public class GameLobby : MonoBehaviour
 {
     private Lobby CreatedLobby, JoinedLobby;
     [SerializeField] private string RelayCode, LobbyCode;
-    [SerializeField] private float HeartbeatTimer, JoinedLobbyUpdateTimer;
+    [SerializeField] private float HeartbeatTimer, LobbyUpdateTimer;
     [SerializeField] private bool HeartbeatActive;
     [SerializeField] private bool Started;
+    [SerializeField] private string PlayerName;
 
     private async void Start() 
     {
@@ -30,6 +31,10 @@ public class GameLobby : MonoBehaviour
             Debug.Log("<color=white>Authentication:</color> Signed in " + AuthenticationService.Instance.PlayerId);
         };
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
+
+        // Fetching the player data
+        PlayerClientData playerData = FindObjectOfType<PlayerClientData>();
+        PlayerName = playerData.GetPlayerName();
     }
 
     async void Update()
@@ -48,12 +53,24 @@ public class GameLobby : MonoBehaviour
         // checking for lobby updates every half second
         if (JoinedLobby != null)
         {
-            JoinedLobbyUpdateTimer -= Time.deltaTime;
-            if (JoinedLobbyUpdateTimer <= 0f)
+            LobbyUpdateTimer -= Time.deltaTime;
+            if (LobbyUpdateTimer <= 0f)
             {
-                JoinedLobbyUpdateTimer = 0.5f;
+                LobbyUpdateTimer = 0.5f;
                 Debug.Log("<color=blue>Lobby:</color> Updating lobby data...");
                 CheckForLobbyUpdates();
+            }
+        }
+
+        // checking for lobby updates every half second for the host (different functions)
+        if (CreatedLobby != null)
+        {
+            LobbyUpdateTimer -= Time.deltaTime;
+            if (LobbyUpdateTimer <= 0f)
+            {
+                LobbyUpdateTimer = 0.5f;
+                Debug.Log("<color=blue>Lobby:</color> Updating host lobby data...");
+                CheckForLobbyUpdatesHost();
             }
         }
     }
@@ -66,6 +83,7 @@ public class GameLobby : MonoBehaviour
             // creating relay for netcode
             CreateLobbyOptions createLobbyOptions = new CreateLobbyOptions
             {
+                Player = CreatePlayer(),
                 Data = new Dictionary<string, DataObject>
                 {
                     { "RelayCode", new DataObject(DataObject.VisibilityOptions.Public, "") },
@@ -143,12 +161,27 @@ public class GameLobby : MonoBehaviour
         }
     }
 
+    private async void CheckForLobbyUpdatesHost()
+    {
+        Lobby updatedLobby = await LobbyService.Instance.GetLobbyAsync(CreatedLobby.Id);
+        if (updatedLobby.Data["GameStarted"].Value == "1")
+        {
+            JoinRelay(updatedLobby.Data["RelayCode"].Value);
+            Started = true;
+        }
+        CreatedLobby = updatedLobby;
+    }
+
     // ------ METHODS FOR THE JOINING PLAYERS ------
     public async void JoinLobbyById(string id)
     {
         try
         {
-            Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(id);
+            JoinLobbyByIdOptions joinLobbyByIdOptions = new JoinLobbyByIdOptions
+            {
+                Player = CreatePlayer()
+            };
+            Lobby lobby = await Lobbies.Instance.JoinLobbyByIdAsync(id, joinLobbyByIdOptions);
             LobbyCode = lobby.LobbyCode;
             JoinedLobby = lobby;
             // UI should acctivate here
@@ -163,7 +196,11 @@ public class GameLobby : MonoBehaviour
     {
         try
         {
-            Lobby lobby = await Lobbies.Instance.JoinLobbyByCodeAsync(code);
+            JoinLobbyByCodeOptions joinLobbyByCodeOptions = new JoinLobbyByCodeOptions
+            {
+                Player = CreatePlayer()
+            };
+            Lobby lobby = await Lobbies.Instance.JoinLobbyByCodeAsync(code, joinLobbyByCodeOptions);
             LobbyCode = lobby.LobbyCode;
             JoinedLobby = lobby;
             // UI should acctivate here
@@ -231,6 +268,26 @@ public class GameLobby : MonoBehaviour
             JoinRelay(updatedLobby.Data["RelayCode"].Value);
             Started = true;
         }
+        JoinedLobby = updatedLobby;
+    }
+
+    // ------ PLAYER MANAGEMENT METHODS ------
+    public List<Player> ListPlayersInLobby()
+    {
+        Lobby currentLobby = IsLobbyHost() ? CreatedLobby : JoinedLobby;
+        return currentLobby.Players;
+    }
+
+    private Player CreatePlayer()
+    {
+        return new Player
+        {
+            Data = new Dictionary<string, PlayerDataObject>
+            {
+                { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, PlayerName) },
+                { "IsObserver", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, "false") }
+            }
+        };
     }
 
     // ------ BONUS METHODS FOR AFTER GAME START ------
