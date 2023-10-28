@@ -339,7 +339,7 @@ public class UIManager : MonoBehaviour
     public void SendChatMessage()
     {
         ChatLog.SendChatMessage();
-        CloseChat();
+        // CloseChat(); // Chat no longer closes when message is sent
     }
 
     // Method used to update the instructional text shown at the bottom of the 3D object panel
