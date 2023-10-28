@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: Key
   Icon: {fileID: 21300000, guid: f9c1451bb4bff7446b9c10e2303966da, type: 3}
   UsedIcon: {fileID: 21300000, guid: f9c1451bb4bff7446b9c10e2303966da, type: 3}
-  Description: "Hang onto this key \u2013 you never know when this key might prove
-    advantageous! If you find a lock to use this on, right click to use it."
+  Description: A key you found. If you find a lock to use this on, right click to
+    use it.

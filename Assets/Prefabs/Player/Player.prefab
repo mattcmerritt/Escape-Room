@@ -3683,8 +3683,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5020,8 +5020,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16202,7 +16202,7 @@ RectTransform:
   m_Father: {fileID: 3740258046912589842}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0.25}
+  m_AnchorMin: {x: 0.1, y: 0.2}
   m_AnchorMax: {x: 0.9, y: 0.9}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -16236,14 +16236,16 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Match the numbers for the 7 \"calm down pills\" with the corresponding
-    treatments to obtain the digits in the phone number in order (excluding the area
-    code, which you found earlier).\r\n\r\nPills: \r\nhaloperidol (Haldol) -> 1,
-    olanzapine (Zyprexa) -> 3, risperidone (Risperdal) -> 3, clozapine (Clozaril)
-    -> 4, aripiprazole (Abilify) -> 4, ziprasidone (Geodon) -> 6, quetiapine (Seroquel)
-    -> 9\r\n\r\nTreatments:\r\n1. Pet therapy \u2013 page 28 \r\n2. Music therapy
-    \u2013 page 83 \r\n3. Aromatherapy \u2013 page 177\r\n4. Reduce room noise \u2013
-    page 273 \r\n5. Offer reassurance \u2013 page 324 \r\n6. Gentle touch \u2013
-    page 336\r\n7. Comfort items \u2013 page 409 "
+    treatments in the PDR Medication Guide to obtain the digits in the phone number
+    in order (excluding the area code, which you found earlier).\r\n\nTIP: You might
+    want to take a picture of this information so you can have it open alongside
+    the PDR Guide\n\r\nPills from the PDR Guide: \r\nhaloperidol (Haldol) -> 1, olanzapine
+    (Zyprexa) -> 3, risperidone (Risperdal) -> 3, clozapine (Clozaril) -> 4, aripiprazole
+    (Abilify) -> 4, ziprasidone (Geodon) -> 6, quetiapine (Seroquel) -> 9\r\n\r\nTreatments:\r\n1.
+    Pet therapy \u2013 page 21 \r\n2. Music therapy \u2013 page 52 \r\n3. Aromatherapy
+    \u2013 page 87\r\n4. Reduce room noise \u2013 page 123 \r\n5. Offer reassurance
+    \u2013 page 144 \r\n6. Gentle touch \u2013 page 148\r\n7. Comfort items \u2013
+    page 189 "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16270,8 +16272,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -25980,7 +25982,7 @@ RectTransform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.3, y: 0.1}
-  m_AnchorMax: {x: 0.7, y: 0.2}
+  m_AnchorMax: {x: 0.7, y: 0.15}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -26039,8 +26041,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 16
+  m_fontSizeBase: 16
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
