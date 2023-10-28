@@ -36,7 +36,18 @@ public class ChatLogUI : MonoBehaviour
         Debug.Log("SENDING!");
         // read text from bar, send it off to the networked chat
         FindObjectOfType<TextChat>().SendChatMessage(Chatbar.text);
-        DeselectChat();
+        // Chat window should stay selected when the users send a message
+        //  however, pressing enter causes it to deselect the box.
+        ClearAndActivateChat();
+    }
+
+    public void ClearAndActivateChat()
+    {
+        Debug.Log("CLEARING AND ACTIVATING");
+        // EventSystem.SetSelectedGameObject(Chatbar.gameObject);
+        Chatbar.text = "";
+        EventSystem.SetSelectedGameObject(Chatbar.gameObject);
+        Chatbar.ActivateInputField();
     }
 
     public void DeselectChat()
