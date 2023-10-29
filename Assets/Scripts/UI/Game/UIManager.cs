@@ -74,11 +74,11 @@ public class UIManager : MonoBehaviour
         // Using enter to open/close chat
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (ChatOpen)
+            if (ChatOpen && ChatLog.CheckChatSelected())
             {
                 SendChatMessage();
             }
-            else
+            else if (!ChatOpen)
             {
                 OpenChat();
             }
@@ -272,7 +272,7 @@ public class UIManager : MonoBehaviour
 
         // restoring player control if no menus are active
         // also shows primary UI again (crosshair, etc.)
-        if (!InventoryOpen && !UIPanelOpen)
+        if (!ChatOpen && !InventoryOpen && !UIPanelOpen)
         {
             PlayerMovement.UnlockCamera();
             PlayerInteractions.CloseMenu();

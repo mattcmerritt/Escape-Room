@@ -28,18 +28,23 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
 
     // Information necessary for the notes
     [SerializeField] private TMP_InputField NotesField;
+
+    // Event system for tracking what was clicked
+    [SerializeField] private EventSystem EventSystem;
     
     private void Start()
     {
         SharedInventory = FindObjectOfType<SharedInventory>();
         ItemButtons = new List<Button>();
         UseItemButton.interactable = false; // no items can be used at start
+
+        EventSystem = FindObjectOfType<EventSystem>();
     }
 
     // If a click occurs, defer to the UIManager to see if panel can be closed
     private void Update()
     {
-        if (!Focused && Input.GetMouseButtonDown(0))
+        if (!Focused && Input.GetMouseButtonDown(0) && !(EventSystem.currentSelectedGameObject != null && EventSystem.currentSelectedGameObject.name == ChatLogUI.ChatlogObjectName))
         {
             UIManager.CloseInventory();
         }
