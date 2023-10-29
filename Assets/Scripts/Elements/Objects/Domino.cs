@@ -26,7 +26,7 @@ public class Domino : DraggableObject
     [SerializeField] private int Top, Bottom;
     [SerializeField] private string Secret;
     [SerializeField] private TMP_Text TopText, BottomText, SecretText;
-    [SerializeField] private Color LightOnPanelColor;
+    [SerializeField] private Color LightOnPanelColor, DefaultPanelColor;
 
     public static List<int> UsedValues = new List<int>();
 
@@ -94,6 +94,10 @@ public class Domino : DraggableObject
                     if(pen.CheckLight())
                     {
                         ObjectViewerCamera.backgroundColor = LightOnPanelColor;
+                    }
+                    else
+                    {
+                        ObjectViewerCamera.backgroundColor = DefaultPanelColor;
                     }
                 }
                 else

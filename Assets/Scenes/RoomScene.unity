@@ -1296,6 +1296,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
       value: 0.49019608
       objectReference: {fileID: 0}
@@ -2064,6 +2080,22 @@ PrefabInstance:
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: InteractInterface
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
@@ -3783,6 +3815,22 @@ PrefabInstance:
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: InteractInterface
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
@@ -5862,6 +5910,22 @@ PrefabInstance:
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: InteractInterface
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
@@ -9436,6 +9500,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
       value: 0.49019608
       objectReference: {fileID: 0}
@@ -10251,6 +10331,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
       value: 0.49019608
       objectReference: {fileID: 0}
@@ -10469,6 +10565,22 @@ PrefabInstance:
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: InteractInterface
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
@@ -12178,6 +12290,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
       value: 0.49019608
       objectReference: {fileID: 0}
@@ -12975,6 +13103,22 @@ PrefabInstance:
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: InteractInterface
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
@@ -15886,6 +16030,22 @@ PrefabInstance:
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: InteractInterface
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.a
+      value: 0.49019608
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.b
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.g
+      value: 0.69803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
+      propertyPath: DefaultPanelColor.r
+      value: 0.69803923
       objectReference: {fileID: 0}
     - target: {fileID: 554862207965995767, guid: c125a0befe3330c4282f4dcdd984ff67, type: 3}
       propertyPath: LightOnPanelColor.a
