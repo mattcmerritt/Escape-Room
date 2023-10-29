@@ -26,6 +26,7 @@ public class Domino : DraggableObject
     [SerializeField] private int Top, Bottom;
     [SerializeField] private string Secret;
     [SerializeField] private TMP_Text TopText, BottomText, SecretText;
+    [SerializeField] private Color LightOnPanelColor;
 
     public static List<int> UsedValues = new List<int>();
 
@@ -67,11 +68,13 @@ public class Domino : DraggableObject
     {
         base.Update();
 
-        // show text if UV pen is active
+        // show text and change color if UV pen is active
         UtilityObject penObject = Inventory.CheckForItem("UV Pen");
         if (penObject != null)
         {
             UVPen pen = (UVPen) penObject;
+
+            // text on dominoes
             if (pen.CheckLight())
             {
                 SecretText.gameObject.SetActive(true);
@@ -79,6 +82,24 @@ public class Domino : DraggableObject
             else
             {
                 SecretText.gameObject.SetActive(false);
+            }
+
+            // updated for the new dominos that use an object viewer
+            GameObject ObjectViewer = GameObject.FindWithTag("Viewing Copy");
+            if(ObjectViewer != null)
+            {
+                Camera ObjectViewerCamera = ObjectViewer.GetComponentInChildren<Camera>();
+                if(ObjectViewerCamera != null)
+                {
+                    if(pen.CheckLight())
+                    {
+                        ObjectViewerCamera.backgroundColor = LightOnPanelColor;
+                    }
+                }
+                else
+                {
+                    Debug.LogError("The object viewer does not have a camera!");
+                }
             }
         }
         else
