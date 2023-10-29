@@ -5,7 +5,7 @@ using Unity.Netcode;
 
 public class UVPen : UtilityObject
 {
-    private NetworkVariable<bool> LightActive = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    private NetworkVariable<bool> LightActive = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Everyone);
     [SerializeField] private Color DefaultPanelColor, LightOnPanelColor;
 
     // This item will not be usable in the main game world
