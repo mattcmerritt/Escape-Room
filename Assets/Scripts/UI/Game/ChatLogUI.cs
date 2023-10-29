@@ -14,6 +14,7 @@ public class ChatLogUI : MonoBehaviour
     private bool Closed;
     private float CurrentHeight = 0, LastMessageLocation = 0, MessageX;
     private EventSystem EventSystem;
+    public static string ChatlogObjectName;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class ChatLogUI : MonoBehaviour
         MessageX = prefabMessageTransform.anchoredPosition.x;
 
         EventSystem = FindObjectOfType<EventSystem>();
+        ChatlogObjectName = Chatbar.name;
     }
 
     public void OpenChat()
@@ -93,5 +95,11 @@ public class ChatLogUI : MonoBehaviour
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignMessage;
+    }
+
+    // method to check if the chat is currently selected
+    public bool CheckChatSelected()
+    {
+        return EventSystem.currentSelectedGameObject == Chatbar.gameObject;
     }
 }
