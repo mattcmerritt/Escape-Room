@@ -95,12 +95,20 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         ItemDesc.text = item.Description;
         UseItemButton.interactable = true;
         int currentIndex = index;
-        UseItemButton.onClick.RemoveAllListeners();
-        UseItemButton.onClick.AddListener(() =>
+        UseItemButton.gameObject.SetActive(true);
+        if(item.Usable)
         {
-            SharedInventory.UseItem(currentIndex); // perform item activation behavior
-            UIManager.CloseInventory(); // hide the inventory
-        });
+            UseItemButton.onClick.RemoveAllListeners();
+            UseItemButton.onClick.AddListener(() =>
+            {
+                SharedInventory.UseItem(currentIndex); // perform item activation behavior
+                UIManager.CloseInventory(); // hide the inventory
+            });
+        }
+        else
+        {
+            UseItemButton.gameObject.SetActive(false);
+        }
     }
 
     // Switch to the Notes view

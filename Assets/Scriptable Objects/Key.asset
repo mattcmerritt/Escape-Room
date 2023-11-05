@@ -17,3 +17,4 @@ MonoBehaviour:
   UsedIcon: {fileID: 21300000, guid: f9c1451bb4bff7446b9c10e2303966da, type: 3}
   Description: A key you found. If you find a lock to use this on, right click to
     use it.
+  Usable: 0

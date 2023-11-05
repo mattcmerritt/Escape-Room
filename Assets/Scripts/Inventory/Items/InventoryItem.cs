@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,4 +12,5 @@ public class InventoryItem : ScriptableObject
     public Sprite UsedIcon;
     [TextArea(5, 15)]
     public string Description;
+    public bool Usable = true; // if the item will have a Use button in the inventory
 }
