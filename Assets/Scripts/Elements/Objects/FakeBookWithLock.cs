@@ -16,6 +16,12 @@ public class FakeBookWithLock : DraggableObject
         FirstTimeSetup = true;
 
         Inventory = FindObjectOfType<SharedInventory>();
+
+        if(IsCopy)
+        {
+            transform.parent.position += new Vector3(0, 0, 0.6f);
+            transform.parent.Rotate(180, 0, 90);
+        }
     }
 
     protected override void Update() {
