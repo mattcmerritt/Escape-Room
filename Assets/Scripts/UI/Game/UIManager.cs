@@ -45,6 +45,7 @@ public class UIManager : MonoBehaviour
     // Lobby code label
     [SerializeField] private TMP_Text LobbyCodeLabel;
     [SerializeField] private GameLobby CurrentLobby;
+    [SerializeField] private GameObject KeyButton;
 
     // Show the lobby code at the start
     private void Start()
@@ -186,6 +187,9 @@ public class UIManager : MonoBehaviour
         {
             Destroy(copies[i]);
         }
+
+        // disable the key button
+        KeyButton.SetActive(false);
 
         // reseting the popup menu
         // used in the 3D object panel to show collected items
@@ -408,5 +412,17 @@ public class UIManager : MonoBehaviour
     public void ShowPopupPanel(string itemName, Sprite itemImage)
     {
         Popups.ShowPopup(itemName, itemImage);
+    }
+
+    public void RevealKeyButton()
+    {
+        KeyButton.SetActive(true);
+        Button KeyButtonComponent = KeyButton.GetComponent<Button>();
+        KeyButtonComponent.onClick.RemoveAllListeners();
+        KeyButtonComponent.onClick.AddListener(() =>
+        {
+            FindObjectOfType<FakeBookWithLock>().UnlockBook();
+            KeyButton.SetActive(false);
+        });
     }
 }

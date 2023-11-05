@@ -22,7 +22,8 @@ public class DraggableObject : SimpleObject
     [SerializeField] private GameObject ObjectViewer;
     [SerializeField] private RenderTexture SampleRenderTexture;
 
-    protected override void Start() {
+    protected override void Start() 
+    {
         Rb = GetComponent<Rigidbody>();
     }
 
@@ -30,19 +31,23 @@ public class DraggableObject : SimpleObject
     {
         if (IsCopy)
         {
-            if(Input.GetMouseButton(0)) {
+            if(Input.GetMouseButton(0)) 
+            {
                 ApplyForce = true;
                 RotationX = Input.GetAxis("Mouse X") * Strength;
                 RotationY = Input.GetAxis("Mouse Y") * Strength;
             }
-            else {
+            else 
+            {
                 ApplyForce = false;
             }
         }
     }
 
-    private void FixedUpdate() {
-        if(ApplyForce) {
+    private void FixedUpdate() 
+    {
+        if(ApplyForce) 
+        {
             Rb.AddTorque(RotationY, -RotationX, 0);
         }
     }
