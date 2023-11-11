@@ -42,6 +42,8 @@ public class GameLobbyListing : MonoBehaviour
         LobbyCodeLabel.text = LobbyName; 
         PlayerCounter.text = PlayerCount + "/" + MaxPlayers;
 
+        JoinButton.interactable = true;
+
         ButtonLoaded = true;
     }
 }
