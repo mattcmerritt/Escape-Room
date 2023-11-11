@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd993998c711264499b820f62d0ead7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NotesEntryPrefab: {fileID: 0}
+  NotesEntryPrefab: {fileID: 8423306173223591527, guid: 767752a82c46a8947a80954ed3fa2271, type: 3}
   AddedNotes: []
   TotalNotesAdded: 0
 --- !u!114 &8837656368135632983

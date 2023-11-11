@@ -39,8 +39,12 @@ public class SharedNotes : NetworkBehaviour
     private void AddNoteClientRpc(string id)
     {
         TotalNotesAdded++;
+        GameObject newNote = AddItem();
 
-        Debug.Log($"<color=blue>Notes: </color>Added note with id {id}");
+        InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
+        inventoryUI.PlaceNoteInList(newNote);
+
+        Debug.Log($"<color=yellow>Notes: </color>Added note with id {id}");
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -58,12 +62,17 @@ public class SharedNotes : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void UpdateNoteForAllServerRpc(string id, string newContent)
     {
-
+        UpdateNoteClientRpc(id, newContent);
     }
 
     [ClientRpc]
     private void UpdateNoteClientRpc(string id, string newContent)
     {
+        NotesEntry noteEntry = AddedNotes.Find((NotesEntry note) =>
+        {
+            return note.GetId() == id;
+        });
 
+        // TODO: finish implementing
     }
 }
