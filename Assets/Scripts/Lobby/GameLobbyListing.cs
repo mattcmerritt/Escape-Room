@@ -34,6 +34,7 @@ public class GameLobbyListing : MonoBehaviour
 
     public void Initialize(string id, string name, int players, int maxPlayers)
     {
+        Debug.Log($"<color=white>Lobby List:</color> Initializing entry with {id}, {name}, {players}/{maxPlayers}.");
         LobbyId = id;
         LobbyName = name;
         PlayerCount = players;
@@ -45,5 +46,6 @@ public class GameLobbyListing : MonoBehaviour
         JoinButton.interactable = true;
 
         ButtonLoaded = true;
+        Debug.Log($"<color=white>Lobby List:</color> Finished initializing entry with {id}, {name}, {players}/{maxPlayers}.");
     }
 }

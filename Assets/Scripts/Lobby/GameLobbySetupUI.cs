@@ -118,12 +118,15 @@ public class GameLobbySetupUI : MonoBehaviour
         List<SimpleLobbyData> lobbies = await GameLobby.ListLobbies();
         foreach (SimpleLobbyData lobby in lobbies)
         {
+            Debug.Log($"<color=white>Lobby List:</color> Instantiating entry.");
             GameObject entry = Instantiate(LobbyListEntry, ContentWindow.transform);
+            Debug.Log($"<color=white>Lobby List:</color> Finished instantiating entry.");
             string lobbyId = lobby.Id;
             string lobbyName = lobby.Name;
             int players = lobby.Players;
             int maxPlayers = lobby.MaxPlayers;
             LobbyListEntry.GetComponent<GameLobbyListing>().Initialize(lobbyId, lobbyName, players, maxPlayers);
+            Debug.Log($"<color=white>Lobby List:</color> Finished preparing entry.");
         }
     }
 
