@@ -15,7 +15,7 @@ public class GameLobbySetupUI : MonoBehaviour
     [SerializeField] private GameObject ContentWindow;
     [SerializeField] private GameObject LobbyScreen, ListScreen, JoinedLobbyScreen;
     [SerializeField] private GameObject StartGameButton;
-    [SerializeField] private GameObject PlayerListEntryPrefab;
+    [SerializeField] private GameObject PlayerListEntryPrefab, OtherPlayerListEntryPrefab;
     [SerializeField] private GameObject PlayerContentWindow;
     [SerializeField] private TMP_Text LobbyCode, PlayerCounter;
 
@@ -138,15 +138,22 @@ public class GameLobbySetupUI : MonoBehaviour
         List<Player> players = GameLobby.ListPlayersInLobby();
         foreach (Player p in players)
         {
-            GameObject entry = Instantiate(PlayerListEntryPrefab, PlayerContentWindow.transform);
             string playerName = p.Data["PlayerName"].Value;
             bool isObserver = p.Data["IsObserver"].Value == "true";
             bool isHost = p.Data["IsHost"].Value == "true";
             string playerId = p.Id;
             bool isYou = playerId == AuthenticationService.Instance.PlayerId;
-            entry.GetComponent<PlayerListingEntry>().Initialize(playerName, isHost, isObserver, playerId, isYou);
 
-            
+            GameObject entry;
+            if (isYou)
+            {
+                entry = Instantiate(PlayerListEntryPrefab, PlayerContentWindow.transform);
+            }
+            else
+            {
+                entry = Instantiate(OtherPlayerListEntryPrefab, PlayerContentWindow.transform);
+            }
+            entry.GetComponent<PlayerListingEntry>().Initialize(playerName, isHost, isObserver, playerId, isYou);
         } 
     }
 }

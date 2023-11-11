@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 1197470500752966371}
   - component: {fileID: 8555117766233738151}
   m_Layer: 0
-  m_Name: Player Entry
+  m_Name: Other Player Entry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 4612474073761342463}
   toggleTransition: 1
   graphic: {fileID: 2604889286754891289}

@@ -889,6 +889,7 @@ MonoBehaviour:
   JoinedLobbyScreen: {fileID: 299294246}
   StartGameButton: {fileID: 679376319}
   PlayerListEntryPrefab: {fileID: 1197470500752966368, guid: da0e05070f53fd34da83143ddd9f136e, type: 3}
+  OtherPlayerListEntryPrefab: {fileID: 1197470500752966368, guid: 00899308bd27b4145b9fc27b0d4a6507, type: 3}
   PlayerContentWindow: {fileID: 331767855}
   LobbyCode: {fileID: 462651900}
   PlayerCounter: {fileID: 1005866433}
