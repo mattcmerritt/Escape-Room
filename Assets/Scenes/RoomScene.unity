@@ -4801,6 +4801,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smaller Bed
       objectReference: {fileID: 0}
+    - target: {fileID: 6830945432629781959, guid: 0a81ac3d449c3014e9667813c48bf27a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830945432629781959, guid: 0a81ac3d449c3014e9667813c48bf27a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.602
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830945432629781959, guid: 0a81ac3d449c3014e9667813c48bf27a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.226
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a81ac3d449c3014e9667813c48bf27a, type: 3}
 --- !u!1 &679376319
@@ -20706,7 +20718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7974254645259680627}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: 8.5, z: -8.5}
+  m_LocalPosition: {x: -0, y: 8.509, z: -8.5}
   m_LocalScale: {x: 189.52296, y: 111.04037, z: 5.4922028}
   m_ConstrainProportionsScale: 0
   m_Children: []
