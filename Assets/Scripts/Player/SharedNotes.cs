@@ -10,10 +10,11 @@ public class SharedNotes : NetworkBehaviour
 
     [SerializeField] private int TotalNotesAdded;
 
-    public GameObject AddItem()
+    public GameObject AddItem(string id)
     {
         GameObject newNote = Instantiate(NotesEntryPrefab);
         NotesEntry entry = newNote.GetComponent<NotesEntry>();
+        entry.SetId(id);
         AddedNotes.Add(entry);
 
         return newNote;
@@ -39,7 +40,7 @@ public class SharedNotes : NetworkBehaviour
     private void AddNoteClientRpc(string id)
     {
         TotalNotesAdded++;
-        GameObject newNote = AddItem();
+        GameObject newNote = AddItem(id);
 
         InventoryUI inventoryUI = FindObjectOfType<InventoryUI>();
         inventoryUI.PlaceNoteInList(newNote);
@@ -50,13 +51,21 @@ public class SharedNotes : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void RemoveNoteForAllServerRpc(string id)
     {
-
+        RemoveNoteClientRpc(id);
     }
 
     [ClientRpc]
     private void RemoveNoteClientRpc(string id)
     {
+        NotesEntry noteEntry = AddedNotes.Find((NotesEntry note) =>
+        {
+            return note.GetId() == id;
+        });
 
+        AddedNotes.Remove(noteEntry);
+        Destroy(noteEntry.gameObject);
+
+        Debug.Log($"<color=yellow>Notes: </color>Removed note with id {id}");
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -73,6 +82,8 @@ public class SharedNotes : NetworkBehaviour
             return note.GetId() == id;
         });
 
-        // TODO: finish implementing
+        noteEntry.UpdateText(newContent);
+
+        Debug.Log($"<color=yellow>Notes: </color>Update note with id {id} to say {newContent}");
     }
 }
