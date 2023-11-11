@@ -552,7 +552,7 @@ MonoBehaviour:
   NotesPanel: {fileID: 6100200379246005604}
   InventoryButton: {fileID: 3345900288107359745}
   NotesButton: {fileID: 9047895740680169632}
-  NotesField: {fileID: 0}
+  NotesListPanel: {fileID: 0}
   EventSystem: {fileID: 0}
 --- !u!1 &178009427325271907
 GameObject:
@@ -7308,7 +7308,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6513602528020275234}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 178009427256264310}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: AddNote
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &773684565886126867
 GameObject:
   m_ObjectHideFlags: 0

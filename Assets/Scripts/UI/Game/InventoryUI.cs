@@ -12,6 +12,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private bool Focused; // whether the mouse is on the clipboard
 
     private SharedInventory SharedInventory; // component with actual inventory data
+    [SerializeField] private SharedNotes SharedNotes; // component with actual notes
 
     [SerializeField] private GameObject ItemButtonPrefab; // prefab for adding a new item to the UI
     private List<Button> ItemButtons; // memory for items list
@@ -26,8 +27,8 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private GameObject InventoryPanel, NotesPanel;
     [SerializeField] private Button InventoryButton, NotesButton;
 
-    // Information necessary for the notes
-    [SerializeField] private TMP_InputField NotesField;
+    // UI components for the notes panel
+    [SerializeField] private GameObject NotesListPanel;
 
     // Event system for tracking what was clicked
     [SerializeField] private EventSystem EventSystem;
@@ -39,6 +40,8 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         UseItemButton.interactable = false; // no items can be used at start
 
         EventSystem = FindObjectOfType<EventSystem>();
+
+        SharedNotes = FindObjectOfType<SharedNotes>();
     }
 
     // If a click occurs, defer to the UIManager to see if panel can be closed
@@ -47,14 +50,6 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         if (!Focused && Input.GetMouseButtonDown(0) && !(EventSystem.currentSelectedGameObject != null && EventSystem.currentSelectedGameObject.name == ChatLogUI.ChatlogObjectName))
         {
             UIManager.CloseInventory();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            NotesField.DeactivateInputField();
-
-            // remove any extra tabs that may have been added onto the end
-            NotesField.text = NotesField.text.TrimEnd();
         }
     }
 
@@ -103,6 +98,17 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         });
     }
 
+    // Method to add a note to the screen
+    public void AddNote()
+    {
+        SharedNotes.AddNoteForAllServerRpc(new ServerRpcParams());
+    }
+
+    public void PlaceNoteInList(GameObject newNote)
+    {
+        newNote.transform.SetParent(NotesListPanel.transform);
+    }
+
     // Switch to the Notes view
     public void ShowNotesTab()
     {
@@ -121,25 +127,5 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
 
         InventoryButton.interactable = false;
         NotesButton.interactable = true;
-    }
-
-    // Update text for all players
-    public void UpdateNotesText()
-    {
-        // UpdateNotesTextServerRpc();
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    private void UpdateNotesTextServerRpc()
-    {
-        Debug.Log("Sending to server:\n" + NotesField.text);
-        UpdateNotesTextClientRpc(NotesField.text);
-    }
-
-    [ClientRpc]
-    private void UpdateNotesTextClientRpc(string content)
-    {
-        Debug.Log("All clients displaying:\n" + content);
-        NotesField.text = content;
     }
 }
