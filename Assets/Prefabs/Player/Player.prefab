@@ -542,6 +542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManager: {fileID: 178009428919859052}
   Focused: 0
+  SharedNotes: {fileID: 0}
   ItemButtonPrefab: {fileID: 8624453535716128668, guid: 86ff3958356eff94cafdf62feb83c194, type: 3}
   ItemListBox: {fileID: 178009428554077635}
   ItemImage: {fileID: 178009428382848072}
@@ -552,7 +553,7 @@ MonoBehaviour:
   NotesPanel: {fileID: 6100200379246005604}
   InventoryButton: {fileID: 3345900288107359745}
   NotesButton: {fileID: 9047895740680169632}
-  NotesListPanel: {fileID: 0}
+  NotesListPanel: {fileID: 7393367185672170350}
   EventSystem: {fileID: 0}
 --- !u!1 &178009427325271907
 GameObject:

@@ -107,6 +107,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     public void PlaceNoteInList(GameObject newNote)
     {
         newNote.transform.SetParent(NotesListPanel.transform);
+        newNote.transform.localScale = Vector3.one;
     }
 
     // Switch to the Notes view
