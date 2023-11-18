@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler
+public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointerDownHandler
 {
     // Timing variables
     [SerializeField] private float DoubleClickWindow;
@@ -14,13 +14,14 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler
     // Blown up image for reading titles
     [SerializeField] private Image LargeImage;
     [SerializeField] private GameObject LargeImagePanel;
+    private Vector3 OffsetFromClickPoint;
 
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 globalMousePos;
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(transform as RectTransform, eventData.position, eventData.pressEventCamera, out globalMousePos))
         {
-            transform.position = globalMousePos;
+            transform.position = globalMousePos + OffsetFromClickPoint;
         }
 
         // moving the most recent slip to the top
@@ -45,5 +46,13 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler
         }
 
         LastClick = clickTime;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Vector3 mousePosInRect;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(transform as RectTransform, eventData.position, eventData.pressEventCamera, out mousePosInRect);
+        OffsetFromClickPoint = transform.position - mousePosInRect;
+        // Debug.Log("offset set: " + OffsetFromClickPoint);
     }
 }
