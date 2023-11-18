@@ -30049,7 +30049,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3daa1cc3b1cda3e4989d0612331a8197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanelID: Magnet
+  PanelID: Single Magnet
 --- !u!65 &5217097238220703667
 BoxCollider:
   m_ObjectHideFlags: 0
