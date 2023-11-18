@@ -73,4 +73,9 @@ public class PaperSlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         // moving the most recent slip to the top
         transform.SetAsLastSibling();
     }
+
+    private void OnDisable()
+    {
+        Focused = false;
+    }
 }
