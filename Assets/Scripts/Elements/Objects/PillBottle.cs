@@ -15,6 +15,7 @@ public class PillBottle : DraggableObject
     // Information for the slip of paper inside the bottle
     [SerializeField, TextArea(5, 15)] private string Letters, Note;
     [SerializeField] private Sprite PaperIcon;
+    [SerializeField] private bool ContainsPaper;
 
     protected override void Start()
     {
@@ -39,9 +40,13 @@ public class PillBottle : DraggableObject
             OpenBottle();
             ((PillBottle)Original).OpenBottle();
 
-            // find the player's UI manager and display a popup telling them that an item was collected
-            UIManager manager = FindObjectOfType<UIManager>();
-            manager.ShowPopupPanel("Paper Slip", PaperIcon);
+            if (ContainsPaper)
+            {
+                // find the player's UI manager and display a popup telling them that an item was collected
+                UIManager manager = FindObjectOfType<UIManager>();
+                manager.ShowPopupPanel("Paper Slip", PaperIcon);
+            }
+            
         }
 
         // the copy is not networked, needs to be updated based on the parent which is
@@ -81,7 +86,7 @@ public class PillBottle : DraggableObject
     private void OpenBottleClientRpc()
     {
         // find the paper slip collection in the scene and add the paper from inside the bottle
-        if (!IsCopy && !IsOpen && IsOwner)
+        if (!IsCopy && !IsOpen && IsOwner && ContainsPaper)
         {
             PaperSlipCollection papers = FindObjectOfType<PaperSlipCollection>();
             papers.AddPaperToCollection(Letters, Note);

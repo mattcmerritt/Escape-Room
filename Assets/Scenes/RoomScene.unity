@@ -2454,6 +2454,10 @@ PrefabInstance:
         O'
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: ContainsPaper
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
       value: 
       objectReference: {fileID: 2210965410299338194, guid: 5af14bd32da49204f9df42cac0fe96b0, type: 3}
@@ -6007,6 +6011,10 @@ PrefabInstance:
         C'
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: ContainsPaper
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
       value: 
       objectReference: {fileID: 2210965410299338194, guid: 5635277800865e8498cebaac04db2c78, type: 3}
@@ -9202,6 +9210,10 @@ PrefabInstance:
         E
 
         K'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: ContainsPaper
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
@@ -12907,6 +12919,10 @@ PrefabInstance:
         B
 
         L'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
+      propertyPath: ContainsPaper
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1505142305665410679, guid: 8f165af85e8cd4e4bb88bb4dd1c85821, type: 3}
       propertyPath: LabelTextMesh
