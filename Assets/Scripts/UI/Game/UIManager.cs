@@ -29,6 +29,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ChatLogUI ChatLog;     // used to send messages
     [SerializeField] private Animator ChatAnimator; // handles the chat going hidden
 
+    // Toggle to temporarily disable chat for other players
+    [SerializeField] private bool ChatDisabled;
+    [SerializeField] private TeamChatUI TeamChat;
+
     // Primary UI
     [SerializeField] private GameObject[] PrimaryUIComponents;
 
@@ -79,6 +83,17 @@ public class UIManager : MonoBehaviour
             {
                 SendChatMessage();
             }
+            else if (ChatDisabled)
+            {
+                if (TeamChat.CheckTeamChatSelected())
+                {
+                    TeamChat.SendTeamChatMessage();
+                }
+                else if (TeamChat.CheckPhoneChatSelected())
+                {
+                    TeamChat.SendPhoneChatMessage();
+                }
+            }
             else if (!ChatOpen)
             {
                 OpenChat();
@@ -125,6 +140,13 @@ public class UIManager : MonoBehaviour
         foreach (GameObject obj in PrimaryUIComponents)
         {
             obj.SetActive(false);
+        }
+
+        // disable chat for special interfaces
+        if (opening.GetComponent<TeamChatUI>())
+        {
+            ChatDisabled = true;
+            CloseChat();
         }
 
         return true;
@@ -206,6 +228,12 @@ public class UIManager : MonoBehaviour
             {
                 obj.SetActive(true);
             }
+        }
+
+        // disable chat for special interfaces
+        if (closing.name == "Phone Call")
+        {
+            ChatDisabled = false;
         }
 
         return true;
@@ -292,25 +320,32 @@ public class UIManager : MonoBehaviour
 
     public bool OpenChat()
     {
-        // make sure that the chat is closed
-        if (ChatOpen)
+        if (!ChatDisabled) 
         {
-            Debug.LogWarning("Chat is already opened.");
+            // make sure that the chat is closed
+            if (ChatOpen)
+            {
+                Debug.LogWarning("Chat is already opened.");
+                return false;
+            }
+
+            // Activating the UI
+            ChatLog.OpenChat();
+            ChatAnimator.SetTrigger("Show");
+
+            // updating state
+            ChatOpen = true;
+
+            // locking the player
+            PlayerMovement.LockCamera();
+            PlayerInteractions.OpenMenu();
+
+            return true;
+        }
+        else
+        {
             return false;
         }
-
-        // Activating the UI
-        ChatLog.OpenChat();
-        ChatAnimator.SetTrigger("Show");
-
-        // updating state
-        ChatOpen = true;
-
-        // locking the player
-        PlayerMovement.LockCamera();
-        PlayerInteractions.OpenMenu();
-
-        return true;
     }
 
     public bool CloseChat()
