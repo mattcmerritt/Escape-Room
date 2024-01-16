@@ -125,7 +125,7 @@ public class PhoneCallLogs : NetworkBehaviour
             AddPhoneChatMessageForAllServerRpc("System", timestamp, resultantConversationLine.Content);
 
             // allow conversation restart
-            EndConversationForAllClientRpc();
+            EndConversationForAllServerRpc();
         }
         else if (resultantConversationLine.WinState)
         {
