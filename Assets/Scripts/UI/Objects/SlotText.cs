@@ -17,6 +17,12 @@ public class SlotText : MonoBehaviour, IPointerClickHandler
     // Contents
     [SerializeField, TextArea(5, 15)] private string Contents;
 
+    // public void OnEnable()
+    // {
+    //     Debug.Log($"Mouse position: {Input.mousePosition}");
+    //     Debug.Log($"Slot position: {RectTransformUtility.CalculateRelativeRectTransformBounds(transform)}");
+    // }
+
     public void OnPointerClick(PointerEventData eventData)
     {
         float clickTime = Time.time;
@@ -31,6 +37,8 @@ public class SlotText : MonoBehaviour, IPointerClickHandler
         }
 
         LastClick = clickTime;
+
+
     }
 }
 

@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 
-public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointerDownHandler
+public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 {
     // Timing variables
     [SerializeField] private float DoubleClickWindow;
@@ -54,5 +54,31 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointe
         RectTransformUtility.ScreenPointToWorldPointInRectangle(transform as RectTransform, eventData.position, eventData.pressEventCamera, out mousePosInRect);
         OffsetFromClickPoint = transform.position - mousePosInRect;
         // Debug.Log("offset set: " + OffsetFromClickPoint);
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        // Debug.Log($"Mouse position: {Input.mousePosition}");
+        Vector3 magnetCenter = transform.TransformPoint(RectTransformUtility.CalculateRelativeRectTransformBounds(transform).center);
+
+        SlotText[] slots = FindObjectsOfType<SlotText>();
+        foreach(SlotText slot in slots)
+        {
+            Bounds slotBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(slot.gameObject.transform);
+            if(Input.mousePosition.x <= slot.transform.TransformPoint(slotBounds.max).x && 
+               Input.mousePosition.x >= slot.transform.TransformPoint(slotBounds.min).x &&
+               Input.mousePosition.y <= slot.transform.TransformPoint(slotBounds.max).y && 
+               Input.mousePosition.y >= slot.transform.TransformPoint(slotBounds.min).y)
+            {
+                transform.position = slot.transform.TransformPoint(slotBounds.center);
+            }
+            else if(magnetCenter.x <= slot.transform.TransformPoint(slotBounds.max).x && 
+                    magnetCenter.x >= slot.transform.TransformPoint(slotBounds.min).x &&
+                    magnetCenter.y <= slot.transform.TransformPoint(slotBounds.max).y && 
+                    magnetCenter.y >= slot.transform.TransformPoint(slotBounds.min).y)
+            {
+                transform.position = slot.transform.TransformPoint(slotBounds.center);
+            }
+        }
     }
 }
