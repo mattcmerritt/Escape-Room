@@ -22,7 +22,7 @@ public class TeamChatUI : MonoBehaviour
     [SerializeField] private RectTransform PhoneContentWindow;
     [SerializeField] private TMP_InputField PhoneChatbar;
 
-    private float PhoneCurrentHeight = 0, PhoneLastMessageLocation = 0, PhoneMessageX;
+    private float PhoneCurrentHeight = 0, PhoneLastMessageLocation = 0;
     public static string PhoneChatlogObjectName;
 
     [SerializeField] private Button TakeControlButton;
@@ -127,6 +127,36 @@ public class TeamChatUI : MonoBehaviour
     {
         TakeControlButton.interactable = false;
         PhoneChatbar.interactable = false;
+    }
+
+    public void ResetPhone()
+    {
+        TakeControlButton.interactable = true;
+        PhoneChatbar.interactable = false;
+
+        TakeControlButton.GetComponentInChildren<TMP_Text>().text = "Restart as Speaker";
+    }
+
+    public void ClearConversation()
+    {
+        // destroy all old messages
+        GameObject[] children = new GameObject[PhoneContentWindow.childCount];
+        for (int i = 0; i < PhoneContentWindow.childCount; i++)
+        {
+            children[i] = PhoneContentWindow.GetChild(i).gameObject;
+        }
+
+        foreach (GameObject child in children)
+        {
+            Destroy(child);
+        }
+
+        // restart content window
+        PhoneCurrentHeight = 0;
+        PhoneLastMessageLocation = 0;
+
+        // resize chat
+        PhoneContentWindow.sizeDelta = Vector2.zero;
     }
 
     public void SendPhoneChatMessage()

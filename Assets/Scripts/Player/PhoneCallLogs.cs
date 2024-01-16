@@ -13,11 +13,13 @@ public class PhoneCallLogs : NetworkBehaviour
     private bool ControlTaken;
 
     // Phone conversation data
-    [SerializeField] private ConversationLine CurrentPhoneConversationLine;
+    [SerializeField] private ConversationLine InitialPhoneConversationLine;
+    private ConversationLine CurrentPhoneConversationLine;
 
     private void Start()
     {
         ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
+        CurrentPhoneConversationLine = InitialPhoneConversationLine;
     }
 
     // ------------------------ TEAM CONVERSATION ------------------------
@@ -54,7 +56,9 @@ public class PhoneCallLogs : NetworkBehaviour
     // ------------------------ PHONE CONVERSATION ------------------------
     public void TakePhoneControl()
     {
-        FindObjectOfType<TeamChatUI>().EnablePhone();
+        TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
+        teamChatUI.ClearConversation();
+        teamChatUI.EnablePhone();
         LockPhoneForOthersServerRpc(ActivePlayerName);
         SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
 
@@ -80,6 +84,21 @@ public class PhoneCallLogs : NetworkBehaviour
         }
     }
 
+    [ServerRpc(RequireOwnership = false)]
+    private void EndConversationForAllServerRpc()
+    {
+        EndConversationForAllClientRpc();
+    }
+
+    [ClientRpc]
+    private void EndConversationForAllClientRpc()
+    {
+        TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
+        teamChatUI.ResetPhone();
+
+        CurrentPhoneConversationLine = InitialPhoneConversationLine;
+    }
+
     public void SendPhoneChatMessage(string message)
     {
         Debug.Log($"Chatlog received message: {message}");
@@ -99,11 +118,16 @@ public class PhoneCallLogs : NetworkBehaviour
         if (resultantConversationLine.FailState)
         {
             AddPhoneChatMessageForAllServerRpc("System", timestamp, resultantConversationLine.Content);
+
+            // allow conversation restart
+            EndConversationForAllClientRpc();
         }
         else if (resultantConversationLine.WinState)
         {
             AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, resultantConversationLine.Content);
             AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call was successfully completed.");
+            
+            // TODO: some win stuff here
         }
         else
         {

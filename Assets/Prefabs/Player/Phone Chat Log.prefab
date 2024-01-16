@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamChatHistory: []
   PhoneChatHistory: []
-  CurrentPhoneConversationLine: {fileID: 11400000, guid: f378dd0c56c59ad41b585c2b10861fd9, type: 2}
+  InitialPhoneConversationLine: {fileID: 11400000, guid: f378dd0c56c59ad41b585c2b10861fd9, type: 2}
 --- !u!114 &7920080223106129989
 MonoBehaviour:
   m_ObjectHideFlags: 0
