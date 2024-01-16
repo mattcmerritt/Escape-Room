@@ -57,7 +57,6 @@ public class PhoneCallLogs : NetworkBehaviour
     public void TakePhoneControl()
     {
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
-        teamChatUI.ClearConversation();
         teamChatUI.EnablePhone();
         LockPhoneForOthersServerRpc(ActivePlayerName);
         SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
@@ -78,10 +77,16 @@ public class PhoneCallLogs : NetworkBehaviour
     [ClientRpc]
     private void LockPhoneForOthersClientRpc(string playerName)
     {
+        TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
+
+        // Disable chat for all but player
         if (ActivePlayerName != playerName)
         {
-            FindObjectOfType<TeamChatUI>().DisablePhone();
+            teamChatUI.DisablePhone();
         }
+
+        // Clear previous chat for all
+        teamChatUI.ClearConversation();
     }
 
     [ServerRpc(RequireOwnership = false)]
