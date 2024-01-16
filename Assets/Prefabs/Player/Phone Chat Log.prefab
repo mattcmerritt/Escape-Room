@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c78fceee3212549810b8b24597a386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChatHistory: []
+  TeamChatHistory: []
+  PhoneChatHistory: []
+  CurrentPhoneConversationLine: {fileID: 11400000, guid: f378dd0c56c59ad41b585c2b10861fd9, type: 2}
 --- !u!114 &7920080223106129989
 MonoBehaviour:
   m_ObjectHideFlags: 0

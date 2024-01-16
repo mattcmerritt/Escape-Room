@@ -48,7 +48,7 @@ public class TeamChatUI : MonoBehaviour
     {
         Debug.Log("SENDING TEAM CHAT!");
         // read text from bar, send it off to the networked chat
-        FindObjectOfType<PhoneCallLogs>().SendTeamChatMessage(TeamChatbar.text);
+        FindObjectOfType<PhoneCallLogs>().SendTeamChatMessage(TeamChatbar.text, false);
         // Chat window should stay selected when the users send a message
         //  however, pressing enter causes it to deselect the box.
         ClearAndActivateTeamChat();
@@ -69,11 +69,19 @@ public class TeamChatUI : MonoBehaviour
         TeamChatbar.text = "";
     }
 
-    public void AddTeamMessage(ChatMessage message)
+    public void AddTeamMessage(ChatMessage message, bool announcement)
     {
         GameObject newMessage = Instantiate(MessagePrefab);
         TMP_Text messageText = newMessage.GetComponent<TMP_Text>();
-        messageText.text = $"{message.PlayerName}: {message.Message}";
+        if (announcement)
+        {
+            messageText.text = $"{message.Message}";
+            messageText.color = Color.red;
+        }
+        else
+        {
+            messageText.text = $"{message.PlayerName}: {message.Message}";
+        }
 
         // message is not prepared to be scaled and put into box yet, need to wait on content fitter
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();

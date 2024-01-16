@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041e83de10f108e4780c29457b7b3ccf, type: 3}
+  m_Name: Introduce Self and Hospital
+  m_EditorClassIdentifier: 
+  Content: This is Ana Grey. You said you're from the hospital. What's going on?
+  RequiredWords:
+  - <username>
+  - hospital
+  - who
+  ProhibitedWords:
+  - Mark Roth
+  - Ana Grey
+  ConnectedLines:
+  - {fileID: 11400000, guid: b11b146fcd1e3b1429b90602186f6532, type: 2}
+  - {fileID: 11400000, guid: c879370a7ad73db4eae746efca928b67, type: 2}
+  DefaultLine: {fileID: 11400000, guid: c70393496b5bdc7458c7a7be7ba55745, type: 2}
+  FailState: 0
+  WinState: 0

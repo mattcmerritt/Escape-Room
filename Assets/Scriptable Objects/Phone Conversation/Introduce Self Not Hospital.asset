@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041e83de10f108e4780c29457b7b3ccf, type: 3}
+  m_Name: Introduce Self Not Hospital
+  m_EditorClassIdentifier: 
+  Content: Who is this calling?
+  RequiredWords:
+  - <username>
+  ProhibitedWords:
+  - hospital
+  ConnectedLines:
+  - {fileID: 11400000, guid: d17e1d62e40d2684faa99531da28b5fe, type: 2}
+  - {fileID: 11400000, guid: 26398a0a5c903ee43b7f1039321a501c, type: 2}
+  DefaultLine: {fileID: 11400000, guid: c70393496b5bdc7458c7a7be7ba55745, type: 2}
+  FailState: 0
+  WinState: 0
