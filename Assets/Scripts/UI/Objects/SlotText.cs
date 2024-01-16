@@ -13,6 +13,7 @@ public class SlotText : MonoBehaviour, IPointerClickHandler
     // Blown up image for reading titles
     [SerializeField] private TMP_Text LargeText;
     [SerializeField] private GameObject LargeTextPanel;
+    [SerializeField] private Magnet CurrentMagnet;
 
     // Contents
     [SerializeField, TextArea(5, 15)] private string Contents;
@@ -39,6 +40,16 @@ public class SlotText : MonoBehaviour, IPointerClickHandler
         LastClick = clickTime;
 
 
+    }
+
+    public Magnet GetCurrentMagnet()
+    {
+        return CurrentMagnet;
+    }
+
+    public void SetCurrentMagnet(Magnet m)
+    {
+        CurrentMagnet = m;
     }
 }
 
