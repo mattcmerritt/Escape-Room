@@ -4879,7 +4879,7 @@ MonoBehaviour:
   ChatAnimator: {fileID: 4614424653211908731}
   ChatDisabled: 0
   TeamChat: {fileID: 4003748971881422699}
-  TeamDebrief: {fileID: 0}
+  TeamDebrief: {fileID: 1783600593401286783}
   PrimaryUIComponents:
   - {fileID: 178009427588132186}
   - {fileID: 178009428819498047}

@@ -85,6 +85,12 @@ public class DebriefLogs : NetworkBehaviour
     [ClientRpc]
     private void ForceLoadCardClientRpc(int index)
     {
+        StartCoroutine(LoadCardWhenUIAvailable(index));
+    }
+
+    private IEnumerator LoadCardWhenUIAvailable(int index)
+    {
+        yield return new WaitUntil(() => FindObjectOfType<TeamDebriefUI>(false) != null);
         FindObjectOfType<TeamDebriefUI>(false).LoadCardContents(DebriefingCards[index]);
     }
 
