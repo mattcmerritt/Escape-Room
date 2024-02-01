@@ -19,5 +19,7 @@ MonoBehaviour:
   IsTriggered: 0
   HasBeenDisplayed: 0
   Content: This is Ana Grey. What's this about?
-  Priority: 0
   Phase: 0
+  PhaseTransitionAfter: 1
+  FailState: 0
+  WinState: 0

@@ -17,5 +17,7 @@ MonoBehaviour:
   IsTriggered: 0
   HasBeenDisplayed: 0
   Content: Is there anything I need to do?
-  Priority: 0
-  Phase: 0
+  Phase: 1
+  PhaseTransitionAfter: 0
+  FailState: 0
+  WinState: 0

@@ -18,5 +18,7 @@ MonoBehaviour:
   IsTriggered: 0
   HasBeenDisplayed: 0
   Content: Oh no, is my father okay?
-  Priority: 0
-  Phase: 0
+  Phase: 1
+  PhaseTransitionAfter: 0
+  FailState: 0
+  WinState: 0

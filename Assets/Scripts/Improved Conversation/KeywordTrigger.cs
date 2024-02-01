@@ -7,32 +7,56 @@ namespace Conversation
     [CreateAssetMenu]
     public class KeywordTrigger : ScriptableObject
     {
+        // Cannot have both lists populated.
         [SerializeField] private string[] RequiredWords;
         [SerializeField] private string[] ProhibitedWords;
 
-        public bool CheckSpeakingConditions(string input)
+        public bool IsTriggered;
+
+        private void OnEnable()
         {
-            // first ensure that all required words are present
-            bool hasNeededWords = true;
-            foreach (string word in RequiredWords)
-            {
-                if (!ContainsKeyword(input, word))
-                {
-                    hasNeededWords = false;
-                }
-            }
+            ResetObject();
+        }
 
-            // second ensure that all the banned words are not present
-            bool hasProhibitedWords = false;
-            foreach (string word in ProhibitedWords)
-            {
-                if (ContainsKeyword(input, word))
-                {
-                    hasProhibitedWords = true;
-                }
-            }
+        public void ResetObject()
+        {
+            IsTriggered = false;
+        }
 
-            return hasNeededWords && !hasProhibitedWords;
+        public bool CheckTriggerConditions(string input)
+        {
+            if (IsTriggered)
+            {
+                return true;
+            }
+            else if (RequiredWords.Length > 0)
+            {
+                // first ensure that one required word are present
+                foreach (string word in RequiredWords)
+                {
+                    if (ContainsKeyword(input, word))
+                    {
+                        IsTriggered = true;
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+            else
+            {
+                // otherwise ensure that no the banned words are present
+                foreach (string word in ProhibitedWords)
+                {
+                    if (ContainsKeyword(input, word))
+                    {
+                        IsTriggered = true;
+                        return true;
+                    }
+                }
+
+                return false;
+            }
         }
 
         private bool ContainsKeyword(string input, string word)

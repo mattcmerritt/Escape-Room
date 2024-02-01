@@ -9,36 +9,50 @@ namespace Conversation
     {
         public KeywordTrigger[] PotentialTriggers;
         
-        public bool IsTriggered;
+        // not really utilized
         public bool HasBeenDisplayed;
 
         [TextArea] public string Content;
-        public int Priority;
 
         // used to identify a part of the interaction
         // for example, "introduction" or "address confirmation"
         public int Phase;
+        public bool PhaseTransitionAfter;
+
+        public bool FailState;
+        public bool WinState;
 
         private void OnEnable()
         {
-            IsTriggered = false;
+            ResetObject();
+        }
+
+        public void ResetObject()
+        {
             HasBeenDisplayed = false;
         }
 
         public bool CheckIfTriggered(string input)
         {
-            if (IsTriggered)
+            if (HasBeenDisplayed)
             {
-                return true;
+                return false;
             }
 
+            bool triggerFailed = false;
             foreach (KeywordTrigger trigger in PotentialTriggers)
             {
-                if (trigger.CheckSpeakingConditions(input))
+                if (!trigger.CheckTriggerConditions(input))
                 {
-                    IsTriggered = true;
-                    return true;
+                    triggerFailed = true;
+                    Debug.Log($"Trigger failed: {trigger.name}");
                 }
+            }
+
+            if (!triggerFailed)
+            {
+                HasBeenDisplayed = true;
+                return true;
             }
 
             return false;

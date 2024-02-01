@@ -48,6 +48,45 @@ MonoBehaviour:
   TeamChatHistory: []
   PhoneChatHistory: []
   InitialPhoneConversationLine: {fileID: 11400000, guid: f378dd0c56c59ad41b585c2b10861fd9, type: 2}
+  DialogueLines:
+  - {fileID: 11400000, guid: b2977dc533c4ad3479b0b74b869bc370, type: 2}
+  - {fileID: 11400000, guid: 480545c36679208468d9428eb1b92aa8, type: 2}
+  - {fileID: 11400000, guid: 9915603185ef6e145b74975092efafc9, type: 2}
+  - {fileID: 11400000, guid: 6204560557c35744b846b0ec693c059e, type: 2}
+  - {fileID: 11400000, guid: c058a90e0cdfbd141a95f705c4a866c1, type: 2}
+  - {fileID: 11400000, guid: 30a3a4d70299d18469e7cbcba4e38903, type: 2}
+  - {fileID: 11400000, guid: 52005a85454528344b1eb7084e0e942f, type: 2}
+  - {fileID: 11400000, guid: d158d51a12af1de458272eb062c45b03, type: 2}
+  - {fileID: 11400000, guid: 23c6d8a68a641494fb13a6d03ad0cf56, type: 2}
+  - {fileID: 11400000, guid: 3ab9701ce6a02d84297f32395716d193, type: 2}
+  - {fileID: 11400000, guid: 18a437cbc3a8be74294712a3ff34f3c8, type: 2}
+  - {fileID: 11400000, guid: 614f1ff94a32882409a397b2b043813f, type: 2}
+  - {fileID: 11400000, guid: 938386bfdecf4a141a9dd60977eafc8c, type: 2}
+  KeywordTriggers:
+  - {fileID: 11400000, guid: be064254525d876458f22facfe4b1deb, type: 2}
+  - {fileID: 11400000, guid: 8e021fc57a486e14c94d27dba5550725, type: 2}
+  - {fileID: 11400000, guid: df400e6d000d0664d9007dd443eba6a4, type: 2}
+  - {fileID: 11400000, guid: 31df0098aa4852443818c7e8dfec6485, type: 2}
+  - {fileID: 11400000, guid: 70ac91fef554104438fa89e2496eb382, type: 2}
+  - {fileID: 11400000, guid: e83fd3c33c55c1e4d8b18fec61c61368, type: 2}
+  - {fileID: 11400000, guid: 53b7aec077eb5b54c9ae8e44b7276364, type: 2}
+  - {fileID: 11400000, guid: 75221befb4cd4ae4da359edfd5db0246, type: 2}
+  - {fileID: 11400000, guid: cd76519cda68aa940aef5e86b16a0701, type: 2}
+  - {fileID: 11400000, guid: 9fa4507929be51d44ba26a234a688d2b, type: 2}
+  - {fileID: 11400000, guid: 6b350f7feea603642b5f60abd049d85a, type: 2}
+  - {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
+  - {fileID: 11400000, guid: d6831a450f7447340bc75d9050d79085, type: 2}
+  - {fileID: 11400000, guid: 2351481d44cba6c4690eceecdb7ea48b, type: 2}
+  - {fileID: 11400000, guid: 1fb931b33238a814dad30972b2be21fa, type: 2}
+  - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
+  - {fileID: 11400000, guid: 08d5ea354a14ab146a354625b58a901b, type: 2}
+  CurrentPhase: 0
+  GenericFailMessage: Sorry, I'm really busy and I'm not sure what you need me to
+    do. Can I call you back later?
+  PrivacyFailMessage: "Before releasing a patient\u2019s name, be sure to check with
+    your hospital administration about privacy protocols to ensure you are not violating
+    HIPPA. You can always provide a description of the patient and use their initials
+    if unsure. Please try again."
 --- !u!114 &7920080223106129989
 MonoBehaviour:
   m_ObjectHideFlags: 0
