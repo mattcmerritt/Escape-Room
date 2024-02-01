@@ -113,7 +113,7 @@ public class TeamChatUI : MonoBehaviour
     // method to check if the chat is currently selected
     public bool CheckTeamChatSelected()
     {
-        return EventSystem.currentSelectedGameObject == TeamChatbar.gameObject;
+        return EventSystem && EventSystem.currentSelectedGameObject == TeamChatbar.gameObject;
     }
 
     // ------------------------ PHONE CONVERSATION ------------------------
@@ -220,6 +220,6 @@ public class TeamChatUI : MonoBehaviour
     // method to check if the chat is currently selected
     public bool CheckPhoneChatSelected()
     {
-        return EventSystem.currentSelectedGameObject == PhoneChatbar.gameObject;
+        return EventSystem && EventSystem.currentSelectedGameObject == PhoneChatbar.gameObject;
     }
 }

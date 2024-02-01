@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6082d7bdec737de4ebf8cc984b5bd638, type: 3}
+  m_Name: Proper Introduction with Initials
+  m_EditorClassIdentifier: 
+  PotentialTriggers:
+  - {fileID: 11400000, guid: 8978c3ac5c807af4bae07e5d1830ff8e, type: 2}
+  PrerequisiteLines: []
+  IsTriggered: 0
+  HasBeenDisplayed: 0
+  Content: This is Ana Grey and it sounds like you have Mark Roth. Is my father ok?
+  Priority: 1

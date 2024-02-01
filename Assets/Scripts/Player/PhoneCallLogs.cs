@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
+using Conversation;
 
 public class PhoneCallLogs : NetworkBehaviour
 {
@@ -12,9 +13,15 @@ public class PhoneCallLogs : NetworkBehaviour
     private string ActivePlayerName;
     private bool ControlTaken;
 
-    // Phone conversation data
+    // OLD - Phone conversation data
     [SerializeField] private ConversationLine InitialPhoneConversationLine;
     private ConversationLine CurrentPhoneConversationLine;
+
+    // Phone conversation data
+    [SerializeField] private List<DialogueLine> DialogueLines;
+    [SerializeField] private List<KeywordTrigger> KeywordTriggers;
+    [SerializeField] private int CurrentPhase;
+    [SerializeField] private string GenericFailMessage, PrivacyFailMessage;
 
     private void Start()
     {
@@ -101,7 +108,16 @@ public class PhoneCallLogs : NetworkBehaviour
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
         teamChatUI.ResetPhone();
 
-        CurrentPhoneConversationLine = InitialPhoneConversationLine;
+        // reset conversation state
+        foreach (KeywordTrigger kt in KeywordTriggers)
+        {
+            kt.ResetObject();
+        }
+        foreach (DialogueLine line in DialogueLines)
+        {
+            line.ResetObject();
+        }
+        CurrentPhase = 0; 
     }
 
     public void SendPhoneChatMessage(string message)
@@ -117,27 +133,37 @@ public class PhoneCallLogs : NetworkBehaviour
 
         AddPhoneChatMessageForAllServerRpc(playerName, timestamp, message);
 
-        // attempt to run the conversation from this point
-        ConversationLine resultantConversationLine = CurrentPhoneConversationLine.CheckConnectedLines(message);
-
-        if (resultantConversationLine.FailState)
+        DialogueLine triggeredLine = null;
+        foreach (DialogueLine line in DialogueLines)
         {
-            AddPhoneChatMessageForAllServerRpc("System", timestamp, resultantConversationLine.Content);
+            if (line.Phase == CurrentPhase && line.CheckIfTriggered(message)) 
+            {
+                triggeredLine = line;
+            }
+        }
 
-            // allow conversation restart
-            EndConversationForAllServerRpc();
-        }
-        else if (resultantConversationLine.WinState)
+        if (triggeredLine != null)
         {
-            AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, resultantConversationLine.Content);
-            AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call was successfully completed.");
-            
-            // TODO: some win stuff here
+            AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, triggeredLine.Content);
+
+            if (triggeredLine.WinState)
+            {
+                AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call was successfully completed.");
+            }
+
+            // can only enter here for privacy fail
+            if (triggeredLine.FailState)
+            {
+                AddPhoneChatMessageForAllServerRpc("System", timestamp, PrivacyFailMessage);
+                EndConversationForAllServerRpc();
+            }
         }
+        // generic fail - unclear
         else
         {
-            CurrentPhoneConversationLine = resultantConversationLine;
-            AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, resultantConversationLine.Content);
+            AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, GenericFailMessage);
+            AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call ended early. Please try again.");
+            EndConversationForAllServerRpc();
         }
     }
 
