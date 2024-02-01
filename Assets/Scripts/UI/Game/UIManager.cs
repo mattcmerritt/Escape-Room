@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     // Toggle to temporarily disable chat for other players
     [SerializeField] private bool ChatDisabled;
     [SerializeField] private TeamChatUI TeamChat;
+    [SerializeField] private TeamDebriefUI TeamDebrief;
 
     // Primary UI
     [SerializeField] private GameObject[] PrimaryUIComponents;
@@ -92,6 +93,10 @@ public class UIManager : MonoBehaviour
                 else if (TeamChat.CheckPhoneChatSelected())
                 {
                     TeamChat.SendPhoneChatMessage();
+                }
+                else if (TeamDebrief.CheckTeamChatSelected())
+                {
+                    TeamDebrief.SendTeamChatMessage();
                 }
             }
             else if (!ChatOpen)
@@ -231,7 +236,7 @@ public class UIManager : MonoBehaviour
         }
 
         // disable chat for special interfaces
-        if (closing.name == "Phone Call")
+        if (closing.name == "Phone Call" || closing.name == "Debrief")
         {
             ChatDisabled = false;
         }
