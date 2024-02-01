@@ -17,8 +17,7 @@ namespace Conversation
 
         // used to identify a part of the interaction
         // for example, "introduction" or "address confirmation"
-        public string AssociatedStep;
-        public string[] PrerequisiteSteps;
+        public int Phase;
 
         private void OnEnable()
         {
