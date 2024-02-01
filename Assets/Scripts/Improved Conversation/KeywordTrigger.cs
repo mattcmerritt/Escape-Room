@@ -25,11 +25,7 @@ namespace Conversation
 
         public bool CheckTriggerConditions(string input)
         {
-            if (IsTriggered)
-            {
-                return true;
-            }
-            else if (RequiredWords.Length > 0)
+            if (RequiredWords.Length > 0)
             {
                 // first ensure that one required word are present
                 foreach (string word in RequiredWords)
