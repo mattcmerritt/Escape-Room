@@ -148,7 +148,7 @@ public class UIManager : MonoBehaviour
         }
 
         // disable chat for special interfaces
-        if (opening.GetComponent<TeamChatUI>())
+        if (opening.GetComponent<TeamChatUI>() || opening.GetComponent<TeamDebriefUI>())
         {
             ChatDisabled = true;
             CloseChat();

@@ -6658,6 +6658,11 @@ MonoBehaviour:
       SourcePrefabToOverride: {fileID: 0}
       SourceHashToOverride: 0
       OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 239818704500414285}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -17412,6 +17417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf146c196fd88d4a8f988ca0c8f457e, type: 3}
+--- !u!1 &239818704500414285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 239818703409831447, guid: 0bf146c196fd88d4a8f988ca0c8f457e, type: 3}
+  m_PrefabInstance: {fileID: 239818704500414284}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &251993251508037385
 GameObject:
   m_ObjectHideFlags: 0

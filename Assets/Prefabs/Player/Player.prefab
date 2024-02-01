@@ -4879,6 +4879,7 @@ MonoBehaviour:
   ChatAnimator: {fileID: 4614424653211908731}
   ChatDisabled: 0
   TeamChat: {fileID: 4003748971881422699}
+  TeamDebrief: {fileID: 0}
   PrimaryUIComponents:
   - {fileID: 178009427588132186}
   - {fileID: 178009428819498047}
@@ -28616,7 +28617,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3160518454935604430}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1783600593401286783}
+        m_TargetAssemblyTypeName: TeamDebriefUI, Assembly-CSharp
+        m_MethodName: FlipCardButtonCallback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7059822607467992927
 GameObject:
   m_ObjectHideFlags: 0

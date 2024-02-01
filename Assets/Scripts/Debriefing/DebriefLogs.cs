@@ -13,14 +13,19 @@ public class DebriefLogs : NetworkBehaviour
     // Team chat history
     [SerializeField] private List<ChatMessage> TeamChatHistory = new List<ChatMessage>();
     private string ActivePlayerName;
-    private List<string> PlayersInLobby;
-    private List<string> PlayersWhoHaveSpoken;
+    [SerializeField] private List<string> PlayersInLobby = new List<string>();
+    [SerializeField] private List<string> PlayersWhoHaveSpoken = new List<string>();
 
-    private void Start()
+    public override void OnNetworkSpawn()
     {
+        base.OnNetworkSpawn();
+
         ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
 
         RegisterPlayerServerRpc(ActivePlayerName);
+
+        // TODO: figure out how to set the first card 
+        //  currently happens too early
         ForceLoadCardServerRpc(0); // could cause issue with late join
     }
 
@@ -110,6 +115,7 @@ public class DebriefLogs : NetworkBehaviour
             if (CardIndex < DebriefingCards.Count)
             {
                 FindObjectOfType<TeamDebriefUI>(false).LoadCardContents(DebriefingCards[CardIndex]);
+                PlayersWhoHaveSpoken = new List<string>();
             } 
             else
             {
