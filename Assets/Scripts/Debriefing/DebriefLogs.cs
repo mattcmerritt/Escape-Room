@@ -14,7 +14,7 @@ public class DebriefLogs : NetworkBehaviour
     [SerializeField] private List<ChatMessage> TeamChatHistory = new List<ChatMessage>();
     private string ActivePlayerName;
     [SerializeField] private List<string> PlayersInLobby = new List<string>();
-    [SerializeField] private List<string> PlayersWhoHaveSpoken = new List<string>();
+    [SerializeField] private HashSet<string> PlayersWhoHaveSpoken = new HashSet<string>();
 
     public override void OnNetworkSpawn()
     {
@@ -121,7 +121,7 @@ public class DebriefLogs : NetworkBehaviour
             if (CardIndex < DebriefingCards.Count)
             {
                 FindObjectOfType<TeamDebriefUI>(false).LoadCardContents(DebriefingCards[CardIndex]);
-                PlayersWhoHaveSpoken = new List<string>();
+                PlayersWhoHaveSpoken = new HashSet<string>();
             } 
             else
             {
