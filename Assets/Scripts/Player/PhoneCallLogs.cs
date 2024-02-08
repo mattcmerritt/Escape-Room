@@ -151,6 +151,11 @@ public class PhoneCallLogs : NetworkBehaviour
                 AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call was successfully completed.");
             }
 
+            if(triggeredLine.PhaseTransitionAfter)
+            {
+                CurrentPhase += 1;
+            }
+
             // can only enter here for privacy fail
             if (triggeredLine.FailState)
             {

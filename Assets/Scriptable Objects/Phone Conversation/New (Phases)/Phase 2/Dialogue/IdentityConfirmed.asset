@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PotentialTriggers:
   - {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
-  - {fileID: 11400000, guid: 2351481d44cba6c4690eceecdb7ea48b, type: 2}
-  IsTriggered: 0
-  HasBeenDisplayed: 0
+  ExclusiveTriggers:
+  - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
+  HasBeenDisplayed: 1
   Content: Oh no, is my father okay?
   Phase: 1
   PhaseTransitionAfter: 0

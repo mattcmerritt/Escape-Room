@@ -38701,6 +38701,82 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 995279646
       objectReference: {fileID: 0}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: DialogueLines.Array.size
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: DialogueLines.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b6a75e7fab0a774e94f2dc2c3e38622, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: DialogueLines.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3ab9701ce6a02d84297f32395716d193, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: DialogueLines.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: bb9e48ed332082b4ab92b43af884d41a, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: DialogueLines.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 938386bfdecf4a141a9dd60977eafc8c, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9fa4507929be51d44ba26a234a688d2b, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b350f7feea603642b5f60abd049d85a, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 08d5ea354a14ab146a354625b58a901b, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 70ac91fef554104438fa89e2496eb382, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 53b7aec077eb5b54c9ae8e44b7276364, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 75221befb4cd4ae4da359edfd5db0246, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2351481d44cba6c4690eceecdb7ea48b, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: d6831a450f7447340bc75d9050d79085, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fb931b33238a814dad30972b2be21fa, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[15]
+      value: 
+      objectReference: {fileID: 11400000, guid: cd76519cda68aa940aef5e86b16a0701, type: 2}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: KeywordTriggers.Array.data[16]
+      value: 
+      objectReference: {fileID: 11400000, guid: e83fd3c33c55c1e4d8b18fec61c61368, type: 2}
     - target: {fileID: 7920080223106129991, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
       propertyPath: m_RootOrder
       value: 12

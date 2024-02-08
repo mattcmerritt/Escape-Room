@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PotentialTriggers:
   - {fileID: 11400000, guid: 8e021fc57a486e14c94d27dba5550725, type: 2}
-  - {fileID: 11400000, guid: 75221befb4cd4ae4da359edfd5db0246, type: 2}
-  IsTriggered: 0
+  ExclusiveTriggers:
+  - {fileID: 11400000, guid: 31df0098aa4852443818c7e8dfec6485, type: 2}
   HasBeenDisplayed: 0
   Content: Who is this calling?
-  Priority: 0
   Phase: 0
+  PhaseTransitionAfter: 0
+  FailState: 0
+  WinState: 0

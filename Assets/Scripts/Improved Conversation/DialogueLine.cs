@@ -51,7 +51,7 @@ namespace Conversation
             }
 
             int ExclusiveTriggersActivated = 0;
-            if(ExclusiveTriggers != null)
+            if(ExclusiveTriggers != null && ExclusiveTriggers.Length != 0)
             {
                 foreach (KeywordTrigger trigger in ExclusiveTriggers)
                 {
@@ -62,7 +62,7 @@ namespace Conversation
                 }
                 if(ExclusiveTriggersActivated == ExclusiveTriggers.Length)
                 {
-                    Debug.Log($"skipping {name}");
+                    Debug.Log($"skipping {name} (exclusive trigger procced)");
                     // a more specific dialogue option exists, so don't display this one.
                     HasBeenDisplayed = true; // so it cant be displayed
                     return false;
@@ -76,6 +76,7 @@ namespace Conversation
 
             if (!triggerFailed)
             {
+                Debug.Log($"showing {name} (no triggers failed)");
                 HasBeenDisplayed = true;
                 return true;
             }
