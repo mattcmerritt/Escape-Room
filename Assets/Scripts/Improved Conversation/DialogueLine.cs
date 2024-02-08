@@ -19,6 +19,7 @@ namespace Conversation
         // for example, "introduction" or "address confirmation"
         public int Phase;
         public bool PhaseTransitionAfter;
+        public bool CheckOutsidePhase;
 
         public bool FailState;
         public bool WinState;

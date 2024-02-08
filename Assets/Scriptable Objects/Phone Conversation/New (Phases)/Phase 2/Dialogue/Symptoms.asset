@@ -16,10 +16,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08d5ea354a14ab146a354625b58a901b, type: 2}
   ExclusiveTriggers:
   - {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
-  - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
   HasBeenDisplayed: 0
-  Content: Sorry, who are we talking about?
+  Content: Sorry, can you confirm who are we talking about?
   Phase: 1
   PhaseTransitionAfter: 0
+  CheckOutsidePhase: 0
   FailState: 0
   WinState: 0

@@ -17,8 +17,9 @@ MonoBehaviour:
   ExclusiveTriggers:
   - {fileID: 11400000, guid: 31df0098aa4852443818c7e8dfec6485, type: 2}
   HasBeenDisplayed: 0
-  Content: Who is this calling?
+  Content: Who are you calling on behalf of?
   Phase: 0
   PhaseTransitionAfter: 0
+  CheckOutsidePhase: 0
   FailState: 0
   WinState: 0
