@@ -14,4 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Question: What was something new you learned about the roles and responsibilities
     of members of the healthcare team?
-  Answer: 3
+  Answer: "As you saw, there are often complimentary roles, such as with Physician
+    Assistants, Nurse Practitioners, and Physicians on a healthcare team. Many patients
+    will not know the difference between such providers or the difference between
+    Occupational and Physical Therapists. It\u2019s important that you can clearly
+    explain the complimentary yet unique role each member has on the team and how
+    the patient benefits from having an interprofessional team working for them."

@@ -7,7 +7,8 @@ namespace Conversation
     [CreateAssetMenu]
     public class DialogueLine : ScriptableObject
     {
-        public KeywordTrigger[] PotentialTriggers;
+        public KeywordTrigger[] PotentialTriggers; // list of triggers that need to be active for this line to appear
+        public KeywordTrigger[] ExclusiveTriggers; // list of triggers that, if active alongside this one, prevent it from appearing
         
         // not really utilized
         public bool HasBeenDisplayed;
@@ -18,6 +19,7 @@ namespace Conversation
         // for example, "introduction" or "address confirmation"
         public int Phase;
         public bool PhaseTransitionAfter;
+        public bool CheckOutsidePhase;
 
         public bool FailState;
         public bool WinState;
@@ -49,8 +51,33 @@ namespace Conversation
                 }
             }
 
+            int ExclusiveTriggersActivated = 0;
+            if(ExclusiveTriggers != null && ExclusiveTriggers.Length != 0)
+            {
+                foreach (KeywordTrigger trigger in ExclusiveTriggers)
+                {
+                    if(trigger.CheckTriggerConditions(input))
+                    {
+                        ExclusiveTriggersActivated += 1;
+                    }
+                }
+                if(ExclusiveTriggersActivated == ExclusiveTriggers.Length)
+                {
+                    Debug.Log($"skipping {name} (exclusive trigger procced)");
+                    // a more specific dialogue option exists, so don't display this one.
+                    HasBeenDisplayed = true; // so it cant be displayed
+                    return false;
+                }
+            }
+            // else
+            // {
+            //     Debug.LogError($"ERROR: null exclusive list on {name}!");
+            // }
+            
+
             if (!triggerFailed)
             {
+                Debug.Log($"showing {name} (no triggers failed)");
                 HasBeenDisplayed = true;
                 return true;
             }

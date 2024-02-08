@@ -21,7 +21,7 @@ public class PhoneCallLogs : NetworkBehaviour
     [SerializeField] private List<DialogueLine> DialogueLines;
     [SerializeField] private List<KeywordTrigger> KeywordTriggers;
     [SerializeField] private int CurrentPhase;
-    [SerializeField] private string GenericFailMessage, PrivacyFailMessage;
+    [SerializeField] private string GenericFailMessage, GenericSecondFailMessage, PrivacyFailMessage;
 
     private void Start()
     {
@@ -136,9 +136,13 @@ public class PhoneCallLogs : NetworkBehaviour
         DialogueLine triggeredLine = null;
         foreach (DialogueLine line in DialogueLines)
         {
-            if (line.Phase == CurrentPhase && line.CheckIfTriggered(message)) 
+            if ((line.Phase == CurrentPhase || line.CheckOutsidePhase) && line.CheckIfTriggered(message)) 
             {
-                triggeredLine = line;
+                // force responses to only work in phase
+                if (line.Phase == CurrentPhase)
+                {
+                    triggeredLine = line;
+                }
             }
         }
 
@@ -151,17 +155,34 @@ public class PhoneCallLogs : NetworkBehaviour
                 AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call was successfully completed.");
             }
 
+            if(triggeredLine.PhaseTransitionAfter)
+            {
+                CurrentPhase += 1;
+            }
+
             // can only enter here for privacy fail
-            if (triggeredLine.FailState)
+            if (triggeredLine.FailState && CurrentPhase == 0)
             {
                 AddPhoneChatMessageForAllServerRpc("System", timestamp, PrivacyFailMessage);
+                EndConversationForAllServerRpc();
+            }
+            else if (triggeredLine.FailState)
+            {
+                AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call ended early. Please try again.");
                 EndConversationForAllServerRpc();
             }
         }
         // generic fail - unclear
         else
         {
-            AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, GenericFailMessage);
+            if (CurrentPhase == 0)
+            {
+                AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, GenericFailMessage);
+            }
+            else
+            {
+                AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, GenericSecondFailMessage);
+            }
             AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call ended early. Please try again.");
             EndConversationForAllServerRpc();
         }

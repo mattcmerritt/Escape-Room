@@ -9,7 +9,6 @@ namespace Conversation
     {
         // Cannot have both lists populated.
         [SerializeField] private string[] RequiredWords;
-        [SerializeField] private string[] ProhibitedWords;
 
         public bool IsTriggered;
 
@@ -25,34 +24,27 @@ namespace Conversation
 
         public bool CheckTriggerConditions(string input)
         {
+            if (IsTriggered) 
+            {
+                return true; // condition was met in a previous message
+            }
+
+            bool ConditionsMet = false;
+
             if (RequiredWords.Length > 0)
             {
-                // first ensure that one required word are present
+                // ensure that one required word is present
                 foreach (string word in RequiredWords)
                 {
                     if (ContainsKeyword(input, word))
                     {
+                        ConditionsMet = true;
                         IsTriggered = true;
-                        return true;
                     }
                 }
-
-                return false;
             }
-            else
-            {
-                // otherwise ensure that no the banned words are present
-                foreach (string word in ProhibitedWords)
-                {
-                    if (ContainsKeyword(input, word))
-                    {
-                        IsTriggered = true;
-                        return true;
-                    }
-                }
 
-                return false;
-            }
+            return ConditionsMet;
         }
 
         private bool ContainsKeyword(string input, string word)

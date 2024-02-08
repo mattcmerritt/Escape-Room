@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Pickup
   m_EditorClassIdentifier: 
   PotentialTriggers:
-  - {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
   - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
-  IsTriggered: 0
+  - {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
+  - {fileID: 11400000, guid: 08d5ea354a14ab146a354625b58a901b, type: 2}
+  ExclusiveTriggers: []
   HasBeenDisplayed: 0
   Content: I'm on my way, be there soon.
   Phase: 1
   PhaseTransitionAfter: 0
+  CheckOutsidePhase: 0
   FailState: 0
   WinState: 1

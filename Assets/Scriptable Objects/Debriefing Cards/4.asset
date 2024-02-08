@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0940c989ae88fe47827c0ef551ce2d4, type: 3}
   m_Name: 4
   m_EditorClassIdentifier: 
-  Question: How would the team have benefitted from having other healthcare professionals
-    present?
-  Answer: 4
+  Question: 'How would the team have benefitted from having other healthcare professionals
+    present? '
+  Answer: "Consider the unique expertise and the benefits of having other members
+    involved who may not have been on your team today \u2013 such as physical therapy,
+    pharmacy, social work, occupational therapy, and more. When we have a full array
+    of providers on the team, we can draw on each other\u2019s expertise and be more
+    efficient and effective in our practice.  "

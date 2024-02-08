@@ -16,4 +16,5 @@ MonoBehaviour:
   - come get him
   - come to the hospital
   - pick up
-  ProhibitedWords: []
+  - pick him up
+  IsTriggered: 0
