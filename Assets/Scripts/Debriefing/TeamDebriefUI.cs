@@ -117,7 +117,7 @@ public class TeamDebriefUI : MonoBehaviour
             {
                 output += ", ";
             }
-            else if (i == names.Count - 2 && names.Count > 2)
+            else if (i == names.Count - 2 && names.Count == 2)
             {
                 output += " and ";
             }
