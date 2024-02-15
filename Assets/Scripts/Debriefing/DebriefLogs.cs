@@ -173,6 +173,7 @@ public class DebriefLogs : NetworkBehaviour
 
     private IEnumerator UpdateNamesWhenAvailable()
     {
+        Debug.Log("Updating remaining speakers in coroutine.");
         yield return new WaitUntil(() => FindObjectOfType<TeamDebriefUI>(false) != null);
         // create a list of people who haven't spoken
         List<string> remainingSpeakers = new List<string>();
@@ -184,5 +185,6 @@ public class DebriefLogs : NetworkBehaviour
             }
         }
         FindObjectOfType<TeamDebriefUI>(false).UpdateRemainingSpeakers(remainingSpeakers);
+        Debug.Log("Finished updating remaining speakers in coroutine.");
     }
 }

@@ -114,13 +114,13 @@ public class TeamDebriefUI : MonoBehaviour
         for (int i = 0; i < names.Count; i++)
         {
             output += names[i];
-            if (i != names.Count - 1 && names.Count > 2)
+            if (i != names.Count - 1 && i != names.Count - 2 && names.Count > 2)
             {
                 output += ", ";
             }
-            if (i == names.Count - 2)
+            else if (i == names.Count - 2)
             {
-                output += "and ";
+                output += ", and ";
             }
         }
         if (names.Count > 0)
