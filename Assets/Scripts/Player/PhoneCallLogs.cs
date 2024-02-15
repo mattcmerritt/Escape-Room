@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -118,6 +119,9 @@ public class PhoneCallLogs : NetworkBehaviour
             line.ResetObject();
         }
         CurrentPhase = 0; 
+
+        // LOG HERE
+        SaveConversationToLocalFile();
     }
 
     public void SendPhoneChatMessage(string message)
@@ -153,6 +157,9 @@ public class PhoneCallLogs : NetworkBehaviour
             if (triggeredLine.WinState)
             {
                 AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call was successfully completed.");
+
+                // LOG HERE
+                SaveConversationToLocalFile();
             }
 
             if(triggeredLine.PhaseTransitionAfter)
@@ -202,5 +209,26 @@ public class PhoneCallLogs : NetworkBehaviour
         ChatMessage newMessage = new ChatMessage(playerName, timestamp, message);
         PhoneChatHistory.Add(newMessage);
         FindObjectOfType<TeamChatUI>(false).AddPhoneMessage(newMessage);
+    }
+
+    // TODO: this is simply for playtesting!
+    // should not be used in production environment!
+    private void SaveConversationToLocalFile()
+    {
+        DateTime currentTime = DateTime.Now;
+        string filename = currentTime.ToString();
+        filename = filename.Replace("/", "-");
+        filename = filename.Replace(":", "_");
+
+        string path = Application.persistentDataPath + "/" + filename + ".txt";
+        StreamWriter writer = new StreamWriter(path, true);
+
+        foreach(ChatMessage msg in PhoneChatHistory)
+        {
+            writer.WriteLine($"{msg.PlayerName} ({msg.Timestamp}: {msg.Message})");
+        }
+        
+        // clear PhoneChatHistory
+        PhoneChatHistory.Clear();
     }
 }
