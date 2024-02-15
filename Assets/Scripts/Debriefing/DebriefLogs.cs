@@ -92,16 +92,8 @@ public class DebriefLogs : NetworkBehaviour
         TeamChatHistory.Add(newMessage);
         FindObjectOfType<TeamDebriefUI>(false).AddTeamMessage(newMessage, announcement);
 
-        // create a list of people who haven't spoken
-        List<string> remainingSpeakers = new List<string>();
-        foreach (string name in PlayersInLobby)
-        {
-            if (!PlayersWhoHaveSpoken.Contains(name))
-            {
-                remainingSpeakers.Add(name);
-            }
-        }
-        FindObjectOfType<TeamDebriefUI>(false).UpdateRemainingSpeakers(remainingSpeakers);
+        // create list of remaining speakers
+        InitialLoadNamesServerRpc();
     }
 
     // ------------------------ CARDS ------------------------

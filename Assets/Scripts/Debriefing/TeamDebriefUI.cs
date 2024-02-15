@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using TMPro;
 
 public class TeamDebriefUI : MonoBehaviour
 {
@@ -118,6 +117,10 @@ public class TeamDebriefUI : MonoBehaviour
             {
                 output += ", ";
             }
+            else if (i == names.Count - 2 && names.Count > 2)
+            {
+                output += " and ";
+            }
             else if (i == names.Count - 2)
             {
                 output += ", and ";
@@ -131,7 +134,6 @@ public class TeamDebriefUI : MonoBehaviour
         {
             RemainingSpeakers.text = "All members have spoken.\nClick to flip the card.";
         }
-        
     }
 
     // ------------------------ CARDS ------------------------
