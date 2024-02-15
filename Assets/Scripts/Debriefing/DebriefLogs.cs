@@ -16,6 +16,9 @@ public class DebriefLogs : NetworkBehaviour
     [SerializeField] private List<string> PlayersInLobby = new List<string>();
     [SerializeField] private HashSet<string> PlayersWhoHaveSpoken = new HashSet<string>();
 
+    // Debug
+    [SerializeField] private TeamDebriefUI TeamDebriefUI;
+
     public override void OnNetworkSpawn()
     {
         base.OnNetworkSpawn();
@@ -176,7 +179,8 @@ public class DebriefLogs : NetworkBehaviour
                 remainingSpeakers.Add(name);
             }
         }
-        FindObjectOfType<TeamDebriefUI>(false).UpdateRemainingSpeakers(remainingSpeakers);
+        TeamDebriefUI = FindObjectOfType<TeamDebriefUI>(false);
+        TeamDebriefUI.UpdateRemainingSpeakers(remainingSpeakers);
         Debug.Log("Finished updating remaining speakers in coroutine.");
     }
 }

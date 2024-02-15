@@ -150,7 +150,8 @@ public class TeamDebriefUI : MonoBehaviour
 
     public void FlipCardButtonCallback()
     {
-        FindObjectOfType<DebriefLogs>(false).FlipCardServerRpc();
-        FindObjectOfType<DebriefLogs>(false).InitialLoadNamesServerRpc();
+        DebriefLogs logs = FindObjectOfType<DebriefLogs>(false);
+        logs.FlipCardServerRpc();
+        logs.InitialLoadNamesServerRpc();
     }
 }
