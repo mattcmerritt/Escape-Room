@@ -221,12 +221,17 @@ public class PhoneCallLogs : NetworkBehaviour
         filename = filename.Replace(":", "_");
 
         string path = Application.persistentDataPath + "/" + filename + ".txt";
+
+        // Debug.Log(path);
+
         StreamWriter writer = new StreamWriter(path, true);
 
         foreach(ChatMessage msg in PhoneChatHistory)
         {
-            writer.WriteLine($"{msg.PlayerName} ({msg.Timestamp}: {msg.Message})");
+            writer.WriteLine($"{msg.PlayerName} ({msg.Timestamp}): {msg.Message.Replace("\n", "")}");
         }
+
+        writer.Close();
         
         // clear PhoneChatHistory
         PhoneChatHistory.Clear();
