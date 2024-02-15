@@ -27,6 +27,8 @@ public class DebriefLogs : NetworkBehaviour
         // TODO: figure out how to set the first card 
         //  currently happens too early
         ForceLoadCardServerRpc(0); // could cause issue with late join
+
+        InitialLoadNamesServerRpc(); // could cause issue with late join
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -73,6 +75,17 @@ public class DebriefLogs : NetworkBehaviour
         ChatMessage newMessage = new ChatMessage(playerName, timestamp, message);
         TeamChatHistory.Add(newMessage);
         FindObjectOfType<TeamDebriefUI>(false).AddTeamMessage(newMessage, announcement);
+
+        // create a list of people who haven't spoken
+        List<string> remainingSpeakers = new List<string>();
+        foreach (string name in PlayersInLobby)
+        {
+            if (!PlayersWhoHaveSpoken.Contains(name))
+            {
+                remainingSpeakers.Add(name);
+            }
+        }
+        FindObjectOfType<TeamDebriefUI>(false).UpdateRemainingSpeakers(remainingSpeakers);
     }
 
     // ------------------------ CARDS ------------------------
@@ -128,5 +141,32 @@ public class DebriefLogs : NetworkBehaviour
                 Debug.Log("Debrief completed!");
             }
         }
+    }
+
+    [ServerRpc(RequireOwnership=false)]
+    public void InitialLoadNamesServerRpc()
+    {
+        InitialLoadNamesClientRpc();
+    }
+
+    [ClientRpc]
+    public void InitialLoadNamesClientRpc()
+    {
+        StartCoroutine(UpdateNamesWhenAvailable());
+    }
+
+    private IEnumerator UpdateNamesWhenAvailable()
+    {
+        yield return new WaitUntil(() => FindObjectOfType<TeamDebriefUI>(false) != null);
+        // create a list of people who haven't spoken
+        List<string> remainingSpeakers = new List<string>();
+        foreach (string name in PlayersInLobby)
+        {
+            if (!PlayersWhoHaveSpoken.Contains(name))
+            {
+                remainingSpeakers.Add(name);
+            }
+        }
+        FindObjectOfType<TeamDebriefUI>(false).UpdateRemainingSpeakers(remainingSpeakers);
     }
 }

@@ -22,6 +22,9 @@ public class TeamDebriefUI : MonoBehaviour
     private Card CurrentCard;
     // TODO: animate the cards
 
+    // Text to show who needs to speak
+    [SerializeField] private TMP_Text RemainingSpeakers;
+
     private void Start()
     {
         RectTransform prefabMessageTransform = MessagePrefab.GetComponent<RectTransform>();
@@ -104,6 +107,33 @@ public class TeamDebriefUI : MonoBehaviour
         return EventSystem && EventSystem.currentSelectedGameObject == TeamChatbar.gameObject;
     }
 
+    // update the list of players who need to speak
+    public void UpdateRemainingSpeakers(List<string> names)
+    {
+        string output = "The following members need to speak:\n";
+        for (int i = 0; i < names.Count; i++)
+        {
+            output += names[i];
+            if (i != names.Count - 1 && names.Count > 2)
+            {
+                output += ",";
+            }
+            if (i == names.Count - 2)
+            {
+                output += " and";
+            }
+        }
+        if (names.Count > 0)
+        {
+            RemainingSpeakers.text = output;
+        }
+        else
+        {
+            RemainingSpeakers.text = "All members have spoken.\nClick to flip the card.";
+        }
+        
+    }
+
     // ------------------------ CARDS ------------------------
     public void FlipCard()
     {
@@ -119,5 +149,6 @@ public class TeamDebriefUI : MonoBehaviour
     public void FlipCardButtonCallback()
     {
         FindObjectOfType<DebriefLogs>(false).FlipCardServerRpc();
+        FindObjectOfType<DebriefLogs>(false).InitialLoadNamesServerRpc();
     }
 }
