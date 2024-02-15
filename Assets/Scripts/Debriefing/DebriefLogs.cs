@@ -81,15 +81,13 @@ public class DebriefLogs : NetworkBehaviour
     private void AddTeamChatMessageForAllServerRpc(string playerName, string timestamp, string message, bool announcement)
     {
         Debug.Log($"Server RPC received: {timestamp}, {playerName}: {message}");
-
-        PlayersWhoHaveSpoken.Add(playerName);
-
         AddTeamChatMessageClientRpc(playerName, timestamp, message, announcement);
     }
 
     [ClientRpc]
     private void AddTeamChatMessageClientRpc(string playerName, string timestamp, string message, bool announcement)
     {
+        PlayersWhoHaveSpoken.Add(playerName);
         Debug.Log($"Client RPC received: {timestamp}, {playerName}: {message}");
         ChatMessage newMessage = new ChatMessage(playerName, timestamp, message);
         TeamChatHistory.Add(newMessage);
