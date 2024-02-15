@@ -37,7 +37,7 @@ public class DebriefLogs : NetworkBehaviour
         string players = "";
         foreach (string name in PlayersInLobby)
         {
-            players += $"{name}\n";
+            players += $"{name}|";
         }
         RegisterPlayerClientRpc(playerName, players);
     }
@@ -45,7 +45,17 @@ public class DebriefLogs : NetworkBehaviour
     [ClientRpc]
     public void RegisterPlayerClientRpc(string playerName, string prevPlayers)
     {
-        PlayersInLobby = new List<string>(prevPlayers.Split('\n')); // loading the list from the host / server
+        // loading the list from the host / server
+        PlayersInLobby = new List<string>(prevPlayers.Split('|'));
+        for (int i = 0; i < PlayersInLobby.Count; i++)
+        {
+            // Debug.Log($"{PlayersInLobby[i]}: {PlayersInLobby[i].Trim()}");
+            if (PlayersInLobby[i].Trim() == "")
+            {
+                PlayersInLobby.Remove(PlayersInLobby[i]);
+                i--;
+            }
+        }
         PlayersInLobby.Add(playerName);
     }
 
