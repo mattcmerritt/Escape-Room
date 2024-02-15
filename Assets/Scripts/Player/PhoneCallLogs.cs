@@ -154,12 +154,18 @@ public class PhoneCallLogs : NetworkBehaviour
         {
             AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, triggeredLine.Content);
 
+            // win
             if (triggeredLine.WinState)
             {
                 AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call was successfully completed.");
 
                 // LOG HERE
                 SaveConversationToLocalFile();
+
+
+
+                // go to the debrief
+                FindObjectOfType<DebriefPhone>().SwitchUIForAllServerRpc();
             }
 
             if(triggeredLine.PhaseTransitionAfter)

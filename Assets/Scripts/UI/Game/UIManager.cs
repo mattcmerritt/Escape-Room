@@ -118,7 +118,10 @@ public class UIManager : MonoBehaviour
             }
             else if (UIPanelOpen)
             {
-                CloseUI(ActiveUIPanel.GetComponent<UIPanel>());
+                if (ActiveUIPanel.GetComponent<TeamDebriefUI>() == null)
+                {
+                    CloseUI(ActiveUIPanel.GetComponent<UIPanel>());
+                }
             }
         }
     }
@@ -464,5 +467,10 @@ public class UIManager : MonoBehaviour
             FindObjectOfType<FakeBookWithLock>().UnlockBook();
             KeyButton.SetActive(false);
         });
+    }
+
+    public UIPanel GetActiveUIPanel() 
+    {
+        return ActiveUIPanel.GetComponent<UIPanel>();
     }
 }

@@ -95,4 +95,9 @@ public class PlayerInteractions : NetworkBehaviour
     {
         InMenu = false;
     }
+
+    public UIManager GetUIManager()
+    {
+        return UIManager;
+    }
 }
