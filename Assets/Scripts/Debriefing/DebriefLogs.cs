@@ -34,12 +34,18 @@ public class DebriefLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void RegisterPlayerServerRpc(string playerName)
     {
-        RegisterPlayerClientRpc(playerName);
+        string players = "";
+        foreach (string name in PlayersInLobby)
+        {
+            players += $"{name}\n";
+        }
+        RegisterPlayerClientRpc(playerName, players);
     }
 
     [ClientRpc]
-    public void RegisterPlayerClientRpc(string playerName)
+    public void RegisterPlayerClientRpc(string playerName, string prevPlayers)
     {
+        PlayersInLobby = new List<string>(prevPlayers.Split('\n')); // loading the list from the host / server
         PlayersInLobby.Add(playerName);
     }
 
