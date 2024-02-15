@@ -23,7 +23,7 @@ public class Phone : SimpleObject
     [ClientRpc]
     private void OpenUIForAllClientRpc() 
     {
-        PlayerInteractions player = FindObjectOfType<PlayerInteractions>();
+        PlayerInteractions player = FindObjectOfType<PlayerInteractions>(false);
         player.OpenWithUIManager(PanelID);
     }
 }
