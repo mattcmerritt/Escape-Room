@@ -305,10 +305,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ddf76e27745394189bb7a52322eaf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelHidden: 0
   cameraObject: {fileID: 75123436}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  hiddenLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  bothLayer:
+    serializedVersion: 2
+    m_Bits: 192
   fadeOutDistance: 5
 --- !u!1 &1362303617 stripped
 GameObject:
@@ -327,10 +334,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ddf76e27745394189bb7a52322eaf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modelHidden: 0
   cameraObject: {fileID: 1525015135}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
+  hiddenLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  bothLayer:
+    serializedVersion: 2
+    m_Bits: 192
   fadeOutDistance: 5
 --- !u!4 &1362303619 stripped
 Transform:

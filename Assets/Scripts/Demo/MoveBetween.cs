@@ -12,7 +12,7 @@ public class MoveBetween : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Debug.Log("Forward");
+            //Debug.Log("Forward");
             if (activeCoroutine != null)
             {
                 StopCoroutine(activeCoroutine);
@@ -21,7 +21,7 @@ public class MoveBetween : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("Backwards");
+            //Debug.Log("Backwards");
             if (activeCoroutine != null)
             {
                 StopCoroutine(activeCoroutine);

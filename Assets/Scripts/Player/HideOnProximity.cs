@@ -19,7 +19,7 @@ public class HideOnProximity : MonoBehaviour
 
     // camera and raycasting
     [SerializeField] private GameObject cameraObject;
-    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask bothLayer;
     [SerializeField] private float fadeOutDistance;
 
     private void Start()
@@ -36,11 +36,28 @@ public class HideOnProximity : MonoBehaviour
     private void Update()
     {
         RaycastHit hit;
-        if (Physics.Raycast(cameraObject.transform.position, cameraObject.transform.forward, out hit, fadeOutDistance, playerLayer))
+        if (Physics.Raycast(cameraObject.transform.position, cameraObject.transform.forward, out hit, fadeOutDistance, bothLayer))
         {
-            Debug.Log($"Hit {hit.collider.name}");
+            //Debug.Log($"Hit {hit.collider.name}");
             HideOnProximity hider = hit.collider.gameObject.GetComponent<HideOnProximity>();
             hider.MarkAsHidden();
+        }
+
+        if (modelHidden)
+        {
+            gameObject.layer = LayerMask.NameToLayer("Hidden Players");
+            foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("Hidden Players");
+            }
+        }
+        else
+        {
+            gameObject.layer = LayerMask.NameToLayer("Players");
+            foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
+            {
+                child.gameObject.layer = LayerMask.NameToLayer("Players");
+            }
         }
     }
 
@@ -66,7 +83,7 @@ public class HideOnProximity : MonoBehaviour
         // start fade out coroutines if not active
         if (!isHiding)
         {
-            Debug.Log("Unhiding!");
+            //Debug.Log("Unhiding!");
             for (int i = 0; i < renderers.Count; i++)
             {
                 activeCoroutines.Add(StartCoroutine(FadeOut(i)));
@@ -77,7 +94,7 @@ public class HideOnProximity : MonoBehaviour
         // else reset fade in delay
         else
         {
-            Debug.Log("Continue waiting!");
+            //Debug.Log("Continue waiting!");
             if (fadeInDelayCoroutine != null)
             {
                 StopCoroutine(fadeInDelayCoroutine);
@@ -115,7 +132,7 @@ public class HideOnProximity : MonoBehaviour
 
     public IEnumerator FadeOut(int i)
     {
-        Debug.Log("Fading out!");
+        //Debug.Log("Fading out!");
 
         renderers[i].material.SetInt("_SrcBlend", (int) UnityEngine.Rendering.BlendMode.SrcAlpha);
         renderers[i].material.SetInt("_DstBlend", (int) UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
@@ -149,7 +166,7 @@ public class HideOnProximity : MonoBehaviour
 
     public IEnumerator FadeIn(int i)
     {
-        Debug.Log("Fading in!");
+        //Debug.Log("Fading in!");
 
         if (renderers[i].material.HasProperty("_Color"))
         {
