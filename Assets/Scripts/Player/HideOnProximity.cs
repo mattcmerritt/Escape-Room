@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 // Shader modifications from: https://www.youtube.com/watch?v=dIC4wbUgt5M
 
-public class HideOnProximity : MonoBehaviour
+public class HideOnProximity : NetworkBehaviour
 {
     // internal fade in/out data
     private List<MeshRenderer> renderers;
@@ -35,12 +36,16 @@ public class HideOnProximity : MonoBehaviour
 
     private void Update()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(cameraObject.transform.position, cameraObject.transform.forward, out hit, fadeOutDistance, bothLayer))
+        // only the current player hides models on their end
+        if (IsOwner)
         {
-            //Debug.Log($"Hit {hit.collider.name}");
-            HideOnProximity hider = hit.collider.gameObject.GetComponent<HideOnProximity>();
-            hider.MarkAsHidden();
+            RaycastHit hit;
+            if (Physics.Raycast(cameraObject.transform.position, cameraObject.transform.forward, out hit, fadeOutDistance, bothLayer))
+            {
+                //Debug.Log($"Hit {hit.collider.name}");
+                HideOnProximity hider = hit.collider.gameObject.GetComponent<HideOnProximity>();
+                hider.MarkAsHidden();
+            }
         }
 
         if (modelHidden)

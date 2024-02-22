@@ -17,6 +17,9 @@ public class PlayerInteractions : NetworkBehaviour
     // UI Manager
     [SerializeField] private UIManager UIManager;
 
+    // Layer for hidden players
+    private LayerMask hiddenPlayers;
+
     // Disable this component if this player is not the owner
     public override void OnNetworkSpawn()
     {
@@ -40,7 +43,7 @@ public class PlayerInteractions : NetworkBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 RaycastHit hit;
-                if (Physics.Raycast(CameraObject.transform.position, CameraObject.transform.forward, out hit, InteractRange))
+                if (Physics.Raycast(CameraObject.transform.position, CameraObject.transform.forward, out hit, InteractRange, 1 << hiddenPlayers))
                 {
                     // Debug.Log(hit.collider.gameObject.name);
                     // Checking for components on clicked object to determine function
