@@ -1013,7 +1013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 069bb77d18df97348befb57e48edaf5b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.76149994
+      value: 0.55349994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 069bb77d18df97348befb57e48edaf5b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1689,7 +1689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18cd7950dad3da346bac3a3ac3eebf8e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.88
+      value: 0.672
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 18cd7950dad3da346bac3a3ac3eebf8e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2401,7 +2401,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a3cb8578b3e3f84b8d5291414d72d86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.756
+      value: 0.548
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4a3cb8578b3e3f84b8d5291414d72d86, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8926,7 +8926,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 2
-  m_Height: 1
+  m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &956834399
@@ -11265,7 +11265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 870d79395e231244fbef1419713b9f43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.001
+      value: -0.207
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 870d79395e231244fbef1419713b9f43, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11331,7 +11331,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.57382286, y: 0.68186265, z: 0.46433145}
-  m_Center: {x: 0.0036015112, y: 0.34942052, z: 0.2016606}
+  m_Center: {x: 0.0036015112, y: 0.55, z: 0.2016606}
 --- !u!1001 &1157786441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16317,7 +16317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e05816cbd4eabb458640a13afe73f41, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.76259995
+      value: 0.55459994
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0e05816cbd4eabb458640a13afe73f41, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16851,7 +16851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: baf4c553543a42d4c9c6bffb4535f17c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75699997
+      value: 0.54899997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: baf4c553543a42d4c9c6bffb4535f17c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18301,7 +18301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 30787870bf7224444973d57863e16e2b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.76
+      value: 0.552
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 30787870bf7224444973d57863e16e2b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18924,7 +18924,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 2
-  m_Height: 1
+  m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2035763486
@@ -31945,6 +31945,14 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 1680375859
       objectReference: {fileID: 0}
+    - target: {fileID: 4986043834433118309, guid: 78601fdec0593d242b084ef00f82d524, type: 3}
+      propertyPath: m_Size.y
+      value: 2.46944
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986043834433118309, guid: 78601fdec0593d242b084ef00f82d524, type: 3}
+      propertyPath: m_Center.y
+      value: 1.0071571
+      objectReference: {fileID: 0}
     - target: {fileID: 5402432802942766891, guid: 78601fdec0593d242b084ef00f82d524, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -35861,6 +35869,22 @@ PrefabInstance:
     - target: {fileID: 471588312445006542, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
       propertyPath: m_Name
       value: Locked Cabinet (4 Letter Blue)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816824839612277562, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4613292
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816824839612277562, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
+      propertyPath: m_Center.x
+      value: 0.037288696
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816824839612277562, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
+      propertyPath: m_Center.y
+      value: 1.0031017
+      objectReference: {fileID: 0}
+    - target: {fileID: 5816824839612277562, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0019956375
       objectReference: {fileID: 0}
     - target: {fileID: 7623890114001400642, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -40771,6 +40795,22 @@ PrefabInstance:
     - target: {fileID: 1159304456254028750, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2070421245
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113245223038578843, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4379601
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113245223038578843, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
+      propertyPath: m_Center.x
+      value: 0.037288696
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113245223038578843, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
+      propertyPath: m_Center.y
+      value: 0.9914171
+      objectReference: {fileID: 0}
+    - target: {fileID: 8113245223038578843, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
+      propertyPath: m_Center.z
+      value: 0.0019956375
       objectReference: {fileID: 0}
     - target: {fileID: 9174036926723045954, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
       propertyPath: m_Name
