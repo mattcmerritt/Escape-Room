@@ -20,12 +20,19 @@ public class GameLobbySetupUI : MonoBehaviour
     [SerializeField] private TMP_Text LobbyCode, PlayerCounter;
 
     private float ListPlayersTimer = 0.75f;
+    private bool InitialLoading = true;
 
     // Constantly check if the lobbies have marked themselves as started
     // Necessary for the joining players to disable the UI
     // If the lobby is not started, update the player list
     private void Update()
     {
+        if (AuthenticationService.Instance.IsSignedIn && InitialLoading)
+        {
+            ListLobbies(); // this will cause the failed to load entries
+            InitialLoading = false;
+            StartCoroutine(DelayedInitialLoad());
+        }
         if (GameLobby.GetStarted())
         {
             CloseUI();
@@ -51,6 +58,16 @@ public class GameLobbySetupUI : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator DelayedInitialLoad()
+    { 
+        yield return new WaitForSeconds(1f);
+        ListLobbies();
+
+        // continue refreshing on a timer
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(DelayedInitialLoad());
     }
 
     public void CreateLobby()
