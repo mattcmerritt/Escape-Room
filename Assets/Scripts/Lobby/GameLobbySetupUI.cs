@@ -126,13 +126,19 @@ public class GameLobbySetupUI : MonoBehaviour
 
     public async void ListLobbies()
     {
+        List<SimpleLobbyData> lobbies = await GameLobby.ListLobbies();
+
+        if (lobbies == null)
+        {
+            return;
+        }
+
         // wipe out old entries
         foreach (Transform child in ContentWindow.transform)
         {
             Destroy(child.gameObject);
         }
 
-        List<SimpleLobbyData> lobbies = await GameLobby.ListLobbies();
         foreach (SimpleLobbyData lobby in lobbies)
         {
             Debug.Log($"<color=white>Lobby List:</color> Instantiating entry.");
