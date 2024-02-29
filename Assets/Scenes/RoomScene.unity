@@ -40327,6 +40327,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 995279646
       objectReference: {fileID: 0}
+    - target: {fileID: 7920080223106129990, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
+      propertyPath: GenericFailMessage
+      value: Sorry, I don't know who you are or where you're from.
+      objectReference: {fileID: 0}
     - target: {fileID: 7920080223106129991, guid: 391aceb6869e2434f85b46bbd6d28940, type: 3}
       propertyPath: m_RootOrder
       value: 13
