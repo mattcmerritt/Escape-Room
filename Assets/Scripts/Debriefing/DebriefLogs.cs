@@ -12,8 +12,6 @@ public class DebriefLogs : NetworkBehaviour
 
     // Team chat history
     [SerializeField] private List<ChatMessage> TeamChatHistory = new List<ChatMessage>();
-    private string ActivePlayerName;
-    [SerializeField] private List<string> PlayersInLobby = new List<string>();
     [SerializeField] private HashSet<string> PlayersWhoHaveSpoken = new HashSet<string>();
 
     // Debug
@@ -23,43 +21,11 @@ public class DebriefLogs : NetworkBehaviour
     {
         base.OnNetworkSpawn();
 
-        ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
-
-        RegisterPlayerServerRpc(ActivePlayerName);
-
         // TODO: figure out how to set the first card 
         //  currently happens too early
         ForceLoadCardServerRpc(0); // could cause issue with late join
 
         InitialLoadNamesServerRpc(); // could cause issue with late join
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void RegisterPlayerServerRpc(string playerName)
-    {
-        string players = "";
-        foreach (string name in PlayersInLobby)
-        {
-            players += $"{name}|";
-        }
-        RegisterPlayerClientRpc(playerName, players);
-    }
-
-    [ClientRpc]
-    public void RegisterPlayerClientRpc(string playerName, string prevPlayers)
-    {
-        // loading the list from the host / server
-        PlayersInLobby = new List<string>(prevPlayers.Split('|'));
-        for (int i = 0; i < PlayersInLobby.Count; i++)
-        {
-            // Debug.Log($"{PlayersInLobby[i]}: {PlayersInLobby[i].Trim()}");
-            if (PlayersInLobby[i].Trim() == "")
-            {
-                PlayersInLobby.Remove(PlayersInLobby[i]);
-                i--;
-            }
-        }
-        PlayersInLobby.Add(playerName);
     }
 
     // ------------------------ TEAM CONVERSATION ------------------------
@@ -72,7 +38,7 @@ public class DebriefLogs : NetworkBehaviour
         string timestamp = currentTime.ToString("HH:mm");
 
         // fetching the current player name
-        string playerName = ActivePlayerName;
+        string playerName = PlayerManager.Instance.ActivePlayerName;
 
         AddTeamChatMessageForAllServerRpc(playerName, timestamp, message, announcement);
     }
@@ -119,7 +85,7 @@ public class DebriefLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void FlipCardServerRpc()
     {
-        if (PlayersInLobby.Count == PlayersWhoHaveSpoken.Count)
+        if (PlayerManager.Instance.PlayersInLobby.Count == PlayersWhoHaveSpoken.Count)
         {
             FlipCardClientRpc();
         }
@@ -170,7 +136,7 @@ public class DebriefLogs : NetworkBehaviour
         yield return new WaitUntil(() => FindObjectOfType<TeamDebriefUI>(false) != null);
         // create a list of people who haven't spoken
         List<string> remainingSpeakers = new List<string>();
-        foreach (string name in PlayersInLobby)
+        foreach (string name in PlayerManager.Instance.PlayersInLobby)
         {
             if (!PlayersWhoHaveSpoken.Contains(name))
             {
