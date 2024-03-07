@@ -17,6 +17,9 @@ public class PlayerMovement : NetworkBehaviour
     // Camera control
     private bool CameraLocked;
 
+    [SerializeField] private Animator ModelAnimator;
+    private NetworkVariable<bool> PlayerIsMoving = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Owner, NetworkVariableWritePermission.Owner);
+
     private void Start()
     {
         // prevent player from spawning in the floor
@@ -33,6 +36,8 @@ public class PlayerMovement : NetworkBehaviour
         {
             this.enabled = false;
         }
+
+        PlayerIsMoving.OnValueChanged += (bool prev, bool current) => { ModelAnimator.SetBool("moving", current); };
     }
 
     private void Awake() 
@@ -72,6 +77,15 @@ public class PlayerMovement : NetworkBehaviour
             Vector3 movement = (normalizedInput.z * transform.forward) + (normalizedInput.x * transform.right);
             // Applying movement and speed
             Controller.Move(movement * Time.deltaTime * MoveSpeed);
+            // Play animation
+            if (movement.magnitude > 0f)
+            {
+                PlayerIsMoving.Value = true;
+            }
+            else
+            {
+                PlayerIsMoving.Value = false;
+            }
         }        
     }
 
