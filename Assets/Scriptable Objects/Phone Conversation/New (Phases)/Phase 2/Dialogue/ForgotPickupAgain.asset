@@ -10,16 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6082d7bdec737de4ebf8cc984b5bd638, type: 3}
-  m_Name: Symptoms
+  m_Name: ForgotPickupAgain
   m_EditorClassIdentifier: 
   PotentialTriggers:
   - {fileID: 11400000, guid: 08d5ea354a14ab146a354625b58a901b, type: 2}
-  ExclusiveTriggers:
   - {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
+  - {fileID: 11400000, guid: c0f111783d703004296965b2eb5213b7, type: 2}
+  ExclusiveTriggers:
+  - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
   HasBeenDisplayed: 0
-  Content: Sorry, who are we talking about?
+  Content: Sorry to hear that he's in the hospital. Hope he's doing okay still. I
+    have to go, but let me know if he needs anything!
   Phase: 1
   PhaseTransitionAfter: 0
   CheckOutsidePhase: 0
-  FailState: 0
+  FailState: 1
   WinState: 0

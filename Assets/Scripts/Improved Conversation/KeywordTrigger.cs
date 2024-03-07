@@ -5,24 +5,12 @@ using UnityEngine;
 namespace Conversation
 {
     [CreateAssetMenu]
-    public class KeywordTrigger : ScriptableObject
+    public class KeywordTrigger : Trigger
     {
         // Cannot have both lists populated.
         [SerializeField] private string[] RequiredWords;
 
-        public bool IsTriggered;
-
-        private void OnEnable()
-        {
-            ResetObject();
-        }
-
-        public void ResetObject()
-        {
-            IsTriggered = false;
-        }
-
-        public bool CheckTriggerConditions(string input)
+        public override bool CheckTriggerConditions(string input)
         {
             if (IsTriggered) 
             {

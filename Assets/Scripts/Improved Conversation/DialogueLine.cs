@@ -7,10 +7,9 @@ namespace Conversation
     [CreateAssetMenu]
     public class DialogueLine : ScriptableObject
     {
-        public KeywordTrigger[] PotentialTriggers; // list of triggers that need to be active for this line to appear
-        public KeywordTrigger[] ExclusiveTriggers; // list of triggers that, if active alongside this one, prevent it from appearing
+        public Trigger[] PotentialTriggers; // list of triggers that need to be active for this line to appear
+        public Trigger[] ExclusiveTriggers; // list of triggers that, if active alongside this one, prevent it from appearing
         
-        // not really utilized
         public bool HasBeenDisplayed;
 
         [TextArea] public string Content;
@@ -42,7 +41,7 @@ namespace Conversation
             }
 
             bool triggerFailed = false;
-            foreach (KeywordTrigger trigger in PotentialTriggers)
+            foreach (Trigger trigger in PotentialTriggers)
             {
                 if (!trigger.CheckTriggerConditions(input))
                 {
@@ -54,7 +53,7 @@ namespace Conversation
             int ExclusiveTriggersActivated = 0;
             if(ExclusiveTriggers != null && ExclusiveTriggers.Length != 0)
             {
-                foreach (KeywordTrigger trigger in ExclusiveTriggers)
+                foreach (Trigger trigger in ExclusiveTriggers)
                 {
                     if(trigger.CheckTriggerConditions(input))
                     {
@@ -78,7 +77,7 @@ namespace Conversation
             if (!triggerFailed)
             {
                 Debug.Log($"showing {name} (no triggers failed)");
-                HasBeenDisplayed = true;
+                // HasBeenDisplayed = true; // TODO: should be handled in PhoneCallLogs.SendPhoneChatMessage
                 return true;
             }
 

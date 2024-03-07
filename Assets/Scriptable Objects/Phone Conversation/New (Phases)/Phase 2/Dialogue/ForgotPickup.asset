@@ -18,10 +18,9 @@ MonoBehaviour:
   ExclusiveTriggers:
   - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
   HasBeenDisplayed: 0
-  Content: Sorry to hear that he's in the hospital. Hope he's doing okay still. I
-    have to go, but let me know if he needs anything!
+  Content: I'm not sure what you need from me.
   Phase: 1
   PhaseTransitionAfter: 0
   CheckOutsidePhase: 0
-  FailState: 1
+  FailState: 0
   WinState: 0

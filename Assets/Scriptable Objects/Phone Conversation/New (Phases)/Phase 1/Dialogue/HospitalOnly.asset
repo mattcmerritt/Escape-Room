@@ -16,9 +16,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df400e6d000d0664d9007dd443eba6a4, type: 2}
   ExclusiveTriggers:
   - {fileID: 11400000, guid: 6b350f7feea603642b5f60abd049d85a, type: 2}
-  HasBeenDisplayed: 1
+  HasBeenDisplayed: 0
   Content: "The hospital? What\u2019s this about?"
   Phase: 0
   PhaseTransitionAfter: 0
+  CheckOutsidePhase: 0
   FailState: 0
   WinState: 0

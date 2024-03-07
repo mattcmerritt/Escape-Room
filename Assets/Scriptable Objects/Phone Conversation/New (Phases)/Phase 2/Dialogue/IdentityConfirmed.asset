@@ -17,7 +17,7 @@ MonoBehaviour:
   ExclusiveTriggers:
   - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
   HasBeenDisplayed: 0
-  Content: Oh no, is my father okay? Is there anything you need me to do?
+  Content: Oh no, is my father okay? Is something wrong with him?
   Phase: 1
   PhaseTransitionAfter: 0
   CheckOutsidePhase: 1

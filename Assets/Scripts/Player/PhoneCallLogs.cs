@@ -20,7 +20,7 @@ public class PhoneCallLogs : NetworkBehaviour
 
     // Phone conversation data
     [SerializeField] private List<DialogueLine> DialogueLines;
-    [SerializeField] private List<KeywordTrigger> KeywordTriggers;
+    [SerializeField] private List<Trigger> Triggers;
     [SerializeField] private int CurrentPhase;
     [SerializeField] private string GenericFailMessage, GenericSecondFailMessage, PrivacyFailMessage;
 
@@ -110,9 +110,9 @@ public class PhoneCallLogs : NetworkBehaviour
         teamChatUI.ResetPhone();
 
         // reset conversation state
-        foreach (KeywordTrigger kt in KeywordTriggers)
+        foreach (Trigger t in Triggers)
         {
-            kt.ResetObject();
+            t.ResetObject();
         }
         foreach (DialogueLine line in DialogueLines)
         {
@@ -153,6 +153,8 @@ public class PhoneCallLogs : NetworkBehaviour
         if (triggeredLine != null)
         {
             AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, triggeredLine.Content);
+            // mark as completed here
+            triggeredLine.HasBeenDisplayed = true;
 
             // win
             if (triggeredLine.WinState)
