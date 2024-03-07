@@ -51,4 +51,9 @@ public class PlayerManager : NetworkBehaviour
         }
         PlayersInLobby.Add(playerName);
     }
+
+    public List<string> ListPlayersInLobby()
+    {
+        return PlayersInLobby;
+    }
 }

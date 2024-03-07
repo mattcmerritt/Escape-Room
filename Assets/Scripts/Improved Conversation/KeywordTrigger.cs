@@ -51,15 +51,18 @@ namespace Conversation
         {
             string unformattedWord = word.ToLower();
             string unformattedInput = input.ToLower();
-
-            // check for player name
-            if (unformattedWord == "<username>")
+            
+            List<string> currentPlayerList = PlayerManager.Instance.ListPlayersInLobby();
+            for(int i = 0; i < currentPlayerList.Count; i++)
             {
-                string playerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
-
-                return unformattedInput.Contains(playerName.ToLower());
+                currentPlayerList[i] = currentPlayerList[i].ToLower();
             }
-            // multiple different options for a single trigger
+            // if the word we are looking for matches a player name 
+            if (currentPlayerList.Contains(unformattedWord))
+            {
+                return false; // TODO: can possibly make the game unbeatable, but unsure what solution should be
+            }
+            // TODO: this is unused
             else if (unformattedWord.Contains("/"))
             {
                 string[] options = unformattedWord.Split("/");
