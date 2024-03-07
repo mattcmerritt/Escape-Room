@@ -18507,6 +18507,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: -1, y: 0, z: 0}
   ItemInstructions: Click and drag to move around
   ApplyForce: 0
   Strength: 100
@@ -21454,6 +21455,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -21531,6 +21533,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -21643,6 +21646,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -21747,6 +21751,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -21858,6 +21863,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -22017,6 +22023,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -22101,6 +22108,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -22192,6 +22200,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -22351,6 +22360,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
@@ -33290,6 +33300,7 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: -1.9, z: 0}
   ItemInstructions: 'Click and drag to spin object around
 
     Press Escape to close
