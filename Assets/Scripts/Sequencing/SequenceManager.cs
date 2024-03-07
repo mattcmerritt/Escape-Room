@@ -41,10 +41,11 @@ public class SequenceManager : NetworkBehaviour
     [ClientRpc]
     private void MoveToNextClueClientRpc(int clue)
     {
-        CurrentClue += Mathf.Max(clue, CurrentClue);
+        CurrentClue = Mathf.Max(clue, CurrentClue);
 
         Clues[CurrentClue].enabled = true;
         Clues[CurrentClue].gameObject.SetActive(true);
+        Clues[CurrentClue].GetComponent<NetworkObject>().Spawn();
 
         Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
     }
@@ -103,4 +104,20 @@ public class SequenceManager : NetworkBehaviour
         }
     }
     #endregion Dominos
+
+    #region DSM Guide
+    // TODO: potentially implement a check to ensure that the player is getting the right info here
+
+    [ServerRpc(RequireOwnership = false)]
+    public void PickUpDSMGuideServerRpc()
+    {
+        PickUpDSMGuideClientRpc();
+    }
+
+    [ClientRpc]
+    private void PickUpDSMGuideClientRpc()
+    {
+        MoveToNextClueClientRpc(2);
+    }
+    #endregion DSM Guide
 }
