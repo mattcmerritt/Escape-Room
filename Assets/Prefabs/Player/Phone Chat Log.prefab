@@ -62,13 +62,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3ab9701ce6a02d84297f32395716d193, type: 2}
   - {fileID: 11400000, guid: bb9e48ed332082b4ab92b43af884d41a, type: 2}
   - {fileID: 11400000, guid: 938386bfdecf4a141a9dd60977eafc8c, type: 2}
-  KeywordTriggers:
+  - {fileID: 11400000, guid: e5b4c7bc281119b489bea9fd1db56d2a, type: 2}
+  - {fileID: 11400000, guid: 4c71f05ccb1221648a0ac635301288be, type: 2}
+  Triggers:
   - {fileID: 11400000, guid: be064254525d876458f22facfe4b1deb, type: 2}
+  - {fileID: 11400000, guid: 01958f3d882607440b9a5dd64d436c8f, type: 2}
   - {fileID: 11400000, guid: 8e021fc57a486e14c94d27dba5550725, type: 2}
   - {fileID: 11400000, guid: df400e6d000d0664d9007dd443eba6a4, type: 2}
   - {fileID: 11400000, guid: 31df0098aa4852443818c7e8dfec6485, type: 2}
   - {fileID: 11400000, guid: 9fa4507929be51d44ba26a234a688d2b, type: 2}
   - {fileID: 11400000, guid: 6b350f7feea603642b5f60abd049d85a, type: 2}
+  - {fileID: 11400000, guid: c0f111783d703004296965b2eb5213b7, type: 2}
   - {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
   - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
   - {fileID: 11400000, guid: 08d5ea354a14ab146a354625b58a901b, type: 2}

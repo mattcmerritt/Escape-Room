@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6082d7bdec737de4ebf8cc984b5bd638, type: 3}
-  m_Name: Symptoms
+  m_Name: HospitalOnlySecondChance
   m_EditorClassIdentifier: 
   PotentialTriggers:
-  - {fileID: 11400000, guid: 08d5ea354a14ab146a354625b58a901b, type: 2}
+  - {fileID: 11400000, guid: df400e6d000d0664d9007dd443eba6a4, type: 2}
+  - {fileID: 11400000, guid: 01958f3d882607440b9a5dd64d436c8f, type: 2}
   ExclusiveTriggers:
-  - {fileID: 11400000, guid: 532b92fc52e0cbc4ebfdc81d966d5d58, type: 2}
+  - {fileID: 11400000, guid: 6b350f7feea603642b5f60abd049d85a, type: 2}
   HasBeenDisplayed: 0
-  Content: Sorry, who are we talking about?
-  Phase: 1
+  Content: Oh. Is there something you need me to do?
+  Phase: 0
   PhaseTransitionAfter: 0
   CheckOutsidePhase: 0
   FailState: 0
