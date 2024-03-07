@@ -68,6 +68,10 @@ public class DotDomino : DraggableObject
                     if(pen.CheckLight())
                     {
                         ObjectViewerCamera.backgroundColor = LightOnPanelColor;
+
+                        // if pen status changes to on, update this domino to say that it is now scanned
+                        // sequence manager will detect when a domino is active or not, and only trigger this when active
+                        SequenceManager.Instance.UpdateScannedDominoServerRpc(gameObject.name);
                     }
                     else
                     {
@@ -105,5 +109,9 @@ public class DotDomino : DraggableObject
         GameObject copy = GameObject.Find("Object Viewer").GetComponentInChildren<DotDomino>().gameObject;
         copy.transform.localEulerAngles = new Vector3(0f, -90f, 0f);
         copy.transform.localScale *= 2;
+
+        // telling the sequence manager that this domino has been viewed
+        UVPen pen = (UVPen) Inventory.CheckForItem("UV Pen");
+        SequenceManager.Instance.AddToScannedDominosServerRpc(gameObject.name, pen != null && pen.CheckLight());
     }
 }
