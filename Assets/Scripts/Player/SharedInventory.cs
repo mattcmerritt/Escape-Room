@@ -31,8 +31,34 @@ public class SharedInventory : NetworkBehaviour
         }
         Items[index].Interact(player);
 
+        if (Items[index] is ClueEnvelope && !Items[index].Used)
+        {
+            InteractForAllServerRpc(index);
+        }
+
         // using the item for all other players
         UseItemForAllServerRpc(index);
+    }
+
+    // special use case for first time opening clues
+    // opens the clue on each player
+    [ServerRpc(RequireOwnership = false)]
+    public void InteractForAllServerRpc(int index)
+    {
+        InteractForAllClientRpc(index);
+    }
+
+    // each client will perform interact on their player
+    [ClientRpc]
+    public void InteractForAllClientRpc(int index)
+    {
+        // find the client's player
+        PlayerInteractions player = null;
+        foreach (PlayerInteractions potentialPlayer in FindObjectsOfType<PlayerInteractions>())
+        {
+            if (potentialPlayer.IsOwner) player = potentialPlayer;
+        }
+        Items[index].Interact(player);
     }
 
     public InventoryItem GetItemDetails(int index)
