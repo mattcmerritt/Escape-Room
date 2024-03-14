@@ -24,12 +24,18 @@ public class SequenceManager : NetworkBehaviour
         foreach (UtilityObject clue in Clues)
         {
             clue.enabled = false;
-            clue.gameObject.SetActive(false);
+            foreach (MeshRenderer renderer in clue.GetComponentsInChildren<MeshRenderer>())
+            {
+                renderer.enabled = false;
+            }
         }
 
         // activate the first clue
         Clues[0].enabled = true;
-        Clues[0].gameObject.SetActive(true);
+        foreach (MeshRenderer renderer in Clues[0].GetComponentsInChildren<MeshRenderer>())
+        {
+            renderer.enabled = true;
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -44,8 +50,10 @@ public class SequenceManager : NetworkBehaviour
         CurrentClue = Mathf.Max(clue, CurrentClue);
 
         Clues[CurrentClue].enabled = true;
-        Clues[CurrentClue].gameObject.SetActive(true);
-        Clues[CurrentClue].GetComponent<NetworkObject>().Spawn();
+        foreach (MeshRenderer renderer in Clues[CurrentClue].GetComponentsInChildren<MeshRenderer>())
+        {
+            renderer.enabled = true;
+        }
 
         Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
     }
