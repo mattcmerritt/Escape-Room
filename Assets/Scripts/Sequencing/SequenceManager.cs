@@ -130,4 +130,19 @@ public class SequenceManager : NetworkBehaviour
         MoveToNextClueClientRpc(2);
     }
     #endregion DSM Guide
+
+    #region Pill Bottles
+    [ServerRpc(RequireOwnership = false)]
+    public void UnlockCabinetServerRpc(int index)
+    {
+        UnlockCabinetClientRpc(index);
+    }
+
+
+    [ClientRpc]
+    public void UnlockCabinetClientRpc(int index)
+    {
+        MoveToNextClueClientRpc(index);
+    }
+    #endregion Pill Bottles
 }

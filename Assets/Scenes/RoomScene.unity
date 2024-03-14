@@ -36200,6 +36200,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 471588312445006537, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
+      propertyPath: NextClueNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 471588312445006537, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
+      propertyPath: IsBlockingProgression
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 471588312445006542, guid: 13e62d30014abd646970cfc6055288ab, type: 3}
       propertyPath: m_Name
       value: Locked Cabinet (4 Letter Blue)

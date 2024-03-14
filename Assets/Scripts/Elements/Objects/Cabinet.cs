@@ -41,6 +41,10 @@ public class Cabinet : SimpleObject
     private NetworkVariable<Combination> CurrentCombination = new NetworkVariable<Combination>(default, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     private NetworkVariable<bool> IsLocked = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
 
+    // Progression and sequencing information
+    [SerializeField] private bool IsBlockingProgression;
+    [SerializeField] private int NextClueNumber;
+
     protected override void Start()
     {
         base.Start(); // still need to grab movement stuff for base class
@@ -251,6 +255,8 @@ public class Cabinet : SimpleObject
         {
             // Removing the lock for all players
             UnlockLockServerRpc();
+
+            SequenceManager.Instance.UnlockCabinetServerRpc(NextClueNumber);
         }
     }
 
