@@ -114,7 +114,7 @@ public class SequenceManager : NetworkBehaviour
     #endregion Dominos
 
     #region DSM Guide
-    // TODO: potentially implement a check to ensure that the player is getting the right info here
+    // should only be called after check to ensure that the player is getting the right info here
 
     [ServerRpc(RequireOwnership = false)]
     public void PickUpDSMGuideServerRpc()

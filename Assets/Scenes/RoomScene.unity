@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657886, g: 0.49641275, b: 0.5748176, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10718,6 +10718,7 @@ MonoBehaviour:
   ItemDetails: {fileID: 11400000, guid: 0c83103cb301780459a01d55598f347a, type: 2}
   Used: 0
   URL: https://ebookcentral.proquest.com/lib/quinnipiac/reader.action?docID=4876968&ppg=2&pq-origsite=summon
+  ConfirmationPanelName: Address Input
   Clue3Object: {fileID: 489945989}
 --- !u!1001 &1136645822
 PrefabInstance:
@@ -17692,6 +17693,10 @@ PrefabInstance:
       propertyPath: ItemDetails
       value: 
       objectReference: {fileID: 11400000, guid: 632c70e7a5e2f6a4786d55c5c08fc220, type: 2}
+    - target: {fileID: 872395497954636993, guid: 752e512bd9056144280dfbe15f985c23, type: 3}
+      propertyPath: ConfirmationPanelName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 872395497954636996, guid: 752e512bd9056144280dfbe15f985c23, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 821969215

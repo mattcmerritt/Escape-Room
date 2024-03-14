@@ -27,6 +27,6 @@ public class Clue3Prerequisite : Book
         base.InteractAllClients(player);
 
         // activate the next clue when this one is collected
-        SequenceManager.Instance.PickUpDSMGuideServerRpc();
+        // SequenceManager.Instance.PickUpDSMGuideServerRpc();
     }
 }
