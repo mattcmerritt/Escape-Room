@@ -41210,6 +41210,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9174036926723045957, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
+      propertyPath: NextClueNumber
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9174036926723045957, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
+      propertyPath: IsBlockingProgression
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9174036928175405476, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
