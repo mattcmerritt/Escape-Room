@@ -27745,7 +27745,7 @@ PrefabInstance:
     - target: {fileID: 2830073997021513736, guid: c392e003296767446aa96af30bc6f7f6, type: 3}
       propertyPath: Clues.Array.data[5]
       value: 
-      objectReference: {fileID: 8852591340243689202}
+      objectReference: {fileID: 0}
     - target: {fileID: 2830073997021513736, guid: c392e003296767446aa96af30bc6f7f6, type: 3}
       propertyPath: Clues.Array.data[6]
       value: 
@@ -41442,8 +41442,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8852591340243689213}
   - component: {fileID: 8852591340243689203}
-  - component: {fileID: 8852591340243689202}
   - component: {fileID: 3913175093945040361}
+  - component: {fileID: 8852591340243689214}
   m_Layer: 0
   m_Name: Pill Box (Clue 6)
   m_TagString: Untagged
@@ -43308,21 +43308,6 @@ MonoBehaviour:
   PanelID: 
   ItemDetails: {fileID: 11400000, guid: 7533f421a2e9cf84889755d71d130814, type: 2}
   Used: 0
---- !u!114 &8852591340243689202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8183436653576897607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6befb6aaecd018549a8d73ed10be09db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PanelID: Clue
-  ItemDetails: {fileID: 11400000, guid: 2cd7a3f383673c543a75811551f5a508, type: 2}
-  Used: 0
 --- !u!65 &8852591340243689203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43362,6 +43347,25 @@ Transform:
   - {fileID: 5668658064489809304}
   m_Father: {fileID: 1455192933}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+--- !u!114 &8852591340243689214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8183436653576897607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babbc8c5068d84d4c9825a279aad9010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PanelID: 3D Object
+  IsCopy: 0
+  Original: {fileID: 0}
+  ViewingCopyOffsets: {x: 0, y: 0, z: 0}
+  ItemInstructions: 
+  ObjectViewer: {fileID: 3590472296295695430, guid: c38f40949c7fec34382e6101dd7d2f9c, type: 3}
+  SampleRenderTexture: {fileID: 8400000, guid: 28daee9ac4e46a24b9c6a5834944f0fb, type: 2}
 --- !u!4 &8866214068152488782
 Transform:
   m_ObjectHideFlags: 0
