@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 287d891149b0d8946a0f5fce9d1d874c, type: 3}
   m_Name: Who
   m_EditorClassIdentifier: 
+  IsTriggered: 0
   RequiredWords:
-  - who
+  - who am i speaking
+  - who am i speaking with
   - who is this
-  ProhibitedWords: []
+  - identity
