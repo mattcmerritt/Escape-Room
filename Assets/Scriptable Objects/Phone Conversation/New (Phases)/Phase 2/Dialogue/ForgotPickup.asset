@@ -18,7 +18,8 @@ MonoBehaviour:
   ExclusiveTriggers:
   - {fileID: 11400000, guid: 79706201fa19f1e4c973a5332dd55965, type: 2}
   HasBeenDisplayed: 0
-  Content: I'm not sure what you need from me.
+  AlreadyConsidered: 0
+  Content: Is there something I can do? I'm not sure what you need from me.
   Phase: 1
   PhaseTransitionAfter: 0
   CheckOutsidePhase: 0

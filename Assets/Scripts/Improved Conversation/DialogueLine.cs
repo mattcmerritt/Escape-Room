@@ -11,6 +11,7 @@ namespace Conversation
         public Trigger[] ExclusiveTriggers; // list of triggers that, if active alongside this one, prevent it from appearing
         
         public bool HasBeenDisplayed;
+        public bool AlreadyConsidered;
 
         [TextArea] public string Content;
 
@@ -31,6 +32,7 @@ namespace Conversation
         public void ResetObject()
         {
             HasBeenDisplayed = false;
+            AlreadyConsidered = false;
         }
 
         public bool CheckIfTriggered(string input)

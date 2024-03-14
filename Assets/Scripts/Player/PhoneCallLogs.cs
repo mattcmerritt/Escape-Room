@@ -140,12 +140,13 @@ public class PhoneCallLogs : NetworkBehaviour
         DialogueLine triggeredLine = null;
         foreach (DialogueLine line in DialogueLines)
         {
-            if ((line.Phase == CurrentPhase || line.CheckOutsidePhase) && line.CheckIfTriggered(message)) 
+            if ((line.Phase == CurrentPhase || line.CheckOutsidePhase) && !line.AlreadyConsidered && line.CheckIfTriggered(message)) 
             {
                 // force responses to only work in phase
                 if (line.Phase == CurrentPhase)
                 {
                     triggeredLine = line;
+                    line.AlreadyConsidered = true; // prevents a backlog of messages from piling up
                 }
             }
         }
