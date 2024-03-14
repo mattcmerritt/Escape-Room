@@ -54,7 +54,7 @@ public class PlayerInteractions : NetworkBehaviour
                     {
                         util.Collect();
                     }
-                    else if (simple != null)
+                    else if (simple != null && simple.enabled)
                     {
                         simple.Interact(this);
                     } 

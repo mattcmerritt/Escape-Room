@@ -256,7 +256,16 @@ public class Cabinet : SimpleObject
             // Removing the lock for all players
             UnlockLockServerRpc();
 
-            SequenceManager.Instance.UnlockCabinetServerRpc(NextClueNumber);
+            // telling the sequencer that the cabinet has been unlocked and the puzzle is completed
+            if (NextClueNumber != 7)
+            {
+                SequenceManager.Instance.UnlockCabinetServerRpc(NextClueNumber);
+            }
+            // last interaction needs two cabinets and is handled differently
+            else
+            {
+                SequenceManager.Instance.UnlockSingleCabinetServerRpc();
+            }
         }
     }
 

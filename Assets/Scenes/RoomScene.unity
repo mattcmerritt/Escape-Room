@@ -21319,7 +21319,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 3615517544999729791}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40b69b60f22429449b0c22158a367b16, type: 3}
   m_Name: 
@@ -29163,6 +29163,10 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 3239514405
       objectReference: {fileID: 0}
+    - target: {fileID: 4534438577994187313, guid: 0ec80eab40e6cee4fad6af6e2fcb2038, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4534438577994187314, guid: 0ec80eab40e6cee4fad6af6e2fcb2038, type: 3}
       propertyPath: m_Name
       value: Phone
@@ -30549,6 +30553,14 @@ PrefabInstance:
     - target: {fileID: 3927955637419948317, guid: 014338ed2c46bb446b40673b9162463a, type: 3}
       propertyPath: m_Name
       value: Locked Upper Cabinet (4 Digit Black)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198356536506721675, guid: 014338ed2c46bb446b40673b9162463a, type: 3}
+      propertyPath: NextClueNumber
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4198356536506721675, guid: 014338ed2c46bb446b40673b9162463a, type: 3}
+      propertyPath: IsBlockingProgression
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4198356536506721677, guid: 014338ed2c46bb446b40673b9162463a, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -32254,6 +32266,14 @@ PrefabInstance:
     - target: {fileID: 4986043834433118309, guid: 78601fdec0593d242b084ef00f82d524, type: 3}
       propertyPath: m_Center.y
       value: 1.0071571
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402432802942766890, guid: 78601fdec0593d242b084ef00f82d524, type: 3}
+      propertyPath: NextClueNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402432802942766890, guid: 78601fdec0593d242b084ef00f82d524, type: 3}
+      propertyPath: IsBlockingProgression
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5402432802942766891, guid: 78601fdec0593d242b084ef00f82d524, type: 3}
       propertyPath: m_RootOrder
@@ -41212,7 +41232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9174036926723045957, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
       propertyPath: NextClueNumber
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9174036926723045957, guid: 01f4cd181c8b6e442aeae3934ffa3230, type: 3}
       propertyPath: IsBlockingProgression
@@ -42181,6 +42201,14 @@ PrefabInstance:
     - target: {fileID: 8440486759474685770, guid: 436ee34fdf4b2db48a2cffc4883745e4, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 1017963231
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440486759474685876, guid: 436ee34fdf4b2db48a2cffc4883745e4, type: 3}
+      propertyPath: NextClueNumber
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440486759474685876, guid: 436ee34fdf4b2db48a2cffc4883745e4, type: 3}
+      propertyPath: IsBlockingProgression
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8783083794202450662, guid: 436ee34fdf4b2db48a2cffc4883745e4, type: 3}
       propertyPath: m_Name

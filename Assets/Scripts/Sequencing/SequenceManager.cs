@@ -13,6 +13,7 @@ public class SequenceManager : NetworkBehaviour
     // interaction specific tracking elements
     private Dictionary<string, bool> ScannedDominos = new Dictionary<string, bool>();
     [SerializeField] private List<GameObject> RequiredDominos;
+    private int UnlockedEndCabinets = 0;
 
     public static SequenceManager Instance;
 
@@ -47,7 +48,7 @@ public class SequenceManager : NetworkBehaviour
     [ClientRpc]
     private void MoveToNextClueClientRpc(int clue)
     {
-        if (CurrentClue == clue - 1)
+        if (CurrentClue == clue - 1 && clue != 7)
         {
             CurrentClue = clue;
             Clues[CurrentClue].enabled = true;
@@ -55,7 +56,14 @@ public class SequenceManager : NetworkBehaviour
             {
                 renderer.enabled = true;
             }
+            Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
+        }
+        if (CurrentClue == clue - 1 && clue == 7)
+        {
+            CurrentClue = 7;
+            Phone.enabled = true;
 
+            // TODO: possibly some note telling them to use the phone?
             Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
         }
     }
@@ -140,9 +148,38 @@ public class SequenceManager : NetworkBehaviour
 
 
     [ClientRpc]
-    public void UnlockCabinetClientRpc(int index)
+    private void UnlockCabinetClientRpc(int index)
     {
         MoveToNextClueClientRpc(index);
     }
     #endregion Pill Bottles
+
+    #region Daily Pill Container
+    // TODO: replace with proper check
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            MoveToNextClueServerRpc(5);
+        }
+    }
+    #endregion Daily Pill Container
+
+    #region Medication Guide
+    [ServerRpc(RequireOwnership = false)]
+    public void UnlockSingleCabinetServerRpc()
+    {
+        UnlockSingleCabinetClientRpc();
+    }
+
+    [ClientRpc]
+    private void UnlockSingleCabinetClientRpc()
+    {
+        UnlockedEndCabinets++;
+        if (UnlockedEndCabinets >= 2)
+        {
+            MoveToNextClueClientRpc(7);
+        } 
+    }
+    #endregion Medication Guide
 }
