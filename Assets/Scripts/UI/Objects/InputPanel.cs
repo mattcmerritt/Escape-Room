@@ -6,10 +6,16 @@ public class InputPanel : MonoBehaviour
 {
     [SerializeField] private string PanelName;
     [SerializeField] private string Result;
+    private string Current;
 
     public void UpdateSolution(string newSolution)
     {
-        if (newSolution.ToLower() == Result.ToLower())
+        Current = newSolution;
+    }
+
+    public void CheckSolution()
+    {
+        if (Current.ToLower() == Result.ToLower())
         {
             SequenceManager.Instance.PickUpDSMGuideServerRpc();
             PlayerInteractions player = FindObjectOfType<PlayerInteractions>(false);
