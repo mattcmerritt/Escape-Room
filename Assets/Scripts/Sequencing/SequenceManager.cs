@@ -47,15 +47,17 @@ public class SequenceManager : NetworkBehaviour
     [ClientRpc]
     private void MoveToNextClueClientRpc(int clue)
     {
-        CurrentClue = Mathf.Max(clue, CurrentClue);
-
-        Clues[CurrentClue].enabled = true;
-        foreach (MeshRenderer renderer in Clues[CurrentClue].GetComponentsInChildren<MeshRenderer>())
+        if (CurrentClue == clue - 1)
         {
-            renderer.enabled = true;
-        }
+            CurrentClue = clue;
+            Clues[CurrentClue].enabled = true;
+            foreach (MeshRenderer renderer in Clues[CurrentClue].GetComponentsInChildren<MeshRenderer>())
+            {
+                renderer.enabled = true;
+            }
 
-        Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
+            Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
+        }
     }
 
     #region Dominos
