@@ -91,7 +91,8 @@ public class GameLobby : MonoBehaviour
                 }
             };
             // creating lobby
-            string lobbyName = "Escape Room";
+            PlayerClientData playerData = FindObjectOfType<PlayerClientData>();
+            string lobbyName = $"{playerData.GetPlayerName()}'s Room";
             int maxPlayers = 5; // TODO: reconfigure this to match proper information
             Lobby lobby = await LobbyService.Instance.CreateLobbyAsync(lobbyName, maxPlayers, createLobbyOptions);
             LobbyCode = lobby.LobbyCode;
