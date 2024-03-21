@@ -43363,7 +43363,9 @@ MonoBehaviour:
   IsCopy: 0
   Original: {fileID: 0}
   ViewingCopyOffsets: {x: 0, y: 0, z: 0}
-  ItemInstructions: 
+  ItemInstructions: 'Click on a slot to open it
+
+    Press Escape to close window'
   ObjectViewer: {fileID: 3590472296295695430, guid: c38f40949c7fec34382e6101dd7d2f9c, type: 3}
   SampleRenderTexture: {fileID: 8400000, guid: 28daee9ac4e46a24b9c6a5834944f0fb, type: 2}
 --- !u!4 &8866214068152488782
