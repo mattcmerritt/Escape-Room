@@ -8,6 +8,7 @@ public class PillBox : SimpleObject
     [SerializeField] protected bool IsCopy; // flag used to disable interactions for copied dominos
     [SerializeField] protected PillBox Original; // for the copies, allows them to send data back to the main one
     [SerializeField] protected Vector3 ViewingCopyOffsets = Vector3.zero; // for the copies, where they should be positioned
+    [SerializeField] protected Vector3 ViewingCopyRotations = Vector3.zero; // for the copies, how they should be rotated
 
     [SerializeField, TextArea(5, 15)] private string ItemInstructions; // the description displayed at the bottom of the panel for how to interact with the 3D object
 
@@ -61,6 +62,7 @@ public class PillBox : SimpleObject
         // to the viewing copy
         GameObject copy = Instantiate(gameObject, viewer.transform.GetChild(0)); 
         copy.transform.localPosition = ViewingCopyOffsets;
+        copy.transform.eulerAngles = ViewingCopyRotations;
         copy.name = "Viewing Copy: " + copy.name;
         PillBox copyScript = copy.GetComponent<PillBox>();
         copyScript.SetAsCopy(this);

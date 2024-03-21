@@ -46491,8 +46491,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8183436653576897607}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -4.773, y: 0.7818, z: -1.0890002}
+  m_LocalRotation: {x: -0.7042183, y: 0.7042185, z: 0.06384738, w: -0.063847356}
+  m_LocalPosition: {x: -6.8332267, y: 0.78180313, z: -1.0702106}
   m_LocalScale: {x: 0.20000009, y: 0.20000009, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -46500,7 +46500,7 @@ Transform:
   - {fileID: 8024137884284837622}
   - {fileID: 5668658064489809304}
   m_Father: {fileID: 1455192933}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 190.361, z: -90}
 --- !u!114 &8852591340243689214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46516,7 +46516,8 @@ MonoBehaviour:
   PanelID: 3D Object
   IsCopy: 0
   Original: {fileID: 0}
-  ViewingCopyOffsets: {x: 0, y: 0, z: 0}
+  ViewingCopyOffsets: {x: -0.075, y: 1.05, z: -0.17}
+  ViewingCopyRotations: {x: 180, y: 90, z: -180}
   ItemInstructions: 'Click on a slot to open it
 
     Press Escape to close window'
