@@ -196,13 +196,10 @@ public class SequenceManager : NetworkBehaviour
     #endregion Pill Bottles
 
     #region Daily Pill Container
-    // TODO: replace with proper check
-    private void Update()
+    [ServerRpc(RequireOwnership = false)]
+    public void OpenPillContainerServerRpc()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            MoveToNextClueServerRpc(5);
-        }
+        MoveToNextClueServerRpc(5);
     }
     #endregion Daily Pill Container
 
