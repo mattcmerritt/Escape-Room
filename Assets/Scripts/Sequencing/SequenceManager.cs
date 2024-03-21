@@ -29,6 +29,7 @@ public class SequenceManager : NetworkBehaviour
             {
                 renderer.enabled = false;
             }
+            clue.GetComponent<Collider>().enabled = false;
         }
 
         // activate the first clue
@@ -37,6 +38,7 @@ public class SequenceManager : NetworkBehaviour
         {
             renderer.enabled = true;
         }
+        Clues[0].GetComponent<Collider>().enabled = true;
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -56,6 +58,7 @@ public class SequenceManager : NetworkBehaviour
             {
                 renderer.enabled = true;
             }
+            Clues[CurrentClue].GetComponent<Collider>().enabled = true;
             Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
         }
         if (CurrentClue == clue - 1 && clue == 7)
