@@ -15,30 +15,57 @@ public class PillBox : SimpleObject
     [SerializeField] private GameObject ObjectViewer;
     [SerializeField] private RenderTexture SampleRenderTexture;
 
+    [SerializeField] public static Dictionary<string, bool> SlotTable;
+
     protected override void Start() 
     {
-        
-    }
-
-    protected virtual void Update()
-    {
-        if (IsCopy)
+        if(SlotTable == null)
         {
-            if(Input.GetMouseButton(0)) 
+            // get all slot objects in copy
+            List<GameObject> PillBoxSlots = new List<GameObject>();
+
+            foreach (Transform child in GetComponentsInChildren<Transform>())
             {
-                
+                if(child.gameObject.name.Contains("Pivot"))
+                {
+                    PillBoxSlots.Add(child.gameObject);
+                }
             }
-            else 
+
+            // set up dictionary for faster lookup later when using the buttons
+            SlotTable = new Dictionary<string, bool>();
+
+            foreach (GameObject slot in PillBoxSlots)
             {
-                
+                SlotTable.Add(slot.name, false);
             }
+
+            // TODO: remove
+            // debug
+            // Debug.Log(SlotTable.Keys.Count + " keys");
+            // foreach (string key in SlotTable.Keys)
+            // {
+            //     Debug.Log("Key: " + key);
+            // }
         }
     }
 
-    private void FixedUpdate() 
+    public static void OpenPillBoxSlot(string name)
     {
-
+        if(SlotTable == null)
+        {
+            Debug.LogError("The table does not exist!");
+        }
+        else if(SlotTable.ContainsKey(name))
+        {
+            SlotTable[name] = true;
+        }
     }
+
+    // private void FixedUpdate() 
+    // {
+        
+    // }
 
     // Create a viewing copy of the object when the player enters the interact menu
     public override void Interact(PlayerInteractions player)
