@@ -70,7 +70,7 @@ public class SequenceManager : NetworkBehaviour
     private void DisplayHintClientRpc(int hint)
     {
         // activate some sort of hint UI for all clients
-        Debug.Log(Hints[hint]);
+        Debug.Log($"<color=purple>Hints:</color> {Hints[hint]}");
     }
 
     [ServerRpc(RequireOwnership = false)]
