@@ -55,6 +55,19 @@ MonoBehaviour:
   - {fileID: 0}
   Phone: {fileID: 0}
   CurrentClue: 0
+  RequiredDominos: []
+  Hints:
+  - These three schools graduate future doctors, nurses, and health professionals.
+  - 'Have you considered both his memory impairment and his hallucinations? '
+  - Have you checked all of the bottles?
+  - "Your patient\u2019s last name is 4 letters long."
+  - You can get this inexpensive item at your local pharmacy or grocery store.
+  - "Have you looked in your inventory for a tool that could be helpful? \r\nDouble
+    check that you haven\u2019t gotten some of the professionals\u2019 roles switched.\r\n"
+  - 'Have you looked in your inventory for a book that could be helpful? '
+  - Call the caregiver using the phone in the room. Be careful not to reveal any
+    patient information before confirming the identity of the caregiver!
+  HintDelay: 30
 --- !u!114 &2510060253063472996
 MonoBehaviour:
   m_ObjectHideFlags: 0

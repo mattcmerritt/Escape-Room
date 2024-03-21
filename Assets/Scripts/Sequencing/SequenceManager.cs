@@ -17,6 +17,11 @@ public class SequenceManager : NetworkBehaviour
 
     public static SequenceManager Instance;
 
+    // hint related information
+    [TextArea, SerializeField] private List<string> Hints;
+    private Coroutine CurrentWaitForHint;
+    [SerializeField] private float HintDelay;
+
     private void Start()
     {
         Instance = this;
@@ -41,9 +46,40 @@ public class SequenceManager : NetworkBehaviour
         Clues[0].GetComponent<Collider>().enabled = true;
     }
 
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkSpawn();
+
+        // only the host does the hint tracking
+        if (IsServer)
+        {
+            CurrentWaitForHint = StartCoroutine(WaitToGiveHint(0));
+        }
+    }
+
+    private IEnumerator WaitToGiveHint(int clue)
+    {
+        Debug.Log($"$<color=blue>Sequencing:</color> Waiting {HintDelay} seconds to give hint for clue {clue + 1}.");
+        yield return new WaitForSeconds(HintDelay);
+
+        // show hint details for all clients
+        DisplayHintClientRpc(clue);
+    }
+
+    [ClientRpc]
+    private void DisplayHintClientRpc(int hint)
+    {
+        // activate some sort of hint UI for all clients
+        Debug.Log(Hints[hint]);
+    }
+
     [ServerRpc(RequireOwnership = false)]
     public void MoveToNextClueServerRpc(int clue)
     {
+        // only the host does the hint tracking
+        StopCoroutine(CurrentWaitForHint);
+        CurrentWaitForHint = StartCoroutine(WaitToGiveHint(clue));
+
         MoveToNextClueClientRpc(clue);
     }
 
@@ -59,7 +95,7 @@ public class SequenceManager : NetworkBehaviour
                 renderer.enabled = true;
             }
             Clues[CurrentClue].GetComponent<Collider>().enabled = true;
-            Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
+            Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue + 1}");
         }
         if (CurrentClue == clue - 1 && clue == 7)
         {
@@ -67,7 +103,7 @@ public class SequenceManager : NetworkBehaviour
             Phone.enabled = true;
 
             // TODO: possibly some note telling them to use the phone?
-            Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue}");
+            Debug.Log($"<color=blue>Sequencing:</color> Now on final puzzle, the phone call (clue {CurrentClue +  1}).");
         }
     }
 
@@ -132,13 +168,7 @@ public class SequenceManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void PickUpDSMGuideServerRpc()
     {
-        PickUpDSMGuideClientRpc();
-    }
-
-    [ClientRpc]
-    private void PickUpDSMGuideClientRpc()
-    {
-        MoveToNextClueClientRpc(2);
+        MoveToNextClueServerRpc(2);
     }
     #endregion DSM Guide
 
@@ -146,14 +176,7 @@ public class SequenceManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void UnlockCabinetServerRpc(int index)
     {
-        UnlockCabinetClientRpc(index);
-    }
-
-
-    [ClientRpc]
-    private void UnlockCabinetClientRpc(int index)
-    {
-        MoveToNextClueClientRpc(index);
+        MoveToNextClueServerRpc(index);
     }
     #endregion Pill Bottles
 
@@ -172,17 +195,11 @@ public class SequenceManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void UnlockSingleCabinetServerRpc()
     {
-        UnlockSingleCabinetClientRpc();
-    }
-
-    [ClientRpc]
-    private void UnlockSingleCabinetClientRpc()
-    {
         UnlockedEndCabinets++;
         if (UnlockedEndCabinets >= 2)
         {
-            MoveToNextClueClientRpc(7);
-        } 
+            MoveToNextClueServerRpc(7);
+        }
     }
     #endregion Medication Guide
 }
