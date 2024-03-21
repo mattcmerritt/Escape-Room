@@ -5190,6 +5190,7 @@ Transform:
   - {fileID: 3662164056559531252}
   - {fileID: 439126380}
   - {fileID: 1317414388}
+  - {fileID: 8852591340243689213}
   - {fileID: 1842085437}
   - {fileID: 543450652171315605}
   m_Father: {fileID: 0}
@@ -16922,7 +16923,6 @@ Transform:
   - {fileID: 1334012567}
   - {fileID: 1915613889}
   - {fileID: 1291801166}
-  - {fileID: 8852591340243689213}
   - {fileID: 485550270}
   m_Father: {fileID: 474774103}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25868,7 +25868,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1455192933}
+    m_TransformParent: {fileID: 474774103}
     m_Modifications:
     - target: {fileID: 1980125029340336685, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -25876,7 +25876,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1999533485936144403, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
       propertyPath: m_Name
-      value: Pill Box (Clue 6)
+      value: Pill Box
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363633342698768674, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363633342698768674, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363633342698768674, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.20000002
       objectReference: {fileID: 0}
     - target: {fileID: 5363633342698768674, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
       propertyPath: m_LocalPosition.x
@@ -25918,6 +25930,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 7739516446859700695, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
+      propertyPath: Clue
+      value: 
+      objectReference: {fileID: 1802583598}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

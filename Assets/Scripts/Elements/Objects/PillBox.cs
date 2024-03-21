@@ -17,6 +17,8 @@ public class PillBox : SimpleObject
 
     [SerializeField] public static Dictionary<string, bool> SlotTable;
 
+    [SerializeField] private UtilityObject Clue;
+
     protected override void Start() 
     {
         if(SlotTable == null)
@@ -60,6 +62,12 @@ public class PillBox : SimpleObject
         {
             SlotTable[name] = true;
         }
+    }
+
+    public void OpenSpecialPillBoxSlot()
+    {
+        SequenceManager.Instance.OpenPillContainerServerRpc();
+        Clue.Collect();
     }
 
     // private void FixedUpdate() 

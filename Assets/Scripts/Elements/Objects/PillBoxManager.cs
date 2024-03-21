@@ -8,4 +8,10 @@ public class PillBoxManager : MonoBehaviour
     {
         PillBox.OpenPillBoxSlot(name);
     }
+
+    public void OpenSpecialPillBoxSlot()
+    {
+        PillBox p = FindObjectOfType<PillBox>();
+        p.OpenSpecialPillBoxSlot();
+    }
 }

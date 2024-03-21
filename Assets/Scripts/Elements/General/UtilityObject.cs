@@ -60,6 +60,13 @@ public abstract class UtilityObject : SimpleObject
 
     public virtual void Collect()
     {
+        StartCoroutine(CollectAfterLoad());
+    }
+
+    // important for some objects that are not active before initial usage
+    private IEnumerator CollectAfterLoad()
+    {
+        yield return new WaitUntil(() => Inventory != null);
         Inventory.AddItem(this);
 
         // show a popup

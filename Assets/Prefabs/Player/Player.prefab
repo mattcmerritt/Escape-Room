@@ -3489,7 +3489,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 178009428335142184}
   m_Direction: 2
   m_Value: 1
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -11481,6 +11481,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Eve-Tue-Pivot
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 479607253788935337}
+        m_TargetAssemblyTypeName: PillBoxManager, Assembly-CSharp
+        m_MethodName: OpenSpecialPillBoxSlot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1739199644024352068

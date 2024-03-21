@@ -1050,7 +1050,7 @@ GameObject:
   - component: {fileID: 1980125029340336685}
   - component: {fileID: 7739516446859700695}
   m_Layer: 0
-  m_Name: Pill Box (Clue 6)
+  m_Name: Pill Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
