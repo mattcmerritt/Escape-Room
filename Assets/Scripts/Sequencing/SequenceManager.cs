@@ -76,17 +76,32 @@ public class SequenceManager : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void MoveToNextClueServerRpc(int clue)
     {
-        // only the host does the hint tracking
-        StopCoroutine(CurrentWaitForHint);
-        CurrentWaitForHint = StartCoroutine(WaitToGiveHint(clue));
+        if (CurrentClue == clue - 1)
+        {
+            // only the host does the hint tracking
+            StopCoroutine(CurrentWaitForHint);
+            CurrentWaitForHint = StartCoroutine(WaitToGiveHint(clue));
 
-        MoveToNextClueClientRpc(clue);
+            MoveToNextClueClientRpc(clue);
+        }
+        // if a clue was somehow done out of order, start a coroutine to re-call this method once it is ready
+        // important for if someone brute forces a cabinet
+        else
+        {
+            StartCoroutine(WaitOnClueCompletion(clue));
+        }
+    }
+
+    private IEnumerator WaitOnClueCompletion(int clue)
+    {
+        Debug.Log($"<color=blue>Sequencing:</color> Clue {clue} was completed, but not reached. Waiting...");
+        yield return new WaitUntil(() => clue == CurrentClue - 1);
     }
 
     [ClientRpc]
     private void MoveToNextClueClientRpc(int clue)
     {
-        if (CurrentClue == clue - 1 && clue != 7)
+        if (clue != 7)
         {
             CurrentClue = clue;
             Clues[CurrentClue].enabled = true;
@@ -97,7 +112,7 @@ public class SequenceManager : NetworkBehaviour
             Clues[CurrentClue].GetComponent<Collider>().enabled = true;
             Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue + 1}");
         }
-        if (CurrentClue == clue - 1 && clue == 7)
+        if (clue == 7)
         {
             CurrentClue = 7;
             Phone.enabled = true;
