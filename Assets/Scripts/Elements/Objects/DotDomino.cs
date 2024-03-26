@@ -65,7 +65,8 @@ public class DotDomino : DraggableObject
                 Camera ObjectViewerCamera = ObjectViewer.GetComponentInChildren<Camera>();
                 if(ObjectViewerCamera != null)
                 {
-                    if(pen.CheckLight())
+                    // also checks if a dot domino so other items aren't pink
+                    if(pen.CheckLight() && ObjectViewer.gameObject.GetComponentInChildren<DotDomino>() != null)
                     {
                         ObjectViewerCamera.backgroundColor = LightOnPanelColor;
 
