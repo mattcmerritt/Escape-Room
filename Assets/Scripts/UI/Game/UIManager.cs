@@ -52,6 +52,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameLobby CurrentLobby;
     [SerializeField] private GameObject KeyButton;
 
+    // Hint information
+    [SerializeField] private TMP_Text HintAnnouncement;
+
     // Show the lobby code at the start
     private void Start()
     {
@@ -472,5 +475,10 @@ public class UIManager : MonoBehaviour
     public UIPanel GetActiveUIPanel() 
     {
         return ActiveUIPanel.GetComponent<UIPanel>();
+    }
+
+    public void UpdateHintAnnouncement(string hint)
+    {
+        HintAnnouncement.text = hint;
     }
 }

@@ -70,6 +70,9 @@ public class SequenceManager : NetworkBehaviour
     private void DisplayHintClientRpc(int hint)
     {
         // activate some sort of hint UI for all clients
+        UIManager uiMan = FindObjectOfType<UIManager>();
+        uiMan.UpdateHintAnnouncement(Hints[hint]);
+
         Debug.Log($"<color=purple>Hints:</color> {Hints[hint]}");
     }
 
@@ -120,6 +123,10 @@ public class SequenceManager : NetworkBehaviour
             // TODO: possibly some note telling them to use the phone?
             Debug.Log($"<color=blue>Sequencing:</color> Now on final puzzle, the phone call (clue {CurrentClue +  1}).");
         }
+
+        // clear out the hint UI for all clients
+        UIManager uiMan = FindObjectOfType<UIManager>();
+        uiMan.UpdateHintAnnouncement("");
     }
 
     #region Dominos

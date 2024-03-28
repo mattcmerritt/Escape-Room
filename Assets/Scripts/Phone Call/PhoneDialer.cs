@@ -68,9 +68,22 @@ public class PhoneDialer : NetworkBehaviour
             }
         }
 
-        // invoke event for UI callbacks
-        OnNumberCalled?.Invoke(fullMatch);
+        // having all clients receive a callback for UI
+        CallNumberServerRpc(fullMatch);
 
         return fullMatch;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void CallNumberServerRpc(bool matches)
+    {
+        CallNumberClientRpc(matches);
+    }
+
+    [ClientRpc]
+    private void CallNumberClientRpc(bool matches)
+    {
+        // invoke event for UI callbacks
+        OnNumberCalled?.Invoke(matches);
     }
 }
