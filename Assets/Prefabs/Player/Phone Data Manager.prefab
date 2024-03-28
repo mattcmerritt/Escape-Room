@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7920080223106129991}
   - component: {fileID: 7920080223106129990}
+  - component: {fileID: 4867157497878970290}
   - component: {fileID: 7920080223106129989}
   m_Layer: 0
-  m_Name: Phone Chat Log
+  m_Name: Phone Data Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,6 +86,19 @@ MonoBehaviour:
     your hospital administration about privacy protocols to ensure you are not violating
     HIPPA. You can always provide a description of the patient and use their initials
     if unsure. Please try again."
+--- !u!114 &4867157497878970290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920080223106129988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ecdd5f62cfcb845897ba46d7204152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TypedPhoneNumber: 
 --- !u!114 &7920080223106129989
 MonoBehaviour:
   m_ObjectHideFlags: 0
