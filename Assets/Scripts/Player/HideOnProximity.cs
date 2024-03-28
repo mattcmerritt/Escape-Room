@@ -22,6 +22,7 @@ public class HideOnProximity : NetworkBehaviour
     [SerializeField] private GameObject cameraObject;
     [SerializeField] private LayerMask bothLayer;
     [SerializeField] private float fadeOutDistance;
+    [SerializeField] private float scanRadius;
 
     private void Start()
     {
@@ -44,6 +45,13 @@ public class HideOnProximity : NetworkBehaviour
             {
                 //Debug.Log($"Hit {hit.collider.name}");
                 HideOnProximity hider = hit.collider.gameObject.GetComponent<HideOnProximity>();
+                hider.MarkAsHidden();
+            }
+
+            RaycastHit sphereHit;
+            if (Physics.SphereCast(cameraObject.transform.position, scanRadius, cameraObject.transform.forward, out sphereHit, fadeOutDistance, bothLayer))
+            {
+                HideOnProximity hider = sphereHit.collider.gameObject.GetComponent<HideOnProximity>();
                 hider.MarkAsHidden();
             }
         }

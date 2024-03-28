@@ -1495,6 +1495,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 192
   fadeOutDistance: 5
+  scanRadius: 2
 --- !u!143 &178009427385858266
 CharacterController:
   m_ObjectHideFlags: 0
