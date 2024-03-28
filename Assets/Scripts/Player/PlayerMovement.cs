@@ -17,8 +17,8 @@ public class PlayerMovement : NetworkBehaviour
     // Camera control
     private bool CameraLocked;
 
-    [SerializeField] private Animator ModelAnimator;
-    private NetworkVariable<bool> PlayerIsMoving = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Owner, NetworkVariableWritePermission.Owner);
+    // Animator information
+    private PlayerAnimation PlayerAnimation;
 
     private void Start()
     {
@@ -36,8 +36,6 @@ public class PlayerMovement : NetworkBehaviour
         {
             this.enabled = false;
         }
-
-        PlayerIsMoving.OnValueChanged += (bool prev, bool current) => { ModelAnimator.SetBool("moving", current); };
     }
 
     private void Awake() 
@@ -45,6 +43,9 @@ public class PlayerMovement : NetworkBehaviour
         // Start the game with the player's cursor locked
         Cursor.lockState = CursorLockMode.Locked;
         Controller = GetComponent<CharacterController>();
+
+        // Configure relevant components
+        PlayerAnimation = GetComponent<PlayerAnimation>();
     }
 
     private void Update()
@@ -80,11 +81,11 @@ public class PlayerMovement : NetworkBehaviour
             // Play animation
             if (movement.magnitude > 0f)
             {
-                PlayerIsMoving.Value = true;
+                PlayerAnimation.ChangeMovingState(true);
             }
             else
             {
-                PlayerIsMoving.Value = false;
+                PlayerAnimation.ChangeMovingState(false);
             }
         }        
     }

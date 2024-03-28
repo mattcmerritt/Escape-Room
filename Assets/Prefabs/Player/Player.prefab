@@ -1341,6 +1341,7 @@ GameObject:
   - component: {fileID: 178009427385858264}
   - component: {fileID: 178009427385858267}
   - component: {fileID: 194473694528679510}
+  - component: {fileID: 1422246712728515561}
   - component: {fileID: 178009427385858266}
   - component: {fileID: 178009427385858269}
   - component: {fileID: 8066613503492081146}
@@ -1461,7 +1462,6 @@ MonoBehaviour:
   MoveSpeed: 2
   Sensitivity: 3
   CameraObject: {fileID: 178009428919859048}
-  ModelAnimator: {fileID: 627799127847551104}
 --- !u!114 &178009427385858267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1496,6 +1496,19 @@ MonoBehaviour:
     m_Bits: 192
   fadeOutDistance: 5
   scanRadius: 2
+--- !u!114 &1422246712728515561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178009427385858213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 779083093cf668c45be9d723c2a184d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ModelAnimator: {fileID: 627799127847551104}
 --- !u!143 &178009427385858266
 CharacterController:
   m_ObjectHideFlags: 0
