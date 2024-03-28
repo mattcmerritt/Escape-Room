@@ -43,15 +43,17 @@ public class HideOnProximity : NetworkBehaviour
             RaycastHit hit;
             if (Physics.Raycast(cameraObject.transform.position, cameraObject.transform.forward, out hit, fadeOutDistance, bothLayer))
             {
-                //Debug.Log($"Hit {hit.collider.name}");
+                Debug.Log($"Raycast hit {hit.collider.name}");
                 HideOnProximity hider = hit.collider.gameObject.GetComponent<HideOnProximity>();
                 hider.MarkAsHidden();
             }
 
-            RaycastHit sphereHit;
-            if (Physics.SphereCast(cameraObject.transform.position, scanRadius, cameraObject.transform.forward, out sphereHit, fadeOutDistance, bothLayer))
-            {
-                HideOnProximity hider = sphereHit.collider.gameObject.GetComponent<HideOnProximity>();
+            Collider[] overlaps = Physics.OverlapSphere(cameraObject.transform.position, scanRadius, bothLayer);
+            foreach (Collider overlappingCollider in overlaps) {
+                // skip collisions with self
+                if (overlappingCollider.gameObject == gameObject) continue;
+                Debug.Log($"Proximity hit {overlappingCollider.name}");
+                HideOnProximity hider = overlappingCollider.gameObject.GetComponent<HideOnProximity>();
                 hider.MarkAsHidden();
             }
         }
@@ -76,23 +78,6 @@ public class HideOnProximity : NetworkBehaviour
 
     public void MarkAsHidden()
     {
-        // stop any fade in coroutines
-        if (!isHiding)
-        {
-            while (activeCoroutines.Count > 0)
-            {
-                if (activeCoroutines[0] != null)
-                {
-                    StopCoroutine(activeCoroutines[0]);
-                    activeCoroutines.RemoveAt(0);
-                }
-                else
-                {
-                    activeCoroutines.RemoveAt(0);
-                }
-            }
-        }
-
         // start fade out coroutines if not active
         if (!isHiding)
         {
@@ -101,6 +86,13 @@ public class HideOnProximity : NetworkBehaviour
             {
                 activeCoroutines.Add(StartCoroutine(FadeOut(i)));
             }
+
+            // stopping an existing fade in delay
+            if (fadeInDelayCoroutine != null)
+            {
+                StopCoroutine(fadeInDelayCoroutine);
+            }
+
             fadeInDelayCoroutine = StartCoroutine(WaitForFadeIn());
             isHiding = true;
         }
