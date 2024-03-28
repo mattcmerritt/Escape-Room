@@ -5,12 +5,11 @@ using Unity.Netcode;
 
 public class FakeBookKey : UtilityObject
 {
-    NetworkVariable<bool> KeyFound = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
+    NetworkVariable<bool> KeyFound = new NetworkVariable<bool>(false, NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
 
     public override void Collect()
     {
         base.Collect();
-        KeyFound.Value = true;
     }
 
     [ServerRpc(RequireOwnership = false)]
