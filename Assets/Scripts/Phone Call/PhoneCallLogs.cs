@@ -165,10 +165,8 @@ public class PhoneCallLogs : NetworkBehaviour
                 // LOG HERE
                 SaveConversationToLocalFile();
 
-
-
-                // go to the debrief
-                FindObjectOfType<DebriefPhone>().SwitchUIForAllServerRpc();
+                // enable the proceed to debriefing button
+                EnableDebriefButtonForAllServerRpc();
             }
 
             if(triggeredLine.PhaseTransitionAfter)
@@ -201,6 +199,25 @@ public class PhoneCallLogs : NetworkBehaviour
             }
             AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call ended early. Please try again.");
             EndConversationForAllServerRpc();
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void EnableDebriefButtonForAllServerRpc()
+    {
+        EnableDebriefButtonForAllClientRpc();
+    }
+
+    [ClientRpc]
+    private void EnableDebriefButtonForAllClientRpc() 
+    {
+        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
+        foreach (PlayerInteractions player in players)
+        {
+            if (player.enabled == true)
+            {
+                player.GetComponentInChildren<TeamChatUI>().EnableDebriefButton();
+            }
         }
     }
 
