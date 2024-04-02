@@ -79,7 +79,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08d5ea354a14ab146a354625b58a901b, type: 2}
   - {fileID: 11400000, guid: c21cd2c7fa1c4b544b2061332517a592, type: 2}
   CurrentPhase: 0
-  GenericFailMessage: Sorry, I don't know who you are or where you're from.
+  GenericFailMessage: Sorry, I'm not sure what's going on or how it relates to me,
+    but I have to go.
   GenericSecondFailMessage: Sorry, I'm really busy but I trust you all have everything
     under control. Can I call you back later?
   PrivacyFailMessage: "Before releasing a patient\u2019s name, be sure to check with

@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PotentialTriggers:
   - {fileID: 11400000, guid: 9fa4507929be51d44ba26a234a688d2b, type: 2}
-  IsTriggered: 0
+  ExclusiveTriggers: []
   HasBeenDisplayed: 0
-  Content: Who is this calling?
+  AlreadyConsidered: 0
+  Content: Wait, how do you know that name...
   Phase: 0
   PhaseTransitionAfter: 0
+  CheckOutsidePhase: 0
   FailState: 1
   WinState: 0
