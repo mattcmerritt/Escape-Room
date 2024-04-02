@@ -16594,6 +16594,7 @@ MonoBehaviour:
   DescriptionText: {fileID: 7373222166614390382}
   ItemIcon: {fileID: 7104008700934572792}
   Animator: {fileID: 666155615980744185}
+  PopupInformationList: []
 --- !u!95 &666155615980744185
 Animator:
   serializedVersion: 5
@@ -28595,6 +28596,7 @@ MonoBehaviour:
   PhoneContentWindow: {fileID: 7839848077869976568}
   PhoneChatbar: {fileID: 6761092936471237390}
   TakeControlButton: {fileID: 4778441668995161935}
+  ProceedToDebriefButton: {fileID: 6547788146730712005}
 --- !u!114 &1752368086792423600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39768,7 +39770,7 @@ GameObject:
   - component: {fileID: 4796576762351699019}
   - component: {fileID: 6547788146730712005}
   m_Layer: 6
-  m_Name: Button
+  m_Name: Proceed Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
