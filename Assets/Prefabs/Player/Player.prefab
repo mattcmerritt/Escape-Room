@@ -5003,6 +5003,7 @@ MonoBehaviour:
   PrimaryUIComponents:
   - {fileID: 178009427588132186}
   - {fileID: 178009428819498047}
+  - {fileID: 7167611782203905196}
   PlayerMovement: {fileID: 178009427385858264}
   PlayerInteractions: {fileID: 178009427385858267}
   Panels:
@@ -37633,8 +37634,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 178009427788926361}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.1, y: 0.1}
-  m_AnchorMax: {x: 0.9, y: 0.3}
+  m_AnchorMin: {x: 0.1, y: 0.7}
+  m_AnchorMax: {x: 0.9, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
