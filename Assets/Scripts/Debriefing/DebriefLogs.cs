@@ -114,6 +114,29 @@ public class DebriefLogs : NetworkBehaviour
             else
             {
                 Debug.Log("Debrief completed!");
+
+                // end the debrief and go to the finish screen
+                SwitchToFinishForAllServerRpc();
+            }
+        }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SwitchToFinishForAllServerRpc()
+    {
+        SwitchToFinishForAllClientRpc();
+    }
+
+    [ClientRpc]
+    private void SwitchToFinishForAllClientRpc()
+    {
+        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
+        foreach (PlayerInteractions player in players)
+        {
+            if (player.enabled == true)
+            {
+                player.GetUIManager().CloseUI(player.GetUIManager().GetActiveUIPanel().GetComponent<UIPanel>());
+                player.OpenWithUIManager("Finish");
             }
         }
     }
