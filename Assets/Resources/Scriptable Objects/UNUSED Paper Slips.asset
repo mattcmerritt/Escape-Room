@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dd301dc1b55f5c4196e33815d9d75db, type: 3}
-  m_Name: Fake Book
+  m_Name: UNUSED Paper Slips
   m_EditorClassIdentifier: 
-  Name: Book With Clue
-  Icon: {fileID: 21300000, guid: aab6cbe37df850240bb4082ecc0beadd, type: 3}
-  UsedIcon: {fileID: 21300000, guid: aab6cbe37df850240bb4082ecc0beadd, type: 3}
-  Description: If this is in your inventory, something has went wrong.
+  Name: Paper Slip
+  Icon: {fileID: 21300000, guid: 44231ec5d49a82e4dbff5edaf3eb967d, type: 3}
+  UsedIcon: {fileID: 21300000, guid: 44231ec5d49a82e4dbff5edaf3eb967d, type: 3}
+  Description: This should not be seen.
   Usable: 1

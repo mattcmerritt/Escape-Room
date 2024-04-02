@@ -52,6 +52,12 @@ public class PopupUI : NetworkBehaviour
     [ClientRpc]
     public void ShowPopupClientRpc(int index)
     {
+        PopupUI pop = FindObjectOfType<PopupUI>(false);
+        pop.LocalShowPopup(index);
+    }
+
+    public void LocalShowPopup(int index)
+    {
         TitleText.text = PopupInformationList[index].itemName;
         ItemIcon.sprite = PopupInformationList[index].itemImage;
 
