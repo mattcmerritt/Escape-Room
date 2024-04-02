@@ -25,7 +25,7 @@ public class TeamChatUI : MonoBehaviour
     private float PhoneCurrentHeight = 0, PhoneLastMessageLocation = 0;
     public static string PhoneChatlogObjectName;
 
-    [SerializeField] private Button TakeControlButton;
+    [SerializeField] private Button TakeControlButton, ProceedToDebriefButton;
 
     private void Start()
     {
@@ -41,6 +41,20 @@ public class TeamChatUI : MonoBehaviour
         {
             FindObjectOfType<PhoneCallLogs>().TakePhoneControl();
         });
+
+        ProceedToDebriefButton.onClick.AddListener(() =>
+        {
+            // go to the debrief
+            FindObjectOfType<DebriefPhone>().SwitchUIForAllServerRpc();
+        });
+
+        ProceedToDebriefButton.interactable = false;
+    }
+
+    // ------------------------ DEBRIEF BUTTON ------------------------
+    public void EnableDebriefButton()
+    {
+        ProceedToDebriefButton.interactable = true;
     }
 
     // ------------------------ TEAM CONVERSATION ------------------------
