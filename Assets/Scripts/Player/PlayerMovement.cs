@@ -46,6 +46,9 @@ public class PlayerMovement : NetworkBehaviour
 
         // Configure relevant components
         PlayerAnimation = GetComponent<PlayerAnimation>();
+
+        // Set up window for prologue UI
+        LockCamera();
     }
 
     private void Update()
