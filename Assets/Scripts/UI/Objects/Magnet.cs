@@ -16,7 +16,10 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointe
     [SerializeField] private GameObject LargeImagePanel;
     private Vector3 OffsetFromClickPoint;
     private Vector3 OriginalMagnetPosition;
-    [SerializeField] private SlotText CurrentSlot, PreviousSlot;
+    private SlotText CurrentSlot, PreviousSlot;
+
+    // Id for checking puzzle completion
+    [SerializeField] private int MagnetId;
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -114,5 +117,10 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointe
     public void SetCurrentSlot(SlotText s)
     {
         CurrentSlot = s;
+    }
+
+    public int GetMagnetId()
+    {
+        return MagnetId;
     }
 }

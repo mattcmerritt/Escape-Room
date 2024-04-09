@@ -122,6 +122,12 @@ public class SharedInventory : NetworkBehaviour
         Items[index].InteractAllClients(player);
     }
 
+    public void MarkItemAsViewed(UtilityObject obj)
+    {
+        int index = Items.FindIndex((UtilityObject util) => util == obj);
+        MarkItemAsViewedServerRpc(index);
+    }
+
     [ServerRpc(RequireOwnership = false)]
     public void MarkItemAsViewedServerRpc(int index)
     {

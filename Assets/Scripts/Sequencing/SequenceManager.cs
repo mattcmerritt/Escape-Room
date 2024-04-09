@@ -15,6 +15,10 @@ public class SequenceManager : NetworkBehaviour
     [SerializeField] private List<GameObject> RequiredDominos;
     private int UnlockedEndCabinets = 0;
 
+    // TODO: figure out if the hidden book with area code is even needed anymore
+    //  if not, where does the key go?
+    // [SerializeField] private GameObject hiddenBook;
+
     public static SequenceManager Instance;
 
     // hint related information
@@ -208,9 +212,18 @@ public class SequenceManager : NetworkBehaviour
     // should only be called after check to ensure that the player is getting the right info here
 
     [ServerRpc(RequireOwnership = false)]
-    public void PickUpDSMGuideServerRpc()
+    public void PickUpDSMGuideServerRpc(string panelName)
     {
         MoveToNextClueServerRpc(2);
+        PickUpDSMGuideClientRpc(panelName);
+    }
+
+    // Disables the address input for all players
+    [ClientRpc]
+    public void PickUpDSMGuideClientRpc(string panelName)
+    {
+        PlayerInteractions player = FindObjectOfType<PlayerInteractions>(false);
+        player.CloseWithUIManager(panelName);
     }
     #endregion DSM Guide
 
@@ -229,6 +242,15 @@ public class SequenceManager : NetworkBehaviour
         MoveToNextClueServerRpc(5);
     }
     #endregion Daily Pill Container
+
+    #region Magnet Board
+    [ServerRpc(RequireOwnership = false)]
+    public void CompleteMagnetBoardServerRpc()
+    {
+        MoveToNextClueServerRpc(6);
+        // TODO: update all clients to have the correct answer
+    }
+    #endregion Magnet Board
 
     #region Medication Guide
     [ServerRpc(RequireOwnership = false)]

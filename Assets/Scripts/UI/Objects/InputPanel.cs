@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputPanel : MonoBehaviour
 {
     [SerializeField] private string PanelName;
-    [SerializeField] private string Result;
+    [SerializeField] private string[] Results;
     private string Current;
 
     public void UpdateSolution(string newSolution)
@@ -15,11 +15,12 @@ public class InputPanel : MonoBehaviour
 
     public void CheckSolution()
     {
-        if (Current.ToLower() == Result.ToLower())
+        foreach (string option in Results)
         {
-            SequenceManager.Instance.PickUpDSMGuideServerRpc();
-            PlayerInteractions player = FindObjectOfType<PlayerInteractions>(false);
-            player.CloseWithUIManager(PanelName);
-        }
+            if (Current.ToLower() == option.ToLower())
+            {
+                SequenceManager.Instance.PickUpDSMGuideServerRpc(PanelName);
+            }
+        }  
     }
 }

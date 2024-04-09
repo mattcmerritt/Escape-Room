@@ -18,6 +18,9 @@ public class SlotText : MonoBehaviour, IPointerClickHandler
     // Contents
     [SerializeField, TextArea(5, 15)] private string Contents;
 
+    // Id for checking puzzle completion
+    [SerializeField] private int SlotId;
+
     // public void OnEnable()
     // {
     //     Debug.Log($"Mouse position: {Input.mousePosition}");
@@ -50,6 +53,11 @@ public class SlotText : MonoBehaviour, IPointerClickHandler
     public void SetCurrentMagnet(Magnet m)
     {
         CurrentMagnet = m;
+    }
+
+    public int GetSlotId()
+    {
+        return SlotId;
     }
 }
 

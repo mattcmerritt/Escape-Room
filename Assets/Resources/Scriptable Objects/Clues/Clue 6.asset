@@ -16,15 +16,15 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 440d1ea957d5bd04cbfaeaaf9c7a22eb, type: 3}
   UsedIcon: {fileID: 21300000, guid: ba71aa3247d03aa40933af12a467183a, type: 3}
   Description: An envelope containing information about the sixth puzzle.
+  Usable: 1
+  IsStillNecessary: 1
+  HasBeenViewed: 1
   ClueDescription: "To find out the name of your patient\u2019s caregiver, you\u2019ll
     need to match each professional with their role in assisting a patient with Alzheimer\u2019s
     Disease. Note that these are only some of the responsibilities for each role
     and there can be variation by setting type. Move the professional\u2019s picture
     and corresponding letter to each correct role with the corresponding number \u2013
-    be sure to keep the numbers in numerical order with their roles. Once you figure
-    out the name, use what you have to your advantage (definition: a benefit, gain)
-    to find out the area code of the caregiver\u2019s phone number and your next
-    clue."
+    be sure to keep the numbers in numerical order with their roles. "
   Announcement: 'Order the professionals on the magnetic board using the descriptions
     on the other side of the board.
 

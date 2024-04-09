@@ -70,7 +70,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
             {
                 AlreadyViewedLabel.SetActive(true);
                 AlreadyViewedText.color = Color.grey;
-                AlreadyViewedText.text = "Teammate already viewed!";
+                AlreadyViewedText.text = "Teammate already used!";
             }
             else
             {
@@ -143,7 +143,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         {
             AlreadyViewedLabel.SetActive(true);
             AlreadyViewedText.color = Color.grey;
-            AlreadyViewedText.text = "Teammate already viewed!";
+            AlreadyViewedText.text = "Teammate already used!";
         }
         else
         {

@@ -6215,7 +6215,7 @@ RectTransform:
   - {fileID: 6075086821625247946}
   m_Father: {fileID: 178009427788926361}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0.3}
+  m_AnchorMin: {x: 0.2, y: 0.3}
   m_AnchorMax: {x: 0.8, y: 0.7}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
@@ -6285,7 +6285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PanelName: Address Input
-  Result: 6 Cove St
+  Results:
+  - 6 Cove St
+  - 6 Cove Street
 --- !u!1 &330087703832871825
 GameObject:
   m_ObjectHideFlags: 0
@@ -6843,8 +6845,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 2001487630514839107}
   LargeImagePanel: {fileID: 7338957796135351207}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 0
 --- !u!1 &450177669865841085
 GameObject:
   m_ObjectHideFlags: 0
@@ -7161,8 +7162,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 5011305374953245873}
   LargeImagePanel: {fileID: 1904810999295546877}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 2
 --- !u!1 &563267430262589853
 GameObject:
   m_ObjectHideFlags: 0
@@ -7995,8 +7995,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 2001487630514839107}
   LargeImagePanel: {fileID: 7338957796135351207}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 0
 --- !u!1 &693479717349956080
 GameObject:
   m_ObjectHideFlags: 0
@@ -14114,8 +14113,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 5011305374953245873}
   LargeImagePanel: {fileID: 1904810999295546877}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 7
 --- !u!1 &2139742296189090033
 GameObject:
   m_ObjectHideFlags: 0
@@ -14466,6 +14464,7 @@ MonoBehaviour:
   Contents: Provides medication to patient and family and provides consultation and
     education on medication to providers as well as patient and family. Works collaborative
     with treatment team.
+  SlotId: 6
 --- !u!1 &2177877353122075575
 GameObject:
   m_ObjectHideFlags: 0
@@ -15321,8 +15320,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 2001487630514839107}
   LargeImagePanel: {fileID: 7338957796135351207}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 0
 --- !u!1 &2464073716687954533
 GameObject:
   m_ObjectHideFlags: 0
@@ -15953,8 +15951,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 2001487630514839107}
   LargeImagePanel: {fileID: 7338957796135351207}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 0
 --- !u!1 &2631660295432451170
 GameObject:
   m_ObjectHideFlags: 0
@@ -16246,6 +16243,7 @@ GameObject:
   - component: {fileID: 2933715618720578743}
   - component: {fileID: 5617393401046167966}
   - component: {fileID: 2695308239494633423}
+  - component: {fileID: 5372799427121476774}
   m_Layer: 6
   m_Name: Single-Side Magnet Board UI
   m_TagString: Untagged
@@ -16329,6 +16327,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIManager: {fileID: 178009428919859052}
   Focused: 0
+--- !u!114 &5372799427121476774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635445098702702120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eafc53c1777c2fa4f8ca94078e64a467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnets:
+  - {fileID: 276254808417712674}
+  - {fileID: 3916143736565218970}
+  - {fileID: 6092717191166291902}
+  - {fileID: 2019444120762745529}
+  - {fileID: 8271169298357033236}
+  - {fileID: 680697634754272791}
+  - {fileID: 5696535498987043249}
+  slots:
+  - {fileID: 2656080075929001444}
+  - {fileID: 8534494317159123019}
+  - {fileID: 2479514484820120748}
+  - {fileID: 869294699198356806}
+  - {fileID: 4752414676005465696}
+  - {fileID: 9216692442827398155}
+  - {fileID: 2518360948505040091}
 --- !u!1 &2693748813635396809
 GameObject:
   m_ObjectHideFlags: 0
@@ -18897,6 +18923,7 @@ MonoBehaviour:
   Contents: Provides home safety assessment and conducts assessment of activities
     of daily living as well as instrumental activities of daily living. Works collaboratively
     with the treatment team.
+  SlotId: 5
 --- !u!1 &3339673380514688628
 GameObject:
   m_ObjectHideFlags: 0
@@ -19067,6 +19094,7 @@ MonoBehaviour:
   CurrentMagnet: {fileID: 0}
   Contents: Provides counseling and education for patient and family as well assists
     with obtaining concrete resources. Works collaboratively with the treatment team.
+  SlotId: 1
 --- !u!1 &3390961317922667333
 GameObject:
   m_ObjectHideFlags: 0
@@ -19621,8 +19649,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 5011305374953245873}
   LargeImagePanel: {fileID: 1904810999295546877}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 5
 --- !u!1 &3487883243723418495
 GameObject:
   m_ObjectHideFlags: 0
@@ -24416,8 +24443,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 5011305374953245873}
   LargeImagePanel: {fileID: 1904810999295546877}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 3
 --- !u!1 &4297335693486615605
 GameObject:
   m_ObjectHideFlags: 0
@@ -24604,8 +24630,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 2001487630514839107}
   LargeImagePanel: {fileID: 7338957796135351207}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 0
 --- !u!1 &4348693132881505468
 GameObject:
   m_ObjectHideFlags: 0
@@ -30821,8 +30846,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 5011305374953245873}
   LargeImagePanel: {fileID: 1904810999295546877}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 6
 --- !u!1 &5723255709132721269
 GameObject:
   m_ObjectHideFlags: 0
@@ -33900,8 +33924,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 2001487630514839107}
   LargeImagePanel: {fileID: 7338957796135351207}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 0
 --- !u!1 &6324951514073217809
 GameObject:
   m_ObjectHideFlags: 0
@@ -35385,8 +35408,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 2001487630514839107}
   LargeImagePanel: {fileID: 7338957796135351207}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 0
 --- !u!1 &6746472872336626764
 GameObject:
   m_ObjectHideFlags: 0
@@ -36163,6 +36185,7 @@ MonoBehaviour:
   Contents: Oversees ongoing treatment plan and makes referrals to additional services
     such as occupational therapy, physical therapy, or social work. Works collaboratively
     with physician as well as the rest of the treatment team.
+  SlotId: 7
 --- !u!1 &6840764480739685159
 GameObject:
   m_ObjectHideFlags: 0
@@ -38101,6 +38124,7 @@ MonoBehaviour:
   Contents: 'Provides ongoing care and reassessment of cognitive abilities and related
     symptoms, provides patient education, and initiates any follow up tests needed.
     Works collaboratively with physician and the rest of the treatment team. '
+  SlotId: 4
 --- !u!1 &7074832390011021656
 GameObject:
   m_ObjectHideFlags: 0
@@ -40201,6 +40225,7 @@ MonoBehaviour:
   Contents: "Orders brain imaging tests, provides the Alzheimer\u2019s diagnosis,
     and creates a treatment plan for patient. Works collaboratively with physician
     assistant and nurse practitioner."
+  SlotId: 2
 --- !u!1 &7447030889184338467
 GameObject:
   m_ObjectHideFlags: 0
@@ -42150,8 +42175,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 5011305374953245873}
   LargeImagePanel: {fileID: 1904810999295546877}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 4
 --- !u!1 &7800364894920548334
 GameObject:
   m_ObjectHideFlags: 0
@@ -43792,6 +43816,7 @@ MonoBehaviour:
   CurrentMagnet: {fileID: 0}
   Contents: Conducts gait assessment and provides balance training as needed for
     fall prevention. Works collaboratively with the treatment team.
+  SlotId: 3
 --- !u!1 &8123409600940266050
 GameObject:
   m_ObjectHideFlags: 0
@@ -45846,8 +45871,7 @@ MonoBehaviour:
   DoubleClickWindow: 0.4
   LargeImage: {fileID: 5011305374953245873}
   LargeImagePanel: {fileID: 1904810999295546877}
-  CurrentSlot: {fileID: 0}
-  PreviousSlot: {fileID: 0}
+  MagnetId: 1
 --- !u!1 &8711505950512715277
 GameObject:
   m_ObjectHideFlags: 0

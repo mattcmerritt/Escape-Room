@@ -57,6 +57,9 @@ public class FakeBookWithLock : DraggableObject
 
             UIManager manager = FindObjectOfType<UIManager>();
             manager.ShowPopupPanel(ItemInBook.ItemDetails.Name, ItemInBook.ItemDetails.Icon);
+
+            // indicate that the key was used
+            Inventory.MarkItemAsViewed(keyItem);
         }
     }
 }
