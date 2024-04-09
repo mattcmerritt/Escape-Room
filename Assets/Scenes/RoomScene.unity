@@ -32546,10 +32546,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1873642570}
     - target: {fileID: 2830073997021513736, guid: c392e003296767446aa96af30bc6f7f6, type: 3}
-      propertyPath: RequiredDominos.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2830073997021513736, guid: c392e003296767446aa96af30bc6f7f6, type: 3}
       propertyPath: RequiredDominos.Array.data[0]
       value: 
       objectReference: {fileID: 557863846792746536}

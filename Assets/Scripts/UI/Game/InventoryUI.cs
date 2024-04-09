@@ -26,12 +26,17 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     // UI components needed to switch views
     [SerializeField] private GameObject InventoryPanel, NotesPanel;
     [SerializeField] private Button InventoryButton, NotesButton;
+    [SerializeField] private GameObject AlreadyViewedLabel;
+    [SerializeField] private TMP_Text AlreadyViewedText;
 
     // UI components for the notes panel
     [SerializeField] private GameObject NotesListPanel;
 
     // Event system for tracking what was clicked
     [SerializeField] private EventSystem EventSystem;
+
+    // Updating UI in real-time
+    private int ActiveItemIndex = -1;
     
     private void Start()
     {
@@ -50,6 +55,27 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         if (!Focused && Input.GetMouseButtonDown(0) && !(EventSystem.currentSelectedGameObject != null && EventSystem.currentSelectedGameObject.name == ChatLogUI.ChatlogObjectName))
         {
             UIManager.CloseInventory();
+        }
+
+        if (ItemButtons.Count > 0 && ActiveItemIndex >= 0)
+        {
+            InventoryItem item = SharedInventory.GetItemDetails(ActiveItemIndex);
+            if (!item.IsStillNecessary)
+            {
+                AlreadyViewedLabel.SetActive(true);
+                AlreadyViewedText.color = Color.green;
+                AlreadyViewedText.text = "Item is no longer needed!";
+            }
+            else if (item.HasBeenViewed)
+            {
+                AlreadyViewedLabel.SetActive(true);
+                AlreadyViewedText.color = Color.grey;
+                AlreadyViewedText.text = "Teammate already viewed!";
+            }
+            else
+            {
+                AlreadyViewedLabel.SetActive(false);
+            }
         }
     }
 
@@ -73,6 +99,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         int currentIndex = ItemButtons.Count;
         newBtn.onClick.AddListener(() =>
         {
+            ActiveItemIndex = currentIndex;
             ShowDetails(currentIndex); // when selected, fill menu with details
         });
         TMP_Text label = newBtnObj.GetComponentInChildren<TMP_Text>();
@@ -96,6 +123,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
             UseItemButton.onClick.RemoveAllListeners();
             UseItemButton.onClick.AddListener(() =>
             {
+                SharedInventory.MarkItemAsViewedServerRpc(currentIndex); // show other users that item is viewed
                 SharedInventory.UseItem(currentIndex); // perform item activation behavior
                 UIManager.CloseInventory(); // hide the inventory
             });
@@ -103,6 +131,23 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         else
         {
             UseItemButton.gameObject.SetActive(false);
+        }
+
+        if (!item.IsStillNecessary)
+        {
+            AlreadyViewedLabel.SetActive(true);
+            AlreadyViewedText.color = Color.green;
+            AlreadyViewedText.text = "Item is no longer needed!";
+        }
+        else if (item.HasBeenViewed)
+        {
+            AlreadyViewedLabel.SetActive(true);
+            AlreadyViewedText.color = Color.grey;
+            AlreadyViewedText.text = "Teammate already viewed!";
+        }
+        else
+        {
+            AlreadyViewedLabel.SetActive(false);
         }
     }
 

@@ -121,4 +121,17 @@ public class SharedInventory : NetworkBehaviour
         }
         Items[index].InteractAllClients(player);
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void MarkItemAsViewedServerRpc(int index)
+    {
+        MarkItemAsViewedClientRpc(index);
+    }
+
+    [ClientRpc]
+    private void MarkItemAsViewedClientRpc(int index)
+    {
+        Debug.Log("Player viewed " + Items[index].ItemDetails.Name);
+        Items[index].ItemDetails.HasBeenViewed = true;
+    }
 }

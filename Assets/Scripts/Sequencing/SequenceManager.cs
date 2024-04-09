@@ -22,6 +22,16 @@ public class SequenceManager : NetworkBehaviour
     private Coroutine CurrentWaitForHint;
     [SerializeField] private float HintDelay;
 
+    // object usage information
+    [System.Serializable]
+    public struct ItemClueAssociation
+    {
+        public InventoryItem item;
+        public int clueNumber;
+    }
+    [SerializeField] private List<ItemClueAssociation> ItemClueRequirements;
+    
+
     private void Start()
     {
         Instance = this;
@@ -99,6 +109,7 @@ public class SequenceManager : NetworkBehaviour
     {
         Debug.Log($"<color=blue>Sequencing:</color> Clue {clue} was completed, but not reached. Waiting...");
         yield return new WaitUntil(() => clue == CurrentClue - 1);
+        MoveToNextClueServerRpc(clue);
     }
 
     [ClientRpc]
@@ -127,6 +138,15 @@ public class SequenceManager : NetworkBehaviour
         // clear out the hint UI for all clients
         UIManager uiMan = FindObjectOfType<UIManager>();
         uiMan.UpdateHintAnnouncement("");
+
+        // mark relevant objects for a clue as complete
+        foreach (ItemClueAssociation association in ItemClueRequirements)
+        {
+            if (association.clueNumber == CurrentClue)
+            {
+                association.item.IsStillNecessary = false;
+            }
+        }
     }
 
     #region Dominos

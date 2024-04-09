@@ -13,4 +13,14 @@ public class InventoryItem : ScriptableObject
     [TextArea(5, 15)]
     public string Description;
     public bool Usable = true; // if the item will have a Use button in the inventory
+
+    // information related to the current escape
+    public bool IsStillNecessary;
+    public bool HasBeenViewed;
+
+    public void OnEnable()
+    {
+        IsStillNecessary = true;
+        HasBeenViewed = false;
+    }
 }
