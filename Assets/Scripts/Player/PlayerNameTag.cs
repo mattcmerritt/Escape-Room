@@ -21,8 +21,11 @@ public class PlayerNameTag : NetworkBehaviour
         {
             Name.Value = FindObjectOfType<PlayerClientData>().GetPlayerName();
         }
+    }
 
-        if(!IsOwner)
+    private void Update()
+    {
+        if(PlayerToLookAt == null)
         {
             PlayerNameTag[] PlayerList = FindObjectsOfType<PlayerNameTag>();	
             foreach (PlayerNameTag player in PlayerList)	
@@ -33,11 +36,7 @@ public class PlayerNameTag : NetworkBehaviour
                 }	
             }
         }
-    }
-
-    private void Update()
-    {
-        if(!IsOwner)
+        else if(!IsOwner)
         {
             SetNameTag(Name.Value);
             NameTag.transform.LookAt(PlayerToLookAt.transform);
