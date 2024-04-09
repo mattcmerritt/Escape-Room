@@ -1613,8 +1613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd4e93215ee3134588051b9a3d89e08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
-  NameTag: {fileID: 2188800303684314090}
+  NameTag: {fileID: 8000899832003066045}
+  NameTagText: {fileID: 2188800303684314090}
 --- !u!1 &178009427476149644
 GameObject:
   m_ObjectHideFlags: 0
