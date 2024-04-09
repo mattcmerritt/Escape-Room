@@ -222,8 +222,11 @@ public class SequenceManager : NetworkBehaviour
     [ClientRpc]
     public void PickUpDSMGuideClientRpc(string panelName)
     {
-        PlayerInteractions player = FindObjectOfType<PlayerInteractions>(false);
-        player.CloseWithUIManager(panelName);
+        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>(false);
+        foreach (PlayerInteractions player in players)
+        {
+            player.CloseWithUIManager(panelName);
+        }   
     }
     #endregion DSM Guide
 

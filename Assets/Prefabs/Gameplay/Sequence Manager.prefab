@@ -95,7 +95,7 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: d8b610cd535508a4ab63dbaaffa7722e, type: 2}
     clueNumber: 6
   - item: {fileID: 11400000, guid: ce744bcb1b0cb9443b7f377f3f91239a, type: 2}
-    clueNumber: 7
+    clueNumber: 4
   - item: {fileID: 11400000, guid: 632c70e7a5e2f6a4786d55c5c08fc220, type: 2}
     clueNumber: 7
   - item: {fileID: 11400000, guid: 7533f421a2e9cf84889755d71d130814, type: 2}

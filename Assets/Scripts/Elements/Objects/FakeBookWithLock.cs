@@ -20,7 +20,7 @@ public class FakeBookWithLock : DraggableObject
 
         if(IsCopy)
         {
-            transform.parent.position += new Vector3(0, 0, 0.6f);
+            transform.parent.localPosition = new Vector3(0, 0, -4f);
             transform.parent.Rotate(180, 0, 90);
         }
     }
