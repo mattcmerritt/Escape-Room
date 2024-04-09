@@ -21,26 +21,6 @@ public class PlayerManager : NetworkBehaviour
 
         ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
 
-        // new
-        PlayerNameTag ActivePlayerNameTag = null;
-        PlayerNameTag[] PlayerList = FindObjectsOfType<PlayerNameTag>();
-        foreach (PlayerNameTag player in PlayerList)
-        {
-            if (player.gameObject.GetComponent<NetworkObject>().IsLocalPlayer)
-            {
-                ActivePlayerNameTag = player;
-            }
-        }
-        // do something to set the name attribute to a player
-        if (ActivePlayerNameTag != null)
-        {
-            ActivePlayerNameTag.SetNameServerRpc(ActivePlayerName);
-        }
-        else
-        {
-            Debug.LogError("Unable to locate player to name!");
-        }
-
         RegisterPlayerServerRpc(ActivePlayerName);
     }
 
