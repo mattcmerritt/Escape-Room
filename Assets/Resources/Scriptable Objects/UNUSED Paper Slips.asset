@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: UNUSED Paper Slips
   m_EditorClassIdentifier: 
   Name: Paper Slip
-  Icon: {fileID: 21300000, guid: 44231ec5d49a82e4dbff5edaf3eb967d, type: 3}
-  UsedIcon: {fileID: 21300000, guid: 44231ec5d49a82e4dbff5edaf3eb967d, type: 3}
+  Icon: {fileID: 21300000, guid: 21572826846164146b4adbec81f9bc6a, type: 3}
+  UsedIcon: {fileID: 21300000, guid: 21572826846164146b4adbec81f9bc6a, type: 3}
   Description: This should not be seen.
   Usable: 1
