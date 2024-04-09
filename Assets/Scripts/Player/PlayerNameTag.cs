@@ -8,7 +8,7 @@ using Unity.Collections;
 public class PlayerNameTag : NetworkBehaviour
 {
     // name stuff
-    private NetworkVariable<FixedString128Bytes> Name = new NetworkVariable<FixedString128Bytes>();
+    private NetworkVariable<FixedString128Bytes> Name = new NetworkVariable<FixedString128Bytes>("Unnamed Player", NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Owner);
     [SerializeField] private TMP_Text NameTag;
 
 
