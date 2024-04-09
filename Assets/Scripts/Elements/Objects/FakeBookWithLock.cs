@@ -7,7 +7,8 @@ public class FakeBookWithLock : DraggableObject
     [SerializeField] private MeshRenderer KeyHover;
     private bool FirstTimeSetup;
     private SharedInventory Inventory;
-    [SerializeField] private UtilityObject ItemInBook;
+    [SerializeField] private UtilityObject[] ItemsInBook;
+    [SerializeField] private InventoryItem ItemVisuals;
 
     protected override void Start()
     {
@@ -38,7 +39,7 @@ public class FakeBookWithLock : DraggableObject
         base.Interact(player);
 
         UtilityObject keyItem = Inventory.CheckForItem("Key");
-        UtilityObject bookItem = Inventory.CheckForItem(ItemInBook.ItemDetails.Name);
+        UtilityObject bookItem = Inventory.CheckForItem(ItemsInBook[0].ItemDetails.Name);
         if(keyItem != null && bookItem == null)
         {
             UIManager manager = FindObjectOfType<UIManager>();
@@ -49,14 +50,17 @@ public class FakeBookWithLock : DraggableObject
     public void UnlockBook()
     {
         UtilityObject keyItem = Inventory.CheckForItem("Key");
-        UtilityObject bookItem = Inventory.CheckForItem(ItemInBook.ItemDetails.Name);
+        UtilityObject bookItem = Inventory.CheckForItem(ItemsInBook[0].ItemDetails.Name);
         if(IsCopy && keyItem != null && bookItem == null)
         {
             // TODO: play a hinge opening animation
-            Inventory.AddItem(ItemInBook);
+            foreach (UtilityObject item in ItemsInBook)
+            {
+                Inventory.AddItem(item);
+            }
 
             UIManager manager = FindObjectOfType<UIManager>();
-            manager.ShowPopupPanel(ItemInBook.ItemDetails.Name, ItemInBook.ItemDetails.Icon);
+            manager.ShowPopupPanel(ItemVisuals.Name, ItemVisuals.Icon);
 
             // indicate that the key was used
             Inventory.MarkItemAsViewed(keyItem);
