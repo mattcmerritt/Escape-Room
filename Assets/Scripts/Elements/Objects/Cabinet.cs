@@ -121,8 +121,9 @@ public class Cabinet : SimpleObject
         // listener for when the lock gets unlocked
         IsLocked.OnValueChanged += (bool previousValue, bool newValue) =>
         {
-            LockObject.SetActive(false);
+            LockObject.GetComponent<BoxCollider>().enabled = false;
             // Later we could play a sound here to indicate that the lock is gone.
+            Ani.SetTrigger("Unlock");
 
             // Hiding the lock UI for the current player
             PlayerInteractions player = null;
