@@ -199,7 +199,7 @@ public class GameLobby : MonoBehaviour
         }
     }
 
-    public async void LeaveLobby()
+    public async Task<bool> LeaveLobby()
     {
         try
         {
@@ -255,10 +255,14 @@ public class GameLobby : MonoBehaviour
             HeartbeatActive = false;
             IsHost = false;
             Started = false;
+
+            return true;
         }
         catch (LobbyServiceException e)
         {
             Debug.LogError("<color=blue>Lobby:</color> " + e);
+
+            return false;
         }
     }
 

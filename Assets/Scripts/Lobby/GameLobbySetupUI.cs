@@ -183,9 +183,9 @@ public class GameLobbySetupUI : MonoBehaviour
         } 
     }
 
-    public void LeaveLobby()
+    public async void LeaveLobby()
     {
-        GameLobby.LeaveLobby();
+        bool successful = await GameLobby.LeaveLobby();
         LobbyScreen.SetActive(true);
         JoinedLobbyScreen.SetActive(false);
     }
