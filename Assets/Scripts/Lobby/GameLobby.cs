@@ -18,7 +18,7 @@ public class GameLobby : MonoBehaviour
     private Lobby ActiveLobby;
     [SerializeField] private string RelayCode, LobbyCode;
     [SerializeField] private float HeartbeatTimer, LobbyUpdateTimer;
-    [SerializeField] private bool HeartbeatActive, IsHost;
+    [SerializeField] private bool HeartbeatActive;
     [SerializeField] private bool Started;
     [SerializeField] private string PlayerName;
     [SerializeField] private int PlayerCount = 5;
@@ -129,7 +129,7 @@ public class GameLobby : MonoBehaviour
     // Note: only the host should have this value defined
     public bool IsLobbyHost()
     {
-        return IsHost;
+        return GetCurrentPlayer() != null && GetCurrentPlayer().Data["IsHost"].Value == "true";
     }
 
     public async void StartGame()
@@ -204,57 +204,21 @@ public class GameLobby : MonoBehaviour
         try
         {
             Player player = GetCurrentPlayer();
-
-            // if removing the host, need to set another player as host
-            if (player.Data["IsHost"].Value == "true")
-            {
-                // various data for finding the nearest player to host
-                int index = 0;
-                List<Player> players = ActiveLobby.Players;
-
-                // find the next player
-                Player newHost = null;
-
-                while (index < players.Count && newHost == null)
-                {
-                    if (players[index].Id != player.Id)
-                    {
-                        newHost = players[index];
-                    }
-
-                    index++;
-                }
-
-                // transfer over the host spot
-                if (newHost != null)
-                {
-                    // change player to host
-                    // TODO: may need to change this to have the host do this on their own, but not sure how to acheive this without RPC calls
-                    Lobby updatedLobby = await LobbyService.Instance.UpdatePlayerAsync(ActiveLobby.Id, newHost.Id, new UpdatePlayerOptions
-                    {
-                        Data = new Dictionary<string, PlayerDataObject>
-                        {
-                            { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, newHost.Data["PlayerName"].Value) },
-                            { "IsObserver", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, newHost.Data["IsObserver"].Value) },
-                            { "IsHost", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, "true") }
-                        }
-                    });
-                }
-                // otherwise lobby should be deleted automatically
-
-                // having the original player leave the lobby
-                await LobbyService.Instance.RemovePlayerAsync(ActiveLobby.Id, player.Id);
-            }
+            string oldLobbyId = ActiveLobby.Id;
 
             // clean up for script to be reused
             ActiveLobby = null;
             RelayCode = null;
             LobbyCode = null;
-            HeartbeatTimer = 0f; 
+            HeartbeatTimer = 0f;
             LobbyUpdateTimer = 0f;
             HeartbeatActive = false;
-            IsHost = false;
             Started = false;
+
+            // having the original player leave the lobby
+            await LobbyService.Instance.RemovePlayerAsync(oldLobbyId, player.Id);
+
+            Debug.Log("<color=blue>Lobby:</color> Successfully disconnected from lobby.");
 
             return true;
         }
@@ -324,6 +288,53 @@ public class GameLobby : MonoBehaviour
             Started = true;
         }
         ActiveLobby = updatedLobby;
+
+        // iterate through the lobby and determine if there is still a host
+        List<Player> players = ListPlayersInLobby();
+        if (players.Count > 0)
+        {
+            bool foundHost = false;
+            foreach (Player p in players)
+            {
+                if (p.Data["IsHost"].Value == "true")
+                {
+                    foundHost = true;
+                }
+            }
+
+            // if no host is found, choose a player to be the new host
+            // in case if the order is different on each client, the host will be the player with the lowest id
+            if (!foundHost)
+            {
+                Player newHost = players[0];
+                foreach (Player p in players)
+                {
+                    if (p.Id.CompareTo(newHost.Id) < 0)
+                    {
+                        newHost = p;
+                    }
+                }
+
+                // if this instance is the host, do host setup
+                if (newHost.Id == GetCurrentPlayer().Id)
+                {
+                    Debug.Log("<color=blue>Lobby:</color> This player has now been selected to be the new host.");
+
+                    // change player to host
+                    updatedLobby = await LobbyService.Instance.UpdatePlayerAsync(ActiveLobby.Id, newHost.Id, new UpdatePlayerOptions
+                    {
+                        Data = new Dictionary<string, PlayerDataObject>
+                        {
+                            { "PlayerName", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, newHost.Data["PlayerName"].Value) },
+                            { "IsObserver", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Member, newHost.Data["IsObserver"].Value) },
+                            { "IsHost", new PlayerDataObject(PlayerDataObject.VisibilityOptions.Public, "true") }
+                        }
+                    });
+
+                    ActiveLobby = updatedLobby;
+                }
+            }
+        }
     }
 
     // ------ PLAYER MANAGEMENT METHODS ------
@@ -399,6 +410,6 @@ public class GameLobby : MonoBehaviour
 
     public bool LobbyActive()
     {
-        return ActiveLobby != null || ActiveLobby != null;
+        return ActiveLobby != null;
     }
 }
