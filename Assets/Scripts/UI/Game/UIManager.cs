@@ -93,10 +93,10 @@ public class UIManager : MonoBehaviour
                 {
                     TeamChat.SendTeamChatMessage();
                 }
-                else if (TeamChat.CheckPhoneChatSelected())
-                {
-                    TeamChat.SendPhoneChatMessage();
-                }
+                // else if (TeamChat.CheckPhoneChatSelected())
+                // {
+                //     TeamChat.SendPhoneChatMessage();
+                // }
                 else if (TeamDebrief.CheckTeamChatSelected())
                 {
                     TeamDebrief.SendTeamChatMessage();
