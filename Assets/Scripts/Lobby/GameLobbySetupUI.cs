@@ -182,4 +182,11 @@ public class GameLobbySetupUI : MonoBehaviour
             entry.GetComponent<PlayerListingEntry>().Initialize(playerName, isHost, isObserver, playerId, isYou);
         } 
     }
+
+    public async void LeaveLobby()
+    {
+        bool successful = await GameLobby.LeaveLobby();
+        LobbyScreen.SetActive(true);
+        JoinedLobbyScreen.SetActive(false);
+    }
 }
