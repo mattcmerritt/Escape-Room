@@ -100,7 +100,13 @@ public class SequenceManager : NetworkBehaviour
             CurrentWaitForHint = StartCoroutine(WaitToGiveHint(clue));
 
             MoveToNextClueClientRpc(clue);
-            InformationGathered.instance.UpdateInformationClientRpc(clue);
+
+            // update the sticky note for all players
+            InventoryUI[] playerInventories = FindObjectsOfType<InventoryUI>(true);
+            foreach (InventoryUI inventory in playerInventories)
+            {
+                inventory.UpdateInformationClientRpc(clue);
+            }
         }
         // if a clue was somehow done out of order, start a coroutine to re-call this method once it is ready
         // important for if someone brute forces a cabinet
