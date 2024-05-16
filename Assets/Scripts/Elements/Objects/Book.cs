@@ -9,6 +9,9 @@ public class Book : UtilityObject
     [SerializeField] private string ConfirmationPanelName;
     public override void Interact(PlayerInteractions player)
     {
+        // Full-screen toggle
+        // Screen.fullScreenMode = FullScreenMode.Windowed;
+
         Application.OpenURL(URL);
 
         if (ConfirmationPanelName != null && ConfirmationPanelName != "")
