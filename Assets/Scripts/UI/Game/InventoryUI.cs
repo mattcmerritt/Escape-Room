@@ -33,6 +33,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private Image ItemImage;
     [SerializeField] private TMP_Text ItemName, ItemDesc;
     [SerializeField] private Button UseItemButton;
+    [SerializeField] private ScrollRect ItemScrollWindow;
 
     // UI components needed to switch views
     [SerializeField] private GameObject InventoryPanel, NotesPanel;
@@ -122,6 +123,9 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         TMP_Text label = newBtnObj.GetComponentInChildren<TMP_Text>();
         label.text = item.ItemDetails.Name;
         ItemButtons.Add(newBtn);
+
+        // lower the item list to show the last item
+        ItemScrollWindow.verticalNormalizedPosition = 0;
     }
 
     // Method to update the currently selected item in the inventory
