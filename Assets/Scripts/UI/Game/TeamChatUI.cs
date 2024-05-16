@@ -134,20 +134,23 @@ public class TeamChatUI : MonoBehaviour
     public void EnablePhone()
     {
         TakeControlButton.interactable = false;
-        MultipleChoicePhoneCallLogs
-        PhoneChatbar.interactable = true;
+        // TODO: finish implementing, causing errors as is
+        // MultipleChoicePhoneCallLogs
+        // PhoneChatbar.interactable = true;
     }
     
     public void DisablePhone()
     {
         TakeControlButton.interactable = false;
-        PhoneChatbar.interactable = false;
+        // TODO: finish implementing, causing errors as is
+        // PhoneChatbar.interactable = false;
     }
 
     public void ResetPhone()
     {
         TakeControlButton.interactable = true;
-        PhoneChatbar.interactable = false;
+        // TODO: finish implementing, causing errors as is
+        // PhoneChatbar.interactable = false;
 
         TakeControlButton.GetComponentInChildren<TMP_Text>().text = "Restart as Speaker";
     }
