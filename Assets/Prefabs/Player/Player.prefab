@@ -29083,6 +29083,7 @@ MonoBehaviour:
   PhoneContentWindow: {fileID: 7839848077869976568}
   TakeControlButton: {fileID: 4778441668995161935}
   ProceedToDebriefButton: {fileID: 6547788146730712005}
+  InputScrollView: {fileID: 3648930286256061820}
 --- !u!114 &1752368086792423600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43393,7 +43394,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3729893385159001070
 RectTransform:
   m_ObjectHideFlags: 0

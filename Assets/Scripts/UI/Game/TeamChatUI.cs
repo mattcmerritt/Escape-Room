@@ -26,6 +26,7 @@ public class TeamChatUI : MonoBehaviour
     // public static string PhoneChatlogObjectName;
 
     [SerializeField] private Button TakeControlButton, ProceedToDebriefButton;
+    [SerializeField] private GameObject InputScrollView;
 
     private void Start()
     {
@@ -39,7 +40,7 @@ public class TeamChatUI : MonoBehaviour
 
         TakeControlButton.onClick.AddListener(() =>
         {
-            FindObjectOfType<PhoneCallLogs>().TakePhoneControl();
+            FindObjectOfType<MultipleChoicePhoneCallLogs>().TakePhoneControl();
         });
 
         ProceedToDebriefButton.onClick.AddListener(() =>
@@ -62,7 +63,7 @@ public class TeamChatUI : MonoBehaviour
     {
         Debug.Log("SENDING TEAM CHAT!");
         // read text from bar, send it off to the networked chat
-        FindObjectOfType<PhoneCallLogs>().SendTeamChatMessage(TeamChatbar.text, false);
+        FindObjectOfType<MultipleChoicePhoneCallLogs>().SendTeamChatMessage(TeamChatbar.text, false);
         // Chat window should stay selected when the users send a message
         //  however, pressing enter causes it to deselect the box.
         ClearAndActivateTeamChat();
@@ -135,7 +136,7 @@ public class TeamChatUI : MonoBehaviour
     {
         TakeControlButton.interactable = false;
         // TODO: finish implementing, causing errors as is
-        // MultipleChoicePhoneCallLogs
+        FindObjectOfType<MultipleChoicePhoneCallLogs>().GenerateButtonsForCurrentLineServerRpc();
         // PhoneChatbar.interactable = true;
     }
     
@@ -143,6 +144,7 @@ public class TeamChatUI : MonoBehaviour
     {
         TakeControlButton.interactable = false;
         // TODO: finish implementing, causing errors as is
+        FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc();
         // PhoneChatbar.interactable = false;
     }
 
@@ -151,7 +153,7 @@ public class TeamChatUI : MonoBehaviour
         TakeControlButton.interactable = true;
         // TODO: finish implementing, causing errors as is
         // PhoneChatbar.interactable = false;
-
+        FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc();
         TakeControlButton.GetComponentInChildren<TMP_Text>().text = "Restart as Speaker";
     }
 
@@ -208,5 +210,10 @@ public class TeamChatUI : MonoBehaviour
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignPhoneMessage;
+    }
+
+    public GameObject GetInputScrollView()
+    {
+        return InputScrollView;
     }
 }

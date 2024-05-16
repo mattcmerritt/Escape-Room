@@ -21688,7 +21688,6 @@ MonoBehaviour:
   HeartbeatTimer: 0
   LobbyUpdateTimer: 0
   HeartbeatActive: 0
-  IsHost: 0
   Started: 0
   PlayerName: Unnamed Player
   PlayerCount: 5
