@@ -1003,6 +1003,7 @@ MonoBehaviour:
   ItemName: {fileID: 178009428410981827}
   ItemDesc: {fileID: 178009427583060698}
   UseItemButton: {fileID: 178009427338479339}
+  ItemScrollWindow: {fileID: 178009429254945319}
   InventoryPanel: {fileID: 9087518303531978205}
   NotesPanel: {fileID: 6100200379246005604}
   InventoryButton: {fileID: 3345900288107359745}
@@ -8142,7 +8143,7 @@ RectTransform:
   m_Father: {fileID: 3023643842124096240}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20799,9 +20800,9 @@ RectTransform:
   m_Father: {fileID: 4696908642442954131}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -7, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &1524524654818582677
 CanvasRenderer:
@@ -43928,7 +43929,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4026769296523067178
 RectTransform:
   m_ObjectHideFlags: 0
@@ -44006,6 +44007,7 @@ MonoBehaviour:
   MessagePrefab: {fileID: 5530937055256353131, guid: 6214bf6c0f1fb974aa6794c960d5b232, type: 3}
   Chatbar: {fileID: 9174093869362524382}
   MissedMessageIndicator: {fileID: 4550599408301015071}
+  ScrollWindow: {fileID: 5241643530950127964}
 --- !u!95 &4614424653211908731
 Animator:
   serializedVersion: 5

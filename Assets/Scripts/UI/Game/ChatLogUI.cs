@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class ChatLogUI : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class ChatLogUI : MonoBehaviour
     [SerializeField] private GameObject MessagePrefab;
     [SerializeField] private TMP_InputField Chatbar;
     [SerializeField] private GameObject MissedMessageIndicator;
+    [SerializeField] private ScrollRect ScrollWindow;
     private bool Closed;
     private float CurrentHeight = 0, LastMessageLocation = 0, MessageX;
     private EventSystem EventSystem;
@@ -95,6 +97,9 @@ public class ChatLogUI : MonoBehaviour
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignMessage;
+
+        // reset content window to bottom to show most recent message
+        ScrollWindow.verticalNormalizedPosition = 0;
     }
 
     // method to check if the chat is currently selected
