@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TeamDebriefUI : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class TeamDebriefUI : MonoBehaviour
     // Team chat elements (functions similarly to the text chat)
     [SerializeField] private RectTransform ChatContentWindow;
     [SerializeField] private TMP_InputField TeamChatbar;
+    [SerializeField] private ScrollRect ChatScrollWindow;
 
     private float TeamCurrentHeight = 0, TeamLastMessageLocation = 0;
     private EventSystem EventSystem;
@@ -98,6 +100,9 @@ public class TeamDebriefUI : MonoBehaviour
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignTeamMessage;
+
+        // reset content window to bottom to show most recent message
+        ChatScrollWindow.verticalNormalizedPosition = 0;
     }
 
     // method to check if the chat is currently selected

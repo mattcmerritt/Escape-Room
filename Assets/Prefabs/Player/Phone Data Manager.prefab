@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7920080223106129991}
+  - component: {fileID: 8255645519710446585}
   - component: {fileID: 7920080223106129990}
   - component: {fileID: 4867157497878970290}
   - component: {fileID: 7920080223106129989}
@@ -34,7 +35,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7920080223106129990
+--- !u!114 &8255645519710446585
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,6 +43,23 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7920080223106129988}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae4f2b0654e96458fa4e020fe2bb3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TeamChatHistory: []
+  PhoneChatHistory: []
+  InitialPhoneConversationLine: {fileID: 11400000, guid: 79a94267ab1f2fd428f78ab0384755c1, type: 2}
+  CurrentPhoneConversationLine: {fileID: 0}
+  ButtonPrefab: {fileID: 5755591101864653358, guid: 446acca4ae388d14fba053cc76776229, type: 3}
+--- !u!114 &7920080223106129990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7920080223106129988}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3c78fceee3212549810b8b24597a386, type: 3}
   m_Name: 
