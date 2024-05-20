@@ -13,6 +13,7 @@ public class TeamChatUI : MonoBehaviour
     // Team chat elements (functions similarly to the text chat)
     [SerializeField] private RectTransform ChatContentWindow;
     [SerializeField] private TMP_InputField TeamChatbar;
+    [SerializeField] private ScrollRect ChatScrollWindow;
 
     private float TeamCurrentHeight = 0, TeamLastMessageLocation = 0;
     private EventSystem EventSystem;
@@ -20,12 +21,14 @@ public class TeamChatUI : MonoBehaviour
 
     // Phone conversation elements
     [SerializeField] private RectTransform PhoneContentWindow;
-    [SerializeField] private TMP_InputField PhoneChatbar;
+    [SerializeField] private ScrollRect PhoneScrollWindow;
+    // [SerializeField] private TMP_InputField PhoneChatbar;
 
     private float PhoneCurrentHeight = 0, PhoneLastMessageLocation = 0;
-    public static string PhoneChatlogObjectName;
+    // public static string PhoneChatlogObjectName;
 
     [SerializeField] private Button TakeControlButton, ProceedToDebriefButton;
+    [SerializeField] private GameObject InputScrollView;
 
     private void Start()
     {
@@ -35,11 +38,11 @@ public class TeamChatUI : MonoBehaviour
         EventSystem = FindObjectOfType<EventSystem>();
         TeamChatlogObjectName = TeamChatbar.name;
 
-        PhoneChatlogObjectName = PhoneChatbar.name;
+        // PhoneChatlogObjectName = PhoneChatbar.name;
 
         TakeControlButton.onClick.AddListener(() =>
         {
-            FindObjectOfType<PhoneCallLogs>().TakePhoneControl();
+            FindObjectOfType<MultipleChoicePhoneCallLogs>().TakePhoneControl();
         });
 
         ProceedToDebriefButton.onClick.AddListener(() =>
@@ -62,7 +65,7 @@ public class TeamChatUI : MonoBehaviour
     {
         Debug.Log("SENDING TEAM CHAT!");
         // read text from bar, send it off to the networked chat
-        FindObjectOfType<PhoneCallLogs>().SendTeamChatMessage(TeamChatbar.text, false);
+        FindObjectOfType<MultipleChoicePhoneCallLogs>().SendTeamChatMessage(TeamChatbar.text, false);
         // Chat window should stay selected when the users send a message
         //  however, pressing enter causes it to deselect the box.
         ClearAndActivateTeamChat();
@@ -122,6 +125,9 @@ public class TeamChatUI : MonoBehaviour
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignTeamMessage;
+
+        // reset content window to bottom to show most recent message
+        ChatScrollWindow.verticalNormalizedPosition = 0;
     }
 
     // method to check if the chat is currently selected
@@ -134,20 +140,25 @@ public class TeamChatUI : MonoBehaviour
     public void EnablePhone()
     {
         TakeControlButton.interactable = false;
-        PhoneChatbar.interactable = true;
+        // TODO: finish implementing, causing errors as is
+        FindObjectOfType<MultipleChoicePhoneCallLogs>().GenerateButtonsForCurrentLineServerRpc();
+        // PhoneChatbar.interactable = true;
     }
     
     public void DisablePhone()
     {
         TakeControlButton.interactable = false;
-        PhoneChatbar.interactable = false;
+        // TODO: finish implementing, causing errors as is
+        FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc();
+        // PhoneChatbar.interactable = false;
     }
 
     public void ResetPhone()
     {
         TakeControlButton.interactable = true;
-        PhoneChatbar.interactable = false;
-
+        // TODO: finish implementing, causing errors as is
+        // PhoneChatbar.interactable = false;
+        FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc();
         TakeControlButton.GetComponentInChildren<TMP_Text>().text = "Restart as Speaker";
     }
 
@@ -171,31 +182,6 @@ public class TeamChatUI : MonoBehaviour
 
         // resize chat
         PhoneContentWindow.sizeDelta = Vector2.zero;
-    }
-
-    public void SendPhoneChatMessage()
-    {
-        Debug.Log("SENDING!");
-        // read text from bar, send it off to the networked chat
-        FindObjectOfType<PhoneCallLogs>().SendPhoneChatMessage(PhoneChatbar.text);
-        // Chat window should stay selected when the users send a message
-        //  however, pressing enter causes it to deselect the box.
-        ClearAndActivatePhoneChat();
-    }
-
-    public void ClearAndActivatePhoneChat()
-    {
-        Debug.Log("CLEARING AND ACTIVATING");
-        // EventSystem.SetSelectedGameObject(Chatbar.gameObject);
-        PhoneChatbar.text = "";
-        EventSystem.SetSelectedGameObject(PhoneChatbar.gameObject);
-        PhoneChatbar.ActivateInputField();
-    }
-
-    public void DeselectPhoneChat()
-    {
-        EventSystem.SetSelectedGameObject(null);
-        PhoneChatbar.text = "";
     }
 
     public void AddPhoneMessage(ChatMessage message)
@@ -229,11 +215,13 @@ public class TeamChatUI : MonoBehaviour
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignPhoneMessage;
+
+        // reset content window to bottom to show most recent message
+        PhoneScrollWindow.verticalNormalizedPosition = 0;
     }
 
-    // method to check if the chat is currently selected
-    public bool CheckPhoneChatSelected()
+    public GameObject GetInputScrollView()
     {
-        return EventSystem && EventSystem.currentSelectedGameObject == PhoneChatbar.gameObject;
+        return InputScrollView;
     }
 }

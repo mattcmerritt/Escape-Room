@@ -6,6 +6,15 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.Netcode;
 
+// support struct for storing patient information with extra details
+[System.Serializable]
+public struct PatientInformation
+{
+    public string informationName;
+    public string value;
+    public int clue;
+}
+
 public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private UIManager UIManager; // the current player's UI manager
@@ -17,11 +26,14 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private GameObject ItemButtonPrefab; // prefab for adding a new item to the UI
     private List<Button> ItemButtons; // memory for items list
 
+    [SerializeField] private List<PatientInformation> PatientInformationList; // bullet points for sticky note
+
     // UI components to fill
     [SerializeField] private GameObject ItemListBox;
     [SerializeField] private Image ItemImage;
     [SerializeField] private TMP_Text ItemName, ItemDesc;
     [SerializeField] private Button UseItemButton;
+    [SerializeField] private ScrollRect ItemScrollWindow;
 
     // UI components needed to switch views
     [SerializeField] private GameObject InventoryPanel, NotesPanel;
@@ -31,6 +43,9 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
 
     // UI components for the notes panel
     [SerializeField] private GameObject NotesListPanel;
+
+    // UI components for the patient information sticky note
+    [SerializeField] private TMP_Text InformationNote;
 
     // Event system for tracking what was clicked
     [SerializeField] private EventSystem EventSystem;
@@ -47,6 +62,9 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         EventSystem = FindObjectOfType<EventSystem>();
 
         SharedNotes = FindObjectOfType<SharedNotes>();
+
+        // load default missing information onto sticky note
+        UpdateInformationClientRpc(0);
     }
 
     // If a click occurs, defer to the UIManager to see if panel can be closed
@@ -105,6 +123,9 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         TMP_Text label = newBtnObj.GetComponentInChildren<TMP_Text>();
         label.text = item.ItemDetails.Name;
         ItemButtons.Add(newBtn);
+
+        // lower the item list to show the last item
+        ItemScrollWindow.verticalNormalizedPosition = 0;
     }
 
     // Method to update the currently selected item in the inventory
@@ -181,5 +202,17 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
 
         InventoryButton.interactable = false;
         NotesButton.interactable = true;
+    }
+
+    // Method to update the sticky note with patient information as clues are completed
+    [ClientRpc]
+    public void UpdateInformationClientRpc(int clue)
+    {
+        string output = "Patient Information: \n\n";
+        foreach (PatientInformation info in PatientInformationList)
+        {
+            output += $"\u2022<indent=1em>{info.informationName}: {(info.clue <= clue ? info.value : "?")}</indent>\n\n";
+        }
+        InformationNote.text = output;
     }
 }
