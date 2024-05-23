@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Asap-Black-Shadow SDF
   m_EditorClassIdentifier: 
-  hashCode: -1805401544
+  hashCode: -5883021
   material: {fileID: 8648883226765799038}
-  materialHashCode: -252572392
+  materialHashCode: -1790695693
   m_Version: 1.1.0
   m_SourceFontFileGUID: 40771fb83542f4949b661362c15a4838
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 40771fb83542f4949b661362c15a4838, type: 3}
@@ -869,7 +869,7 @@ Material:
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
     - _ScaleRatioB: 0.73125
-    - _ScaleRatioC: 0.73125
+    - _ScaleRatioC: 0.609375
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -883,8 +883,8 @@ Material:
     - _TextureHeight: 1024
     - _TextureWidth: 1024
     - _UnderlayDilate: 0.2
-    - _UnderlayOffsetX: 0.5
-    - _UnderlayOffsetY: -0.5
+    - _UnderlayOffsetX: 1
+    - _UnderlayOffsetY: -1
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
     - _VertexOffsetY: 0
