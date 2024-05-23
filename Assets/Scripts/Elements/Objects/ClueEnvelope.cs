@@ -10,7 +10,7 @@ public class ClueEnvelope : UtilityObject
         base.InteractAllClients(player);
 
         // updating the clue announcement text at the top of the screen for all players
-        ClueUI clueUI = player.GetComponentInChildren<ClueUI>(true);
+        TextItemUI clueUI = player.GetComponentInChildren<TextItemUI>(true);
         ClueItem clue = (ClueItem)ItemDetails;
         clueUI.UpdateClue(clue);
     }

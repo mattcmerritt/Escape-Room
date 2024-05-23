@@ -232,7 +232,7 @@ public class SequenceManager : NetworkBehaviour
         PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>(false);
         foreach (PlayerInteractions player in players)
         {
-            player.CloseWithUIManager(panelName);
+            player.CloseItemWithUIManager(panelName);
         }   
     }
     #endregion DSM Guide

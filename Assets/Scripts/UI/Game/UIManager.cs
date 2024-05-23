@@ -14,6 +14,16 @@ public class IdentifiedUIPanel
     public UIPanel Panel;
 }
 
+// Helper class to pair item pages to panels
+// Note: The objects should handle the updating of the item panel details,
+//  and this is only for activating the proper pages.
+[System.Serializable]
+public class IdentifiedItemPanel
+{
+    public string ID;
+    public GameObject PanelToUse;
+}
+
 public class UIManager : MonoBehaviour
 {
     // UI panel data
@@ -29,6 +39,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ChatLogUI ChatLog;     // used to send messages
     [SerializeField] private Animator ChatAnimator; // handles the chat going hidden
 
+    // Inventory item panel
+    [SerializeField] private bool ItemPanelOpen = false; // whther an item's details are shown on the folder
+    [SerializeField] private GameObject ActiveItemPanel; // the window that is currently open on the folder
+
     // Toggle to temporarily disable chat for other players
     [SerializeField] private bool ChatDisabled;
     [SerializeField] private TeamChatUI TeamChat;
@@ -43,6 +57,7 @@ public class UIManager : MonoBehaviour
 
     // Player UI Interfaces
     [SerializeField] private List<IdentifiedUIPanel> Panels;
+    [SerializeField] private List<IdentifiedItemPanel> ItemPanels;
 
     // Item popup manager
     [SerializeField] private PopupUI Popups;
@@ -480,5 +495,45 @@ public class UIManager : MonoBehaviour
     public void UpdateHintAnnouncement(string hint)
     {
         HintAnnouncement.text = hint;
+    }
+
+    public void OpenItemUI(string id)
+    {
+        if (ItemPanelOpen)
+        {
+            CloseItemUI();
+        }
+
+        IdentifiedItemPanel targetPanel = ItemPanels.Find((panel) => panel.ID == id);
+        if (targetPanel != null)
+        {
+            ItemPanelOpen = true;
+            ActiveItemPanel = targetPanel.PanelToUse;
+            targetPanel.PanelToUse.SetActive(true);
+        }
+    }
+
+    public void CloseItemUI()
+    {
+        if (ItemPanelOpen)
+        {
+            ActiveItemPanel.SetActive(false);
+            ItemPanelOpen = false;
+            ActiveItemPanel = null;
+        }
+    }
+
+    public void CloseItemUI(string id)
+    {
+        if (!ItemPanelOpen) return;
+
+        // only close the panel if it matches the panel to close
+        IdentifiedItemPanel targetPanel = ItemPanels.Find((panel) => panel.ID == id);
+        if (targetPanel != null && targetPanel.PanelToUse == ActiveItemPanel)
+        {
+            ActiveItemPanel.SetActive(false);
+            ItemPanelOpen = false;
+            ActiveItemPanel = null;
+        }
     }
 }
