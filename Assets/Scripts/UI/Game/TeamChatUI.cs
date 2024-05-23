@@ -13,6 +13,7 @@ public class TeamChatUI : MonoBehaviour
     // Team chat elements (functions similarly to the text chat)
     [SerializeField] private RectTransform ChatContentWindow;
     [SerializeField] private TMP_InputField TeamChatbar;
+    [SerializeField] private ScrollRect ChatScrollWindow;
 
     private float TeamCurrentHeight = 0, TeamLastMessageLocation = 0;
     private EventSystem EventSystem;
@@ -20,6 +21,7 @@ public class TeamChatUI : MonoBehaviour
 
     // Phone conversation elements
     [SerializeField] private RectTransform PhoneContentWindow;
+    [SerializeField] private ScrollRect PhoneScrollWindow;
     // [SerializeField] private TMP_InputField PhoneChatbar;
 
     private float PhoneCurrentHeight = 0, PhoneLastMessageLocation = 0;
@@ -123,6 +125,9 @@ public class TeamChatUI : MonoBehaviour
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignTeamMessage;
+
+        // reset content window to bottom to show most recent message
+        ChatScrollWindow.verticalNormalizedPosition = 0;
     }
 
     // method to check if the chat is currently selected
@@ -210,6 +215,9 @@ public class TeamChatUI : MonoBehaviour
         // unsubscribe
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded -= AlignPhoneMessage;
+
+        // reset content window to bottom to show most recent message
+        PhoneScrollWindow.verticalNormalizedPosition = 0;
     }
 
     public GameObject GetInputScrollView()

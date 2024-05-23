@@ -29081,7 +29081,9 @@ MonoBehaviour:
   MessagePrefab: {fileID: 8563183404252360631, guid: fbae8f8ba33ea3d479826023f376c650, type: 3}
   ChatContentWindow: {fileID: 4683257619503415941}
   TeamChatbar: {fileID: 5274246883764323679}
+  ChatScrollWindow: {fileID: 4477147221741318782}
   PhoneContentWindow: {fileID: 7839848077869976568}
+  PhoneScrollWindow: {fileID: 7105740249743437755}
   TakeControlButton: {fileID: 4778441668995161935}
   ProceedToDebriefButton: {fileID: 6547788146730712005}
   InputScrollView: {fileID: 3648930286256061820}
@@ -35118,6 +35120,7 @@ MonoBehaviour:
   MessagePrefab: {fileID: 8563183404252360631, guid: fbae8f8ba33ea3d479826023f376c650, type: 3}
   ChatContentWindow: {fileID: 6371571267805720443}
   TeamChatbar: {fileID: 8985639370318453909}
+  ChatScrollWindow: {fileID: 7285373875714638580}
   CardContentBox: {fileID: 4919491111559737649}
   RemainingSpeakers: {fileID: 450965478518739351}
 --- !u!1 &6461317496865020905
