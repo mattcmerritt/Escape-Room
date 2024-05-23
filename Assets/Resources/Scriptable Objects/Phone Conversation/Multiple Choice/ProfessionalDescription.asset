@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b111f5712cd3e740aa2536124c67815, type: 3}
+  m_Name: ProfessionalDescription
+  m_EditorClassIdentifier: 
+  PlayerContent: "He\u2019s stable. He arrived to the hospital earlier today and
+    was very disoriented and agitated. He also seems to have a minor leg injury.
+    He doesn\u2019t seem to know his name or where he lives. He\u2019s asking for
+    his calm down pills."
+  ResponseContent: "He has Alzheimer\u2019s, so he gets confused and upset easily."
+  FailState: 0
+  EndState: 0
+  FailInformation:
+    FailMessage: 
+    ReturnPoint: {fileID: 0}
+  FollowUpOptions:
+  - {fileID: 11400000, guid: c7ffbb83ecf5e9b46a59e4481f223e46, type: 2}

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamChatHistory: []
   PhoneChatHistory: []
-  InitialPhoneConversationLine: {fileID: 11400000, guid: 79a94267ab1f2fd428f78ab0384755c1, type: 2}
+  InitialPhoneConversationLine: {fileID: 11400000, guid: 15d1ced7ac7cb864fa7dea615a282cf7, type: 2}
   CurrentPhoneConversationLine: {fileID: 0}
   ButtonPrefab: {fileID: 5755591101864653358, guid: 446acca4ae388d14fba053cc76776229, type: 3}
 --- !u!114 &7920080223106129990

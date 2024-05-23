@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b111f5712cd3e740aa2536124c67815, type: 3}
+  m_Name: CheckInitialsNoAddress
+  m_EditorClassIdentifier: 
+  PlayerContent: Hi. I believe we have a patient here at the hospital who you may
+    be a caregiver for. Are you the caregiver for an older male whose initials are
+    M.R.?
+  ResponseContent: 
+  FailState: 1
+  EndState: 0
+  FailInformation:
+    FailMessage: "Please confirm patient\u2019s address before releasing patient\u2019s
+      information. Please try again."
+    ReturnPoint: {fileID: 11400000, guid: 188253fe5638aa449b62d3d4d059ddc4, type: 2}
+  FollowUpOptions: []
