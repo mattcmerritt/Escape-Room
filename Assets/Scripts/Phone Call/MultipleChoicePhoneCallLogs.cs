@@ -109,14 +109,14 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         string playerMessage = CurrentPhoneConversationLine.PlayerContent;
         if(playerMessage.Contains("<name>"))
         {
-            playerMessage.Replace("<name>", ActivePlayerName);
+            playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
         }
         AddPhoneChatMessageForAllServerRpc(playerName, timestamp, playerMessage);
 
         string speakerMessage = CurrentPhoneConversationLine.ResponseContent;
-        if(playerMessage.Contains("<name>"))
+        if(speakerMessage.Contains("<name>"))
         {
-            speakerMessage.Replace("<name>", ActivePlayerName);
+            speakerMessage = speakerMessage.Replace("<name>", ActivePlayerName);
         }
         AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, speakerMessage);
 
@@ -171,7 +171,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                     string playerMessage = line.PlayerContent;
                     if(playerMessage.Contains("<name>"))
                     {
-                        playerMessage.Replace("<name>", ActivePlayerName);
+                        playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
                     }
 
                     newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;

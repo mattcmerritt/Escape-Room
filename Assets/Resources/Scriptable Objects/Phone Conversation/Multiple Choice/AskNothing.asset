@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AskNothing
   m_EditorClassIdentifier: 
   PlayerContent: This is <name>.
-  ResponseContent: Mike who? What is this about?
+  ResponseContent: <name> who? What is this about?
   FailState: 1
   EndState: 0
   FailInformation:
