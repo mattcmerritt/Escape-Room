@@ -10,6 +10,8 @@ public class PlayerManager : NetworkBehaviour
     public string ActivePlayerName;
     [SerializeField] public List<string> PlayersInLobby = new List<string>();
 
+    [SerializeField] private GameLobby LobbyManager;
+
     private void Start()
     {
         Instance = this;
@@ -55,5 +57,10 @@ public class PlayerManager : NetworkBehaviour
     public List<string> ListPlayersInLobby()
     {
         return PlayersInLobby;
+    }
+
+    public bool CheckIfAllPlayersConnected()
+    {
+        return PlayersInLobby.Count == LobbyManager.GetCurrentPlayerCountNumber();
     }
 }

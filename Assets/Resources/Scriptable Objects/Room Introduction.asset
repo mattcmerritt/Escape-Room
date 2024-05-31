@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d1c1e7fdfcf7234696850363d9be12a, type: 3}
+  m_Name: Room Introduction
+  m_EditorClassIdentifier: 
+  Name: Room Introduction
+  Icon: {fileID: 21300000, guid: d74f4e8e491711d47b285b88d6328a09, type: 3}
+  UsedIcon: {fileID: 21300000, guid: d74f4e8e491711d47b285b88d6328a09, type: 3}
+  Description: The room introduction.
+  Usable: 1
+  IsStillNecessary: 1
+  HasBeenViewed: 0
+  FullDescription: "Instructions: Welcome to the IPE Escape Room everyone! I want
+    to start off today\u2019s activity by reminding you that as future health professionals,
+    in order to best meet the needs of your patients, you must be competent not only
+    as a professional in your discipline, but also be skilled in working effectively
+    as members of an interprofessional healthcare team. As a team, it is critical
+    that you demonstrate shared values and ethics, effective communication, teamwork,
+    and an understanding of each other\u2019s roles and responsibilities. This activity
+    provides you an opportunity to do just that.\r\n\r\nFirst, as you enter the room
+    find the patient where you will find patient description and first clue, which
+    should be read out loud. You should talk to each other throughout this activity
+    and make sure you are all on the same page. You can use the chat box and the
+    notes on the clipboard to keep track of information you have figured out from
+    the clues. As you find clues, they will go into your inventory, which you can
+    access at any time. Okay, that\u2019s it \u2013good luck!"

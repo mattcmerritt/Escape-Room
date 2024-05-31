@@ -3690,7 +3690,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 178009428335142184}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13509,7 +13509,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 512391311453042993}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.5730659
+  m_Size: 0.7781833
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -26519,25 +26519,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Patient Case: \r\n\r\nJohn Doe has arrived to the Emergency Department
-    in a state of complete disorientation. He appears to be in his 70\u2019s or 80\u2019s.
-    His clothes are stained. He does not seem to know who he is or how he got here
-    to the Emergency Room. He is limping and complaining that his leg hurts. He gets
-    agitated as hospital staff walk by the room; he is suspicious and repeats the
-    phrase: \u201CI don\u2019t trust those people \u2013 they want to lock me up\u201D.
-    On one occasion, he looks and repeats the phrase even though there isn\u2019t
-    anyone walking by the door. He insists that he wants to \u201Cgo home\u201D but
-    does not know where he lives. He states that someone was waiting for him and
-    he is worried about being \u201Clate\u201D. He says that he wants his \u201Ccalm
-    down\u201D pill but doesn\u2019t know where it is.  \r\n\r\nObjective: Find out
-    John Doe\u2019s real name, his address, and his caregiver\u2019s name and phone
-    number \u2013 you will \u201CEscape the Room\u201D when you call John Doe\u2019s
-    caregiver, let them know the situation, and get confirmation that they are coming
-    to get him.  \r\n\r\nTime Allotted: You have 45 minutes to complete this task
-    as a team. You will need to solve a series of puzzles that will lead you to more
-    clues. Each member of the team should participate. You are being evaluated not
-    only on your ability to escape the room, but on your effective communication
-    and teamwork skills. Before you get started, introduce yourself and your major/discipline.  "
+  m_text: "Instructions: Welcome to the IPE Escape Room everyone! I want to start
+    off today\u2019s activity by reminding you that as future health professionals,
+    in order to best meet the needs of your patients, you must be competent not only
+    as a professional in your discipline, but also be skilled in working effectively
+    as members of an interprofessional healthcare team. As a team, it is critical
+    that you demonstrate shared values and ethics, effective communication, teamwork,
+    and an understanding of each other\u2019s roles and responsibilities. This activity
+    provides you an opportunity to do just that.\r\n\r\nFirst, as you enter the room
+    find the patient where you will find patient description and first clue, which
+    should be read out loud. You should talk to each other throughout this activity
+    and make sure you are all on the same page. You can use the chat box and the
+    notes on the clipboard to keep track of information you have figured out from
+    the clues. As you find clues, they will go into your inventory, which you can
+    access at any time. Okay, that\u2019s it \u2013good luck!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -403,6 +403,11 @@ public class GameLobby : MonoBehaviour
         return ActiveLobby.Players.Count + "/" + ActiveLobby.MaxPlayers;
     }
 
+    public int GetCurrentPlayerCountNumber()
+    {
+        return ActiveLobby.Players.Count;
+    }
+
     public bool GetStarted()
     {
         return Started;

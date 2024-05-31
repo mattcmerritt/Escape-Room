@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d1c1e7fdfcf7234696850363d9be12a, type: 3}
-  m_Name: Introduction
+  m_Name: Patient Introduction
   m_EditorClassIdentifier: 
-  Name: Introduction
+  Name: Patient Introduction
   Icon: {fileID: 21300000, guid: d74f4e8e491711d47b285b88d6328a09, type: 3}
   UsedIcon: {fileID: 21300000, guid: d74f4e8e491711d47b285b88d6328a09, type: 3}
-  Description: The room introduction and patient case details.
+  Description: The patient case details.
   Usable: 1
   IsStillNecessary: 1
   HasBeenViewed: 0
