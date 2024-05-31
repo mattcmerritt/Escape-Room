@@ -106,8 +106,22 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // fetching the current player name
         string playerName = "Team";
 
-        AddPhoneChatMessageForAllServerRpc(playerName, timestamp, CurrentPhoneConversationLine.PlayerContent);
-        AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, CurrentPhoneConversationLine.ResponseContent);
+        string playerMessage = CurrentPhoneConversationLine.PlayerContent;
+        if(playerMessage.Contains("<name>"))
+        {
+            playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
+        }
+        AddPhoneChatMessageForAllServerRpc(playerName, timestamp, playerMessage);
+
+        string speakerMessage = CurrentPhoneConversationLine.ResponseContent;
+        if(speakerMessage != "")
+        {
+            if(speakerMessage.Contains("<name>"))
+            {
+                speakerMessage = speakerMessage.Replace("<name>", ActivePlayerName);
+            }
+            AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, speakerMessage);
+        }
 
         // win
         if (CurrentPhoneConversationLine.EndState)
@@ -123,7 +137,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // fail and continue
         else if (CurrentPhoneConversationLine.FailState)
         {
-            AddPhoneChatMessageForAllServerRpc("System", timestamp, CurrentPhoneConversationLine.FailInformation.FailMessage);
+            AddPhoneChatMessageForAllServerRpc("CONVERSATION FAILED", timestamp, CurrentPhoneConversationLine.FailInformation.FailMessage);
             CurrentPhoneConversationLine = CurrentPhoneConversationLine.FailInformation.ReturnPoint;
             // repeat line
             AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, CurrentPhoneConversationLine.ResponseContent);
@@ -156,7 +170,15 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                 {
                     // create button
                     GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
-                    newButton.GetComponentInChildren<TMP_Text>().text = line.PlayerContent;
+                    newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
+
+                    string playerMessage = line.PlayerContent;
+                    if(playerMessage.Contains("<name>"))
+                    {
+                        playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
+                    }
+
+                    newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
                     newButton.GetComponent<Button>().onClick.AddListener(() => {
                         // TODO: this might desync, check with many players
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;

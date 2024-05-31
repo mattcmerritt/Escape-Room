@@ -20,15 +20,17 @@ MonoBehaviour:
 '
   Usable: 1
   IsStillNecessary: 1
-  HasBeenViewed: 0
+  HasBeenViewed: 1
   FullDescription: "Match the numbers for the 7 \"calm down pills\" with the corresponding
     treatments in the PDR Medication Guide to obtain the digits in the phone number
     in order (excluding the area code, which you found earlier).\r\n\r\nTIP: You
     might want to take a picture of this information so you can have it open alongside
-    the PDR Guide\r\n\r\nPills from the PDR Guide: \r\nhaloperidol (Haldol) -> 1,
-    olanzapine (Zyprexa) -> 3, risperidone (Risperdal) -> 3, clozapine (Clozaril)
-    -> 4, aripiprazole (Abilify) -> 4, ziprasidone (Geodon) -> 6, quetiapine (Seroquel)
-    -> 9\r\n\r\nTreatments:\r\n1. Pet therapy \u2013 page 21 \r\n2. Music therapy
-    \u2013 page 52 \r\n3. Aromatherapy \u2013 page 87\r\n4. Reduce room noise \u2013
-    page 123 \r\n5. Offer reassurance \u2013 page 144 \r\n6. Gentle touch \u2013
-    page 148\r\n7. Comfort items \u2013 page 189 "
+    the PDR Guide\r\n\r\nPills from the PDR Guide: \r\nhaloperidol (Haldol) -> 1
+    \nolanzapine (Zyprexa) -> 3\nrisperidone (Risperdal) -> 3\nclozapine (Clozaril)
+    -> 4\naripiprazole (Abilify) -> 4\nziprasidone (Geodon) -> 6\nquetiapine (Seroquel)
+    -> 9\r\n\r\nTreatments:\r\nA. Pet therapy \u2013 page 21 \r\nB. Music therapy
+    \u2013 page 52 \r\nC. Aromatherapy \u2013 page 87\r\nD. Reduce room noise \u2013
+    page 123 \r\nE. Offer reassurance \u2013 page 144 \r\nF. Gentle touch \u2013
+    page 148\r\nG. Comfort items \u2013 page 189 \n\nRemember, the final phone number
+    should be in the format:\n \n(3 digit area code from earlier) - (digits for A,
+    B, and C) - (digits for D, E, F, and G)"

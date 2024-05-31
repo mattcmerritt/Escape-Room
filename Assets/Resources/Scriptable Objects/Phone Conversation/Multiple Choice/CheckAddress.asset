@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b111f5712cd3e740aa2536124c67815, type: 3}
+  m_Name: CheckAddress
+  m_EditorClassIdentifier: 
+  PlayerContent: Hi. I believe we have a patient here at the hospital who you may
+    be a caregiver for. Can you please confirm your address?
+  ResponseContent: Sure, 6 Cove Street in Wallingford.
+  FailState: 0
+  EndState: 0
+  FailInformation:
+    FailMessage: 
+    ReturnPoint: {fileID: 0}
+  FollowUpOptions:
+  - {fileID: 11400000, guid: 6814654d15f374941877bbe8ba84a739, type: 2}
