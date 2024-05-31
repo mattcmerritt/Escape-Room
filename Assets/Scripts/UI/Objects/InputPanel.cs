@@ -19,7 +19,7 @@ public class InputPanel : MonoBehaviour
         {
             if (Current.ToLower() == option.ToLower())
             {
-                SequenceManager.Instance.PickUpDSMGuideServerRpc(PanelName);
+                SequenceManager.Instance.FinishDSMGuideServerRpc(PanelName);
             }
         }  
     }

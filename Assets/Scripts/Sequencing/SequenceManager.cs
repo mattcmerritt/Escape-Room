@@ -219,15 +219,15 @@ public class SequenceManager : NetworkBehaviour
     // should only be called after check to ensure that the player is getting the right info here
 
     [ServerRpc(RequireOwnership = false)]
-    public void PickUpDSMGuideServerRpc(string panelName)
+    public void FinishDSMGuideServerRpc(string panelName)
     {
         MoveToNextClueServerRpc(2);
-        PickUpDSMGuideClientRpc(panelName);
+        FinishDSMGuideClientRpc(panelName);
     }
 
     // Disables the address input for all players
     [ClientRpc]
-    public void PickUpDSMGuideClientRpc(string panelName)
+    public void FinishDSMGuideClientRpc(string panelName)
     {
         PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>(false);
         foreach (PlayerInteractions player in players)

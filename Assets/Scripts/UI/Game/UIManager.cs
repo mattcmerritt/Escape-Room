@@ -510,6 +510,7 @@ public class UIManager : MonoBehaviour
             ItemPanelOpen = true;
             ActiveItemPanel = targetPanel.PanelToUse;
             targetPanel.PanelToUse.SetActive(true);
+            PlayerMovement.GetComponentInChildren<InventoryUI>().ChangeFolderSprite(true);
         }
     }
 
@@ -520,6 +521,7 @@ public class UIManager : MonoBehaviour
             ActiveItemPanel.SetActive(false);
             ItemPanelOpen = false;
             ActiveItemPanel = null;
+            PlayerMovement.GetComponentInChildren<InventoryUI>().ChangeFolderSprite(false);
         }
     }
 
@@ -534,6 +536,7 @@ public class UIManager : MonoBehaviour
             ActiveItemPanel.SetActive(false);
             ItemPanelOpen = false;
             ActiveItemPanel = null;
+            PlayerMovement.GetComponentInChildren<InventoryUI>().ChangeFolderSprite(false);
         }
     }
 }

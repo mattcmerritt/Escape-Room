@@ -52,6 +52,10 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
 
     // Updating UI in real-time
     private int ActiveItemIndex = -1;
+
+    // Inventory folder sprites
+    [SerializeField] private Sprite FolderPage1, FolderPage2;
+    [SerializeField] private Image FolderImage;
     
     private void Start()
     {
@@ -214,5 +218,18 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
             output += $"\u2022<indent=1em>{info.informationName}: {(info.clue <= clue ? info.value : "?")}</indent>\n\n";
         }
         InformationNote.text = output;
+    }
+
+    // Change the sprite shown for the folder depending on what is currently active
+    public void ChangeFolderSprite(bool showingItem)
+    {
+        if (showingItem)
+        {
+            FolderImage.sprite = FolderPage1;
+        }
+        else
+        {
+            FolderImage.sprite = FolderPage2;
+        }
     }
 }
