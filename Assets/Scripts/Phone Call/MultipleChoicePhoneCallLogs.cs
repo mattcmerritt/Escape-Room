@@ -114,11 +114,14 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         AddPhoneChatMessageForAllServerRpc(playerName, timestamp, playerMessage);
 
         string speakerMessage = CurrentPhoneConversationLine.ResponseContent;
-        if(speakerMessage.Contains("<name>"))
+        if(speakerMessage != "")
         {
-            speakerMessage = speakerMessage.Replace("<name>", ActivePlayerName);
+            if(speakerMessage.Contains("<name>"))
+            {
+                speakerMessage = speakerMessage.Replace("<name>", ActivePlayerName);
+            }
+            AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, speakerMessage);
         }
-        AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, speakerMessage);
 
         // win
         if (CurrentPhoneConversationLine.EndState)
@@ -134,7 +137,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // fail and continue
         else if (CurrentPhoneConversationLine.FailState)
         {
-            AddPhoneChatMessageForAllServerRpc("System", timestamp, CurrentPhoneConversationLine.FailInformation.FailMessage);
+            AddPhoneChatMessageForAllServerRpc("CONVERSATION FAILED", timestamp, CurrentPhoneConversationLine.FailInformation.FailMessage);
             CurrentPhoneConversationLine = CurrentPhoneConversationLine.FailInformation.ReturnPoint;
             // repeat line
             AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, CurrentPhoneConversationLine.ResponseContent);
@@ -167,6 +170,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                 {
                     // create button
                     GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
+                    newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
 
                     string playerMessage = line.PlayerContent;
                     if(playerMessage.Contains("<name>"))

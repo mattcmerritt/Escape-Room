@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerContent: Can you please confirm your name and address before I release patient
     information?
-  ResponseContent: "Sure, it\u2019s Anna Grey, at 6 Cove Street. Is my father okay?"
+  ResponseContent: "Sure, it\u2019s Ana Grey, at 6 Cove Street. Is my father okay?"
   FailState: 0
   EndState: 0
   FailInformation:

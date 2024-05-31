@@ -77,6 +77,16 @@ public class PlayerInteractions : NetworkBehaviour
         UIManager.CloseUI(panelID);
     }
 
+    public void OpenItemWithUIManager(string panelID)
+    {
+        UIManager.OpenItemUI(panelID);
+    }
+
+    public void CloseItemWithUIManager(string panelID)
+    {
+        UIManager.CloseItemUI(panelID);
+    }
+
     public void UpdatePanelInstructions(string instructions, string panelID)
     {
         UIManager.UpdatePanelInstructions(instructions, panelID);

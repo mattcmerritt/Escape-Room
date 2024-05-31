@@ -77,11 +77,20 @@ public abstract class UtilityObject : SimpleObject
         CollectServerRpc();
     }
 
+    // Override the interact method to not show a normal UI panel, but instead update the Item panel
+    public override void Interact(PlayerInteractions player)
+    {
+        if (PanelID != "None")
+        {
+            player.OpenItemWithUIManager(PanelID);
+        }
+    }
+
     // This method will be the behavior that will need to be executed for all clients when used
     // Behaviors that should only happen client-side (launching a UI or toggling a state) will still happen in interact
     public virtual void InteractAllClients(PlayerInteractions player)
     {
-        // This method does not currently do anything by default
+        Interact(player); // perform interact locally
     }
 
     [ServerRpc(RequireOwnership = false)]

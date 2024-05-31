@@ -17177,7 +17177,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 0}
   MainScreenElements:
-  - {fileID: 0}
   - {fileID: 1632491656}
   - {fileID: 743608496}
   NameScreenElements:

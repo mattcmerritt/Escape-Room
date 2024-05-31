@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd301dc1b55f5c4196e33815d9d75db, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d1c1e7fdfcf7234696850363d9be12a, type: 3}
   m_Name: Paper From Book
   m_EditorClassIdentifier: 
   Name: Secret Paper
@@ -18,3 +18,17 @@ MonoBehaviour:
   Description: 'A paper from a secret component in a book you found.
 
 '
+  Usable: 1
+  IsStillNecessary: 1
+  HasBeenViewed: 0
+  FullDescription: "Match the numbers for the 7 \"calm down pills\" with the corresponding
+    treatments in the PDR Medication Guide to obtain the digits in the phone number
+    in order (excluding the area code, which you found earlier).\r\n\r\nTIP: You
+    might want to take a picture of this information so you can have it open alongside
+    the PDR Guide\r\n\r\nPills from the PDR Guide: \r\nhaloperidol (Haldol) -> 1,
+    olanzapine (Zyprexa) -> 3, risperidone (Risperdal) -> 3, clozapine (Clozaril)
+    -> 4, aripiprazole (Abilify) -> 4, ziprasidone (Geodon) -> 6, quetiapine (Seroquel)
+    -> 9\r\n\r\nTreatments:\r\n1. Pet therapy \u2013 page 21 \r\n2. Music therapy
+    \u2013 page 52 \r\n3. Aromatherapy \u2013 page 87\r\n4. Reduce room noise \u2013
+    page 123 \r\n5. Offer reassurance \u2013 page 144 \r\n6. Gentle touch \u2013
+    page 148\r\n7. Comfort items \u2013 page 189 "

@@ -146,7 +146,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
             {
                 SharedInventory.MarkItemAsViewedServerRpc(currentIndex); // show other users that item is viewed
                 SharedInventory.UseItem(currentIndex); // perform item activation behavior
-                UIManager.CloseInventory(); // hide the inventory
+                // UIManager.CloseInventory(); // hide the inventory
             });
         }
         else

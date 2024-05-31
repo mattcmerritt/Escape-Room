@@ -190,9 +190,36 @@ public class TeamChatUI : MonoBehaviour
         TMP_Text messageText = newMessage.GetComponent<TMP_Text>();
         messageText.text = $"{message.PlayerName}: {message.Message}";
 
+        // color certain elements
+        if(message.PlayerName == "Team")
+        {
+            messageText.color = Color.white;
+        }
+        else if(message.PlayerName == "Speaker")
+        {
+            messageText.color = new Color(0f, 0.25f, 0.5f);
+        }
+        else if(message.PlayerName == "CONVERSATION FAILED")
+        {
+            messageText.color = Color.red;
+        }
+
         // message is not prepared to be scaled and put into box yet, need to wait on content fitter
         ChatMessageUI messageScript = newMessage.GetComponent<ChatMessageUI>();
         messageScript.OnSizeLoaded += AlignPhoneMessage;
+
+        // send a system message to explain the rewind if the conversation was failed
+        if(message.PlayerName == "CONVERSATION FAILED")
+        {
+            GameObject resetMessage = Instantiate(MessagePrefab);
+            TMP_Text resetText = resetMessage.GetComponent<TMP_Text>();
+            resetText.text = "Rewinding conversation to last message...";
+            resetText.color = Color.green;
+            
+            // message is not prepared to be scaled and put into box yet, need to wait on content fitter
+            ChatMessageUI resetMessageScript = resetMessage.GetComponent<ChatMessageUI>();
+            resetMessageScript.OnSizeLoaded += AlignPhoneMessage;
+        }
     }
 
     public void AlignPhoneMessage(float newHeight, GameObject newMessage)
