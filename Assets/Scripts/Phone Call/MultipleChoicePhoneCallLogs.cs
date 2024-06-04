@@ -74,7 +74,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void LockPhoneForOthersServerRpc(string playerName)
     {
-        SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
+        SendTeamChatMessage($"{playerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
         LockPhoneForOthersClientRpc(playerName);
     }
 
@@ -284,6 +284,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
                         if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
                         {
+                            Debug.Log("disabling button");
                             newButton.GetComponent<Button>().interactable = false;
                         }
                     });
