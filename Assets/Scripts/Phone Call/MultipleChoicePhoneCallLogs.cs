@@ -96,9 +96,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
     public void SendPhoneChatMessage()
     {
-        // clear buttons first
-        ClearButtonsServerRpc();
-
         // fetching the current time
         DateTime currentTime = DateTime.Now;
         string timestamp = currentTime.ToString("HH:mm");
@@ -183,7 +180,9 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
                     newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
                     newButton.GetComponent<Button>().onClick.AddListener(() => {
-                        // TODO: this might desync, check with many players
+                        // clear buttons first
+                        ClearButtonsServerRpc();
+
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().SendPhoneChatMessage();
                     });
