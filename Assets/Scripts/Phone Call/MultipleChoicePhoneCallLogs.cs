@@ -13,7 +13,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     // Team chat history
     [SerializeField] private List<ChatMessage> TeamChatHistory = new List<ChatMessage>();
     [SerializeField] private List<ChatMessage> PhoneChatHistory = new List<ChatMessage>();
-    private string ActivePlayerName;
+    [SerializeField] private string ActivePlayerName;
+    [SerializeField] private List<PrewrittenConversationLine> DialogueLines;
     private bool ControlTaken;
 
     // Phone conversation data
@@ -23,7 +24,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
     private void Start()
     {
-        ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
         CurrentPhoneConversationLine = InitialPhoneConversationLine;
     }
 
@@ -59,12 +59,11 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     }
 
     // ------------------------ PHONE CONVERSATION ------------------------
-    public void TakePhoneControl()
+    public void TakePhoneControl(string playerName)
     {
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
         teamChatUI.EnablePhone();
-        LockPhoneForOthersServerRpc(ActivePlayerName);
-        SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
+        LockPhoneForOthersServerRpc(playerName);
 
         // sending starting message
         // fetching the current time
@@ -76,12 +75,15 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void LockPhoneForOthersServerRpc(string playerName)
     {
+        SendTeamChatMessage($"{playerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
         LockPhoneForOthersClientRpc(playerName);
     }
 
     [ClientRpc]
     private void LockPhoneForOthersClientRpc(string playerName)
     {
+        ActivePlayerName = playerName;
+
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
 
         // Disable chat for all but player
@@ -96,9 +98,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
     public void SendPhoneChatMessage()
     {
-        // clear buttons first
-        ClearButtonsServerRpc();
-
         // fetching the current time
         DateTime currentTime = DateTime.Now;
         string timestamp = currentTime.ToString("HH:mm");
@@ -152,6 +151,20 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
+    public void UpdateCurrentLineServerRpc(int dialogueLineIndex)
+    {
+        UpdateCurrentLineClientRpc(dialogueLineIndex);
+        CurrentPhoneConversationLine = DialogueLines[dialogueLineIndex];
+        SendPhoneChatMessage(); // send new message after loading it, only if player is the speaker
+    }
+
+    [ClientRpc]
+    private void UpdateCurrentLineClientRpc(int dialogueLineIndex)
+    {
+        CurrentPhoneConversationLine = DialogueLines[dialogueLineIndex];
+    }
+
+    [ServerRpc(RequireOwnership = false)]
     public void GenerateButtonsForCurrentLineServerRpc()
     {
         GenerateButtonsForCurrentLineClientRpc();
@@ -160,33 +173,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ClientRpc]
     private void GenerateButtonsForCurrentLineClientRpc()
     {
-        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
-        foreach (PlayerInteractions player in players)
-        {
-            if (player.enabled == true)
-            {
-                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
-                foreach (PrewrittenConversationLine line in CurrentPhoneConversationLine.FollowUpOptions)
-                {
-                    // create button
-                    GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
-                    newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
-
-                    string playerMessage = line.PlayerContent;
-                    if(playerMessage.Contains("<name>"))
-                    {
-                        playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
-                    }
-
-                    newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
-                    newButton.GetComponent<Button>().onClick.AddListener(() => {
-                        // TODO: this might desync, check with many players
-                        FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
-                        FindObjectOfType<MultipleChoicePhoneCallLogs>().SendPhoneChatMessage();
-                    });
-                }
-            }
-        }
+        StartCoroutine(CreateButtonsAfterActivePlayerSet());
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -198,6 +185,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ClientRpc]
     private void ClearButtonsClientRpc()
     {
+        Debug.Log("clearing buttons");
+
         PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
         foreach (PlayerInteractions player in players)
         {
@@ -272,5 +261,49 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         
         // clear PhoneChatHistory
         PhoneChatHistory.Clear();
+    }
+
+    public IEnumerator CreateButtonsAfterActivePlayerSet()
+    {
+        // wait for active player to be set first
+        yield return new WaitUntil(() => ActivePlayerName != null);
+
+        // Debug.Log("generating buttons for phone call");
+
+        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
+        foreach (PlayerInteractions player in players)
+        {
+            if (player.enabled == true)
+            {
+                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
+                foreach (PrewrittenConversationLine line in CurrentPhoneConversationLine.FollowUpOptions)
+                {
+                    // create button
+                    GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
+                    Debug.Log(newButton.name);
+                    newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
+
+                    string playerMessage = line.PlayerContent;
+                    if(playerMessage.Contains("<name>"))
+                    {
+                        playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
+                    }
+
+                    newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
+                    newButton.GetComponent<Button>().onClick.AddListener(() => {
+                        // clear buttons first
+                        ClearButtonsServerRpc();
+
+                        FindObjectOfType<MultipleChoicePhoneCallLogs>().UpdateCurrentLineServerRpc(DialogueLines.IndexOf(line));
+                    });
+
+                    // disable buttons if not active speaker
+                    if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
+                    {
+                        newButton.GetComponent<Button>().interactable = false;
+                    }
+                }
+            }
+        }
     }
 }

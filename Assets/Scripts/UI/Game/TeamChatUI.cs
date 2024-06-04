@@ -42,7 +42,7 @@ public class TeamChatUI : MonoBehaviour
 
         TakeControlButton.onClick.AddListener(() =>
         {
-            FindObjectOfType<MultipleChoicePhoneCallLogs>().TakePhoneControl();
+            FindObjectOfType<MultipleChoicePhoneCallLogs>().TakePhoneControl(FindObjectOfType<PlayerClientData>().GetPlayerName());
         });
 
         ProceedToDebriefButton.onClick.AddListener(() =>
@@ -149,7 +149,7 @@ public class TeamChatUI : MonoBehaviour
     {
         TakeControlButton.interactable = false;
         // TODO: finish implementing, causing errors as is
-        FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc();
+        // FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc(); // TODO: causes buttons to clear with multiple players
         // PhoneChatbar.interactable = false;
     }
 
@@ -158,7 +158,7 @@ public class TeamChatUI : MonoBehaviour
         TakeControlButton.interactable = true;
         // TODO: finish implementing, causing errors as is
         // PhoneChatbar.interactable = false;
-        FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc();
+        // FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc(); // TODO: causes buttons to clear with multiple players
         TakeControlButton.GetComponentInChildren<TMP_Text>().text = "Restart as Speaker";
     }
 
