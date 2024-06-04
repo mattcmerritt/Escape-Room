@@ -181,6 +181,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                     newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
                     newButton.GetComponent<Button>().onClick.AddListener(() => {
                         // clear buttons first
+                        Debug.Log("this should not be running");
                         ClearButtonsServerRpc();
 
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
