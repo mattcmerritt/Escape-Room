@@ -160,6 +160,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ClientRpc]
     private void GenerateButtonsForCurrentLineClientRpc()
     {
+        Debug.Log("generating buttons for phone call");
+
         PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
         foreach (PlayerInteractions player in players)
         {
@@ -168,6 +170,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                 GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
                 foreach (PrewrittenConversationLine line in CurrentPhoneConversationLine.FollowUpOptions)
                 {
+                    Debug.Log("making a button");
+
                     // create button
                     GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
                     newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
