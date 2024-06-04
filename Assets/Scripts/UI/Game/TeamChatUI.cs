@@ -42,7 +42,7 @@ public class TeamChatUI : MonoBehaviour
 
         TakeControlButton.onClick.AddListener(() =>
         {
-            FindObjectOfType<MultipleChoicePhoneCallLogs>().TakePhoneControl();
+            FindObjectOfType<MultipleChoicePhoneCallLogs>().TakePhoneControl(FindObjectOfType<PlayerClientData>().GetPlayerName());
         });
 
         ProceedToDebriefButton.onClick.AddListener(() =>

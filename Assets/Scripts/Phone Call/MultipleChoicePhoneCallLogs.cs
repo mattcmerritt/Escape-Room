@@ -58,11 +58,11 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     }
 
     // ------------------------ PHONE CONVERSATION ------------------------
-    public void TakePhoneControl()
+    public void TakePhoneControl(string playerName)
     {
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
         teamChatUI.EnablePhone();
-        LockPhoneForOthersServerRpc(FindObjectOfType<PlayerClientData>().GetPlayerName());
+        LockPhoneForOthersServerRpc(playerName);
 
         // sending starting message
         // fetching the current time
@@ -158,44 +158,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ClientRpc]
     private void GenerateButtonsForCurrentLineClientRpc()
     {
-        Debug.Log("generating buttons for phone call");
-
-        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
-        foreach (PlayerInteractions player in players)
-        {
-            if (player.enabled == true)
-            {
-                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
-                foreach (PrewrittenConversationLine line in CurrentPhoneConversationLine.FollowUpOptions)
-                {
-                    // create button
-                    GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
-                    Debug.Log(newButton.name);
-                    newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
-
-                    string playerMessage = line.PlayerContent;
-                    if(playerMessage.Contains("<name>"))
-                    {
-                        playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
-                    }
-
-                    newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
-                    newButton.GetComponent<Button>().onClick.AddListener(() => {
-                        // clear buttons first
-                        Debug.Log("this should not be running");
-                        ClearButtonsServerRpc();
-
-                        FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
-                        FindObjectOfType<MultipleChoicePhoneCallLogs>().SendPhoneChatMessage();
-
-                        if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
-                        {
-                            newButton.GetComponent<Button>().interactable = false;
-                        }
-                    });
-                }
-            }
-        }
+        StartCoroutine(CreateButtonsAfterActivePlayerSet());
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -283,5 +246,49 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         
         // clear PhoneChatHistory
         PhoneChatHistory.Clear();
+    }
+
+    public IEnumerator CreateButtonsAfterActivePlayerSet()
+    {
+        // wait for active player to be set first
+        yield return new WaitUntil(() => ActivePlayerName != null);
+
+        // Debug.Log("generating buttons for phone call");
+
+        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
+        foreach (PlayerInteractions player in players)
+        {
+            if (player.enabled == true)
+            {
+                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
+                foreach (PrewrittenConversationLine line in CurrentPhoneConversationLine.FollowUpOptions)
+                {
+                    // create button
+                    GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
+                    Debug.Log(newButton.name);
+                    newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
+
+                    string playerMessage = line.PlayerContent;
+                    if(playerMessage.Contains("<name>"))
+                    {
+                        playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
+                    }
+
+                    newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
+                    newButton.GetComponent<Button>().onClick.AddListener(() => {
+                        // clear buttons first
+                        ClearButtonsServerRpc();
+
+                        FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
+                        FindObjectOfType<MultipleChoicePhoneCallLogs>().SendPhoneChatMessage();
+
+                        if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
+                        {
+                            newButton.GetComponent<Button>().interactable = false;
+                        }
+                    });
+                }
+            }
+        }
     }
 }
