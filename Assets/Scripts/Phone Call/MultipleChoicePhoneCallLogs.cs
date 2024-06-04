@@ -153,19 +153,15 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void UpdateCurrentLineServerRpc(int dialogueLineIndex)
     {
-        UpdateCurrentLineClientRpc(dialogueLineIndex);
+        CurrentPhoneConversationLine = DialogueLines[dialogueLineIndex];
+        SendPhoneChatMessage(); // send new message after loading it, only if player is the speaker
+        // UpdateCurrentLineClientRpc(dialogueLineIndex);
     }
 
     [ClientRpc]
     private void UpdateCurrentLineClientRpc(int dialogueLineIndex)
     {
-        CurrentPhoneConversationLine = DialogueLines[dialogueLineIndex];
-
-        if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
-        {
-            SendPhoneChatMessage(); // send new message after loading it, only if player is the speaker
-        }
-        
+        // for now, unused
     }
 
     [ServerRpc(RequireOwnership = false)]
