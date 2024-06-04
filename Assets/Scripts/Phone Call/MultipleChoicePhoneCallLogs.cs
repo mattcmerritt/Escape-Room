@@ -13,7 +13,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     // Team chat history
     [SerializeField] private List<ChatMessage> TeamChatHistory = new List<ChatMessage>();
     [SerializeField] private List<ChatMessage> PhoneChatHistory = new List<ChatMessage>();
-    private string ActivePlayerName;
+    [SerializeField] private string ActivePlayerName;
     private bool ControlTaken;
 
     // Phone conversation data
@@ -62,8 +62,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     {
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
         teamChatUI.EnablePhone();
-        LockPhoneForOthersServerRpc(ActivePlayerName);
-        SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
+        LockPhoneForOthersServerRpc(FindObjectOfType<PlayerClientData>().GetPlayerName());
 
         // sending starting message
         // fetching the current time
@@ -82,6 +81,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     private void LockPhoneForOthersClientRpc(string playerName)
     {
         ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
+        SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
 
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
 
