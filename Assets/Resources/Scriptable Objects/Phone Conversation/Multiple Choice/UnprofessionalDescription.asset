@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: UnprofessionalDescription
   m_EditorClassIdentifier: 
   PlayerContent: "He\u2019s okay but pretty out of it. We need you to come get him."
-  ResponseContent: "Be sure to use professional clinical language to describe client\u2019s
-    current presentation and symptoms."
+  ResponseContent: 
   FailState: 1
   EndState: 0
   FailInformation:
-    FailMessage: 
+    FailMessage: "Be sure to use professional clinical language to describe client\u2019s
+      current presentation and symptoms."
     ReturnPoint: {fileID: 11400000, guid: c5a24bf7615066146b72dc1e4b0e1d52, type: 2}
   FollowUpOptions: []
