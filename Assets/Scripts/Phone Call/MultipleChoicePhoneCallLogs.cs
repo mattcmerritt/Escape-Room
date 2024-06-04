@@ -63,7 +63,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
         teamChatUI.EnablePhone();
         LockPhoneForOthersServerRpc(ActivePlayerName);
-        ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
         SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
 
         // sending starting message
@@ -82,6 +81,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ClientRpc]
     private void LockPhoneForOthersClientRpc(string playerName)
     {
+        ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
+
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
 
         // Disable chat for all but player
