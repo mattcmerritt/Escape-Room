@@ -174,6 +174,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
                     // create button
                     GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
+                    Debug.Log(newButton.name);
                     newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
 
                     string playerMessage = line.PlayerContent;
@@ -185,7 +186,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                     newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
                     newButton.GetComponent<Button>().onClick.AddListener(() => {
                         // TODO: this might desync, check with many players
-                        FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
+                        // FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().SendPhoneChatMessage();
                     });
                 }
