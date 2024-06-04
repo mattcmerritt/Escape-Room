@@ -150,6 +150,19 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
+    public void UpdateCurrentLineServerRpc(PrewrittenConversationLine newLine)
+    {
+        UpdateCurrentLineClientRpc(newLine);
+    }
+
+    [ClientRpc]
+    private void UpdateCurrentLineClientRpc(PrewrittenConversationLine newLine)
+    {
+        CurrentPhoneConversationLine = newLine;
+        SendPhoneChatMessage(); // send new message after loading it
+    }
+
+    [ServerRpc(RequireOwnership = false)]
     public void GenerateButtonsForCurrentLineServerRpc()
     {
         GenerateButtonsForCurrentLineClientRpc();
@@ -279,15 +292,14 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                         // clear buttons first
                         ClearButtonsServerRpc();
 
-                        FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
-                        FindObjectOfType<MultipleChoicePhoneCallLogs>().SendPhoneChatMessage();
-
-                        if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
-                        {
-                            Debug.Log("disabling button");
-                            newButton.GetComponent<Button>().interactable = false;
-                        }
+                        FindObjectOfType<MultipleChoicePhoneCallLogs>().UpdateCurrentLineServerRpc(line);
                     });
+
+                    // disable buttons if not active speaker
+                    if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
+                    {
+                        newButton.GetComponent<Button>().interactable = false;
+                    }
                 }
             }
         }
