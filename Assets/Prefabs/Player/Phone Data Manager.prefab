@@ -49,6 +49,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TeamChatHistory: []
   PhoneChatHistory: []
+  ActivePlayerName: 
+  DialogueLines:
+  - {fileID: 11400000, guid: 188253fe5638aa449b62d3d4d059ddc4, type: 2}
+  - {fileID: 11400000, guid: ac1f807d82198ac43be1038ad953adbb, type: 2}
+  - {fileID: 11400000, guid: e73a8bbf939a12f45986c023df3e148d, type: 2}
+  - {fileID: 11400000, guid: 897517840c502a1439dae30992093910, type: 2}
+  - {fileID: 11400000, guid: d11d69f2f567af147a28d23a56b908c9, type: 2}
+  - {fileID: 11400000, guid: a1e86095814839144bf4dbf21f0544b1, type: 2}
+  - {fileID: 11400000, guid: 6814654d15f374941877bbe8ba84a739, type: 2}
+  - {fileID: 11400000, guid: 48c47cc10b5ed79439955061d6680d80, type: 2}
+  - {fileID: 11400000, guid: 36d971d601a89474b845bc3b0137994c, type: 2}
+  - {fileID: 11400000, guid: c7ffbb83ecf5e9b46a59e4481f223e46, type: 2}
+  - {fileID: 11400000, guid: 4caf93582fcf0cc48884647412f274ce, type: 2}
+  - {fileID: 11400000, guid: c5a24bf7615066146b72dc1e4b0e1d52, type: 2}
+  - {fileID: 11400000, guid: 15d1ced7ac7cb864fa7dea615a282cf7, type: 2}
+  - {fileID: 11400000, guid: 22d16ee899e4d03409b856ab46b4de3b, type: 2}
+  - {fileID: 11400000, guid: dbc4534067c699d46b00f78dfcb7d108, type: 2}
   InitialPhoneConversationLine: {fileID: 11400000, guid: 15d1ced7ac7cb864fa7dea615a282cf7, type: 2}
   CurrentPhoneConversationLine: {fileID: 0}
   ButtonPrefab: {fileID: 5755591101864653358, guid: 446acca4ae388d14fba053cc76776229, type: 3}

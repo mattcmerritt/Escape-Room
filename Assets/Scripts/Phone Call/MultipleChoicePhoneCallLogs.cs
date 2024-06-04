@@ -14,6 +14,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [SerializeField] private List<ChatMessage> TeamChatHistory = new List<ChatMessage>();
     [SerializeField] private List<ChatMessage> PhoneChatHistory = new List<ChatMessage>();
     [SerializeField] private string ActivePlayerName;
+    [SerializeField] private List<PrewrittenConversationLine> DialogueLines;
     private bool ControlTaken;
 
     // Phone conversation data
@@ -150,15 +151,15 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void UpdateCurrentLineServerRpc(PrewrittenConversationLine newLine)
+    public void UpdateCurrentLineServerRpc(int dialogueLineIndex)
     {
-        UpdateCurrentLineClientRpc(newLine);
+        UpdateCurrentLineClientRpc(dialogueLineIndex);
     }
 
     [ClientRpc]
-    private void UpdateCurrentLineClientRpc(PrewrittenConversationLine newLine)
+    private void UpdateCurrentLineClientRpc(int dialogueLineIndex)
     {
-        CurrentPhoneConversationLine = newLine;
+        CurrentPhoneConversationLine = DialogueLines[dialogueLineIndex];
         SendPhoneChatMessage(); // send new message after loading it
     }
 
@@ -292,7 +293,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                         // clear buttons first
                         ClearButtonsServerRpc();
 
-                        FindObjectOfType<MultipleChoicePhoneCallLogs>().UpdateCurrentLineServerRpc(line);
+                        FindObjectOfType<MultipleChoicePhoneCallLogs>().UpdateCurrentLineServerRpc(DialogueLines.IndexOf(line));
                     });
 
                     // disable buttons if not active speaker
