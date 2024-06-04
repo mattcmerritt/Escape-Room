@@ -170,8 +170,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                 GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
                 foreach (PrewrittenConversationLine line in CurrentPhoneConversationLine.FollowUpOptions)
                 {
-                    Debug.Log("making a button");
-
                     // create button
                     GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
                     Debug.Log(newButton.name);
@@ -186,7 +184,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                     newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
                     newButton.GetComponent<Button>().onClick.AddListener(() => {
                         // TODO: this might desync, check with many players
-                        // FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
+                        FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().SendPhoneChatMessage();
                     });
                 }
@@ -203,6 +201,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ClientRpc]
     private void ClearButtonsClientRpc()
     {
+        Debug.Log("clearing buttons");
+
         PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
         foreach (PlayerInteractions player in players)
         {
