@@ -1064,9 +1064,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999533485936144403}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7042183, y: 0.7042185, z: 0.06384738, w: -0.063847356}
+  m_LocalRotation: {x: -0.7042184, y: 0.7042184, z: 0.06384716, w: -0.06384716}
   m_LocalPosition: {x: -6.8332267, y: 0.78180313, z: -1.0702106}
-  m_LocalScale: {x: 0.20000009, y: 0.20000009, z: 0.2}
+  m_LocalScale: {x: 0.2000001, y: 0.2000001, z: 0.20000002}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2185415554008753874}
@@ -1122,7 +1122,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999533485936144403}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: babbc8c5068d84d4c9825a279aad9010, type: 3}
   m_Name: 
@@ -1137,6 +1137,7 @@ MonoBehaviour:
     Press Escape to close window'
   ObjectViewer: {fileID: 3590472296295695430, guid: c38f40949c7fec34382e6101dd7d2f9c, type: 3}
   SampleRenderTexture: {fileID: 8400000, guid: 28daee9ac4e46a24b9c6a5834944f0fb, type: 2}
+  Clue: {fileID: 0}
 --- !u!1 &2482263323923454927
 GameObject:
   m_ObjectHideFlags: 0

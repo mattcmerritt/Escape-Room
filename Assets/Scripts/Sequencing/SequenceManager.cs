@@ -34,6 +34,15 @@ public class SequenceManager : NetworkBehaviour
         public int clueNumber;
     }
     [SerializeField] private List<ItemClueAssociation> ItemClueRequirements;
+
+    // locked objects
+    [System.Serializable]
+    public struct ObjectClueUnlock
+    {
+        public SimpleObject roomObject;
+        public int clueNumber;
+    }
+    [SerializeField] private List<ObjectClueUnlock> ObjectClueUnlockRestrictions;
     
 
     private void Start()
@@ -136,6 +145,14 @@ public class SequenceManager : NetworkBehaviour
             }
             Clues[CurrentClue].GetComponent<Collider>().enabled = true;
             Debug.Log($"<color=blue>Sequencing:</color> Now on clue {CurrentClue + 1}");
+
+            foreach (ObjectClueUnlock unlock in ObjectClueUnlockRestrictions)
+            {
+                if (unlock.clueNumber == CurrentClue)
+                {
+                    unlock.roomObject.enabled = true;
+                }
+            }
         }
         if (clue == 7)
         {

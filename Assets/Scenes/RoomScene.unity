@@ -28823,18 +28823,6 @@ PrefabInstance:
       value: Pill Box
       objectReference: {fileID: 0}
     - target: {fileID: 5363633342698768674, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363633342698768674, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2000001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363633342698768674, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.20000002
-      objectReference: {fileID: 0}
-    - target: {fileID: 5363633342698768674, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.8332267
       objectReference: {fileID: 0}
@@ -28883,6 +28871,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
+--- !u!114 &619651488190542053 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7739516446859700695, guid: f670d7c2a817c774587bc6d6ac46b149, type: 3}
+  m_PrefabInstance: {fileID: 619651488190542052}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: babbc8c5068d84d4c9825a279aad9010, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &658919256767759825
 Transform:
   m_ObjectHideFlags: 0
@@ -33466,6 +33465,18 @@ PrefabInstance:
       propertyPath: RequiredDominos.Array.data[2]
       value: 
       objectReference: {fileID: 557863848286731446}
+    - target: {fileID: 2830073997021513736, guid: c392e003296767446aa96af30bc6f7f6, type: 3}
+      propertyPath: ObjectClueUnlockRestrictions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830073997021513736, guid: c392e003296767446aa96af30bc6f7f6, type: 3}
+      propertyPath: ObjectClueUnlockRestrictions.Array.data[0].clueNumber
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830073997021513736, guid: c392e003296767446aa96af30bc6f7f6, type: 3}
+      propertyPath: ObjectClueUnlockRestrictions.Array.data[0].roomObject
+      value: 
+      objectReference: {fileID: 619651488190542053}
     - target: {fileID: 3439539225389288148, guid: c392e003296767446aa96af30bc6f7f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
