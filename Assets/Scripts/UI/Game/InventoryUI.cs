@@ -56,6 +56,8 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     // Inventory folder sprites
     [SerializeField] private Sprite FolderPage1, FolderPage2;
     [SerializeField] private Image FolderImage;
+    [SerializeField] private GameObject FolderItemPanel, FolderInformationPanel;
+    [SerializeField] private Button ShowItemPanelButton, ShowInformationPanelButton;
     
     private void Start()
     {
@@ -221,15 +223,23 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     }
 
     // Change the sprite shown for the folder depending on what is currently active
-    public void ChangeFolderSprite(bool showingItem)
+    public void ChangeFolderView(bool showingItem)
     {
         if (showingItem)
         {
             FolderImage.sprite = FolderPage1;
+            FolderItemPanel.SetActive(true);
+            FolderInformationPanel.SetActive(false);
+            ShowItemPanelButton.interactable = false;
+            ShowInformationPanelButton.interactable = true;
         }
         else
         {
             FolderImage.sprite = FolderPage2;
+            FolderItemPanel.SetActive(false);
+            FolderInformationPanel.SetActive(true);
+            ShowItemPanelButton.interactable = true;
+            ShowInformationPanelButton.interactable = false;
         }
     }
 }
