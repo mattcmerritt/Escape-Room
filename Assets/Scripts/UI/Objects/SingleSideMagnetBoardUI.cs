@@ -36,4 +36,14 @@ public class SingleSideMagnetBoardUI : MonoBehaviour
             }
         }
     }
+
+    public void MoveMagnetToSlot(int magnet, int newSlot)
+    {
+        magnets[magnet - 1].MoveMagnetToSlot(newSlot);
+    }
+
+    public void MoveMagnetToPosition(int magnet, Vector3 newPosition)
+    {
+        magnets[magnet - 1].transform.position = newPosition;
+    }
 }

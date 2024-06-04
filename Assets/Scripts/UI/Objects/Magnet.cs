@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using System;
 
 
 public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
@@ -73,6 +74,7 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointe
         // Debug.Log($"Mouse position: {Input.mousePosition}");
         Vector3 magnetCenter = transform.TransformPoint(RectTransformUtility.CalculateRelativeRectTransformBounds(transform).center);
 
+        bool foundSlot = false;
         SlotText[] slots = FindObjectsOfType<SlotText>();
         foreach(SlotText slot in slots)
         {
@@ -110,7 +112,17 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointe
                 }
                 slot.SetCurrentMagnet(this);
                 transform.position = slot.transform.TransformPoint(slotBounds.center);
+
+                // update slots for all clients using manager
+                foundSlot = true;
+                MagnetBoardManager.instance.ChangeMagnetSlotServerRpc(MagnetId, slot.GetSlotId());
+                MagnetBoardManager.instance.ChangeMagnetPositionServerRpc(MagnetId, transform.position.x, transform.position.y, transform.position.z);
             }
+        }
+        if (!foundSlot)
+        {
+            MagnetBoardManager.instance.ChangeMagnetSlotServerRpc(MagnetId, -1);
+            MagnetBoardManager.instance.ChangeMagnetPositionServerRpc(MagnetId, transform.position.x, transform.position.y, transform.position.z);
         }
     }
 
@@ -122,5 +134,18 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointe
     public int GetMagnetId()
     {
         return MagnetId;
+    }
+
+    public void MoveMagnetToSlot(int newSlot)
+    {
+        SlotText[] slots = FindObjectsOfType<SlotText>();
+        SlotText slot = Array.Find(slots, (s) => s.GetSlotId() == newSlot);
+
+        if (slot != null)
+        {
+            Bounds slotBounds = RectTransformUtility.CalculateRelativeRectTransformBounds(slot.gameObject.transform);
+            slot.SetCurrentMagnet(this);
+            transform.position = slot.transform.TransformPoint(slotBounds.center);
+        }
     }
 }
