@@ -74,14 +74,14 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void LockPhoneForOthersServerRpc(string playerName)
     {
+        SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
         LockPhoneForOthersClientRpc(playerName);
     }
 
     [ClientRpc]
     private void LockPhoneForOthersClientRpc(string playerName)
     {
-        ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
-        SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
+        ActivePlayerName = playerName;
 
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
 
