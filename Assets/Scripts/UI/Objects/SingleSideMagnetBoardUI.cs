@@ -44,6 +44,6 @@ public class SingleSideMagnetBoardUI : MonoBehaviour
 
     public void MoveMagnetToPosition(int magnet, Vector3 newPosition)
     {
-        magnets[magnet - 1].transform.position = newPosition;
+        magnets[magnet - 1].GetComponent<RectTransform>().anchoredPosition3D = newPosition;
     }
 }

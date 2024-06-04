@@ -116,13 +116,15 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointe
                 // update slots for all clients using manager
                 foundSlot = true;
                 MagnetBoardManager.instance.ChangeMagnetSlotServerRpc(MagnetId, slot.GetSlotId());
-                MagnetBoardManager.instance.ChangeMagnetPositionServerRpc(MagnetId, transform.position.x, transform.position.y, transform.position.z);
+                RectTransform rectTransform = GetComponent<RectTransform>();
+                MagnetBoardManager.instance.ChangeMagnetPositionServerRpc(MagnetId, rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, rectTransform.anchoredPosition3D.z);
             }
         }
         if (!foundSlot)
         {
             MagnetBoardManager.instance.ChangeMagnetSlotServerRpc(MagnetId, -1);
-            MagnetBoardManager.instance.ChangeMagnetPositionServerRpc(MagnetId, transform.position.x, transform.position.y, transform.position.z);
+            RectTransform rectTransform = GetComponent<RectTransform>();
+            MagnetBoardManager.instance.ChangeMagnetPositionServerRpc(MagnetId, rectTransform.anchoredPosition3D.x, rectTransform.anchoredPosition3D.y, rectTransform.anchoredPosition3D.z);
         }
     }
 
