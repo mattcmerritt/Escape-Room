@@ -23,7 +23,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
     private void Start()
     {
-        ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
         CurrentPhoneConversationLine = InitialPhoneConversationLine;
     }
 
@@ -64,6 +63,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
         teamChatUI.EnablePhone();
         LockPhoneForOthersServerRpc(ActivePlayerName);
+        ActivePlayerName = FindObjectOfType<PlayerClientData>().GetPlayerName();
         SendTeamChatMessage($"{ActivePlayerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
 
         // sending starting message
@@ -186,6 +186,11 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().CurrentPhoneConversationLine = line;
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().SendPhoneChatMessage();
+
+                        if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
+                        {
+                            newButton.GetComponent<Button>().interactable = false;
+                        }
                     });
                 }
             }
