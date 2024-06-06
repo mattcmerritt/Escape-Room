@@ -104,15 +104,7 @@ public class UIManager : MonoBehaviour
             }
             else if (ChatDisabled)
             {
-                if (TeamChat.CheckTeamChatSelected())
-                {
-                    TeamChat.SendTeamChatMessage();
-                }
-                // else if (TeamChat.CheckPhoneChatSelected())
-                // {
-                //     TeamChat.SendPhoneChatMessage();
-                // }
-                else if (TeamDebrief.CheckTeamChatSelected())
+                if (TeamDebrief.CheckTeamChatSelected())
                 {
                     TeamDebrief.SendTeamChatMessage();
                 }

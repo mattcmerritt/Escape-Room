@@ -58,7 +58,7 @@ public class PhoneCallLogs : NetworkBehaviour
         Debug.Log($"Client RPC received: {timestamp}, {playerName}: {message}");
         ChatMessage newMessage = new ChatMessage(playerName, timestamp, message);
         TeamChatHistory.Add(newMessage);
-        FindObjectOfType<TeamChatUI>(false).AddTeamMessage(newMessage, announcement);
+        // FindObjectOfType<TeamChatUI>(false).AddTeamMessage(newMessage, announcement);
     }
 
     // ------------------------ PHONE CONVERSATION ------------------------
