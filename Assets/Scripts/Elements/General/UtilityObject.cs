@@ -90,7 +90,12 @@ public abstract class UtilityObject : SimpleObject
     // Behaviors that should only happen client-side (launching a UI or toggling a state) will still happen in interact
     public virtual void InteractAllClients(PlayerInteractions player)
     {
-        Interact(player); // perform interact locally
+        // previously all players would open an item menu at the same time
+        // Interact(player); // perform interact locally
+
+        // now players do not do anything on their individual machines
+        // when items are marked as used, this method is called for the clues
+        // this happens in UseItemClientRpc on SharedInventory
     }
 
     [ServerRpc(RequireOwnership = false)]

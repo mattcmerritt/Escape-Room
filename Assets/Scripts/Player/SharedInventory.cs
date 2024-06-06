@@ -58,7 +58,7 @@ public class SharedInventory : NetworkBehaviour
         {
             if (potentialPlayer.IsOwner) player = potentialPlayer;
         }
-        Items[index].Interact(player);
+        Items[index].InteractAllClients(player);
     }
 
     public InventoryItem GetItemDetails(int index)
@@ -114,12 +114,13 @@ public class SharedInventory : NetworkBehaviour
         Debug.Log("Used " + Items[index].ItemDetails.Name);
         Items[index].Used = true;
 
-        PlayerInteractions player = null;
-        foreach (PlayerInteractions potentialPlayer in FindObjectsOfType<PlayerInteractions>())
-        {
-            if (potentialPlayer.IsOwner) player = potentialPlayer;
-        }
-        Items[index].InteractAllClients(player);
+        // this method now only marks the item as used, the interaction for all is handled in InteractForAllClientRpc
+        // PlayerInteractions player = null;
+        // foreach (PlayerInteractions potentialPlayer in FindObjectsOfType<PlayerInteractions>())
+        // {
+        //     if (potentialPlayer.IsOwner) player = potentialPlayer;
+        // }
+        // Items[index].InteractAllClients(player);
     }
 
     public void MarkItemAsViewed(UtilityObject obj)
