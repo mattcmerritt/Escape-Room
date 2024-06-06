@@ -8,10 +8,9 @@ public class UVPen : UtilityObject
     private bool LightActive;
     [SerializeField] private Color DefaultPanelColor, LightOnPanelColor;
 
-    // This item will not be usable in the main game world
-    public override void InteractAllClients(PlayerInteractions player)
+    // This item will not be usable in the main game world, and usage should only be client-side
+    public override void Interact(PlayerInteractions player)
     {
-        base.InteractAllClients(player);
         LightActive = !LightActive;
         ChangeValueForAllServerRpc(LightActive);
         // player.ChangePanelColor("3D Object", LightActive.Value ? LightOnPanelColor : DefaultPanelColor);
