@@ -11,7 +11,6 @@ using UnityEngine.UI;
 public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 {
     // Team chat history
-    [SerializeField] private List<ChatMessage> TeamChatHistory = new List<ChatMessage>();
     [SerializeField] private List<ChatMessage> PhoneChatHistory = new List<ChatMessage>();
     [SerializeField] private string ActivePlayerName;
     [SerializeField] private List<PrewrittenConversationLine> DialogueLines;
@@ -25,37 +24,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     private void Start()
     {
         CurrentPhoneConversationLine = InitialPhoneConversationLine;
-    }
-
-    // ------------------------ TEAM CONVERSATION ------------------------
-    public void SendTeamChatMessage(string message, bool announcement)
-    {
-        Debug.Log($"Chatlog received message: {message}");
-
-        // fetching the current time
-        DateTime currentTime = DateTime.Now;
-        string timestamp = currentTime.ToString("HH:mm");
-
-        // fetching the current player name
-        string playerName = ActivePlayerName;
-
-        AddTeamChatMessageForAllServerRpc(playerName, timestamp, message, announcement);
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    private void AddTeamChatMessageForAllServerRpc(string playerName, string timestamp, string message, bool announcement)
-    {
-        Debug.Log($"Server RPC received: {timestamp}, {playerName}: {message}");
-        AddTeamChatMessageClientRpc(playerName, timestamp, message, announcement);
-    }
-
-    [ClientRpc]
-    private void AddTeamChatMessageClientRpc(string playerName, string timestamp, string message, bool announcement)
-    {
-        Debug.Log($"Client RPC received: {timestamp}, {playerName}: {message}");
-        ChatMessage newMessage = new ChatMessage(playerName, timestamp, message);
-        TeamChatHistory.Add(newMessage);
-        FindObjectOfType<TeamChatUI>(false).AddTeamMessage(newMessage, announcement);
     }
 
     // ------------------------ PHONE CONVERSATION ------------------------
@@ -75,7 +43,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void LockPhoneForOthersServerRpc(string playerName)
     {
-        SendTeamChatMessage($"{playerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
+        // SendTeamChatMessage($"{playerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
         LockPhoneForOthersClientRpc(playerName);
     }
 
