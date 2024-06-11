@@ -43,7 +43,10 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void LockPhoneForOthersServerRpc(string playerName)
     {
-        // SendTeamChatMessage($"{playerName} has taken the speaking role. Only they will be able to speak on the phone.", true);
+        // fetching the current time
+        DateTime currentTime = DateTime.Now;
+        string timestamp = currentTime.ToString("HH:mm");
+        AddPhoneChatMessageForAllServerRpc("<SYSTEM MESSAGE - CLEAR>", timestamp, $"{playerName} has taken the speaking role. Only they will be able to speak on the phone.");
         LockPhoneForOthersClientRpc(playerName);
     }
 
