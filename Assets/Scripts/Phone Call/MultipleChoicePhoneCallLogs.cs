@@ -217,21 +217,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // find index of current conversation line
         int conversationIndex = DialogueLines.IndexOf(CurrentPhoneConversationLine);
 
-        // clear old buttons first
         PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
-        foreach (PlayerInteractions player in players)
-        {
-            if (player.enabled == true)
-            {
-                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
-                Button[] currentButtons = parent.GetComponentsInChildren<Button>();
-                for (int i = 0; i < currentButtons.Length; i++)
-                {
-                    if(currentButtons[i].gameObject.name != $"ConversationChoice-{conversationIndex}")
-                    Destroy(currentButtons[i].gameObject);
-                }
-            }
-        }
 
         // generate new buttons
         foreach (PlayerInteractions player in players)
@@ -262,6 +248,32 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                     if(FindObjectOfType<PlayerClientData>().GetPlayerName() != ActivePlayerName)
                     {
                         newButton.GetComponent<Button>().interactable = false;
+                    }
+                }
+            }
+        }
+
+        // clear old buttons
+        foreach (PlayerInteractions player in players)
+        {
+            if (player.enabled == true)
+            {
+                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
+                Button[] currentButtons = parent.GetComponentsInChildren<Button>();
+                List<string> usedOptions = new List<string>();
+                for (int i = 0; i < currentButtons.Length; i++)
+                {
+                    if(currentButtons[i].gameObject.name != $"ConversationChoice-{conversationIndex}")
+                    {
+                        Destroy(currentButtons[i].gameObject);
+                    }
+                    else if(usedOptions.Contains(currentButtons[i].gameObject.GetComponentInChildren<TMP_Text>().text))
+                    {
+                        Destroy(currentButtons[i].gameObject); // duplicate button, destroy
+                    }
+                    else if(!usedOptions.Contains(currentButtons[i].gameObject.GetComponentInChildren<TMP_Text>().text))
+                    {
+                        usedOptions.Add(currentButtons[i].gameObject.GetComponentInChildren<TMP_Text>().text); // add to duplicate list
                     }
                 }
             }
