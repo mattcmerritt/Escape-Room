@@ -22,11 +22,11 @@ MonoBehaviour:
   IsStillNecessary: 1
   HasBeenViewed: 0
   ClueDescription: "Your patient lives in the town directly north of where these
-    three Schools are located. <b>To find the street name, FIND the two mental disorder
-    categories that include the descriptions of specific mental disorders that your
-    patient could be diagnosed with given his current symptoms.</b>\n\r\n<b>To get
-    the name of the street</b>, take the 6th, 7th 13th and 14th letters of the first
-    word in the first disorder category  (Hint: the categories are on the yellow
+    three Schools are located. To find the street name, <b>FIND</b> the two mental
+    disorder categories that include the descriptions of specific mental disorders
+    that your patient could be diagnosed with given his current symptoms.\n\r\n<b>To
+    get the name of the street</b>, take the 6th, 7th 13th and 14th letters of the
+    first word in the first disorder category  (Hint: the categories are on the yellow
     pages under DSM-V Classifications and are in all CAPS and are in BOLD, for example:
     NEURODEVELOPMENTAL DISORDERS). \r\n\r\n<b>To get the rest of the address</b>,
     take the 1st letter of the first word in the second disorder category and the
