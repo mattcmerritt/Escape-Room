@@ -55,7 +55,6 @@ public class TeamChatUI : MonoBehaviour
     
     public void DisablePhone()
     {
-        Debug.Log("local disable");
         TakeControlButton.interactable = false;
     }
 

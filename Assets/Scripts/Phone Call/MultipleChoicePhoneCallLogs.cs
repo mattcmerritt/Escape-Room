@@ -55,7 +55,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
 
         // Disable chat for all but player
-        if (ActivePlayerName != playerName)
+        if (ActivePlayerName != FindObjectOfType<PlayerClientData>().GetPlayerName())
         {
             teamChatUI.DisablePhone();
         }
