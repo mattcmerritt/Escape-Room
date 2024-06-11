@@ -17,3 +17,8 @@ MonoBehaviour:
   UsedIcon: {fileID: 21300000, guid: 047d5bf3ba4b7aa4484225494cddb717, type: 3}
   Description: A copy of the DSM Quick Guide. Using this item will open a link to
     an e-book in your browser.
+  Usable: 1
+  IsBook: 1
+  URL: https://ebookcentral.proquest.com/lib/quinnipiac/reader.action?docID=4876968&ppg=2&pq-origsite=summon
+  IsStillNecessary: 1
+  HasBeenViewed: 0

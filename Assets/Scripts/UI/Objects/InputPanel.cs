@@ -6,7 +6,7 @@ public class InputPanel : MonoBehaviour
 {
     [SerializeField] private string PanelName;
     [SerializeField] private string[] Results;
-    private string Current;
+    private string Current = "";
 
     public void UpdateSolution(string newSolution)
     {
