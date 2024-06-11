@@ -236,15 +236,15 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                         PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
                         foreach (PlayerInteractions player in players)
                         {
-                            // if (player.enabled == true)
-                            // {
+                            if (player.enabled == true)
+                            {
                                 GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
                                 Button[] currentButtons = parent.GetComponentsInChildren<Button>();
                                 for (int i = 0; i < currentButtons.Length; i++)
                                 {
                                     Destroy(currentButtons[i].gameObject);
                                 }
-                            // }
+                            }
                         }
 
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().UpdateCurrentLineServerRpc(DialogueLines.IndexOf(line));
