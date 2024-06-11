@@ -59,12 +59,9 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         {
             teamChatUI.DisablePhone();
         }
-
-        // Clear previous chat for all
-        teamChatUI.ClearConversation();
     }
 
-    public void SendPhoneChatMessage()
+    public void PopulateConversationBasedOnCurrentLine()
     {
         // fetching the current time
         DateTime currentTime = DateTime.Now;
@@ -73,6 +70,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // fetching the current player name
         string playerName = "Team";
 
+        // send player message
         string playerMessage = CurrentPhoneConversationLine.PlayerContent;
         if(playerMessage.Contains("<name>"))
         {
@@ -80,6 +78,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         }
         AddPhoneChatMessageForAllServerRpc(playerName, timestamp, playerMessage);
 
+        // send response (if exists)
         string speakerMessage = CurrentPhoneConversationLine.ResponseContent;
         if(speakerMessage != "")
         {
@@ -93,7 +92,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // win
         if (CurrentPhoneConversationLine.EndState)
         {
-            AddPhoneChatMessageForAllServerRpc("System", timestamp, "The call was successfully completed.");
+            AddPhoneChatMessageForAllServerRpc("<SYSTEM MESSAGE - CLEAR>", timestamp, "The call was successfully completed.");
 
             // LOG HERE
             SaveConversationToLocalFile();
@@ -104,7 +103,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // fail and continue
         else if (CurrentPhoneConversationLine.FailState)
         {
-            AddPhoneChatMessageForAllServerRpc("CONVERSATION FAILED", timestamp, CurrentPhoneConversationLine.FailInformation.FailMessage);
+            AddPhoneChatMessageForAllServerRpc("<SYSTEM MESSAGE - FAIL>", timestamp, CurrentPhoneConversationLine.FailInformation.FailMessage);
             CurrentPhoneConversationLine = CurrentPhoneConversationLine.FailInformation.ReturnPoint;
             // repeat line
             AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, CurrentPhoneConversationLine.ResponseContent);
@@ -123,7 +122,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     {
         UpdateCurrentLineClientRpc(dialogueLineIndex);
         CurrentPhoneConversationLine = DialogueLines[dialogueLineIndex];
-        SendPhoneChatMessage(); // send new message after loading it, only if player is the speaker
+        PopulateConversationBasedOnCurrentLine(); // send new message after loading it, only if player is the speaker
     }
 
     [ClientRpc]
@@ -142,32 +141,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
     private void GenerateButtonsForCurrentLineClientRpc()
     {
         StartCoroutine(CreateButtonsAfterActivePlayerSet());
-    }
-
-    [ServerRpc(RequireOwnership = false)]
-    public void ClearButtonsServerRpc()
-    {
-        ClearButtonsClientRpc();
-    }
-
-    [ClientRpc]
-    private void ClearButtonsClientRpc()
-    {
-        Debug.Log("clearing buttons");
-
-        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
-        foreach (PlayerInteractions player in players)
-        {
-            if (player.enabled == true)
-            {
-                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
-                Button[] currentButtons = parent.GetComponentsInChildren<Button>();
-                for (int i = 0; i < currentButtons.Length; i++)
-                {
-                    Destroy(currentButtons[i].gameObject);
-                }
-            }
-        }
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -260,7 +233,19 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                     newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
                     newButton.GetComponent<Button>().onClick.AddListener(() => {
                         // clear buttons first
-                        ClearButtonsServerRpc();
+                        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
+                        foreach (PlayerInteractions player in players)
+                        {
+                            if (player.enabled == true)
+                            {
+                                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
+                                Button[] currentButtons = parent.GetComponentsInChildren<Button>();
+                                for (int i = 0; i < currentButtons.Length; i++)
+                                {
+                                    Destroy(currentButtons[i].gameObject);
+                                }
+                            }
+                        }
 
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().UpdateCurrentLineServerRpc(DialogueLines.IndexOf(line));
                     });

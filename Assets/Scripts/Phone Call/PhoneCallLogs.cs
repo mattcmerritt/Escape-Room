@@ -6,6 +6,9 @@ using UnityEngine;
 using Unity.Netcode;
 using Conversation;
 
+// NOTE: This version is deprecated and broken. Do not try to use this. 
+// If you do need to see a functional version of this, use git blame to go back to before the multiple choice changes.
+
 public class PhoneCallLogs : NetworkBehaviour
 {
     // Team chat history
@@ -94,7 +97,7 @@ public class PhoneCallLogs : NetworkBehaviour
         }
 
         // Clear previous chat for all
-        teamChatUI.ClearConversation();
+        // teamChatUI.ClearConversation();
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -107,7 +110,7 @@ public class PhoneCallLogs : NetworkBehaviour
     private void EndConversationForAllClientRpc()
     {
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
-        teamChatUI.ResetPhone();
+        // teamChatUI.ResetPhone();
 
         // reset conversation state
         foreach (Trigger t in Triggers)

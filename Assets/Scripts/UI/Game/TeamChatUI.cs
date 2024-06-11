@@ -9,7 +9,6 @@ public class TeamChatUI : MonoBehaviour
 {
     [SerializeField] private GameObject MessagePrefab;
     private float MessageX;
-    private EventSystem EventSystem;
 
     // Phone conversation elements
     [SerializeField] private RectTransform PhoneContentWindow;
@@ -24,8 +23,6 @@ public class TeamChatUI : MonoBehaviour
     {
         RectTransform prefabMessageTransform = MessagePrefab.GetComponent<RectTransform>();
         MessageX = prefabMessageTransform.anchoredPosition.x;
-
-        EventSystem = FindObjectOfType<EventSystem>();
 
         // PhoneChatlogObjectName = PhoneChatbar.name;
 
@@ -53,55 +50,28 @@ public class TeamChatUI : MonoBehaviour
     public void EnablePhone()
     {
         TakeControlButton.interactable = false;
-        // TODO: finish implementing, causing errors as is
         FindObjectOfType<MultipleChoicePhoneCallLogs>().GenerateButtonsForCurrentLineServerRpc();
-        // PhoneChatbar.interactable = true;
     }
     
     public void DisablePhone()
     {
         TakeControlButton.interactable = false;
-        // TODO: finish implementing, causing errors as is
-        // FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc(); // TODO: causes buttons to clear with multiple players
-        // PhoneChatbar.interactable = false;
     }
 
-    public void ResetPhone()
-    {
-        TakeControlButton.interactable = true;
-        // TODO: finish implementing, causing errors as is
-        // PhoneChatbar.interactable = false;
-        // FindObjectOfType<MultipleChoicePhoneCallLogs>().ClearButtonsServerRpc(); // TODO: causes buttons to clear with multiple players
-        TakeControlButton.GetComponentInChildren<TMP_Text>().text = "Restart as Speaker";
-    }
-
-    public void ClearConversation()
-    {
-        // destroy all old messages
-        GameObject[] children = new GameObject[PhoneContentWindow.childCount];
-        for (int i = 0; i < PhoneContentWindow.childCount; i++)
-        {
-            children[i] = PhoneContentWindow.GetChild(i).gameObject;
-        }
-
-        foreach (GameObject child in children)
-        {
-            Destroy(child);
-        }
-
-        // restart content window
-        PhoneCurrentHeight = 0;
-        PhoneLastMessageLocation = 0;
-
-        // resize chat
-        PhoneContentWindow.sizeDelta = Vector2.zero;
-    }
-
+    // this is used to create the chat bubble, not the buttons
+    // the buttons are handled in MultipleChoicePhoneCallLogs.cs
     public void AddPhoneMessage(ChatMessage message)
     {
         GameObject newMessage = Instantiate(MessagePrefab);
         TMP_Text messageText = newMessage.GetComponent<TMP_Text>();
-        messageText.text = $"{message.PlayerName}: {message.Message}";
+        if(message.PlayerName != "<SYSTEM MESSAGE - CLEAR>" && message.PlayerName != "<SYSTEM MESSAGE - FAIL>")
+        {
+            messageText.text = $"{message.PlayerName}: {message.Message}";
+        }
+        else
+        {
+            messageText.text = $"{message.Message}";
+        }
 
         // color certain elements
         if(message.PlayerName == "Team")
@@ -112,7 +82,11 @@ public class TeamChatUI : MonoBehaviour
         {
             messageText.color = new Color(0f, 0.25f, 0.5f);
         }
-        else if(message.PlayerName == "CONVERSATION FAILED")
+        else if(message.PlayerName == "<SYSTEM MESSAGE - CLEAR>")
+        {
+            messageText.color = Color.green;
+        }
+        else if(message.PlayerName == "<SYSTEM MESSAGE - FAIL>")
         {
             messageText.color = Color.red;
         }
@@ -122,7 +96,7 @@ public class TeamChatUI : MonoBehaviour
         messageScript.OnSizeLoaded += AlignPhoneMessage;
 
         // send a system message to explain the rewind if the conversation was failed
-        if(message.PlayerName == "CONVERSATION FAILED")
+        if(message.PlayerName == "<SYSTEM MESSAGE - FAIL>")
         {
             GameObject resetMessage = Instantiate(MessagePrefab);
             TMP_Text resetText = resetMessage.GetComponent<TMP_Text>();
