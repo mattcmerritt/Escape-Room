@@ -63,25 +63,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
     public void PopulateConversationBasedOnCurrentLine()
     {
-        // find index of current conversation line
-        int conversationIndex = DialogueLines.IndexOf(CurrentPhoneConversationLine);
-
-        // clear old buttons first
-        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
-        foreach (PlayerInteractions player in players)
-        {
-            if (player.enabled == true)
-            {
-                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
-                Button[] currentButtons = parent.GetComponentsInChildren<Button>();
-                for (int i = 0; i < currentButtons.Length; i++)
-                {
-                    if(currentButtons[i].gameObject.name != $"ConversationChoice-{conversationIndex}")
-                    Destroy(currentButtons[i].gameObject);
-                }
-            }
-        }
-
         // fetching the current time
         DateTime currentTime = DateTime.Now;
         string timestamp = currentTime.ToString("HH:mm");
@@ -228,9 +209,26 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // wait for active player to be set first
         yield return new WaitUntil(() => ActivePlayerName != null);
 
-        // Debug.Log("generating buttons for phone call");
+        // find index of current conversation line
+        int conversationIndex = DialogueLines.IndexOf(CurrentPhoneConversationLine);
 
+        // clear old buttons first
         PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
+        foreach (PlayerInteractions player in players)
+        {
+            if (player.enabled == true)
+            {
+                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
+                Button[] currentButtons = parent.GetComponentsInChildren<Button>();
+                for (int i = 0; i < currentButtons.Length; i++)
+                {
+                    if(currentButtons[i].gameObject.name != $"ConversationChoice-{conversationIndex}")
+                    Destroy(currentButtons[i].gameObject);
+                }
+            }
+        }
+
+        // generate new buttons
         foreach (PlayerInteractions player in players)
         {
             if (player.enabled == true)
