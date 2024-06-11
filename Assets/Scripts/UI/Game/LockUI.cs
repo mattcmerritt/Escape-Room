@@ -13,6 +13,9 @@ public class LockUI : MonoBehaviour
     [SerializeField] private List<TMP_Text> DisplayDigits;
     [SerializeField] private Button InputCombinationButton;
 
+    [SerializeField] private GameObject IncorrectWarning;
+    private Coroutine IncorrectCoroutine;
+
     // ID for UI
     [SerializeField] private string LockID;
 
@@ -28,7 +31,21 @@ public class LockUI : MonoBehaviour
             DecrementButtons[temp].onClick.AddListener(() => cabinet.DecrementDigit(temp));
         }
 
-        InputCombinationButton.onClick.AddListener(() => cabinet.AttemptCombination());
+        InputCombinationButton.onClick.AddListener(() => {
+            bool result = cabinet.AttemptCombination();
+
+            // hide prev warning
+            if (IncorrectCoroutine != null)
+            {
+                StopCoroutine(IncorrectCoroutine);
+                IncorrectWarning.SetActive(false);
+            }
+
+            if (!result)
+            {
+                IncorrectCoroutine = StartCoroutine(ShowIncorrectWarning());
+            }
+        });
     }
 
     public void UpdateDigit(int index, char value)
@@ -39,5 +56,12 @@ public class LockUI : MonoBehaviour
     public string GetLockID()
     {
         return LockID;
+    }
+
+    private IEnumerator ShowIncorrectWarning()
+    {
+        IncorrectWarning.SetActive(true);
+        yield return new WaitForSeconds(3);
+        IncorrectWarning.SetActive(false);
     }
 }
