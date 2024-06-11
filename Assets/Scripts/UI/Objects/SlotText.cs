@@ -41,8 +41,12 @@ public class SlotText : MonoBehaviour, IPointerClickHandler
         }
 
         LastClick = clickTime;
+    }
 
-
+    public void ShowSlotInformation()
+    {
+        LargeTextPanel.SetActive(true);
+        LargeText.text = Contents;
     }
 
     public Magnet GetCurrentMagnet()

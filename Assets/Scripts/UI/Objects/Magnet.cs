@@ -113,6 +113,9 @@ public class Magnet : MonoBehaviour, IDragHandler, IPointerClickHandler, IPointe
                 slot.SetCurrentMagnet(this);
                 transform.position = slot.transform.TransformPoint(slotBounds.center);
 
+                // show only this player the popup
+                slot.ShowSlotInformation();
+
                 // update slots for all clients using manager
                 foundSlot = true;
                 MagnetBoardManager.instance.ChangeMagnetSlotServerRpc(MagnetId, slot.GetSlotId());
