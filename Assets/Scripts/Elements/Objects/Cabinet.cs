@@ -246,7 +246,7 @@ public class Cabinet : SimpleObject
         UpdateCombinationServerRpc(updatedValues);
     }
 
-    public void AttemptCombination()
+    public bool AttemptCombination()
     {
         bool result = CheckCombination();
         Debug.Log("Code resulted in: " + (result ? "Success" : "Failure"));
@@ -268,6 +268,8 @@ public class Cabinet : SimpleObject
                 SequenceManager.Instance.UnlockSingleCabinetServerRpc();
             }
         }
+
+        return result;
     }
 
     private bool CheckCombination()
