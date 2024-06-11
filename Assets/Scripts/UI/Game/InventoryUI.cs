@@ -32,7 +32,7 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private GameObject ItemListBox;
     [SerializeField] private Image ItemImage;
     [SerializeField] private TMP_Text ItemName, ItemDesc;
-    [SerializeField] private Button UseItemButton;
+    [SerializeField] private Button UseItemButton, OpenLinkButton;
     [SerializeField] private ScrollRect ItemScrollWindow;
 
     // UI components needed to switch views
@@ -158,6 +158,22 @@ public class InventoryUI : NetworkBehaviour, IPointerEnterHandler, IPointerExitH
         else
         {
             UseItemButton.gameObject.SetActive(false);
+        }
+
+        // adding a button to allow users to open the link associated with an item
+        if (item.IsBook)
+        {
+            OpenLinkButton.gameObject.SetActive(true);
+            OpenLinkButton.onClick.RemoveAllListeners();
+            OpenLinkButton.onClick.AddListener(() =>
+            {
+                Application.OpenURL(item.URL);
+                // note: this does not mark as used since the sticky note wasn't shown
+            });
+        }
+        else
+        {
+            OpenLinkButton.gameObject.SetActive(false);
         }
 
         if (!item.IsStillNecessary)
