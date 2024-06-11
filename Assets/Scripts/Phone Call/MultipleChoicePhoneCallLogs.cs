@@ -63,6 +63,25 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
     public void PopulateConversationBasedOnCurrentLine()
     {
+        // find index of current conversation line
+        int conversationIndex = DialogueLines.IndexOf(CurrentPhoneConversationLine);
+
+        // clear old buttons first
+        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
+        foreach (PlayerInteractions player in players)
+        {
+            if (player.enabled == true)
+            {
+                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
+                Button[] currentButtons = parent.GetComponentsInChildren<Button>();
+                for (int i = 0; i < currentButtons.Length; i++)
+                {
+                    if(currentButtons[i].gameObject.name != $"ConversationChoice-{conversationIndex}")
+                    Destroy(currentButtons[i].gameObject);
+                }
+            }
+        }
+
         // fetching the current time
         DateTime currentTime = DateTime.Now;
         string timestamp = currentTime.ToString("HH:mm");
@@ -221,6 +240,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                 {
                     // create button
                     GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
+                    newButton.name = $"ConversationChoice-{DialogueLines.IndexOf(CurrentPhoneConversationLine)}";
                     Debug.Log(newButton.name);
                     newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
 
@@ -232,21 +252,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
 
                     newButton.GetComponentInChildren<TMP_Text>().text = playerMessage;
                     newButton.GetComponent<Button>().onClick.AddListener(() => {
-                        // clear buttons first
-                        PlayerInteractions[] players = FindObjectsOfType<PlayerInteractions>();
-                        foreach (PlayerInteractions player in players)
-                        {
-                            if (player.enabled == true)
-                            {
-                                GameObject parent = player.GetComponentInChildren<TeamChatUI>().GetInputScrollView();
-                                Button[] currentButtons = parent.GetComponentsInChildren<Button>();
-                                for (int i = 0; i < currentButtons.Length; i++)
-                                {
-                                    Destroy(currentButtons[i].gameObject);
-                                }
-                            }
-                        }
-
                         FindObjectOfType<MultipleChoicePhoneCallLogs>().UpdateCurrentLineServerRpc(DialogueLines.IndexOf(line));
                     });
 
