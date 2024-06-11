@@ -22,9 +22,12 @@ public class MagnetBoardManager : NetworkBehaviour
     public void ChangeMagnetSlotClientRpc(int magnet, int newSlot)
     {
         // find the player's magnet board
-        SingleSideMagnetBoardUI magnetBoard = FindObjectOfType<SingleSideMagnetBoardUI>(false);
+        SingleSideMagnetBoardUI[] magnetBoards = FindObjectsOfType<SingleSideMagnetBoardUI>(true);
 
-        magnetBoard.MoveMagnetToSlot(magnet, newSlot);
+        foreach (SingleSideMagnetBoardUI magnetBoard in magnetBoards)
+        {
+            magnetBoard.MoveMagnetToSlot(magnet, newSlot);
+        }
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -37,8 +40,11 @@ public class MagnetBoardManager : NetworkBehaviour
     public void ChangeMagnetPositionClientRpc(int magnet, float x, float y, float z)
     {
         // find the player's magnet board
-        SingleSideMagnetBoardUI magnetBoard = FindObjectOfType<SingleSideMagnetBoardUI>(false);
+        SingleSideMagnetBoardUI[] magnetBoards = FindObjectsOfType<SingleSideMagnetBoardUI>(true);
 
-        magnetBoard.MoveMagnetToPosition(magnet, new Vector3(x, y, z));
+        foreach (SingleSideMagnetBoardUI magnetBoard in magnetBoards)
+        {
+            magnetBoard.MoveMagnetToPosition(magnet, new Vector3(x, y, z));
+        }
     }
 }
