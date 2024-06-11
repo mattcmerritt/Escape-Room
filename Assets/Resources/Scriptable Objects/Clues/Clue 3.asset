@@ -16,12 +16,17 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 440d1ea957d5bd04cbfaeaaf9c7a22eb, type: 3}
   UsedIcon: {fileID: 21300000, guid: ba71aa3247d03aa40933af12a467183a, type: 3}
   Description: An envelope containing information about the third puzzle.
-  ClueDescription: "Identify the QU pill bottles that each contain medicine that
-    has been prescribed by a specific type of health professional. Some of them can
-    legally prescribe while others cannot. Identify which of these health providers
+  Usable: 1
+  IsBook: 0
+  URL: 
+  IsStillNecessary: 1
+  HasBeenViewed: 0
+  ClueDescription: "<b>Identify the QU pill bottles that each contain medicine that
+    has been prescribed by a specific type of health professional</b>. Some of them
+    can legally prescribe while others cannot. Identify which of these health providers
     have the legal authority to write that prescription based on their profession\u2019s
-    scope of practice. Inside the correct pill bottles, you will find both the patient\u2019s
-    first name and your next clue!"
+    scope of practice. Inside the correct pill bottles, you will find both <b>the
+    patient\u2019s first name and your next clue</b>!"
   Announcement: "Identify the QU pill bottles that each contain medicine that has
     been prescribed by a specific type of health professional. \n\nMake sure that
     the professionals have the legal authority!"

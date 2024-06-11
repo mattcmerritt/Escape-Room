@@ -17,19 +17,22 @@ MonoBehaviour:
   UsedIcon: {fileID: 21300000, guid: d74f4e8e491711d47b285b88d6328a09, type: 3}
   Description: The room introduction.
   Usable: 1
+  IsBook: 0
+  URL: 
   IsStillNecessary: 1
-  HasBeenViewed: 0
-  FullDescription: "Instructions: Welcome to the IPE Escape Room everyone! I want
-    to start off today\u2019s activity by reminding you that as future health professionals,
-    in order to best meet the needs of your patients, you must be competent not only
-    as a professional in your discipline, but also be skilled in working effectively
-    as members of an interprofessional healthcare team. As a team, it is critical
-    that you demonstrate shared values and ethics, effective communication, teamwork,
-    and an understanding of each other\u2019s roles and responsibilities. This activity
-    provides you an opportunity to do just that.\r\n\r\nFirst, as you enter the room
-    find the patient where you will find patient description and first clue, which
-    should be read out loud. You should talk to each other throughout this activity
-    and make sure you are all on the same page. You can use the chat box and the
-    notes on the clipboard to keep track of information you have figured out from
-    the clues. As you find clues, they will go into your inventory, which you can
-    access at any time. Okay, that\u2019s it \u2013good luck!"
+  HasBeenViewed: 1
+  FullDescription: "<b>Instructions:</b> Welcome to the IPE Escape Room everyone!
+    I want to start off today\u2019s activity by reminding you that as future health
+    professionals, in order to best meet the needs of your patients, you must be
+    competent not only as a professional in your discipline, but also be skilled
+    in working effectively as members of an interprofessional healthcare team. As
+    a team, it is critical that you demonstrate shared values and ethics, effective
+    communication, teamwork, and an understanding of each other\u2019s roles and
+    responsibilities. This activity provides you an opportunity to do just that.\r\n\r\nFirst,
+    as you enter the room find the patient where you will find patient description
+    and first clue, which should be read out loud. You should talk to each other
+    throughout this activity and make sure you are all on the same page. You can
+    use the chat box and the notes on the clipboard to keep track of information
+    you have figured out from the clues. As you find clues, they will go into your
+    inventory, which you can access at any time. Okay, that\u2019s it \u2013<b>good
+    luck</b>!"

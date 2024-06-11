@@ -17,24 +17,27 @@ MonoBehaviour:
   UsedIcon: {fileID: 21300000, guid: d74f4e8e491711d47b285b88d6328a09, type: 3}
   Description: The patient case details.
   Usable: 1
+  IsBook: 0
+  URL: 
   IsStillNecessary: 1
-  HasBeenViewed: 0
-  FullDescription: "Patient Case: \r\n\r\nJohn Doe has arrived to the Emergency Department
-    in a state of complete disorientation. He appears to be in his 70\u2019s or 80\u2019s.
-    His clothes are stained. He does not seem to know who he is or how he got here
-    to the Emergency Room. He is limping and complaining that his leg hurts. He gets
-    agitated as hospital staff walk by the room; he is suspicious and repeats the
-    phrase: \u201CI don\u2019t trust those people \u2013 they want to lock me up\u201D.
-    On one occasion, he looks and repeats the phrase even though there isn\u2019t
-    anyone walking by the door. He insists that he wants to \u201Cgo home\u201D but
-    does not know where he lives. He states that someone was waiting for him and
-    he is worried about being \u201Clate\u201D. He says that he wants his \u201Ccalm
-    down\u201D pill but doesn\u2019t know where it is.  \r\n\r\nObjective: Find out
-    John Doe\u2019s real name, his address, and his caregiver\u2019s name and phone
-    number \u2013 you will \u201CEscape the Room\u201D when you call John Doe\u2019s
-    caregiver, let them know the situation, and get confirmation that they are coming
-    to get him.  \r\n\r\nTime Allotted: You have 45 minutes to complete this task
-    as a team. You will need to solve a series of puzzles that will lead you to more
-    clues. Each member of the team should participate. You are being evaluated not
-    only on your ability to escape the room, but on your effective communication
-    and teamwork skills. Before you get started, introduce yourself and your major/discipline.  "
+  HasBeenViewed: 1
+  FullDescription: "<b>Patient Case: </b>\r\n\r\nJohn Doe has arrived to the Emergency
+    Department in a state of complete disorientation. He appears to be in his 70\u2019s
+    or 80\u2019s. His clothes are stained. He does not seem to know who he is or
+    how he got here to the Emergency Room. He is limping and complaining that his
+    leg hurts. He gets agitated as hospital staff walk by the room; he is suspicious
+    and repeats the phrase: \u201CI don\u2019t trust those people \u2013 they want
+    to lock me up\u201D. On one occasion, he looks and repeats the phrase even though
+    there isn\u2019t anyone walking by the door. He insists that he wants to \u201Cgo
+    home\u201D but does not know where he lives. He states that someone was waiting
+    for him and he is worried about being \u201Clate\u201D. He says that he wants
+    his \u201Ccalm down\u201D pill but doesn\u2019t know where it is.  \r\n\r\n<b>Objective:</b>
+    Find out John Doe\u2019s real name, his address, and his caregiver\u2019s name
+    and phone number \u2013 you will \u201CEscape the Room\u201D when you call John
+    Doe\u2019s caregiver, let them know the situation, and get confirmation that
+    they are coming to get him.  \r\n\r\n<b>Time Allotted:</b> You have 45 minutes
+    to complete this task as a team. You will need to solve a series of puzzles that
+    will lead you to more clues. Each member of the team should participate. You
+    are being evaluated not only on your ability to escape the room, but on your
+    effective communication and teamwork skills. Before you get started, <b>introduce
+    yourself and your major/discipline</b>.  "

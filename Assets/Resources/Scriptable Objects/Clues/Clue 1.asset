@@ -17,15 +17,21 @@ MonoBehaviour:
   UsedIcon: {fileID: 21300000, guid: ba71aa3247d03aa40933af12a467183a, type: 3}
   Description: An envelope containing information about the first puzzle. Open it
     to get started!
+  Usable: 1
+  IsBook: 0
+  URL: 
+  IsStillNecessary: 1
+  HasBeenViewed: 1
   ClueDescription: "To find out the town your patient lives in, you will need to
-    find three specific dominos. To begin, calculate the total number of letters
+    find <b>three specific dominos</b>. To begin, calculate the total number of letters
     for each of the three health schools at QU. For example, School of Business has
-    16 letters. \r\n\r\nThen find the dominos that have the highest possible number
-    of dots on the top half. From those, find the three specific dominos that have
-    same the number of dots as the numbers of letters in the name of each health
+    16 letters. \r\n\r\nThen find the dominos that have the <b>highest possible number
+    of dots on the top half</b>. From those, find the three specific dominos that
+    have same the number of dots as the numbers of letters in the name of each health
     school. There will be one domino for each health school.  \r\n\r\nThen look on
-    the back side of each of the three dominos for your next clue. The text may not
-    be visible at first, so you may need something special to view it..."
+    the back side of each of the three dominos for your next clue. The text <b>may
+    not be visible</b> at first, so you may need <b>something special</b> to view
+    it..."
   Announcement: 'Find the dominos that add up to the number of letters in each health
     school. There are secrets on the back!
 

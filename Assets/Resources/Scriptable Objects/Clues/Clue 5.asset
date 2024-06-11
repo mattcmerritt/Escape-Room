@@ -16,10 +16,15 @@ MonoBehaviour:
   Icon: {fileID: 21300000, guid: 440d1ea957d5bd04cbfaeaaf9c7a22eb, type: 3}
   UsedIcon: {fileID: 21300000, guid: ba71aa3247d03aa40933af12a467183a, type: 3}
   Description: An envelope containing information about the fifth puzzle.
+  Usable: 1
+  IsBook: 0
+  URL: 
+  IsStillNecessary: 1
+  HasBeenViewed: 0
   ClueDescription: "What might you suggest to your patient\u2019s caregiver if they\u2019ve
     noticed their loved one is often forgetful and misses their daily noon medication?
-    Find that helpful item and the answer will get you next clue! Not sure what it
-    could be? Maybe you should retrace your steps."
+    <b>Find that helpful item and the answer will get you next clue</b>! Not sure
+    what it could be? Maybe you should retrace your steps."
   Announcement: To find your next clue, look for an item which might help the patient
     remember their daily noon medication more often. If you're unsure what to look
     for, try retracing your steps.
