@@ -94,6 +94,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         {
             AddPhoneChatMessageForAllServerRpc("<SYSTEM MESSAGE - CLEAR>", timestamp, "The call was successfully completed.");
 
+            GenerateButtonsForCurrentLineServerRpc(); // this will only clear - end state has no new buttons
+
             // LOG HERE
             SaveConversationToLocalFile();
 
