@@ -4998,6 +4998,9 @@ MonoBehaviour:
   HintAnnouncement: {fileID: 1023131802436070138}
   EscapeMenu: {fileID: 8911142733534627260}
   EscapeMenuOpen: 0
+  WindowedToggle: {fileID: 583859055434560221}
+  ResolutionsDropdown: {fileID: 8094541864823683597}
+  ExitButton: {fileID: 1122077580691098670}
 --- !u!114 &4400866233964812375
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10423,19 +10426,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ChangeWindowed
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
 --- !u!1 &1317716916153514847
 GameObject:
@@ -28490,7 +28481,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3956231221665373866}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 178009428919859052}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: CloseEscapeMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5510124053755832727
 GameObject:
   m_ObjectHideFlags: 0
@@ -31327,6 +31330,7 @@ GameObject:
   - component: {fileID: 210087199407505423}
   - component: {fileID: 8598523816343734292}
   - component: {fileID: 8094541864823683597}
+  - component: {fileID: 8567410663623932561}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -31458,20 +31462,20 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ChangeResolution
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &8567410663623932561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6085333638445514556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41dbfd622e74d944999c69a1d67fd03b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6100200379246005604
 GameObject:
   m_ObjectHideFlags: 0

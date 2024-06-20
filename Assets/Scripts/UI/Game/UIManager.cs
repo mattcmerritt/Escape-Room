@@ -73,12 +73,34 @@ public class UIManager : MonoBehaviour
     // Escape menu information
     [SerializeField] private GameObject EscapeMenu;
     [SerializeField] private bool EscapeMenuOpen;
+    [SerializeField] private Toggle WindowedToggle;
+    [SerializeField] private TMP_Dropdown ResolutionsDropdown;
+    [SerializeField] private Button ExitButton;
+    
 
     // Show the lobby code at the start
     private void Start()
     {
         CurrentLobby = FindObjectOfType<GameLobby>();
         EscapeMenuOpen = false;
+
+        SettingsManager settings = FindObjectOfType<SettingsManager>();
+
+        // set initial values
+        WindowedToggle.isOn = settings.IsWindowed();
+        ResolutionsDropdown.value = settings.GetResolutionIndex();
+
+        // attach escape menu button callbacks
+        WindowedToggle.onValueChanged.AddListener((value) => {
+            settings.ChangeWindowed(value);
+        });
+        ResolutionsDropdown.onValueChanged.AddListener((index) => {
+            ResolutionsDropdown.gameObject.GetComponent<ResolutionDropdown>().HandleUpdate(index);
+        });
+        ExitButton.onClick.AddListener(() => {
+            // TODO: additional disconnect functionality should be included here if necessary
+            settings.ExitGame();
+        });
     }
 
     // checking key presses to close/open UI
@@ -141,19 +163,29 @@ public class UIManager : MonoBehaviour
             }
             else if (EscapeMenuOpen)
             {
-                // close the escape menu
-                EscapeMenu.SetActive(false);
-                EscapeMenuOpen = false;
-                PlayerMovement.UnlockCamera();
+                CloseEscapeMenu();
             }
             else
             {
-                // open the escape menu
-                EscapeMenu.SetActive(true);
-                EscapeMenuOpen = true;
-                PlayerMovement.LockCamera();
+                OpenEscapeMenu();
             }
         }
+    }
+
+    public void OpenEscapeMenu()
+    {
+        // open the escape menu
+        EscapeMenu.SetActive(true);
+        EscapeMenuOpen = true;
+        PlayerMovement.LockCamera();
+    }
+    
+    public void CloseEscapeMenu()
+    {
+        // close the escape menu
+        EscapeMenu.SetActive(false);
+        EscapeMenuOpen = false;
+        PlayerMovement.UnlockCamera();
     }
 
     public bool OpenUI(UIPanel opening)
