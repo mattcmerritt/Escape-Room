@@ -70,10 +70,15 @@ public class UIManager : MonoBehaviour
     // Hint information
     [SerializeField] private TMP_Text HintAnnouncement;
 
+    // Escape menu information
+    [SerializeField] private GameObject EscapeMenu;
+    [SerializeField] private bool EscapeMenuOpen;
+
     // Show the lobby code at the start
     private void Start()
     {
         CurrentLobby = FindObjectOfType<GameLobby>();
+        EscapeMenuOpen = false;
     }
 
     // checking key presses to close/open UI
@@ -83,7 +88,7 @@ public class UIManager : MonoBehaviour
         LobbyCodeLabel.text = "Lobby Code:\n" + CurrentLobby.GetCurrentJoinCode();
 
         // Using tab to toggle inventory
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !EscapeMenuOpen)
         {
             if (InventoryOpen)
             {
@@ -96,7 +101,7 @@ public class UIManager : MonoBehaviour
         }
 
         // Using enter to open/close chat
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && !EscapeMenuOpen)
         {
             if (ChatOpen && ChatLog.CheckChatSelected())
             {
@@ -128,10 +133,25 @@ public class UIManager : MonoBehaviour
             }
             else if (UIPanelOpen)
             {
+                // TODO: pausing is currently prevented during the debrief, possibly escalate this to a separate else if clause
                 if (ActiveUIPanel.GetComponent<TeamDebriefUI>() == null)
                 {
                     CloseUI(ActiveUIPanel.GetComponent<UIPanel>());
                 }
+            }
+            else if (EscapeMenuOpen)
+            {
+                // close the escape menu
+                EscapeMenu.SetActive(false);
+                EscapeMenuOpen = false;
+                PlayerMovement.UnlockCamera();
+            }
+            else
+            {
+                // open the escape menu
+                EscapeMenu.SetActive(true);
+                EscapeMenuOpen = true;
+                PlayerMovement.LockCamera();
             }
         }
     }
@@ -142,6 +162,13 @@ public class UIManager : MonoBehaviour
         if (UIPanelOpen)
         {
             Debug.LogWarning($"Attempting to open {opening.gameObject.name} while another panel is active.");
+            return false;
+        }
+
+        // prevent panels from being opened when in the escape menu
+        if (EscapeMenuOpen)
+        {
+            Debug.LogWarning($"Attempting to open {opening.gameObject.name} while the game is paused.");
             return false;
         }
 

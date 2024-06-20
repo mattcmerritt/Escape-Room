@@ -4996,6 +4996,8 @@ MonoBehaviour:
   CurrentLobby: {fileID: 0}
   KeyButton: {fileID: 1039034481586663178}
   HintAnnouncement: {fileID: 1023131802436070138}
+  EscapeMenu: {fileID: 8911142733534627260}
+  EscapeMenuOpen: 0
 --- !u!114 &4400866233964812375
 MonoBehaviour:
   m_ObjectHideFlags: 0
