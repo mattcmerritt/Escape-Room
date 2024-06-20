@@ -113,7 +113,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
             // repeat line
             AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, CurrentPhoneConversationLine.ResponseContent);
             // EndConversationForAllServerRpc();
-            GenerateButtonsForCurrentLineServerRpc();
+            // GenerateButtonsForCurrentLineServerRpc(); // attempting to get buttons to stick around by not doing this
         }
         // continue
         else
