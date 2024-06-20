@@ -26,6 +26,9 @@ public class SequenceManager : NetworkBehaviour
     private Coroutine CurrentWaitForHint;
     [SerializeField] private float HintDelay;
 
+    // database export information
+    private DatabaseExporter exporter;
+
     // object usage information
     [System.Serializable]
     public struct ItemClueAssociation
@@ -67,6 +70,10 @@ public class SequenceManager : NetworkBehaviour
             renderer.enabled = true;
         }
         Clues[0].GetComponent<Collider>().enabled = true;
+
+        // activate the database for the server
+        exporter = FindObjectOfType<DatabaseExporter>();
+        exporter.ConfigureDatabaseConnection();
     }
 
     public override void OnNetworkSpawn()
@@ -290,4 +297,11 @@ public class SequenceManager : NetworkBehaviour
         }
     }
     #endregion Medication Guide
+
+    // behaviour for the server to run at the end of the game
+    public void EndGame()
+    {
+        Debug.Log("<color=yellow>Exporter:</color> The game has ended, saving data...");
+        exporter.RecordResults();
+    }
 }

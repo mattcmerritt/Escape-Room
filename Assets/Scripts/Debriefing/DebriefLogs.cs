@@ -124,6 +124,7 @@ public class DebriefLogs : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     public void SwitchToFinishForAllServerRpc()
     {
+        SequenceManager.Instance.EndGame();
         SwitchToFinishForAllClientRpc();
     }
 
@@ -169,5 +170,10 @@ public class DebriefLogs : NetworkBehaviour
         TeamDebriefUI = FindObjectOfType<TeamDebriefUI>(false);
         TeamDebriefUI.UpdateRemainingSpeakers(remainingSpeakers);
         Debug.Log("Finished updating remaining speakers in coroutine.");
+    }
+
+    public List<ChatMessage> GetChatMessages()
+    {
+        return TeamChatHistory;
     }
 }

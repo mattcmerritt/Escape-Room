@@ -59,4 +59,9 @@ public class TextChat : NetworkBehaviour
         ChatHistory.Add(newMessage);
         FindObjectOfType<ChatLogUI>(false).AddMessage(newMessage);
     }
+
+    public List<ChatMessage> GetChatMessages()
+    {
+        return ChatHistory;
+    }
 }
