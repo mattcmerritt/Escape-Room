@@ -109,6 +109,7 @@ public class UIManager : MonoBehaviour
         // Update lobby text
         LobbyCodeLabel.text = "Lobby Code:\n" + CurrentLobby.GetCurrentJoinCode();
 
+        #region Inventory
         // Using tab to toggle inventory
         if (Input.GetKeyDown(KeyCode.Tab) && !EscapeMenuOpen)
         {
@@ -121,27 +122,40 @@ public class UIManager : MonoBehaviour
                 OpenInventory();
             }
         }
+        #endregion Inventory
 
-        // Using enter to open/close chat
+        #region Enter Button
+        // Using enter to open/close chat and send messages
         if (Input.GetKeyDown(KeyCode.Return) && !EscapeMenuOpen)
         {
+            // side chat panel send message
             if (ChatOpen && ChatLog.CheckChatSelected())
             {
-                SendChatMessage();
-            }
-            else if (ChatDisabled)
-            {
-                if (TeamDebrief.CheckTeamChatSelected())
+                // collapse the chat if nothing is typed
+                if (ChatLog.CheckChatEmpty())
                 {
-                    TeamDebrief.SendTeamChatMessage();
+                    CloseChat();
+                }
+                // otherwise send the message
+                else
+                {
+                    ChatLog.SendChatMessage();
                 }
             }
+            // debrief team chat
+            else if (ChatDisabled && TeamDebrief.CheckTeamChatSelected())
+            {
+                TeamDebrief.SendTeamChatMessage();
+            }
+            // revealing the side chat panel
             else if (!ChatOpen)
             {
                 OpenChat();
             }
         }
+        #endregion Enter Button
 
+        #region Escape functionality
         // Using escape to close menus or inventory
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -149,7 +163,7 @@ public class UIManager : MonoBehaviour
             {
                 CloseChat();
             }
-            if (InventoryOpen)
+            else if (InventoryOpen)
             {
                 CloseInventory();
             }
@@ -170,6 +184,7 @@ public class UIManager : MonoBehaviour
                 OpenEscapeMenu();
             }
         }
+        #endregion Escape functionality
     }
 
     public void OpenEscapeMenu()
@@ -397,48 +412,34 @@ public class UIManager : MonoBehaviour
 
     public bool OpenChat()
     {
-        if (!ChatDisabled) 
-        {
-            // make sure that the chat is closed
-            if (ChatOpen)
-            {
-                Debug.LogWarning("Chat is already opened.");
-                return false;
-            }
+        // safety checks to prevent chat duplication
+        if (ChatDisabled) return false;
+        if (ChatOpen) return false;
 
-            // Activating the UI
-            ChatLog.OpenChat();
-            ChatAnimator.SetTrigger("Show");
+        // showing and activating the chat window
+        ChatLog.OpenChat();
+        ChatAnimator.SetTrigger("Show");
 
-            // updating state
-            ChatOpen = true;
+        // update manager state info
+        ChatOpen = true;
 
-            // locking the player
-            PlayerMovement.LockCamera();
-            PlayerInteractions.OpenMenu();
+        // locking the player
+        PlayerMovement.LockCamera();
+        PlayerInteractions.OpenMenu();
 
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return true;
     }
 
     public bool CloseChat()
     {
-        // make sure that the chat is open
-        if (!ChatOpen)
-        {
-            Debug.LogWarning("Chat is not open to close.");
-            return false;
-        }
+        // return false if no chat window is open to close
+        if (!ChatOpen) return false;
 
-        // Activating the UI
+        // clearing and deactivating chat input, then hiding the window
         ChatLog.DeselectChat();
         ChatAnimator.SetTrigger("Hide");
 
-        // updating state
+        // update manager state info
         ChatOpen = false;
 
         // restoring player control if no menus are active
@@ -450,12 +451,6 @@ public class UIManager : MonoBehaviour
         }
 
         return true;
-    }
-
-    public void SendChatMessage()
-    {
-        ChatLog.SendChatMessage();
-        // CloseChat(); // Chat no longer closes when message is sent
     }
 
     // Method used to update the instructional text shown at the bottom of the 3D object panel

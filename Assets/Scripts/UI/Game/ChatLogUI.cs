@@ -32,6 +32,7 @@ public class ChatLogUI : MonoBehaviour
         Debug.Log("ACTIVATING CHAT!");
         MissedMessageIndicator.SetActive(false);
         Closed = false;
+        Chatbar.interactable = true;
         EventSystem.SetSelectedGameObject(Chatbar.gameObject);
     }
 
@@ -42,13 +43,12 @@ public class ChatLogUI : MonoBehaviour
         FindObjectOfType<TextChat>().SendChatMessage(Chatbar.text);
         // Chat window should stay selected when the users send a message
         //  however, pressing enter causes it to deselect the box.
-        ClearAndActivateChat();
+        ClearAndSelectChatbar();
     }
 
-    public void ClearAndActivateChat()
+    public void ClearAndSelectChatbar()
     {
-        Debug.Log("CLEARING AND ACTIVATING");
-        // EventSystem.SetSelectedGameObject(Chatbar.gameObject);
+        Debug.Log("CLEARING AND RESELECTING!");
         Chatbar.text = "";
         EventSystem.SetSelectedGameObject(Chatbar.gameObject);
         Chatbar.ActivateInputField();
@@ -58,6 +58,7 @@ public class ChatLogUI : MonoBehaviour
     {
         EventSystem.SetSelectedGameObject(null);
         Chatbar.text = "";
+        Chatbar.interactable = false;
         Closed = true;
     }
 
@@ -106,5 +107,11 @@ public class ChatLogUI : MonoBehaviour
     public bool CheckChatSelected()
     {
         return EventSystem.currentSelectedGameObject == Chatbar.gameObject;
+    }
+
+    // method to check if the chat is empty
+    public bool CheckChatEmpty()
+    {
+        return Chatbar.text.Trim().Length == 0;
     }
 }
