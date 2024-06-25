@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -52,7 +53,14 @@ public class PillBox : SimpleObject
         }
     }
 
-    public static void OpenPillBoxSlot(string name)
+    [ServerRpc(RequireOwnership = false)]
+    public void OpenPillBoxSlotServerRpc(string name)
+    {
+        OpenPillBoxSlotClientRpc(name);
+    }
+
+    [ClientRpc]
+    public void OpenPillBoxSlotClientRpc(string name)
     {
         if(SlotTable == null)
         {
@@ -69,11 +77,6 @@ public class PillBox : SimpleObject
         SequenceManager.Instance.OpenPillContainerServerRpc();
         Clue.Collect();
     }
-
-    // private void FixedUpdate() 
-    // {
-        
-    // }
 
     // Create a viewing copy of the object when the player enters the interact menu
     public override void Interact(PlayerInteractions player)
@@ -114,5 +117,10 @@ public class PillBox : SimpleObject
     {
         IsCopy = true;
         Original = original;
+    }
+
+    public bool CheckIfCorrect()
+    {
+        return !IsCopy;
     }
 }

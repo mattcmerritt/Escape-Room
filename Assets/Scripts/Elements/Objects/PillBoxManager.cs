@@ -6,7 +6,25 @@ public class PillBoxManager : MonoBehaviour
 {
     public void OpenPillBoxSlot(string name)
     {
-        PillBox.OpenPillBoxSlot(name);
+        PillBox[] all = FindObjectsOfType<PillBox>();
+        PillBox correctBox = null;
+        foreach (PillBox p in all)
+        {
+            if(p.CheckIfCorrect())
+            {
+                correctBox = p;
+            }
+        }
+
+        if(correctBox != null)
+        {
+            correctBox.OpenPillBoxSlotServerRpc(name);
+        }
+        else
+        {
+            Debug.LogError("Couldn't find the original pillbox for data!");
+        }
+        
     }
 
     public void OpenSpecialPillBoxSlot()
