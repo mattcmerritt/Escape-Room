@@ -74,8 +74,20 @@ public class PillBox : SimpleObject
 
     public void OpenSpecialPillBoxSlot()
     {
-        SequenceManager.Instance.OpenPillContainerServerRpc();
-        Clue.Collect();
+        SequenceManager.Instance.OpenPillContainerServerRpc(); // sequencing only
+        SharedInventory i = FindObjectOfType<SharedInventory>();
+        if(i != null)
+        {
+            if(i.CheckForItem(Clue.ItemDetails.Name) == null)
+            {
+                Clue.Collect(); // gives the player a copy of the clue
+            }
+            else
+            {
+                Debug.LogWarning($"Attempting to claim a duplicate {Clue.ItemDetails.Name}, ignoring!");
+            }
+        }
+        
     }
 
     // Create a viewing copy of the object when the player enters the interact menu
