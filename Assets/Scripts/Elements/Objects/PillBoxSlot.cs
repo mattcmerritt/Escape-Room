@@ -51,7 +51,7 @@ public class PillBoxSlot : MonoBehaviour
     {
         if(Opened)
         {
-            transform.eulerAngles = Vector3.Lerp(new Vector3(0, -90f, 0), new Vector3(0, -90f, MaxAngleZ), Mathf.Min(1f, TimeSpentOpening / OpenTimeDuration));
+            transform.localEulerAngles = Vector3.Lerp(new Vector3(0, -90f, 0), new Vector3(0, -90f, MaxAngleZ), Mathf.Min(1f, TimeSpentOpening / OpenTimeDuration));
         }
     }
 }
