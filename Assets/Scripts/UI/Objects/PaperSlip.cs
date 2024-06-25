@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public class PaperSlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IDragHandler
+public class PaperSlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IDragHandler
 {
     // the textbox to display the current side
     [SerializeField] private TMP_Text Textbox;
@@ -15,6 +15,8 @@ public class PaperSlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [SerializeField] private bool ShowingNote = true;
     // contents of the note
     [SerializeField, TextArea(5, 15)] private string Letters, Note;
+
+    private Vector3 OffsetFromClickPoint;
 
     // mouse information
     private bool Focused; // whether the mouse is on the UI panel
@@ -62,12 +64,21 @@ public class PaperSlip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         Focused = false;
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        Vector3 globalMousePos;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(transform as RectTransform, eventData.position, eventData.pressEventCamera, out globalMousePos);
+        OffsetFromClickPoint = transform.position - globalMousePos;
+
+        transform.position = globalMousePos + OffsetFromClickPoint;
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         Vector3 globalMousePos;
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(transform as RectTransform, eventData.position, eventData.pressEventCamera, out globalMousePos))
         {
-            transform.position = globalMousePos;
+            transform.position = globalMousePos + OffsetFromClickPoint;
         }
 
         // moving the most recent slip to the top
