@@ -3694,7 +3694,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 178009428335142187}
   m_HandleRect: {fileID: 178009428335142184}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -14181,8 +14181,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6245988010322878677}
   m_HandleRect: {fileID: 512391311453042993}
   m_Direction: 2
-  m_Value: 1.0000029
-  m_Size: 0.77994996
+  m_Value: 1.0000024
+  m_Size: 0.7799501
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -25582,11 +25582,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.7607844, g: 0.70980394, b: 0.60784316, a: 1}
-    m_HighlightedColor: {r: 0.69699997, g: 0.65029377, b: 0.5568814, a: 1}
-    m_PressedColor: {r: 0.589, g: 0.5495309, b: 0.4705928, a: 1}
-    m_SelectedColor: {r: 0.69803923, g: 0.6509804, b: 0.5568628, a: 1}
-    m_DisabledColor: {r: 0.5882353, g: 0.54901963, b: 0.47058827, a: 1}
+    m_NormalColor: {r: 0.64705884, g: 0.6117647, b: 0.5254902, a: 1}
+    m_HighlightedColor: {r: 0.794, g: 0.75069094, b: 0.64482427, a: 1}
+    m_PressedColor: {r: 0.7607843, g: 0.70980394, b: 0.60784316, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.6117647, b: 0.5254902, a: 1}
+    m_DisabledColor: {r: 0.7607843, g: 0.70980394, b: 0.60784316, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -25600,7 +25600,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1714396518580132755}
   m_OnClick:
     m_PersistentCalls:
@@ -28555,8 +28555,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Instructions: Welcome to the IPE Escape Room everyone! I want to start
-    off today\u2019s activity by reminding you that as future health professionals,
+  m_text: "<b>Instructions:</b> Welcome to the IPE Escape Room everyone! I want to
+    start off today\u2019s activity by reminding you that as future health professionals,
     in order to best meet the needs of your patients, you must be competent not only
     as a professional in your discipline, but also be skilled in working effectively
     as members of an interprofessional healthcare team. As a team, it is critical
@@ -28568,7 +28568,7 @@ MonoBehaviour:
     and make sure you are all on the same page. You can use the chat box and the
     notes on the clipboard to keep track of information you have figured out from
     the clues. As you find clues, they will go into your inventory, which you can
-    access at any time. Okay, that\u2019s it \u2013good luck!"
+    access at any time. Okay, that\u2019s it \u2013<b>good luck</b>!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1417d1c1da0b4a145a073e8d05a42ed6, type: 2}
   m_sharedMaterial: {fileID: 3950213537583924954, guid: 1417d1c1da0b4a145a073e8d05a42ed6, type: 2}
@@ -41310,11 +41310,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.7607844, g: 0.70980394, b: 0.60784316, a: 1}
-    m_HighlightedColor: {r: 0.69699997, g: 0.65029377, b: 0.5568814, a: 1}
-    m_PressedColor: {r: 0.589, g: 0.5495309, b: 0.4705928, a: 1}
-    m_SelectedColor: {r: 0.69803923, g: 0.6509804, b: 0.5568628, a: 1}
-    m_DisabledColor: {r: 0.5882353, g: 0.54901963, b: 0.47058827, a: 1}
+    m_NormalColor: {r: 0.64705884, g: 0.6117647, b: 0.5254902, a: 1}
+    m_HighlightedColor: {r: 0.7921569, g: 0.7490196, b: 0.6431373, a: 1}
+    m_PressedColor: {r: 0.7607843, g: 0.70980394, b: 0.60784316, a: 1}
+    m_SelectedColor: {r: 0.64705884, g: 0.6117647, b: 0.5254902, a: 1}
+    m_DisabledColor: {r: 0.7607843, g: 0.70980394, b: 0.60784316, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -41328,7 +41328,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 564100495815275595}
   m_OnClick:
     m_PersistentCalls:
@@ -45916,8 +45916,8 @@ MonoBehaviour:
   NotesListPanel: {fileID: 7393367185672170350}
   InformationNote: {fileID: 1105090132591506246}
   EventSystem: {fileID: 0}
-  FolderPage1: {fileID: 21300000, guid: 289cdd3ddbd93cc4bb8cf19e86bc0dc1, type: 3}
-  FolderPage2: {fileID: 21300000, guid: 36abc8a41026c3d45bd1014c57770737, type: 3}
+  FolderPage1: {fileID: 21300000, guid: 36abc8a41026c3d45bd1014c57770737, type: 3}
+  FolderPage2: {fileID: 21300000, guid: 289cdd3ddbd93cc4bb8cf19e86bc0dc1, type: 3}
   FolderImage: {fileID: 7519061736582843426}
   FolderItemPanel: {fileID: 2913750692380654319}
   FolderInformationPanel: {fileID: 5833685642041297760}
