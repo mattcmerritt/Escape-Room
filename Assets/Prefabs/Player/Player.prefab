@@ -27800,9 +27800,6 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Click and drag tiles to see under them
 
-    Press R to reset all tiles
-    to the original positions
-
     Press Escape to close window'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1417d1c1da0b4a145a073e8d05a42ed6, type: 2}
