@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Asap-Light SDF
+  m_Name: Asap-Light SDF - Outline
   m_EditorClassIdentifier: 
-  hashCode: 204698849
+  hashCode: 1069160172
   material: {fileID: 3950213537583924954}
-  materialHashCode: -1351086687
+  materialHashCode: 682860748
   m_Version: 1.1.0
   m_SourceFontFileGUID: 214a501477dd5b04a992adf64826584d
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 214a501477dd5b04a992adf64826584d, type: 3}
@@ -2204,7 +2204,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.2
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
