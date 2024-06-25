@@ -70,10 +70,37 @@ public class UIManager : MonoBehaviour
     // Hint information
     [SerializeField] private TMP_Text HintAnnouncement;
 
+    // Escape menu information
+    [SerializeField] private GameObject EscapeMenu;
+    [SerializeField] private bool EscapeMenuOpen;
+    [SerializeField] private Toggle WindowedToggle;
+    [SerializeField] private TMP_Dropdown ResolutionsDropdown;
+    [SerializeField] private Button ExitButton;
+    
+
     // Show the lobby code at the start
     private void Start()
     {
         CurrentLobby = FindObjectOfType<GameLobby>();
+        EscapeMenuOpen = false;
+
+        SettingsManager settings = FindObjectOfType<SettingsManager>();
+
+        // set initial values
+        WindowedToggle.isOn = settings.IsWindowed();
+        ResolutionsDropdown.value = settings.GetResolutionIndex();
+
+        // attach escape menu button callbacks
+        WindowedToggle.onValueChanged.AddListener((value) => {
+            settings.ChangeWindowed(value);
+        });
+        ResolutionsDropdown.onValueChanged.AddListener((index) => {
+            ResolutionsDropdown.gameObject.GetComponent<ResolutionDropdown>().HandleUpdate(index);
+        });
+        ExitButton.onClick.AddListener(() => {
+            // TODO: additional disconnect functionality should be included here if necessary
+            settings.ExitGame();
+        });
     }
 
     // checking key presses to close/open UI
@@ -83,7 +110,7 @@ public class UIManager : MonoBehaviour
         LobbyCodeLabel.text = "Lobby Code:\n" + CurrentLobby.GetCurrentJoinCode();
 
         // Using tab to toggle inventory
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !EscapeMenuOpen)
         {
             if (InventoryOpen)
             {
@@ -96,7 +123,7 @@ public class UIManager : MonoBehaviour
         }
 
         // Using enter to open/close chat
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && !EscapeMenuOpen)
         {
             if (ChatOpen && ChatLog.CheckChatSelected())
             {
@@ -128,12 +155,37 @@ public class UIManager : MonoBehaviour
             }
             else if (UIPanelOpen)
             {
+                // TODO: pausing is currently prevented during the debrief, possibly escalate this to a separate else if clause
                 if (ActiveUIPanel.GetComponent<TeamDebriefUI>() == null)
                 {
                     CloseUI(ActiveUIPanel.GetComponent<UIPanel>());
                 }
             }
+            else if (EscapeMenuOpen)
+            {
+                CloseEscapeMenu();
+            }
+            else
+            {
+                OpenEscapeMenu();
+            }
         }
+    }
+
+    public void OpenEscapeMenu()
+    {
+        // open the escape menu
+        EscapeMenu.SetActive(true);
+        EscapeMenuOpen = true;
+        PlayerMovement.LockCamera();
+    }
+    
+    public void CloseEscapeMenu()
+    {
+        // close the escape menu
+        EscapeMenu.SetActive(false);
+        EscapeMenuOpen = false;
+        PlayerMovement.UnlockCamera();
     }
 
     public bool OpenUI(UIPanel opening)
@@ -142,6 +194,13 @@ public class UIManager : MonoBehaviour
         if (UIPanelOpen)
         {
             Debug.LogWarning($"Attempting to open {opening.gameObject.name} while another panel is active.");
+            return false;
+        }
+
+        // prevent panels from being opened when in the escape menu
+        if (EscapeMenuOpen)
+        {
+            Debug.LogWarning($"Attempting to open {opening.gameObject.name} while the game is paused.");
             return false;
         }
 

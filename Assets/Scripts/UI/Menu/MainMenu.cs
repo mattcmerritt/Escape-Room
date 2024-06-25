@@ -11,11 +11,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private List<GameObject> NameScreenElements;
     [SerializeField] private List<GameObject> SettingsElements;
 
-    private bool Windowed = true;
-    private int Width = 1280, Height = 720;
-
-    [SerializeField] private TMP_Dropdown Resolutions;
-
     public void StartGame()
     {
         // Debug.Log("Game Started");
@@ -67,39 +62,9 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void ChangeWindowed(bool toggled)
-    {
-        if (toggled)
-        {
-            Debug.Log("<color=orange>Settings: </color> Now on Windowed.");
-            Windowed = true;
-        }
-        else
-        {
-            Debug.Log("<color=orange>Settings: </color> No longer Windowed.");
-            Windowed = false;
-        }
-
-        Screen.SetResolution(Width, Height, !Windowed);
-    }
-
-    public void ChangeResolution(int index)
-    {
-        string[] dimensions = Resolutions.options[index].text.Split('x');
-        Width = int.Parse(dimensions[0].Trim());
-        Height = int.Parse(dimensions[1].Trim());
-        Debug.Log($"<color=orange>Settings: </color> Changed resolution to {Width} by {Height}.");
-        Screen.SetResolution(Width, Height, !Windowed);
-    }
-
     public void LoadScene()
     {
         // Debug.Log("Scene Loaded");
         SceneManager.LoadScene(1); // load the game scene with the IP select menu
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
     }
 }

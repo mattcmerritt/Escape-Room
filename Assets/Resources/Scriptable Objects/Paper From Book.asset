@@ -22,18 +22,18 @@ MonoBehaviour:
   IsBook: 0
   URL: 
   IsStillNecessary: 1
-  HasBeenViewed: 1
+  HasBeenViewed: 0
   FullDescription: "Match the numbers for the 7 \"calm down pills\" with the corresponding
     treatments in the PDR Medication Guide to obtain the digits in the phone number
-    in order (excluding the area code, which you found earlier).\r\n\r\n<b>TIP:</b>
-    You might want to <b>take a picture of this information</b> so you can have it
-    open alongside the PDR Guide\r\n\r\nPills from the PDR Guide: \r\nhaloperidol
-    (Haldol) -> <b>1</b> \nolanzapine (Zyprexa) -> <b>3</b>\nrisperidone (Risperdal)
-    -> <b>3</b>\nclozapine (Clozaril) -> <b>4</b>\naripiprazole (Abilify) -> <b>4</b>\nziprasidone
-    (Geodon) -> <b>6</b>\nquetiapine (Seroquel) -> <b>9</b>\r\n\r\nTreatments:\r\n<b>A.
-    </b>Pet therapy \u2013 page 21 \r\n<b>B. </b>Music therapy \u2013 page 52 \r\n<b>C.
-    </b>Aromatherapy \u2013 page 87\r\n<b>D. </b>Reduce room noise \u2013 page 123
-    \r\n<b>E. </b>Offer reassurance \u2013 page 144 \r\n<b>F. </b>Gentle touch \u2013
-    page 148\r\n<b>G. </b>Comfort items \u2013 page 189 \n\n<b>Remember, the final
+    in order (excluding the area code, which you found earlier).\r\n\r\n<b>The final
     phone number should be in the format:</b>\n \n(3 digit area code from earlier)
-    - (digits for A, B, and C) - (digits for D, E, F, and G)"
+    - (digits for A, B, and C) - (digits for D, E, F, and G)\n\n<b>TIP:</b> You might
+    want to <b>take a picture of this information</b> so you can have it open alongside
+    the PDR Guide\r\n\r\nPills from the PDR Guide: \r\nhaloperidol (Haldol) -> <b>1</b>
+    \nolanzapine (Zyprexa) -> <b>3</b>\nrisperidone (Risperdal) -> <b>3</b>\nclozapine
+    (Clozaril) -> <b>4</b>\naripiprazole (Abilify) -> <b>4</b>\nziprasidone (Geodon)
+    -> <b>6</b>\nquetiapine (Seroquel) -> <b>9</b>\r\n\r\nTreatments:\r\n<b>A. </b>Pet
+    therapy \u2013 page 21 \r\n<b>B. </b>Music therapy \u2013 page 52 \r\n<b>C. </b>Aromatherapy
+    \u2013 page 87\r\n<b>D. </b>Reduce room noise \u2013 page 123 \r\n<b>E. </b>Offer
+    reassurance \u2013 page 144 \r\n<b>F. </b>Gentle touch \u2013 page 148\r\n<b>G.
+    </b>Comfort items \u2013 page 189 "
