@@ -55,12 +55,15 @@ public class SequenceManager : NetworkBehaviour
         // disable all other clues
         foreach (UtilityObject clue in Clues)
         {
-            clue.enabled = false;
-            foreach (MeshRenderer renderer in clue.GetComponentsInChildren<MeshRenderer>())
+            if(!clue.ItemDetails.Name.Contains("3") && !clue.ItemDetails.Name.Contains("7"))
             {
-                renderer.enabled = false;
+                clue.enabled = false;
+                foreach (MeshRenderer renderer in clue.GetComponentsInChildren<MeshRenderer>())
+                {
+                    renderer.enabled = false;
+                }
+                clue.GetComponent<Collider>().enabled = false;
             }
-            clue.GetComponent<Collider>().enabled = false;
         }
 
         // activate the first clue
@@ -283,6 +286,12 @@ public class SequenceManager : NetworkBehaviour
     {
         MoveToNextClueServerRpc(6);
         // TODO: update all clients to have the correct answer
+    }
+
+    public bool AtMagnetBoardPuzzle()
+    {
+        Debug.Log($"at clue {CurrentClue}");
+        return CurrentClue == 5;
     }
     #endregion Magnet Board
 
