@@ -287,6 +287,11 @@ public class SequenceManager : NetworkBehaviour
         MoveToNextClueServerRpc(6);
         // TODO: update all clients to have the correct answer
     }
+
+    public bool AtMagnetBoardPuzzle()
+    {
+        return CurrentClue == 6;
+    }
     #endregion Magnet Board
 
     #region Medication Guide

@@ -40,7 +40,6 @@ public class InputPanel : MonoBehaviour
                     IncorrectWarning.SetActive(false);
                 }
 
-                // TODO: see if this works
                 SharedInventory inventory = FindObjectOfType<SharedInventory>();
                 ClueEnvelope Clue3 = GameObject.Find("Envelope 3").GetComponent<ClueEnvelope>();
 
