@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class InputPanel : MonoBehaviour
@@ -24,10 +25,13 @@ public class InputPanel : MonoBehaviour
 
     public void CheckSolution()
     {
+        bool correct = false;
         foreach (string option in Results)
         {
             if (Current.ToLower() == option.ToLower())
             {
+                correct = true;
+
                 SequenceManager.Instance.FinishDSMGuideServerRpc(PanelName);
 
                 if (IncorrectCoroutine != null)
@@ -35,17 +39,32 @@ public class InputPanel : MonoBehaviour
                     StopCoroutine(IncorrectCoroutine);
                     IncorrectWarning.SetActive(false);
                 }
-            }
-            else
-            {
-                if (IncorrectCoroutine != null)
+
+                // TODO: see if this works
+                SharedInventory inventory = FindObjectOfType<SharedInventory>();
+                ClueEnvelope Clue3 = GameObject.Find("Envelope 3").GetComponent<ClueEnvelope>();
+
+                if(inventory.CheckForItem(Clue3.ItemDetails.Name) == null)
                 {
-                    StopCoroutine(IncorrectCoroutine);
-                    IncorrectWarning.SetActive(false);
+                    // add approach
+                    inventory.AddItem(Clue3);
+
+                    // show a popup
+                    UIManager manager = FindObjectOfType<UIManager>();
+                    manager.ShowPopupPanel(Clue3.ItemDetails.Name, Clue3.ItemDetails.Icon);
                 }
-                IncorrectCoroutine = StartCoroutine(ShowIncorrectWarning());
             }
         }  
+        // only run if answer matched no cases
+        if(!correct)
+        {
+            if (IncorrectCoroutine != null)
+            {
+                StopCoroutine(IncorrectCoroutine);
+                IncorrectWarning.SetActive(false);
+            }
+            IncorrectCoroutine = StartCoroutine(ShowIncorrectWarning());
+        }
     }
 
     private IEnumerator ShowIncorrectWarning()
