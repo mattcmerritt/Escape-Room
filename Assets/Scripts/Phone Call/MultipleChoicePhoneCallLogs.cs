@@ -62,6 +62,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         {
             teamChatUI.DisablePhone();
         }
+
+        CurrentPhoneConversationLine = InitialPhoneConversationLine;
     }
 
     public void PopulateConversationBasedOnCurrentLine()

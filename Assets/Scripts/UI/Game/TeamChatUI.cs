@@ -55,7 +55,7 @@ public class TeamChatUI : MonoBehaviour
     
     public void DisablePhone()
     {
-        TakeControlButton.interactable = false;
+        // TakeControlButton.interactable = false; // TODO: testing for restart
     }
 
     // this is used to create the chat bubble, not the buttons
