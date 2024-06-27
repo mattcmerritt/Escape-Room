@@ -8688,7 +8688,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 289cdd3ddbd93cc4bb8cf19e86bc0dc1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d545b94e1bb9dc048ae6def3928b555b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16782,7 +16782,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 36abc8a41026c3d45bd1014c57770737, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 05a89a058ef3241498f17048316fd311, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -49214,8 +49214,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ControlsMenu: {fileID: 5120230228411229747}
   OptionsMenu: {fileID: 1017636277035870629}
-  Folder1: {fileID: 21300000, guid: 36abc8a41026c3d45bd1014c57770737, type: 3}
-  Folder2: {fileID: 21300000, guid: 289cdd3ddbd93cc4bb8cf19e86bc0dc1, type: 3}
+  Folder1: {fileID: 21300000, guid: 05a89a058ef3241498f17048316fd311, type: 3}
+  Folder2: {fileID: 21300000, guid: d545b94e1bb9dc048ae6def3928b555b, type: 3}
   FolderBackground: {fileID: 979432237687435979}
   ControlsButton: {fileID: 379885282155030522}
   OptionsButton: {fileID: 1530844425231372744}
@@ -50154,8 +50154,8 @@ MonoBehaviour:
   NotesListPanel: {fileID: 7393367185672170350}
   InformationNote: {fileID: 1105090132591506246}
   EventSystem: {fileID: 0}
-  FolderPage1: {fileID: 21300000, guid: 36abc8a41026c3d45bd1014c57770737, type: 3}
-  FolderPage2: {fileID: 21300000, guid: 289cdd3ddbd93cc4bb8cf19e86bc0dc1, type: 3}
+  FolderPage1: {fileID: 21300000, guid: 05a89a058ef3241498f17048316fd311, type: 3}
+  FolderPage2: {fileID: 21300000, guid: d545b94e1bb9dc048ae6def3928b555b, type: 3}
   FolderImage: {fileID: 7519061736582843426}
   FolderItemPanel: {fileID: 2913750692380654319}
   FolderInformationPanel: {fileID: 5833685642041297760}
