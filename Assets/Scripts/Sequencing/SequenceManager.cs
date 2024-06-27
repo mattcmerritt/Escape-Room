@@ -290,7 +290,8 @@ public class SequenceManager : NetworkBehaviour
 
     public bool AtMagnetBoardPuzzle()
     {
-        return CurrentClue == 6;
+        Debug.Log($"at clue {CurrentClue}");
+        return CurrentClue == 5;
     }
     #endregion Magnet Board
 
