@@ -10,6 +10,6 @@ public class PaperFromBook : UtilityObject
         base.Interact(player);
 
         // change the text to match
-        player.GetComponentInChildren<TextItemUI>(true).UpdateText(((TextItem) ItemDetails).FullDescription);
+        player.GetComponentInChildren<TextItemUI>(true).UpdateText(((TextItem) ItemDetails).FullDescription, ItemDetails.Name);
     }
 }

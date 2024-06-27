@@ -31,6 +31,6 @@ public class IntroductionItem : UtilityObject
     {
         base.Interact(player);
 
-        player.GetComponentInChildren<TextItemUI>(true).UpdateText(((TextItem)ItemDetails).FullDescription);
+        player.GetComponentInChildren<TextItemUI>(true).UpdateText(((TextItem)ItemDetails).FullDescription, ItemDetails.Name);
     }
 }
