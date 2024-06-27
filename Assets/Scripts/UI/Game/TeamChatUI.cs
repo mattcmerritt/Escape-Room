@@ -56,6 +56,7 @@ public class TeamChatUI : MonoBehaviour
     public void DisablePhone()
     {
         // TakeControlButton.interactable = false; // TODO: testing for restart
+        TakeControlButton.interactable = true; // this is confusing, but it is because non-speakers should be able to jump in, and previous speakers will have this off, so it is re-enabled.
     }
 
     // this is used to create the chat bubble, not the buttons

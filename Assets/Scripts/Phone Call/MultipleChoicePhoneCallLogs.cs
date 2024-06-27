@@ -48,6 +48,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         string timestamp = currentTime.ToString("HH:mm");
         AddPhoneChatMessageForAllServerRpc("<SYSTEM MESSAGE - CLEAR>", timestamp, $"{playerName} has taken the speaking role. Only they will be able to speak on the phone.");
         LockPhoneForOthersClientRpc(playerName);
+
+        UpdateCurrentLineServerRpc(DialogueLines.IndexOf(InitialPhoneConversationLine));
     }
 
     [ClientRpc]
@@ -62,8 +64,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         {
             teamChatUI.DisablePhone();
         }
-
-        CurrentPhoneConversationLine = InitialPhoneConversationLine;
     }
 
     public void PopulateConversationBasedOnCurrentLine()
