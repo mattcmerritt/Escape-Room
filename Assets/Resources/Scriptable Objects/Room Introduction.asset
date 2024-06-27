@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Room Introduction
   m_EditorClassIdentifier: 
   Name: Room Intro
-  Icon: {fileID: 21300000, guid: d74f4e8e491711d47b285b88d6328a09, type: 3}
-  UsedIcon: {fileID: 21300000, guid: d74f4e8e491711d47b285b88d6328a09, type: 3}
+  Icon: {fileID: 21300000, guid: ba71aa3247d03aa40933af12a467183a, type: 3}
+  UsedIcon: {fileID: 21300000, guid: ba71aa3247d03aa40933af12a467183a, type: 3}
   Description: The room introduction.
   Usable: 1
   IsBook: 0
   URL: 
   IsStillNecessary: 1
-  HasBeenViewed: 1
+  HasBeenViewed: 0
   FullDescription: "<b>Instructions:</b> Welcome to the IPE Escape Room everyone!
     I want to start off today\u2019s activity by reminding you that as future health
     professionals, in order to best meet the needs of your patients, you must be
