@@ -32,12 +32,6 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         TeamChatUI teamChatUI = FindObjectOfType<TeamChatUI>();
         teamChatUI.EnablePhone();
         LockPhoneForOthersServerRpc(playerName);
-
-        // sending starting message
-        // fetching the current time
-        DateTime currentTime = DateTime.Now;
-        string timestamp = currentTime.ToString("HH:mm");
-        AddPhoneChatMessageForAllServerRpc("Speaker", timestamp, CurrentPhoneConversationLine.ResponseContent);
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -46,7 +40,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // fetching the current time
         DateTime currentTime = DateTime.Now;
         string timestamp = currentTime.ToString("HH:mm");
-        AddPhoneChatMessageForAllServerRpc("<SYSTEM MESSAGE - CLEAR>", timestamp, $"{playerName} has taken the speaking role. Only they will be able to speak on the phone.");
+        AddPhoneChatMessageForAllServerRpc("<SYSTEM MESSAGE - CLEAR>", timestamp, $"{playerName} has taken the speaking role. Only they will be able to speak on the phone, unless someone else takes control and restarts the call.");
         LockPhoneForOthersClientRpc(playerName);
 
         UpdateCurrentLineServerRpc(DialogueLines.IndexOf(InitialPhoneConversationLine));
@@ -75,14 +69,17 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
         // fetching the current player name
         string playerName = "Team";
 
-        // send player message
+        // send player message (if exists)
         string playerMessage = CurrentPhoneConversationLine.PlayerContent;
-        if(playerMessage.Contains("<name>"))
+        if(playerMessage != "")
         {
-            playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
+            if(playerMessage.Contains("<name>"))
+            {
+                playerMessage = playerMessage.Replace("<name>", ActivePlayerName);
+            }
+            AddPhoneChatMessageForAllServerRpc(playerName, timestamp, playerMessage);
         }
-        AddPhoneChatMessageForAllServerRpc(playerName, timestamp, playerMessage);
-
+        
         // send response (if exists)
         string speakerMessage = CurrentPhoneConversationLine.ResponseContent;
         if(speakerMessage != "")

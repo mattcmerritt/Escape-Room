@@ -50,7 +50,7 @@ public class TeamChatUI : MonoBehaviour
     public void EnablePhone()
     {
         TakeControlButton.interactable = false;
-        FindObjectOfType<MultipleChoicePhoneCallLogs>().GenerateButtonsForCurrentLineServerRpc();
+        // FindObjectOfType<MultipleChoicePhoneCallLogs>().GenerateButtonsForCurrentLineServerRpc();
     }
     
     public void DisablePhone()
