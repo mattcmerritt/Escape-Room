@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.Netcode;
 
+// supporting class to store the relevant information for a given item
 [System.Serializable]
 public class PopupInformation
 {
@@ -14,14 +15,17 @@ public class PopupInformation
 
 public class PopupUI : NetworkBehaviour
 {
-    [SerializeField] private TMP_Text TitleText, DescriptionText;
-    [SerializeField] private Image ItemIcon;
+    // Information to populate new windows
+    [SerializeField] private GameObject PopupWindowPrefab;
+    [SerializeField] private List<GameObject> QueuedPopups = new List<GameObject>();
 
-    // Animations
-    [SerializeField] private Animator Animator;
-
-    // Popups
+    // List of all possible popups
+    //  Done this way to allow for passing an index through RPCs
+    //  Must be sorted in order to correctly display items
     [SerializeField] private List<PopupInformation> PopupInformationList;
+
+    // Animation delays for popups
+    [SerializeField] private float showDelay, hideDelay;
 
     public override void OnNetworkSpawn()
     {
@@ -58,15 +62,23 @@ public class PopupUI : NetworkBehaviour
 
     public void LocalShowPopup(int index)
     {
-        TitleText.text = PopupInformationList[index].itemName;
-        ItemIcon.sprite = PopupInformationList[index].itemImage;
-
-        Animator.SetTrigger("Show");
+        GameObject newPopupObject = Instantiate(PopupWindowPrefab, transform);
+        QueuedPopups.Add(newPopupObject);
+        newPopupObject.GetComponent<PopupWindow>().LoadData(PopupInformationList[index].itemName, PopupInformationList[index].itemImage);
+        StartCoroutine(AddPopupToQueue(newPopupObject));
     }
 
-    // Helper method to hide the panel if the tab closes
-    public void ClosePopupImmediately()
+    public IEnumerator AddPopupToQueue(GameObject popup)
     {
-        Animator.SetTrigger("Close Immediate");
+        // wait until this popup is the first item in the popup queue
+        yield return new WaitUntil(() => popup == QueuedPopups[0]);
+
+        // play the animations and then wait out the animations to show it
+        popup.GetComponent<PopupWindow>().BeginShowingWindow();
+        yield return new WaitForSeconds(showDelay + hideDelay);
+
+        // then destroy the popup
+        QueuedPopups.Remove(popup);
+        Destroy(popup);
     }
 }

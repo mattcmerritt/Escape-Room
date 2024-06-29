@@ -307,7 +307,11 @@ public class UIManager : MonoBehaviour
 
         // reseting the popup menu
         // used in the 3D object panel to show collected items
-        Popups.ClosePopupImmediately();
+
+        // TODO: determine if this is necessary - ?
+        //  this only changed one animator trigger, and the trigger was never connected to anything
+        //  it is unclear if this did anything at some point
+        // Popups.ClosePopupImmediately();
 
         // restoring player control if no menus are active
         // also shows primary UI again (crosshair, etc.)
