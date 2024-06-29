@@ -228,7 +228,7 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                 {
                     // create button
                     GameObject newButton = Instantiate(ButtonPrefab, parent.transform);
-                    newButton.name = $"ConversationChoice-{DialogueLines.IndexOf(CurrentPhoneConversationLine)}";
+                    newButton.name = $"ConversationChoice-{DialogueLines.IndexOf(CurrentPhoneConversationLine)}-{ActivePlayerName}";
                     Debug.Log(newButton.name);
                     newButton.GetComponent<RectTransform>().position = new Vector3(220f, newButton.GetComponent<RectTransform>().position.y, newButton.GetComponent<RectTransform>().position.z);
 
@@ -262,7 +262,8 @@ public class MultipleChoicePhoneCallLogs : NetworkBehaviour
                 List<string> usedOptions = new List<string>();
                 for (int i = 0; i < currentButtons.Length; i++)
                 {
-                    if(currentButtons[i].gameObject.name != $"ConversationChoice-{conversationIndex}")
+                    // TODO: system breaks down if multiple players have the same name, but this likely isn't the only place where this will happen
+                    if(currentButtons[i].gameObject.name != $"ConversationChoice-{conversationIndex}-{ActivePlayerName}")
                     {
                         Destroy(currentButtons[i].gameObject);
                     }
