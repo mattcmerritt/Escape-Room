@@ -7454,7 +7454,9 @@ MonoBehaviour:
   IsCopy: 0
   Original: {fileID: 0}
   ViewingCopyOffsets: {x: -1, y: 0, z: 0}
-  ItemInstructions: Click and drag to move around
+  ItemInstructions: 'This appears to have a lock...
+
+    Press Escape to close window'
   ApplyForce: 0
   Strength: 100
   RotationX: 0
